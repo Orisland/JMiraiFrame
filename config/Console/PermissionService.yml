@@ -1,0 +1,8 @@
+grantedPermissionMap: 
+  '*:*': 
+    - console
+  'org.orisland.plugin:*': 
+    - u756176532
+    - f756176532
+  'org.orisland.plugin:command.talk': 
+    - u756176532

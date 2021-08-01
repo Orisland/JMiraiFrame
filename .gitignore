@@ -1,0 +1,19 @@
+# Project exclude paths
+
+/build/
+/build/classes/java/main/
+/build/classes/java/test/
+/src/main/resources/config.yml
+/bots/
+/src/test/Kotlin/
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+bots
+# Project exclude paths
+/.gradle/
