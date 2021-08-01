@@ -25,6 +25,6 @@ public class Mycommand extends JSimpleCommand {
 
     @Handler
     public void onCommand(CommandSender sender, String mes){
-        sender.sendMessage("wocao ");
+        sender.sendMessage("test");
     }
 }

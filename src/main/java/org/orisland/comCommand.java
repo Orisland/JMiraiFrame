@@ -27,27 +27,4 @@ public class comCommand extends JCompositeCommand {
         user.sendMessage(user.getNick());
         sender.sendMessage("f1");
     }
-
-    @SubCommand
-    public void f2(CommandSender sender, User user){
-        sender.sendMessage("test");
-        user.sendMessage(user.getNick());
-        sender.sendMessage("f2");
-    }
-
-    @SubCommand
-    public void f3(CommandSender sender){
-        sender.sendMessage("f3！");
-//        sender.sendMessage(img.getImageId());
-    }
-
-    @SubCommand
-    public void f4(CommandSender sender, Image image){
-        sender.sendMessage(image.getImageId());
-    }
-
-    @SubCommand
-    public void f5(CommandSender sender){
-        sender.sendMessage("f5");
-    }
 }
