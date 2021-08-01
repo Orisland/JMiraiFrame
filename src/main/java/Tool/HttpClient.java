@@ -22,6 +22,7 @@ public class HttpClient {
     private static final String PIXY = "https://blue-dawn-a7a7.orisland.workers.dev/";
     private static ObjectMapper mapper = new ObjectMapper();
 
+
     /**
      * httpclient，获取url
      * @param url
