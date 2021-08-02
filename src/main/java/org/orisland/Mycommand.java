@@ -20,7 +20,7 @@ public class Mycommand extends JSimpleCommand {
 
     private Mycommand(){
         super(Plugin.INSTANCE, "test", new String[]{"s"}, Plugin.INSTANCE.getParentPermission());
-        setDescription("这是一个测试command");
+        setDescription("这是一个测试");
     }
 
     @Handler
