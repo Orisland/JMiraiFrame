@@ -2,7 +2,6 @@ package org.orisland;
 
 import lombok.SneakyThrows;
 import net.mamoe.mirai.console.command.CommandManager;
-import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
@@ -30,7 +29,7 @@ public final class Plugin extends JavaPlugin {
         getLogger().info("OCR loaded!");
 
         CommandManager.INSTANCE.registerCommand(Mycommand.INSTANCE, false);
-        CommandManager.INSTANCE.registerCommand(comCommand.INSTANCE, false);
+        CommandManager.INSTANCE.registerCommand(ScanImg.INSTANCE, false);
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }
