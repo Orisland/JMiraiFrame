@@ -37,9 +37,6 @@ public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
 
-        MemberCommandSenderOnMessage to = new MemberCommandSenderOnMessage(event);
-        CommandManager.INSTANCE.executeCommand(to, event.getMessage(),false);
-
         return ListeningStatus.LISTENING;
     }
 

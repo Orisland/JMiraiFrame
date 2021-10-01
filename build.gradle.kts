@@ -3,17 +3,27 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
 
-    id("net.mamoe.mirai-console") version "2.6.7"
+    id("net.mamoe.mirai-console") version "2.8.0-M1"
 }
 
 group = "org.orisland"
 version = "1.0-SNAPSHOT"
 
+//repositories {
+//    mavenLocal()
+//    maven("https://maven.aliyun.com/repository/public")
+//    mavenCentral()
+////    jcenter()
+//}
+
 repositories {
+    removeIf { it is MavenArtifactRepository && it.url.host == "dl.bintray.com" }
     mavenLocal()
-    maven("https://maven.aliyun.com/repository/public")
+    maven(url = "https://maven.aliyun.com/repository/public")
+    maven(url = "https://maven.aliyun.com/repository/gradle-plugin")
     mavenCentral()
-//    jcenter()
+    jcenter()
+    gradlePluginPortal()
 }
 
 ext {
