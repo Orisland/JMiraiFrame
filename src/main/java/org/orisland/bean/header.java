@@ -1,12 +1,14 @@
 package org.orisland.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @Author: zhaolong
  * @Time: 00:43
  * @Date: 2021年10月01日 00:43
  **/
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect
 public class header {
     String similarity;

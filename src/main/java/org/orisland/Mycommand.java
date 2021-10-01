@@ -41,11 +41,11 @@ public class Mycommand extends JCompositeCommand {
 
     private Mycommand(){
         super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
-        setDescription("这是一个测试");
     }
 
 
     @SubCommand
+    @Description("pid提取：p pid 作品id，即可提取该id的图片，此指令同样支持bid")
     public void pid(CommandSenderOnMessage sender, String mes) throws IOException {
         long pid = 0L;
         try {
@@ -95,6 +95,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     @SubCommand
+    @Description("bid用于查询，在其他两个指令执行的时候，回复bot的查询信息，并删除@bot字段，补上p bid即可取图")
     public void bid(CommandSenderOnMessage sender) throws IOException {
         QuoteReply reply = sender.getFromEvent().getMessage().get(QuoteReply.Key);
         if (reply == null){
@@ -128,10 +129,11 @@ public class Mycommand extends JCompositeCommand {
                 image = ExternalResource.uploadAsImage(ex, sender.getSubject());
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getSubject().getId()))
+                        .append("\n")
                         .append("pid:" + pid)
-                        .append("\r")
+                        .append("\n")
                         .append("bot帮你下载了原图！")
-                        .append("\r")
+                        .append("\n")
                         .append(image)
                         .build();
             }else {
@@ -150,6 +152,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     @SubCommand
+    @Description("simg输入样例:p simg 图片 <-注意图片和simg有个空格，不能直接放图！这个指令可以搜图，暂时不支持异步")
     public void simg(CommandSenderOnMessage sender, Image mes) throws IOException {
         sender.sendMessage("收到了图片查询请求，正在尝试查找。");
 
@@ -172,11 +175,12 @@ public class Mycommand extends JCompositeCommand {
             String member_id = res.getData().getMember_id();
             String thumbnail = res.getHeader().getThumbnail();
 
-            System.out.println(url);
+
             ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(thumbnail)));
             Image image = ExternalResource.uploadAsImage(ex, sender.getSubject());
 
             if (jsonNode.toString().contains("twitter")){
+                System.out.println("推特图");
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getSubject().getId()))
                         .append("\r")
@@ -189,6 +193,7 @@ public class Mycommand extends JCompositeCommand {
                         .append("来源:" + url)
                         .build();
             }else if (jsonNode.toString().contains("pixiv_id")){
+                System.out.println("p站图");
                 try {
                     chain = new MessageChainBuilder()
                             .append(new At(sender.getUser().getId()))
@@ -210,6 +215,7 @@ public class Mycommand extends JCompositeCommand {
                             .append("反代:" + res.getHeader().getIndex_name().split(" - ")[1].split("\"")[0])
                             .build();
                 }catch (Exception e){
+                    System.out.println("p站报错图");
                     chain = new MessageChainBuilder()
                             .append(new At(sender.getSubject().getId()))
                             .append("\r")
@@ -225,6 +231,7 @@ public class Mycommand extends JCompositeCommand {
                             .build();
                 }
             }else {
+                System.out.println("未知图");
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getSubject().getId()))
                         .append("\r")
@@ -238,24 +245,47 @@ public class Mycommand extends JCompositeCommand {
                         .build();
             }
         }catch (Exception e){
+            System.out.println("出错未知图");
+
             header header = mapper.readValue(jsonNode.get("results").get(0).get("header").toString(), header.class);
-            ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(header.getThumbnail())));
-            Image image = ExternalResource.uploadAsImage(ex, sender.getSubject());
-            chain = new MessageChainBuilder()
-                    .append(new At(sender.getSubject().getId()))
-                    .append("引发了万恶的NullPointerException!")
-                    .append("\n")
-                    .append(image)
-                    .append("\n")
-                    .append("相似度:" + header.getSimilarity() + "%")
-                    .append("\n")
-                    .append("↓的万恶文字引发了异常bot已经懒得处理了!")
-                    .append("\n")
-                    .append(jsonNode.get("results").get(0).get("data").toString())
-                    .build();
-
+            System.out.println(header.getThumbnail());
+            ExternalResource ex = null;
+            Image image = null;
+            try {
+                ex =  ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(header.getThumbnail())));
+                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+            }catch (Exception e1){
+                if (image == null){
+                    chain = new MessageChainBuilder()
+                            .append(new At(sender.getSubject().getId()))
+                            .append("\n")
+                            .append("引发了万恶的NullPointerException!")
+                            .append("\n")
+                            .append("图片下载失败")
+                            .append("\n")
+                            .append("相似度:" + header.getSimilarity() + "%")
+                            .append("\n")
+                            .append("↓的万恶文字引发了异常bot已经懒得处理了!")
+                            .append("\n")
+                            .append(jsonNode.get("results").get(0).get("data").toString())
+                            .build();
+                }else {
+                    chain = new MessageChainBuilder()
+                            .append(new At(sender.getSubject().getId()))
+                            .append("\n")
+                            .append("引发了万恶的NullPointerException!")
+                            .append("\n")
+                            .append(image)
+                            .append("\n")
+                            .append("相似度:" + header.getSimilarity() + "%")
+                            .append("\n")
+                            .append("↓的万恶文字引发了异常bot已经懒得处理了!")
+                            .append("\n")
+                            .append(jsonNode.get("results").get(0).get("data").toString())
+                            .build();
+                }
+            }
         }
-
         sender.sendMessage(chain);
     }
 }

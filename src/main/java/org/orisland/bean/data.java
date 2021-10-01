@@ -27,15 +27,6 @@ public class data {
     String source;
     String author_name;
     String author_url;
-    ArrayNode creator;
-
-    public ArrayNode getCreator() {
-        return creator;
-    }
-
-    public void setCreator(ArrayNode creator) {
-        this.creator = creator;
-    }
 
     public String getAuthor_name() {
         return author_name;

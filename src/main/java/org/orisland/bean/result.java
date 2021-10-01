@@ -2,6 +2,7 @@ package org.orisland.bean;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @Time: 00:40
  * @Date: 2021年10月01日 00:40
  **/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class result {
     data data;
     header header;
