@@ -17,6 +17,7 @@ import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.message.data.*;
 import net.mamoe.mirai.utils.ExternalResource;
 
+import java.io.File;
 import java.io.IOException;
 
 import static Tool.blackWhite.chargePic;
