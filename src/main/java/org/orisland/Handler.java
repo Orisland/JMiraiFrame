@@ -8,9 +8,7 @@ import net.mamoe.mirai.console.command.FriendCommandSenderOnMessage;
 
 import net.mamoe.mirai.console.command.MemberCommandSenderOnMessage;
 import net.mamoe.mirai.contact.Contact;
-import net.mamoe.mirai.event.EventHandler;
-import net.mamoe.mirai.event.ListeningStatus;
-import net.mamoe.mirai.event.SimpleListenerHost;
+import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 
@@ -31,18 +29,13 @@ import static Tool.blackWhite.chargePic;
 public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus friendListener(FriendMessageEvent event) throws IOException {
-
-        FriendCommandSenderOnMessage to = new FriendCommandSenderOnMessage(event);
-        CommandManager.INSTANCE.executeCommand(to, event.getMessage(),false);
+        
 
         return ListeningStatus.LISTENING;
     }
 
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
-
-        MemberCommandSenderOnMessage to = new MemberCommandSenderOnMessage(event);
-        CommandManager.INSTANCE.executeCommand(to, event.getMessage(),false);
 
         return ListeningStatus.LISTENING;
     }

@@ -28,6 +28,7 @@ public class black_white {
         int minx=bi.getMinX();
         int miny=bi.getMinY();
 
+
         int black_white = 0;
         int color = 0;
         int grey = 0;
