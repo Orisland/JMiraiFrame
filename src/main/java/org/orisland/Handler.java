@@ -29,13 +29,18 @@ import static Tool.blackWhite.chargePic;
 public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus friendListener(FriendMessageEvent event) throws IOException {
-        
+        if (event.getMessage().equals("谢谢")){
+            event.getSender().sendMessage("~");
+        }
 
         return ListeningStatus.LISTENING;
     }
 
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
+        if (event.getMessage().equals("谢谢")){
+            event.getSender().sendMessage("~");
+        }
 
         return ListeningStatus.LISTENING;
     }
