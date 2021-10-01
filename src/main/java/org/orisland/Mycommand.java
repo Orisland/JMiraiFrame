@@ -73,7 +73,7 @@ public class Mycommand extends JCompositeCommand {
         }
 
         chin = new MessageChainBuilder()
-                .append(new At(sender.getSubject().getId()))
+                .append(new At(sender.getUser().getId()))
                 .append("我帮你找到了这张图!")
                 .append("\r")
                 .append(image)
@@ -128,7 +128,7 @@ public class Mycommand extends JCompositeCommand {
                         .getUrlByByte(flag ? backUrl + pid + ".jpg" : backUrl + "img?img_id=" + pid)));
                 image = ExternalResource.uploadAsImage(ex, sender.getSubject());
                 chain = new MessageChainBuilder()
-                        .append(new At(sender.getSubject().getId()))
+                        .append(new At(sender.getUser().getId()))
                         .append("\n")
                         .append("pid:" + pid)
                         .append("\n")
@@ -138,7 +138,7 @@ public class Mycommand extends JCompositeCommand {
                         .build();
             }else {
                 chain = new MessageChainBuilder()
-                        .append(new At(sender.getSubject().getId()))
+                        .append(new At(sender.getUser().getId()))
                         .append("哎呀，回复的链接没有pid项哦！")
                         .build();
             }
@@ -182,7 +182,7 @@ public class Mycommand extends JCompositeCommand {
             if (jsonNode.toString().contains("twitter")){
                 System.out.println("推特图");
                 chain = new MessageChainBuilder()
-                        .append(new At(sender.getSubject().getId()))
+                        .append(new At(sender.getUser().getId()))
                         .append("\r")
                         .append(image)
                         .append("\r")
@@ -217,7 +217,7 @@ public class Mycommand extends JCompositeCommand {
                 }catch (Exception e){
                     System.out.println("p站报错图");
                     chain = new MessageChainBuilder()
-                            .append(new At(sender.getSubject().getId()))
+                            .append(new At(sender.getUser().getId()))
                             .append("\r")
                             .append(image)
                             .append("\r")
@@ -233,7 +233,7 @@ public class Mycommand extends JCompositeCommand {
             }else {
                 System.out.println("未知图");
                 chain = new MessageChainBuilder()
-                        .append(new At(sender.getSubject().getId()))
+                        .append(new At(sender.getUser().getId()))
                         .append("\r")
                         .append(image)
                         .append("\r")
@@ -257,7 +257,7 @@ public class Mycommand extends JCompositeCommand {
             }catch (Exception e1){
                 if (image == null){
                     chain = new MessageChainBuilder()
-                            .append(new At(sender.getSubject().getId()))
+                            .append(new At(sender.getUser().getId()))
                             .append("\n")
                             .append("引发了万恶的NullPointerException!")
                             .append("\n")
@@ -271,7 +271,7 @@ public class Mycommand extends JCompositeCommand {
                             .build();
                 }else {
                     chain = new MessageChainBuilder()
-                            .append(new At(sender.getSubject().getId()))
+                            .append(new At(sender.getUser().getId()))
                             .append("\n")
                             .append("引发了万恶的NullPointerException!")
                             .append("\n")
