@@ -162,7 +162,6 @@ public class Mycommand extends JCompositeCommand {
         JsonNode jsonNode = HttpClient.apiGetByJson("https://saucenao.com/search.php", "api_key=b68b3740d278e39c0d16c496f75504a4b56a45eb",
                 "output_type=2", "numres=1", "url=" + net.mamoe.mirai.message.data.Image.queryUrl(mes));
 
-        System.out.println(jsonNode);
         //结果集映射
         result res = mapper.readValue(jsonNode.get("results").get(0).toString(), result.class);
         MessageChain chain = null;
@@ -248,7 +247,6 @@ public class Mycommand extends JCompositeCommand {
             System.out.println("出错未知图");
 
             header header = mapper.readValue(jsonNode.get("results").get(0).get("header").toString(), header.class);
-            System.out.println(header.getThumbnail());
             ExternalResource ex = null;
             Image image = null;
             try {

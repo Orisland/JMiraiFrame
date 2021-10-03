@@ -22,16 +22,16 @@ public class JsonRootBean {
     private String id;
     private String title;
     private String description;
-    private int illustType;
+//    private int illustType;
     private Date createDate;
     private Date uploadDate;
-    private int restrict;
-    private int xRestrict;
+//    private int restrict;
+//    private int xRestrict;
     private int sl;
     private Urls urls;
     private Tags tags;
-    private String alt;
-    private List<String> storableTags;
+//    private String alt;
+//    private List<String> storableTags;
     private String userId;
     private String userName;
     private String userAccount;
@@ -44,26 +44,26 @@ public class JsonRootBean {
     private int commentCount;
     private int responseCount;
     private int viewCount;
-    private boolean isHowto;
-    private boolean isOriginal;
-    private List<String> imageResponseOutData;
-    private List<String> imageResponseData;
-    private int imageResponseCount;
-    private String pollData;
-    private String seriesNavData;
-    private String descriptionBoothId;
-    private String descriptionYoutubeId;
-    private String comicPromotion;
-    private String fanboxPromotion;
-    private List<String> contestBanners;
-    private boolean isBookmarkable;
-    private String bookmarkData;
-    private String contestData;
-    private ZoneConfig zoneConfig;
-    private ExtraData extraData;
-    private TitleCaptionTranslation titleCaptionTranslation;
-    private boolean isUnlisted;
-    private String request;
+//    private boolean isHowto;
+//    private boolean isOriginal;
+//    private List<String> imageResponseOutData;
+//    private List<String> imageResponseData;
+//    private int imageResponseCount;
+//    private String pollData;
+//    private String seriesNavData;
+//    private String descriptionBoothId;
+//    private String descriptionYoutubeId;
+//    private String comicPromotion;
+//    private String fanboxPromotion;
+//    private List<String> contestBanners;
+//    private boolean isBookmarkable;
+//    private String bookmarkData;
+//    private String contestData;
+//    private ZoneConfig zoneConfig;
+//    private ExtraData extraData;
+//    private TitleCaptionTranslation titleCaptionTranslation;
+//    private boolean isUnlisted;
+//    private String request;
     public void setIllustId(String illustId) {
          this.illustId = illustId;
      }
@@ -106,12 +106,12 @@ public class JsonRootBean {
          return description;
      }
 
-    public void setIllustType(int illustType) {
-         this.illustType = illustType;
-     }
-     public int getIllustType() {
-         return illustType;
-     }
+//    public void setIllustType(int illustType) {
+//         this.illustType = illustType;
+//     }
+//     public int getIllustType() {
+//         return illustType;
+//     }
 
     public void setCreateDate(Date createDate) {
          this.createDate = createDate;
@@ -127,19 +127,19 @@ public class JsonRootBean {
          return uploadDate;
      }
 
-    public void setRestrict(int restrict) {
-         this.restrict = restrict;
-     }
-     public int getRestrict() {
-         return restrict;
-     }
-
-    public void setXRestrict(int xRestrict) {
-         this.xRestrict = xRestrict;
-     }
-     public int getXRestrict() {
-         return xRestrict;
-     }
+//    public void setRestrict(int restrict) {
+//         this.restrict = restrict;
+//     }
+//     public int getRestrict() {
+//         return restrict;
+//     }
+//
+//    public void setXRestrict(int xRestrict) {
+//         this.xRestrict = xRestrict;
+//     }
+//     public int getXRestrict() {
+//         return xRestrict;
+//     }
 
     public void setSl(int sl) {
          this.sl = sl;
@@ -161,20 +161,20 @@ public class JsonRootBean {
      public Tags getTags() {
          return tags;
      }
-
-    public void setAlt(String alt) {
-         this.alt = alt;
-     }
-     public String getAlt() {
-         return alt;
-     }
-
-    public void setStorableTags(List<String> storableTags) {
-         this.storableTags = storableTags;
-     }
-     public List<String> getStorableTags() {
-         return storableTags;
-     }
+//
+//    public void setAlt(String alt) {
+//         this.alt = alt;
+//     }
+//     public String getAlt() {
+//         return alt;
+//     }
+//
+//    public void setStorableTags(List<String> storableTags) {
+//         this.storableTags = storableTags;
+//     }
+//     public List<String> getStorableTags() {
+//         return storableTags;
+//     }
 
     public void setUserId(String userId) {
          this.userId = userId;
@@ -259,145 +259,145 @@ public class JsonRootBean {
      public int getViewCount() {
          return viewCount;
      }
-
-    public void setIsHowto(boolean isHowto) {
-         this.isHowto = isHowto;
-     }
-     public boolean getIsHowto() {
-         return isHowto;
-     }
-
-    public void setIsOriginal(boolean isOriginal) {
-         this.isOriginal = isOriginal;
-     }
-     public boolean getIsOriginal() {
-         return isOriginal;
-     }
-
-    public void setImageResponseOutData(List<String> imageResponseOutData) {
-         this.imageResponseOutData = imageResponseOutData;
-     }
-     public List<String> getImageResponseOutData() {
-         return imageResponseOutData;
-     }
-
-    public void setImageResponseData(List<String> imageResponseData) {
-         this.imageResponseData = imageResponseData;
-     }
-     public List<String> getImageResponseData() {
-         return imageResponseData;
-     }
-
-    public void setImageResponseCount(int imageResponseCount) {
-         this.imageResponseCount = imageResponseCount;
-     }
-     public int getImageResponseCount() {
-         return imageResponseCount;
-     }
-
-    public void setPollData(String pollData) {
-         this.pollData = pollData;
-     }
-     public String getPollData() {
-         return pollData;
-     }
-
-    public void setSeriesNavData(String seriesNavData) {
-         this.seriesNavData = seriesNavData;
-     }
-     public String getSeriesNavData() {
-         return seriesNavData;
-     }
-
-    public void setDescriptionBoothId(String descriptionBoothId) {
-         this.descriptionBoothId = descriptionBoothId;
-     }
-     public String getDescriptionBoothId() {
-         return descriptionBoothId;
-     }
-
-    public void setDescriptionYoutubeId(String descriptionYoutubeId) {
-         this.descriptionYoutubeId = descriptionYoutubeId;
-     }
-     public String getDescriptionYoutubeId() {
-         return descriptionYoutubeId;
-     }
-
-    public void setComicPromotion(String comicPromotion) {
-         this.comicPromotion = comicPromotion;
-     }
-     public String getComicPromotion() {
-         return comicPromotion;
-     }
-
-    public void setFanboxPromotion(String fanboxPromotion) {
-         this.fanboxPromotion = fanboxPromotion;
-     }
-     public String getFanboxPromotion() {
-         return fanboxPromotion;
-     }
-
-    public void setContestBanners(List<String> contestBanners) {
-         this.contestBanners = contestBanners;
-     }
-     public List<String> getContestBanners() {
-         return contestBanners;
-     }
-
-    public void setIsBookmarkable(boolean isBookmarkable) {
-         this.isBookmarkable = isBookmarkable;
-     }
-     public boolean getIsBookmarkable() {
-         return isBookmarkable;
-     }
-
-    public void setBookmarkData(String bookmarkData) {
-         this.bookmarkData = bookmarkData;
-     }
-     public String getBookmarkData() {
-         return bookmarkData;
-     }
-
-    public void setContestData(String contestData) {
-         this.contestData = contestData;
-     }
-     public String getContestData() {
-         return contestData;
-     }
-
-    public void setZoneConfig(ZoneConfig zoneConfig) {
-         this.zoneConfig = zoneConfig;
-     }
-     public ZoneConfig getZoneConfig() {
-         return zoneConfig;
-     }
-
-    public void setExtraData(ExtraData extraData) {
-         this.extraData = extraData;
-     }
-     public ExtraData getExtraData() {
-         return extraData;
-     }
-
-    public void setTitleCaptionTranslation(TitleCaptionTranslation titleCaptionTranslation) {
-         this.titleCaptionTranslation = titleCaptionTranslation;
-     }
-     public TitleCaptionTranslation getTitleCaptionTranslation() {
-         return titleCaptionTranslation;
-     }
-
-    public void setIsUnlisted(boolean isUnlisted) {
-         this.isUnlisted = isUnlisted;
-     }
-     public boolean getIsUnlisted() {
-         return isUnlisted;
-     }
-
-    public void setRequest(String request) {
-         this.request = request;
-     }
-     public String getRequest() {
-         return request;
-     }
+//
+//    public void setIsHowto(boolean isHowto) {
+//         this.isHowto = isHowto;
+//     }
+//     public boolean getIsHowto() {
+//         return isHowto;
+//     }
+//
+//    public void setIsOriginal(boolean isOriginal) {
+//         this.isOriginal = isOriginal;
+//     }
+//     public boolean getIsOriginal() {
+//         return isOriginal;
+//     }
+//
+//    public void setImageResponseOutData(List<String> imageResponseOutData) {
+//         this.imageResponseOutData = imageResponseOutData;
+//     }
+//     public List<String> getImageResponseOutData() {
+//         return imageResponseOutData;
+//     }
+//
+//    public void setImageResponseData(List<String> imageResponseData) {
+//         this.imageResponseData = imageResponseData;
+//     }
+//     public List<String> getImageResponseData() {
+//         return imageResponseData;
+//     }
+//
+//    public void setImageResponseCount(int imageResponseCount) {
+//         this.imageResponseCount = imageResponseCount;
+//     }
+//     public int getImageResponseCount() {
+//         return imageResponseCount;
+//     }
+//
+//    public void setPollData(String pollData) {
+//         this.pollData = pollData;
+//     }
+//     public String getPollData() {
+//         return pollData;
+//     }
+//
+//    public void setSeriesNavData(String seriesNavData) {
+//         this.seriesNavData = seriesNavData;
+//     }
+//     public String getSeriesNavData() {
+//         return seriesNavData;
+//     }
+//
+//    public void setDescriptionBoothId(String descriptionBoothId) {
+//         this.descriptionBoothId = descriptionBoothId;
+//     }
+//     public String getDescriptionBoothId() {
+//         return descriptionBoothId;
+//     }
+//
+//    public void setDescriptionYoutubeId(String descriptionYoutubeId) {
+//         this.descriptionYoutubeId = descriptionYoutubeId;
+//     }
+//     public String getDescriptionYoutubeId() {
+//         return descriptionYoutubeId;
+//     }
+//
+//    public void setComicPromotion(String comicPromotion) {
+//         this.comicPromotion = comicPromotion;
+//     }
+//     public String getComicPromotion() {
+//         return comicPromotion;
+//     }
+//
+//    public void setFanboxPromotion(String fanboxPromotion) {
+//         this.fanboxPromotion = fanboxPromotion;
+//     }
+//     public String getFanboxPromotion() {
+//         return fanboxPromotion;
+//     }
+//
+//    public void setContestBanners(List<String> contestBanners) {
+//         this.contestBanners = contestBanners;
+//     }
+//     public List<String> getContestBanners() {
+//         return contestBanners;
+//     }
+//
+//    public void setIsBookmarkable(boolean isBookmarkable) {
+//         this.isBookmarkable = isBookmarkable;
+//     }
+//     public boolean getIsBookmarkable() {
+//         return isBookmarkable;
+//     }
+//
+//    public void setBookmarkData(String bookmarkData) {
+//         this.bookmarkData = bookmarkData;
+//     }
+//     public String getBookmarkData() {
+//         return bookmarkData;
+//     }
+//
+//    public void setContestData(String contestData) {
+//         this.contestData = contestData;
+//     }
+//     public String getContestData() {
+//         return contestData;
+//     }
+//
+//    public void setZoneConfig(ZoneConfig zoneConfig) {
+//         this.zoneConfig = zoneConfig;
+//     }
+//     public ZoneConfig getZoneConfig() {
+//         return zoneConfig;
+//     }
+//
+//    public void setExtraData(ExtraData extraData) {
+//         this.extraData = extraData;
+//     }
+//     public ExtraData getExtraData() {
+//         return extraData;
+//     }
+//
+//    public void setTitleCaptionTranslation(TitleCaptionTranslation titleCaptionTranslation) {
+//         this.titleCaptionTranslation = titleCaptionTranslation;
+//     }
+//     public TitleCaptionTranslation getTitleCaptionTranslation() {
+//         return titleCaptionTranslation;
+//     }
+//
+//    public void setIsUnlisted(boolean isUnlisted) {
+//         this.isUnlisted = isUnlisted;
+//     }
+//     public boolean getIsUnlisted() {
+//         return isUnlisted;
+//     }
+//
+//    public void setRequest(String request) {
+//         this.request = request;
+//     }
+//     public String getRequest() {
+//         return request;
+//     }
 
 }
