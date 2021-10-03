@@ -30,7 +30,6 @@ public final class Plugin extends JavaPlugin {
         getLogger().info("OCR loaded!");
 
         CommandManager.INSTANCE.registerCommand(Mycommand.INSTANCE, false);
-        CommandManager.INSTANCE.registerCommand(comCommand.INSTANCE, false);
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }

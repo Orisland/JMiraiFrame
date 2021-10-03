@@ -1,30 +1,24 @@
 package org.orisland;
 
-import net.mamoe.mirai.console.command.CommandOwner;
-import net.mamoe.mirai.console.command.CommandSender;
-import net.mamoe.mirai.console.command.CommandSenderOnMessage;
-import net.mamoe.mirai.console.command.MemberCommandSenderOnMessage;
-import net.mamoe.mirai.console.command.java.JSimpleCommand;
-import net.mamoe.mirai.console.permission.Permission;
-import net.mamoe.mirai.console.permission.PermissionId;
-import net.mamoe.mirai.contact.User;
-import org.jetbrains.annotations.NotNull;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import net.mamoe.mirai.console.command.java.JCompositeCommand;
 
 /**
  * @Author: zhaolong
  * @Time: 00:05
  * @Date: 2021年07月30日 00:05
  **/
-public class Mycommand extends JSimpleCommand {
+public class Mycommand extends JCompositeCommand {
     public static final Mycommand INSTANCE = new Mycommand();
+    public static final ObjectMapper mapper =  new ObjectMapper();
 
     private Mycommand(){
-        super(Plugin.INSTANCE, "test", new String[]{"s"}, Plugin.INSTANCE.getParentPermission());
-        setDescription("这是一个测试command");
+        super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
     }
 
-    @Handler
-    public void onCommand(CommandSender sender, String mes){
-        sender.sendMessage("wocao ");
+    @SubCommand
+    @Description("test")
+    public void function(){
+
     }
 }
