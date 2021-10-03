@@ -1,4 +1,4 @@
-package org.orisland.bean;
+package org.orisland.bean.sreachImg;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
