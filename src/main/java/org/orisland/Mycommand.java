@@ -8,6 +8,7 @@ import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import net.mamoe.mirai.message.data.*;
 import net.mamoe.mirai.message.data.Image;
 import net.mamoe.mirai.utils.ExternalResource;
+import org.jetbrains.annotations.NotNull;
 import org.orisland.bean.sreachImg.header;
 import org.orisland.bean.pmodel.JsonRootBean;
 import org.orisland.bean.sreachImg.result;
@@ -35,6 +36,7 @@ public class Mycommand extends JCompositeCommand {
     private Mycommand(){
         super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
     }
+
 
     @SubCommand
     @Description("尝试骗过上帝。")
@@ -74,18 +76,21 @@ public class Mycommand extends JCompositeCommand {
         String ps = null;
 
         try {
-            ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient
-                    .getUrlByByte(HttpClient.pixyProxy(res.getUrls().getRegular()))));
-            image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+            if (jsonNode.toString().contains("R-18")){
+                System.out.println("R18 禁止");
+            }else {
+                ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient
+                        .getUrlByByte(HttpClient.pixyProxy(res.getUrls().getRegular()))));
+                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+            }
         }catch (Exception e){
             sender.sendMessage(e.getMessage());
         }
-
         chin = new MessageChainBuilder()
                 .append(new At(sender.getUser().getId()))
                 .append("我帮你找到了这张图!")
                 .append("\r")
-                .append(image)
+                .append((image!=null ? image : new PlainText("warn:R18禁止发送.请手动使用链接.")))
                 .append("\r")
                 .append("标题:" + res.getTitle())
                 .append("\r")
@@ -131,7 +136,7 @@ public class Mycommand extends JCompositeCommand {
         Image image = null;
         MessageChain back = null;
         try {
-            if (chain.contentToString().contains("id")){
+            if (chain.contentToString().contains("id") && !chain.contentToString().contains("R18")){
                 pid = Long.parseLong(chain.contentToString().split("id:")[1].split(" 作者:")[0]);
                 ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient
                         .getUrlByByte(flag ? backUrl + pid + ".jpg" : backUrl + "img?img_id=" + pid)));
@@ -143,13 +148,21 @@ public class Mycommand extends JCompositeCommand {
                         .append("\n")
                         .append("bot帮你下载了原图！")
                         .append("\n")
-                        .append(image)
+                        .append((image!=null ? image : new PlainText("R18禁止发送.\n")))
                         .build();
             }else {
-                chain = new MessageChainBuilder()
-                        .append(new At(sender.getUser().getId()))
-                        .append("哎呀，回复的链接没有pid项哦！")
-                        .build();
+                if (chain.contentToString().contains("R18")){
+                    chain = new MessageChainBuilder()
+                            .append(new At(sender.getUser().getId()))
+                            .append("R18禁止提取图片。")
+                            .build();
+                }else {
+                    chain = new MessageChainBuilder()
+                            .append(new At(sender.getUser().getId()))
+                            .append("哎呀，回复的链接没有pid项哦！")
+                            .build();
+                }
+
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -172,7 +185,6 @@ public class Mycommand extends JCompositeCommand {
 
         JsonNode jsonNode = HttpClient.apiGetByJson("https://saucenao.com/search.php", "api_key=b68b3740d278e39c0d16c496f75504a4b56a45eb",
                 "output_type=2", "numres=1", "url=" + net.mamoe.mirai.message.data.Image.queryUrl(mes));
-
         //结果集映射
         result res = mapper.readValue(jsonNode.get("results").get(0).toString(), result.class);
         MessageChain chain = null;
@@ -184,17 +196,23 @@ public class Mycommand extends JCompositeCommand {
             String member_name = res.getData().getMember_name();
             String member_id = res.getData().getMember_id();
             String thumbnail = res.getHeader().getThumbnail();
+            ExternalResource ex = null;
+            Image image = null;
+            if (HttpClient.apiGetByJson("https://pximg.rainchan.win/imginfo", "img_id="+pixiv_id).toString().contains("R-18")){
+                System.out.println("发现R18tag");
+            }else {
+                ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(thumbnail)));
+                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+            }
 
 
-            ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(thumbnail)));
-            Image image = ExternalResource.uploadAsImage(ex, sender.getSubject());
 
             if (jsonNode.toString().contains("twitter")){
                 System.out.println("推特图");
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getUser().getId()))
                         .append("\r")
-                        .append(image)
+                        .append((image!=null ? image : new PlainText("R18禁止发送.\n")))
                         .append("\r")
                         .append("非pixiv图片")
                         .append("\r")
@@ -208,7 +226,7 @@ public class Mycommand extends JCompositeCommand {
                     chain = new MessageChainBuilder()
                             .append(new At(sender.getUser().getId()))
                             .append("\r")
-                            .append(image)
+                            .append((image!=null ? image : new PlainText("R18禁止发送.\n")))
                             .append("\r")
                             .append("相关性:" + precent + "%")
                             .append("\r")
@@ -229,7 +247,7 @@ public class Mycommand extends JCompositeCommand {
                     chain = new MessageChainBuilder()
                             .append(new At(sender.getUser().getId()))
                             .append("\r")
-                            .append(image)
+                            .append((image!=null ? image : new PlainText("R18禁止发送.")))
                             .append("\r")
                             .append("相关性:" + precent + "%")
                             .append("\r")
@@ -245,7 +263,7 @@ public class Mycommand extends JCompositeCommand {
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getUser().getId()))
                         .append("\r")
-                        .append(image)
+                        .append((image!=null ? image : new PlainText("R18禁止发送.\n")))
                         .append("\r")
                         .append("非pixiv图片")
                         .append("\r")
@@ -284,7 +302,7 @@ public class Mycommand extends JCompositeCommand {
                             .append("\n")
                             .append("引发了万恶的NullPointerException!")
                             .append("\n")
-                            .append(image)
+                            .append((image!=null ? image : new PlainText("R18禁止发送.\n")))
                             .append("\n")
                             .append("相似度:" + header.getSimilarity() + "%")
                             .append("\n")
