@@ -20,6 +20,7 @@ public class HttpClient {
     private static final String PERSON = "http://c2cpicdw.qpic.cn/";
     private static final String PROXY = "https://c2cpicdw.orisland.workers.dev/";
     private static final String PIXY = "https://blue-dawn-a7a7.orisland.workers.dev/";
+    private static final String PIXY2 = "https://i.pixiv.cat/";
     private static ObjectMapper mapper = new ObjectMapper();
     private static final String smallToken = "a696d19b8e12c9e5ca70aaafcd33c285";
     private static final MediaType FORM_CONTENT_TYPE
@@ -151,7 +152,7 @@ public class HttpClient {
      * @return
      */
     public static String pixyProxy(String url){
-        return PIXY + url.split("https://i.pximg.net/")[1];
+        return PIXY2 + url.split("https://i.pximg.net/")[1];
     }
 
     public static void main(String[] args) throws IOException {

@@ -38,11 +38,35 @@ import java.util.Locale;
 public class Mycommand extends JCompositeCommand {
     public static final Mycommand INSTANCE = new Mycommand();
     public static final ObjectMapper mapper =  new ObjectMapper();
+    public static long callBack = 30000L;
+
+    static {
+        if (callBack == 0 || callBack >= 120000L){
+            callBack = 130000L;
+            System.out.println("初始化不撤回消息。");
+        }
+    }
 
     private Mycommand(){
         super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
     }
 
+    @SubCommand
+    @Description("尝试骗过上帝。")
+    public void setBack(CommandSenderOnMessage sender, long number){
+        if (number <= 0 || number >= 12000L){
+            callBack = 130000L;
+        }else {
+            callBack = number * 1000;
+        }
+        sender.sendMessage("欺骗上帝的撤回已设置为："+callBack / 1000 +"秒！");
+    }
+
+    @SubCommand
+    @Description("告诉我当前撤回时间。")
+    public void showBack(CommandSenderOnMessage sender){
+        sender.sendMessage("callBack："+callBack / 1000 +"秒！");
+    }
 
     @SubCommand
     @Description("pid提取：p pid 作品id，即可提取该id的图片，此指令同样支持bid")
@@ -91,7 +115,7 @@ public class Mycommand extends JCompositeCommand {
                 .append("图片过大可能需要非常久的下载时间")
                 .build();
 
-        sender.sendMessage(chin);
+        sender.sendMessage(chin).recallIn(callBack);
     }
 
     @SubCommand
@@ -148,7 +172,9 @@ public class Mycommand extends JCompositeCommand {
                     .append("这个信息不符合规范。")
                     .build();
         }
-        sender.sendMessage(chain);
+        sender.sendMessage(chain).recallIn(callBack);
+
+
     }
 
     @SubCommand
@@ -284,6 +310,6 @@ public class Mycommand extends JCompositeCommand {
                 }
             }
         }
-        sender.sendMessage(chain);
+        sender.sendMessage(chain).recallIn(callBack);
     }
 }
