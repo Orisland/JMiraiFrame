@@ -34,10 +34,11 @@ public class Mycommand extends JCompositeCommand {
     }
 
     private Mycommand(){
-        super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "pic", new String[]{"搜图"}, Plugin.INSTANCE.getParentPermission());
     }
 
 
+//    @SubCommand("撤回")
     @SubCommand
     @Description("尝试骗过上帝。")
     public void setBack(CommandSenderOnMessage sender, long number){
@@ -49,6 +50,7 @@ public class Mycommand extends JCompositeCommand {
         sender.sendMessage("欺骗上帝的撤回已设置为："+callBack / 1000 +"秒！");
     }
 
+//    @SubCommand("设置撤回")
     @SubCommand
     @Description("告诉我当前撤回时间。")
     public void showBack(CommandSenderOnMessage sender){
@@ -56,6 +58,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     @SubCommand
+//    @SubCommand("获取")
     @Description("pid提取：p pid 作品id，即可提取该id的图片，此指令同样支持bid")
     public void pid(CommandSenderOnMessage sender, String mes) throws IOException {
         long pid = 0L;
@@ -109,6 +112,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     @SubCommand
+//    @SubCommand("提取")
     @Description("bid用于查询，在其他两个指令执行的时候，回复bot的查询信息，并删除@bot字段，补上p bid即可取图")
     public void bid(CommandSenderOnMessage sender) throws IOException {
         QuoteReply reply = sender.getFromEvent().getMessage().get(QuoteReply.Key);
@@ -176,6 +180,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     @SubCommand
+//    @SubCommand("搜索")
     @Description("simg输入样例:p simg 图片 <-注意图片和simg有个空格，不能直接放图！这个指令可以搜图，暂时不支持异步")
     public void simg(CommandSenderOnMessage sender, Image mes) throws IOException {
         sender.sendMessage("收到了图片查询请求，正在尝试查找。");

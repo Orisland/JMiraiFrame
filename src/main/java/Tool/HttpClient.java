@@ -3,8 +3,8 @@ package Tool;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import io.ktor.client.engine.okhttp.OkHttp;
 import okhttp3.*;
-import okhttp3.internal.http2.Header;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -23,8 +23,7 @@ public class HttpClient {
     private static final String PIXY2 = "https://i.pixiv.cat/";
     private static ObjectMapper mapper = new ObjectMapper();
     private static final String smallToken = "a696d19b8e12c9e5ca70aaafcd33c285";
-    private static final MediaType FORM_CONTENT_TYPE
-            = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
+
 
 
     /**
@@ -34,6 +33,7 @@ public class HttpClient {
      * @throws IOException
      */
     public static byte[] getUrlByByte(String url) throws IOException {
+//        OkHttp
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
@@ -114,36 +114,6 @@ public class HttpClient {
         }
 
         return url;
-    }
-
-    /**
-     * 缩链百度版
-     * @param url
-     * @return
-     * @throws IOException
-     */
-    public static String smallUrl(String url) throws IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .callTimeout(30, TimeUnit.SECONDS)
-                .build();
-
-        RequestBody body = new FormBody.Builder()
-                .add("LongUrl", url)
-                .add("TermOfValidity", "1-year")
-                .build();
-
-        RequestBody body1 = RequestBody.create(FORM_CONTENT_TYPE, body.toString());
-
-        Request request = new Request.Builder()
-                .url(url)
-                .addHeader("Dwz-Token", smallToken)
-                .addHeader("Content-Type", "application/json; charset=UTF-8")
-                .post(body1)
-                .build();
-
-        return mapper.readTree(client.newCall(request).execute().body().bytes()).get("ShortUrl").toString();
     }
 
     /**
