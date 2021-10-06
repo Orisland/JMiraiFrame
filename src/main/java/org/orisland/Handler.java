@@ -20,7 +20,7 @@ import net.mamoe.mirai.utils.ExternalResource;
 import java.io.File;
 import java.io.IOException;
 
-import static Tool.blackWhite.chargePic;
+//import static Tool.blackWhite.chargePic;
 
 /**
  * @Author: zhaolong
