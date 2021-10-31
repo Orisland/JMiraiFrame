@@ -185,7 +185,7 @@ public class Mycommand extends JCompositeCommand {
     @Description("simg输入样例:p simg 图片 <-注意图片和simg有个空格，不能直接放图！这个指令可以搜图，暂时不支持异步")
     public void simg(CommandSenderOnMessage sender) throws IOException {
         Image mes = null;
-        //
+        //TODO 懒货
         QuoteReply reply = null;
         if (sender.getFromEvent().getMessage().get(Image.Key) != null){
             mes = sender.getFromEvent().getMessage().get(Image.Key);
