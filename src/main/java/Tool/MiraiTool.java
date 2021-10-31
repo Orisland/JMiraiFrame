@@ -17,7 +17,7 @@ public class MiraiTool {
      * @param url   图片链接
      * @return
      */
-    public Image getImg(CommandSenderOnMessage sender, String url){
+    public static Image getImg(CommandSenderOnMessage sender, String url){
         try {
             return ExternalResource.uploadAsImage(ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(url))), sender.getSubject());
         }catch (Exception e){

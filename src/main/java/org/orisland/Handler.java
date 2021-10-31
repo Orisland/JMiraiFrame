@@ -30,8 +30,9 @@ import java.io.IOException;
 public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus friendListener(FriendMessageEvent event) throws IOException {
-        if (event.getMessage().equals("谢谢")){
-            event.getSender().sendMessage("~");
+        if (event.getMessage().contentToString().contains("?")){
+            System.out.println(event.getMessage());
+            event.getSubject().sendMessage("az");
         }
 
         return ListeningStatus.LISTENING;
@@ -39,9 +40,7 @@ public class Handler extends SimpleListenerHost {
 
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
-        if (event.getMessage().equals("谢谢")){
-            event.getSender().sendMessage("~");
-        }
+
 
         return ListeningStatus.LISTENING;
     }

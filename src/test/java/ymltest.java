@@ -1,5 +1,4 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.util.LinkedHashMap;

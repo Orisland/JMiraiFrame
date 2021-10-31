@@ -1,8 +1,10 @@
 package org.orisland;
 
 import Tool.HttpClient;
+import Tool.MiraiTool;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.tools.javac.comp.Todo;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import net.mamoe.mirai.message.data.*;
@@ -34,7 +36,7 @@ public class Mycommand extends JCompositeCommand {
     }
 
     private Mycommand(){
-        super(Plugin.INSTANCE, "pic", new String[]{"搜图"}, Plugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "pic", new String[]{"p"}, Plugin.INSTANCE.getParentPermission());
     }
 
 
@@ -82,9 +84,7 @@ public class Mycommand extends JCompositeCommand {
             if (jsonNode.toString().contains("R-18")){
                 System.out.println("R18 禁止");
             }else {
-                ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient
-                        .getUrlByByte(HttpClient.pixyProxy(res.getUrls().getRegular()))));
-                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+                image = MiraiTool.getImg(sender, HttpClient.pixyProxy(res.getUrls().getRegular()));
             }
         }catch (Exception e){
             sender.sendMessage(e.getMessage());
@@ -129,12 +129,15 @@ public class Mycommand extends JCompositeCommand {
         String backUrl = "https://pixiv.cat/";
         boolean flag = true;
         URL url = new URL("https://pximg.rainchan.win/");
-        if (url.openConnection().getContent() != null){
-            System.out.println("mirai服务器可用，替换代理服务器!");
-            backUrl = "https://pximg.rainchan.win/";
-            flag = false;
+        try {
+            if (url.openConnection().getContent() != null){
+                System.out.println("mirai服务器可用，替换代理服务器!");
+                backUrl = "https://pximg.rainchan.win/";
+                flag = false;
+            }
+        }catch (Exception e){
+            System.out.println("出错，使用默认服务器.");
         }
-
 
         long pid = 0L;
         Image image = null;
@@ -142,9 +145,7 @@ public class Mycommand extends JCompositeCommand {
         try {
             if (chain.contentToString().contains("id") && !chain.contentToString().contains("R18")){
                 pid = Long.parseLong(chain.contentToString().split("id:")[1].split(" 作者:")[0]);
-                ExternalResource ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient
-                        .getUrlByByte(flag ? backUrl + pid + ".jpg" : backUrl + "img?img_id=" + pid)));
-                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+                image = MiraiTool.getImg(sender, flag ? backUrl + pid + ".jpg" : backUrl + "img?img_id=" + pid);
                 chain = new MessageChainBuilder()
                         .append(new At(sender.getUser().getId()))
                         .append("\n")
@@ -182,7 +183,22 @@ public class Mycommand extends JCompositeCommand {
     @SubCommand
 //    @SubCommand("搜索")
     @Description("simg输入样例:p simg 图片 <-注意图片和simg有个空格，不能直接放图！这个指令可以搜图，暂时不支持异步")
-    public void simg(CommandSenderOnMessage sender, Image mes) throws IOException {
+    public void simg(CommandSenderOnMessage sender) throws IOException {
+        Image mes = null;
+        //
+        QuoteReply reply = null;
+        if (sender.getFromEvent().getMessage().get(Image.Key) != null){
+            mes = sender.getFromEvent().getMessage().get(Image.Key);
+        }else {
+            //error
+            mes = sender.getFromEvent().getMessage().get(QuoteReply.Key).getSource().getOriginalMessage().get(Image.Key);
+        }
+
+        if (mes == null){
+            sender.sendMessage("未找到图片，跳出。");
+            return;
+        }
+
         sender.sendMessage("收到了图片查询请求，正在尝试查找。");
 
         System.out.println("开始执行查询" + mes.getImageId());
@@ -206,11 +222,8 @@ public class Mycommand extends JCompositeCommand {
             if (HttpClient.apiGetByJson("https://pximg.rainchan.win/imginfo", "img_id="+pixiv_id).toString().contains("R-18")){
                 System.out.println("发现R18tag");
             }else {
-                ex = ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(thumbnail)));
-                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+                image = MiraiTool.getImg(sender, thumbnail);
             }
-
-
 
             if (jsonNode.toString().contains("twitter")){
                 System.out.println("推特图");
@@ -284,8 +297,7 @@ public class Mycommand extends JCompositeCommand {
             ExternalResource ex = null;
             Image image = null;
             try {
-                ex =  ExternalResource.createAutoCloseable(ExternalResource.create(HttpClient.getUrlByByte(header.getThumbnail())));
-                image = ExternalResource.uploadAsImage(ex, sender.getSubject());
+                image = MiraiTool.getImg(sender, header.getThumbnail());
             }catch (Exception e1){
                 if (image == null){
                     chain = new MessageChainBuilder()

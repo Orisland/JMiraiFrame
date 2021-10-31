@@ -35,20 +35,24 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.3")
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    testImplementation("org.apache.logging.log4j:log4j-core:2.14.1")
+
 // https://mvnrepository.com/artifact/com.github.luues.tool/tool-setting
-    implementation("com.github.luues.tool:tool-setting:1.0.0.0.RELEASE")
+//    implementation("com.github.luues.tool:tool-setting:1.0.0.0.RELEASE")
     // https://mvnrepository.com/artifact/org.yaml/snakeyaml
 //    implementation("org.yaml:snakeyaml:1.29")
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
 //    implementation("com.squareup.okhttp3:okhttp:4.9.1")
     // https://mvnrepository.com/artifact/com.baidu.aip/java-sdk
-    implementation("com.baidu.aip:java-sdk:4.16.2")
+//    implementation("com.baidu.aip:java-sdk:4.16.2")
 
 //    implementation("com.aliyun.oss:aliyun-sdk-oss:3.10.2")
-    implementation("javax.xml.bind:jaxb-api:2.3.1")
-    implementation("javax.activation:activation:1.1.1")
-    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
+//    implementation("javax.xml.bind:jaxb-api:2.3.1")
+//    implementation("javax.activation:activation:1.1.1")
+//    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
     // https://mvnrepository.com/artifact/org.jsoup/jsoup
 //    implementation("org.jsoup:jsoup:1.13.1")
-
+    api("net.mamoe.yamlkt:yamlkt-jvm:0.10.2")
+    testImplementation("junit:junit:4.12")
 }
