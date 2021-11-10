@@ -20,7 +20,7 @@ public class HttpClient {
     private static final String PERSON = "http://c2cpicdw.qpic.cn/";
     private static final String PROXY = "https://c2cpicdw.orisland.workers.dev/";
     private static final String PIXY = "https://blue-dawn-a7a7.orisland.workers.dev/";
-    private static final String PIXY2 = "https://i.pixiv.cat/";
+    private static final String PIXY2 = "https://i.pixiv.re/";
     private static ObjectMapper mapper = new ObjectMapper();
     private static final String smallToken = "a696d19b8e12c9e5ca70aaafcd33c285";
 
