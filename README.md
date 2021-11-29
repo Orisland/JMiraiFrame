@@ -28,6 +28,7 @@
     此分支仅用于提交为作为其他分支的通用模板。
 
 # pic分支
+![GitHub release (by tag)](https://img.shields.io/github/downloads/Orisland/JMiraiFrame/picTool-0.2.2/total?style=flat-square)
 
     图片处理相关分支，picTool项目的源代码所在之处。
 
