@@ -30,3 +30,8 @@
 [推荐教程](https://mirai.mamoe.net/topic/733/%E9%9D%A2%E5%90%91%E6%96%B0%E4%BA%BA%E7%9A%84-mirai-%E5%BC%80%E5%8F%91-%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3)
 
 @MrXiaoM 佬太强了。
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/Orisland/JMiraiFrame.svg)](https://starchart.cc/Orisland/JMiraiFrame)
