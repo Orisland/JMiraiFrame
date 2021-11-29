@@ -1,4 +1,8 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_shield)
+[![GitHub forks](https://img.shields.io/github/forks/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/network)
+[![GitHub stars](https://img.shields.io/github/stars/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/stargazers)
+[![GitHub license](https://img.shields.io/github/license/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/blob/emptybase/LICENSE)
+
 # 主要框架JMiraiFrame by Orisland
 
 ```
