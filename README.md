@@ -47,3 +47,4 @@
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Orisland)](https://github.com/anuraghazra/github-readme-stats)
 
 ## 考研人，勿扰。
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_large)
