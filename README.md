@@ -35,3 +35,8 @@
 ## Stargazers over time
 
 [![Stargazers over time](https://starchart.cc/Orisland/JMiraiFrame.svg)](https://starchart.cc/Orisland/JMiraiFrame)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_shield)
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_large)
