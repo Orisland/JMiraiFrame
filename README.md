@@ -1,3 +1,4 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_shield)
 # 主要框架JMiraiFrame by Orisland
 
 ```
