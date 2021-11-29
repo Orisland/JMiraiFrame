@@ -2,6 +2,9 @@
 [![GitHub forks](https://img.shields.io/github/forks/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/network)
 [![GitHub stars](https://img.shields.io/github/stars/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/stargazers)
 [![GitHub license](https://img.shields.io/github/license/Orisland/JMiraiFrame)](https://github.com/Orisland/JMiraiFrame/blob/emptybase/LICENSE)
+[![Mirai](https://img.shields.io/badge/Mirai-bot-green)](https://github.com/mamoe/mirai)
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/Orisland/JMiraiFrame/latest/total)
+
 
 # 主要框架JMiraiFrame by Orisland
 
