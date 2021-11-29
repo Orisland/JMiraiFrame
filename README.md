@@ -41,5 +41,6 @@
 
 
 ## Stargazers over time
-
 [![Stargazers over time](https://starchart.cc/Orisland/JMiraiFrame.svg)](https://starchart.cc/Orisland/JMiraiFrame)
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Orisland)](https://github.com/anuraghazra/github-readme-stats)
