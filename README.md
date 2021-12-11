@@ -49,3 +49,7 @@
 
 ## 考研人，勿扰。
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FOrisland%2FJMiraiFrame?ref=badge_large)
+
+## 你猜我在干什么？
+<img width="400" height="400" src="https://wakatime.com/share/@Orisland/301a841e-0576-4e41-8c53-e1610d1f616a.svg"/>
+<img width="400" height="400" src="https://wakatime.com/share/@Orisland/68294d74-1f19-4685-97c4-26470dc85b5e.svg"/>
