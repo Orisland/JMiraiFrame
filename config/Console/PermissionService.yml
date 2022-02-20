@@ -2,3 +2,5 @@ grantedPermissionMap:
   '*:*': 
     - console
     - u756176532
+  'org.orisland.plugin:command.pic': 
+    - 'u*'
