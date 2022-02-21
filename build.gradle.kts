@@ -50,5 +50,8 @@ dependencies {
     implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
     // https://mvnrepository.com/artifact/org.jsoup/jsoup
     implementation("org.jsoup:jsoup:1.13.1")
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    implementation ("com.alibaba:fastjson:1.2.79")
+
 
 }
