@@ -1,4 +1,4 @@
-package wows;
+package org.orisland.wows.bean;
 
 public class player {       //太多懒得写注释了，看英文名把
     public long max_xp_ship_id;

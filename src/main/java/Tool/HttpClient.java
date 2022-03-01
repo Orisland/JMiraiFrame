@@ -48,6 +48,31 @@ public class HttpClient {
     }
 
     /**
+     * 获取url的内容
+     * @param url
+     * @return
+     * @throws IOException
+     */
+    public static String getUrlByString(String url) throws IOException {
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .callTimeout(60, TimeUnit.SECONDS)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("Connection", "keep-alive")
+                .build();
+        String res = client.newCall(request).execute().body().string();
+        if (res == null){
+            return null;
+        }else{
+            return client.newCall(request).execute().body().string();
+        }
+    }
+
+    /**
      * json访问网页返回
      * @param url
      * @return

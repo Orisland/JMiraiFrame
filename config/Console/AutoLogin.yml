@@ -9,6 +9,7 @@ accounts:
     # 账号配置. 可用配置列表 (注意大小写):
     # "protocol": "ANDROID_PHONE" / "ANDROID_PAD" / "ANDROID_WATCH"
     # "device": "device.json"
+    # "enable": true
     configuration: 
       protocol: ANDROID_PHONE
       device: device.json

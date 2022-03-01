@@ -20,8 +20,6 @@ import org.orisland.wows.Playerpackage;
 
 import java.io.IOException;
 
-import static Tool.blackWhite.chargePic;
-
 /**
  * @Author: zhaolong
  * @Time: 3:07 下午

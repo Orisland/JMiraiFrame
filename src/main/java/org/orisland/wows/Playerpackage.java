@@ -1,14 +1,16 @@
 package org.orisland.wows;
 
 
-import wows.player;
+import org.orisland.wows.bean.player;
+
+import java.io.IOException;
 
 //组装信息
 public class Playerpackage {
     String spackage = "";
     String pic;
-    public Playerpackage(String msg, int flag){
-        wows.WowsInfosImpl tst = new wows.WowsInfosImpl();
+    public Playerpackage(String msg, int flag) throws IOException {
+        WowsInfos tst = new WowsInfoImpl();
         String[] msgSplit = msg.split( " ");
         String uid;
         player player = null;
@@ -43,6 +45,8 @@ public class Playerpackage {
         pic = "[netpic:"+ pic + "]";
         //spackage += pic + "\n";
         //System.out.println(pic);
+
+
         System.out.println("打包完毕");
     }
 

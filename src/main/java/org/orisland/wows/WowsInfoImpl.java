@@ -1,18 +1,30 @@
-package wows;
+package org.orisland.wows;
 
-import org.orisland.wows.HttpUtil;
-import com.alibaba.fastjson.JSONObject;
-import org.orisland.wows.WowsApiConfig;
-import org.orisland.wows.WowsInfos;
+import Tool.HttpClient;
+import Tool.JsonTool;
+import com.fasterxml.jackson.databind.JsonNode;
+import org.orisland.wows.bean.id_infoSearchResult;
+import org.orisland.wows.bean.name_idSearchResult;
+import org.orisland.wows.bean.player;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-public class WowsInfosImpl implements WowsInfos {
-    @Override
-    public String getShipInfo(Long shipid, int flag) {
-
+/**
+ * @Author: zhaolong
+ * @Time: 00:19
+ * @Date: 2022年02月22日 00:19
+ **/
+public class WowsInfoImpl implements WowsInfos{
+    /**
+     * 根据船只id获取船的信息
+     * @param shipid
+     * @param flag
+     * @return
+     */
+    public String getShipInfo(Long shipid, int flag) throws IOException {
         // get ship uid from WG
         String getUrl;
         if (flag == 0){
@@ -25,14 +37,16 @@ public class WowsInfosImpl implements WowsInfos {
                     + "?application_id=" + WowsApiConfig.APPID
                     + "&ship_id=" + shipid;
         }
-        JSONObject resp = JSONObject.parseObject(HttpUtil.Get(getUrl,""));
+        System.out.println(getUrl);
+        JsonNode resp = HttpClient.getUrlByJson(getUrl);
+        System.out.println(resp);
         String shipname = "某活动船";
-        if (!(resp.getJSONObject("data").toJSONString().equals("{}"))){
-            shipname = resp.getJSONObject("data").getJSONObject(String.valueOf(shipid)).getString("name");
+        if (!(resp.get("data").toString().equals("{}"))){
+            shipname = resp.get("data").get(String.valueOf(shipid)).get("name").asText();
         }
 
 
-        String status = resp.getString("status");
+        String status = resp.get("status").asText();
         if(!"ok".equals(status)){
             System.out.println(status);
             System.out.println("wait what???");
@@ -40,26 +54,6 @@ public class WowsInfosImpl implements WowsInfos {
         }
 
         return shipname;
-    }
-
-    /**
-     *
-     * @param args
-     * 测试方法
-     * 个人是传参数打断点看看回参就ok了
-     *
-     */
-    public static void main(String[] args){
-
-        WowsInfosImpl tst = new WowsInfosImpl();
-
-        String msg = "查水表 Orisland_EX";
-        String[] msgSplit = msg.split( " ");
-
-        //String uid = tst.getUserId(msgSplit[1]);
-        //String res = tst.getUserBasicInfo(uid);
-
-        //System.out.println(res);
     }
 
     /**
@@ -74,14 +68,14 @@ public class WowsInfosImpl implements WowsInfos {
      *      },
      *      "data": [
      *      {
-     *             "nickname": "lsahi",
-     *             "account_id": 567190085
+     *             "nickname": "Orisland_Ex",
+     *             "account_id": 566316444
      *      }
      *      ]
      * }
      */
     @Override
-    public String getUserId(String username, int flag) {
+    public String getUserId(String username, int flag) throws IOException {
         System.out.println("开始调用username api");
         System.out.println(username);
         String getUrl;
@@ -97,31 +91,19 @@ public class WowsInfosImpl implements WowsInfos {
                     + "&search=" + username;
 
         }
-        JSONObject resp = JSONObject.parseObject(HttpUtil.Get(getUrl,""));
+        name_idSearchResult resp = JsonTool.mapper.readValue(HttpClient.getUrlByJson(getUrl).toString(), name_idSearchResult.class);
 
-        List<Object> data = resp.getJSONArray("data");
-        String status = resp.getString("status");
-
-
-        if(!"ok".equals(status)){
+        if(!"ok".equals(resp.getStatus())){
             return "EOF";
         }
 
-        JSONObject curUser = JSONObject.parseObject(data.get(0).toString());
-        System.out.println(curUser);
+        JsonNode curUser = JsonTool.mapper.valueToTree(resp.getData().get(0));
 
-        String name = curUser.getString("nickname");
-        String id = curUser.getString("account_id");
-        System.out.println(name);
-        System.out.println(id);
-        System.out.println(username);
+        String id = curUser.get("account_id").asText();
         if (id.equals("") || id == null){
             return "EOF";
         }
 
-//        if(!name.equals(username)){
-//            return "EOF";
-//        }
 
         return id;
     }
@@ -135,7 +117,7 @@ public class WowsInfosImpl implements WowsInfos {
      * https://developers.wargaming.net/reference/eu/wows/account/info/
      */
     @Override
-    public player getUserBasicInfo(String uid, int flag) {
+    public player getUserBasicInfo(String uid, int flag) throws IOException {
         System.out.println("开始调用userid api");
         String getUrl;
         System.out.println(uid);
@@ -149,43 +131,46 @@ public class WowsInfosImpl implements WowsInfos {
                     + "?application_id=" + WowsApiConfig.APPID
                     + "&account_id=" + uid;
         }
-        JSONObject resp = JSONObject.parseObject(HttpUtil.Get(getUrl,""));
-        System.out.println(resp);
 
-        JSONObject userinfo = resp.getJSONObject("data").getJSONObject(uid);
+        id_infoSearchResult res = JsonTool.mapper.readValue(HttpClient.getUrlByJson(getUrl).toString(), id_infoSearchResult.class);
+        JsonNode userinfo = res.getData().get(uid);
+        System.out.println(userinfo);
+
+        player player = new player();
+
         if (userinfo == null){
-            return new player();
+            return player;
         }
-        System.out.println("test");
 
-        String nickname = userinfo.getString("nickname");
+        String nickname = userinfo.get("nickname").asText();
         System.out.println(nickname);
-        JSONObject pvpStatus = userinfo.getJSONObject("statistics").getJSONObject("pvp");
+        JsonNode pvpStatus = userinfo.get("statistics").get("pvp");
 
-        Long battles = pvpStatus.getLongValue("battles");
-        Long survivedBattles = pvpStatus.getLongValue("survived_battles");
-        Long max_xp = pvpStatus.getLongValue("max_xp");
-        double hit_rate1 = (1.0 * pvpStatus.getJSONObject("main_battery").getLongValue("hits")) / pvpStatus.getJSONObject("main_battery").getLongValue("shots");
+        Long battles = pvpStatus.get("battles").asLong();
+        Long survivedBattles = pvpStatus.get("survived_battles").asLong();
+        Long max_xp = pvpStatus.get("max_xp").asLong();
+        double hit_rate1 = (pvpStatus.get("main_battery").get("hits").asDouble()) / pvpStatus.get("main_battery").get("shots").asDouble();
         BigDecimal hit_rate = new BigDecimal(Double.toString(hit_rate1));
-        double torpedoes_rate1 = (1.0 * pvpStatus.getJSONObject("torpedoes").getLongValue("hits")) / pvpStatus.getJSONObject("torpedoes").getLongValue("shots");
+        double torpedoes_rate1 = (pvpStatus.get("torpedoes").get("hits").asDouble()) / pvpStatus.get("torpedoes").get("shots").asDouble();
         BigDecimal torpedoes_rate = new BigDecimal(Double.toString(torpedoes_rate1));
-        double sen_hit_rate1 = (1.0 * pvpStatus.getJSONObject("second_battery").getLongValue("hits")) / pvpStatus.getJSONObject("second_battery").getLongValue("shots");
+        double sen_hit_rate1 = (pvpStatus.get("second_battery").get("hits").asDouble()) / pvpStatus.get("second_battery").get("shots").asDouble();
         BigDecimal sen_hit_rate = new BigDecimal(Double.toString(sen_hit_rate1));
-        long ave_xp = pvpStatus.getLongValue("xp") / battles;
+        long ave_xp = pvpStatus.get("xp").asLong() / battles;
         double survived_rate1 = survivedBattles * 1.0 / battles;
         BigDecimal survived_rate = new BigDecimal(Double.toString(survived_rate1));
-        Long wins = pvpStatus.getLongValue("wins");
-        Long losses = pvpStatus.getLongValue("losses");
-        Long survived_wins = pvpStatus.getLongValue("survived_wins");
+        Long wins = pvpStatus.get("wins").asLong();
+        Long losses = pvpStatus.get("losses").asLong();
+        Long survived_wins = pvpStatus.get("survived_wins").asLong();
         double win_rate1 = (wins *1.0) / battles;
         BigDecimal win_rate = new BigDecimal(Double.toString(win_rate1));
-        Long damage = pvpStatus.getLongValue("damage_dealt");
+        Long damage = pvpStatus.get("damage_dealt").asLong();
         Long ave_damage = damage / battles;
-        Long frags = pvpStatus.getLongValue("frags");
+        Long frags = pvpStatus.get("frags").asLong();
         Long die = battles - survivedBattles;
 
-        Long torpedoes_max_frags_battle = pvpStatus.getJSONObject("torpedoes").getLongValue("max_frags_battle");    //单场鱼雷击杀
-        Long torpedoes_max_frags_ship_id = pvpStatus.getJSONObject("torpedoes").getLongValue("max_frags_ship_id");    //单场鱼雷击杀id
+        Long torpedoes_max_frags_battle = pvpStatus.get("torpedoes").get("max_frags_battle").asLong();    //单场鱼雷击杀
+        Long torpedoes_max_frags_ship_id = pvpStatus.get("torpedoes").get("max_frags_ship_id").asLong();    //单场鱼雷击杀id
+        System.out.println(torpedoes_max_frags_ship_id);
         String name_torpedoes_max_frags_ship_id = getShipInfo(torpedoes_max_frags_ship_id,flag);                             //船名字
 
 //        Long cv_max_frags_battle = pvpStatus.getJSONObject("aircraft").getLongValue("max_frags_battle");    //单场击杀最高
@@ -194,17 +179,17 @@ public class WowsInfosImpl implements WowsInfos {
 //        if (cv_max_frags_ship_id != 0){
 //            name_cv_max_frags_ship_id = getShipInfo(cv_max_frags_ship_id,flag);                                   //船名字
 //        }
-        Long max_single_kill = pvpStatus.getLongValue("max_frags_battle");                                  //最大单杀
-        Long max_frags_boat_id = pvpStatus.getJSONObject("main_battery").getLongValue("max_frags_ship_id"); //最大击杀id
+        Long max_single_kill = pvpStatus.get("max_frags_battle").asLong();                                  //最大单杀
+        Long max_frags_boat_id = pvpStatus.get("main_battery").get("max_frags_ship_id").asLong(); //最大击杀id
         String name_max_frags_boat_id = getShipInfo(max_frags_boat_id,flag);                                         //最大击杀船名
         //System.out.println(name_max_frags_boat_id);
 
-        Long max_damage_dealt = pvpStatus.getLongValue("max_damage_dealt");                                 //最大伤害
-        Long max_damage_boat_id = pvpStatus.getLongValue("max_damage_dealt_ship_id");                       //最大伤害id
+        Long max_damage_dealt = pvpStatus.get("max_damage_dealt").asLong();                                 //最大伤害
+        Long max_damage_boat_id = pvpStatus.get("max_damage_dealt_ship_id").asLong();                       //最大伤害id
         String name_max_damage_boat_id = getShipInfo(max_damage_boat_id,flag);                                       //最大伤害船名字
         //System.out.println(name_max_damage_boat_id);
 
-        Long max_xp_ship_id = pvpStatus.getLongValue("max_xp_ship_id");
+        Long max_xp_ship_id = pvpStatus.get("max_xp_ship_id").asLong();
         String name_max_xp_ship_id = getShipInfo(max_xp_ship_id,flag);
 
         double KD1 = frags* 1.0 / die;
@@ -229,7 +214,7 @@ public class WowsInfosImpl implements WowsInfos {
         win_rate = win_rate.setScale(1,RoundingMode.HALF_UP);
         win_servived_rate = win_servived_rate.setScale(3,RoundingMode.HALF_UP).multiply(ten);
         win_servived_rate = win_servived_rate.setScale(1,RoundingMode.HALF_UP);
-        player player = new player();
+
         player.max_xp_ship_id = max_xp_ship_id;
         player.name_max_xp_ship_id = name_max_xp_ship_id;
         player.user_id = Long.parseLong(uid);
@@ -266,25 +251,24 @@ public class WowsInfosImpl implements WowsInfos {
         player.wins = wins;
 
 
-        String res =
-                "查询玩家信息" + nickname + "\n"
-                        + "总场数" + battles +"\n"
-                        + "存活场数" + survivedBattles + "\n"
-                        + "单场最大经验数"+max_xp + "\n"
-                        + "命中率"+hit_rate+"%" +"\n"
-                        + "单场最多击杀"+max_single_kill+"\n"
-                        + "副炮命中率"+sen_hit_rate + "%" + "\n"
-                        + "场均经验" + ave_xp +"\n"
-                        + "存活率" + survived_rate + "%" + "\n"
-                        + "KD" + KD +"\n"
-                        + "平均伤害" + ave_damage + "\n"
-                        + "平均经验" + ave_xp + "\n"
-                        + "胜率" + win_rate + "%" + "\n"
-                        + "胜利存活"+ survived_wins + "\n"
-                        + "胜利存活率" + win_servived_rate + "%"
-                        + "鱼雷精度" + torpedoes_rate + "%";
+//        String res1 =
+//                "查询玩家信息" + nickname + "\n"
+//                        + "总场数" + battles +"\n"
+//                        + "存活场数" + survivedBattles + "\n"
+//                        + "单场最大经验数"+max_xp + "\n"
+//                        + "命中率"+hit_rate+"%" +"\n"
+//                        + "单场最多击杀"+max_single_kill+"\n"
+//                        + "副炮命中率"+sen_hit_rate + "%" + "\n"
+//                        + "场均经验" + ave_xp +"\n"
+//                        + "存活率" + survived_rate + "%" + "\n"
+//                        + "KD" + KD +"\n"
+//                        + "平均伤害" + ave_damage + "\n"
+//                        + "平均经验" + ave_xp + "\n"
+//                        + "胜率" + win_rate + "%" + "\n"
+//                        + "胜利存活"+ survived_wins + "\n"
+//                        + "胜利存活率" + win_servived_rate + "%"
+//                        + "鱼雷精度" + torpedoes_rate + "%";
 
         return player;
     }
-
 }
