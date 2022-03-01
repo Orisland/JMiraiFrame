@@ -1,25 +1,33 @@
-package org.orisland.wowsNumbers;
+package Tool;
 
 import Tool.HttpClient;
+import com.fasterxml.jackson.databind.JsonNode;
+import kotlinx.serialization.json.Json;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.orisland.wows.WowsApiConfig;
 import org.orisland.wows.WowsApiConfig.*;
+import org.orisland.wows.bean.playerShipStats;
 
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-import static org.orisland.wows.WowsApiConfig.WOWS_numbers;
+import static org.orisland.wows.WowsApiConfig.*;
 
 /**
  * @Author: zhaolong
  * @Time: 23:54
  * @Date: 2022年02月25日 23:54
  **/
+@Log4j2
 public class spider {
-
 //    网页的select地址
     public final static String Battles = "";
     public final static String winRate = "";
@@ -56,7 +64,21 @@ public class spider {
         }
     }
 
-
-
-
+    /**
+     * 用于获取uid的所有船只的数据信息，用来进行统计和加减
+     * @param server    区服
+     * @param uid       玩家id
+     * @return          返回数据
+     * @throws IOException
+     */
+    public static playerShipStats getPlayerShipStats(Server server, Long uid) throws IOException {
+        playerShipStats pss = JsonTool.mapper.readValue(HttpClient.getUrlByString(String.format(GET_SHIP_INFO, server, APPID, uid)), playerShipStats.class);
+        if (pss.getData().size() == 0){
+            log.info("uid不存在，请检查uid:"+uid);
+            return null;
+        }else {
+            log.info(uid + "数据获取完成");
+            return pss;
+        }
+    }
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <!-- 全局属性 -->
+    <properties>
+        <property name="logDir">logs</property>
+        <property name="pattern">%highlight{[%d{HH:mm:ss}/%-5level] %m%n}{ERROR=RED, WARN=Yellow, INFO=Green,
+            DEBUG=Cyan, TRACE=White}
+        </property>
+        <property name="filePattern">[%d{HH:mm:ss.SSS}] [%logger/%-5level] %m%n</property>
+    </properties>
+
+    <!-- appender -->
+    <Appenders>
+        <!-- 控制台 -->
+        <Console name="console" target="SYSTEM_OUT">
+            <!-- 文件输出所有消息 -->
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!-- 输出格式 -->
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+        <!-- 主要日志 -->
+        <RollingFile name="rollingFile" fileName="latest.log"
+                     filePattern="${logDir}/%d{yyyy.MM.dd}-%i.log.gz">
+            <!-- 文件输出所有消息 -->
+            <!--<ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="ACCEPT"/>-->
+            <!-- 输出格式 -->
+            <PatternLayout pattern="${filePattern}"/>
+            <Policies>
+                <!-- 启动时触发拆分规则 -->
+                <OnStartupTriggeringPolicy/>
+                <!-- 按大小进行拆分 -->
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <!-- 同目录下文件上限 -->
+            <DefaultRolloverStrategy max="-1"/>
+        </RollingFile>
+        <!-- access -->
+        <RollingFile name="accessFile" fileName="${logDir}/access.log"
+                     filePattern="${logDir}/%d{yyyy.MM.dd}-%i.access.log.gz">
+            <!-- 文件输出所有消息 -->
+            <!--<ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="ACCEPT"/>-->
+            <!-- 输出格式 -->
+            <PatternLayout pattern="${filePattern}"/>
+            <Policies>
+                <!-- 启动时触发拆分规则 -->
+                <OnStartupTriggeringPolicy/>
+                <!-- 按大小进行拆分 -->
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="-1"/>
+        </RollingFile>
+        <!-- 其他 -->
+        <RollingFile name="otherRollingFile" fileName="${logDir}/other.log"
+                     filePattern="${logDir}/%d{yyyy.MM.dd}-%i.other.log.gz">
+            <!-- 文件输出所有消息 -->
+            <!--<ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="ACCEPT"/>-->
+            <!-- 输出格式 -->
+            <PatternLayout pattern="${filePattern}"/>
+            <Policies>
+                <!-- 启动时触发拆分规则 -->
+                <OnStartupTriggeringPolicy/>
+                <!-- 按大小进行拆分 -->
+                <!--<SizeBasedTriggeringPolicy size="10MB"/>-->
+            </Policies>
+            <!-- 同目录下文件上限 -->
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+
+    <!-- logger -->
+    <Loggers>
+        <logger name="org.springframework" additivity="false" level="INFO">
+            <AppenderRef ref="otherRollingFile"/>
+        </logger>
+        <logger name="oshi.util.FileUtil" additivity="false" level="INFO">
+            <AppenderRef ref="otherRollingFile"/>
+        </logger>
+        <logger name="com.zaxxer.hikari" additivity="false" level="INFO">
+            <AppenderRef ref="otherRollingFile"/>
+        </logger>
+        <logger name="com.kennycason.kumo" additivity="false" level="INFO">
+            <AppenderRef ref="otherRollingFile"/>
+        </logger>
+        <!-- access -->
+<!--        <logger name="com.e404.bot.Access" level="ALL">-->
+<!--            <AppenderRef ref="accessFile"/>-->
+<!--        </logger>-->
+        <Root level="ALL">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="rollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -2,6 +2,7 @@ package org.orisland;
 
 import Tool.HttpClient;
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.extern.log4j.Log4j2;
 import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.FriendCommandSenderOnMessage;
@@ -25,6 +26,7 @@ import java.io.IOException;
  * @Time: 3:07 下午
  * @Date: 2021年07月03日 15:07
  **/
+@Log4j2
 public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus friendListener(FriendMessageEvent event) throws IOException {
@@ -39,6 +41,7 @@ public class Handler extends SimpleListenerHost {
         
 
         if (msg.indexOf("欧服水表") == 0){
+            log.warn("注意这是测试信息");
             if(msg.split( " ").length != 2){
                 event.getGroup().sendMessage("命令格式错误，请修正。");
             }

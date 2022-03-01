@@ -1,7 +1,10 @@
 package org.orisland.wows;
 
+import org.orisland.Plugin;
 import org.orisland.wows.bean.rankSingle;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ public class WowsApiConfig {
     public static final String GET_BOAT_BASIC_INFO_ASIA = "https://api.worldofwarships.asia/wows/encyclopedia/ships/";
 
     //关键api，获取指定用户的所有船只战绩信息-> 区服-appid-uid
-    public static final String GET_SHIP_INFO = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=uid";
+    public static final String GET_SHIP_INFO = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=%s";
 
     //窝窝屎的各种区服-> 区服
     public static final String WOWS_numbers= "https://%s.wows-numbers.com/player/";
@@ -32,6 +35,9 @@ public class WowsApiConfig {
     //窝窝屎最近战绩
     //查最近开的船战绩,wowsnumber渠道->区服-船种/单船-uid-date-类型
     public static final String WOWS_numbers_ships_types = "https://%s.wows-numbers.com/user/snapshot/%s.ajax?accountId=%s&date=%s&type=%s";
+
+    //玩家数据地址
+    public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator + "playData" + File.separator;
 
     //仍需努力
     public static final rankSingle ImprovementNeed = new rankSingle("red", "仍需努力");
