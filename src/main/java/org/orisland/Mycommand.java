@@ -1,23 +1,20 @@
 package org.orisland;
 
+import Tool.JsonTool;
 import Tool.fileTool;
-import Tool.spider;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import kotlinx.serialization.json.JsonObject;
+import kotlinx.serialization.json.Json;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
-import net.mamoe.mirai.console.data.PluginData;
-import net.mamoe.mirai.console.data.PluginDataHolder;
-import net.mamoe.mirai.console.data.PluginDataStorage;
-import net.mamoe.mirai.console.data.java.JAutoSavePluginData;
-import org.jetbrains.annotations.NotNull;
 import org.orisland.wows.WowsApiConfig;
+import org.orisland.wows.dataFactory;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
-import static org.orisland.wows.dataFactory.catchData;
+import static org.orisland.wows.dataFactory.shipToday;
+import static org.orisland.wows.dataFactory.findShipCompare;
 
 /**
  * @Author: zhaolong
@@ -35,12 +32,20 @@ public class Mycommand extends JCompositeCommand {
 
     @SubCommand("t")
     @Description("test")
-    public void function(Long uid) throws IOException {
-        catchData(Long.parseLong("566316446"), WowsApiConfig.Server.EU);
+    public void function(String uid) throws IOException {
+//        findShipCompare(shipToday(uid, WowsApiConfig.Server.EU));
 
+        dataFactory.compare(shipToday(uid, WowsApiConfig.Server.EU), JsonTool.mapper.readTree(Files.readString(dataFactory.getUidFile(uid).toPath())));
+
+
+//        System.out.println(dataFactory.getUidFile(uid));
 
 //        fileTool.saveFile(spider.getPlayerShipStats(WowsApiConfig.Server.EU, Long.parseLong("566316444")).getData(), String.valueOf(Plugin.INSTANCE.getDataFolderPath() + File.separator + "playerData"), "566316444.json");
-//        fileTool.readDir(Plugin.INSTANCE.getDataFolderPath() + File.separator + "playerData" + File.separator);
 //        log.info(Plugin.INSTANCE.getDataFolderPath() + File.separator + "playerData");
+    }
+
+    @SubCommand
+    public void function1(){
+        System.out.println(WowsApiConfig.dataDir);
     }
 }

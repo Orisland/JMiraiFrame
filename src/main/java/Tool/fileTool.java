@@ -23,10 +23,33 @@ public class fileTool {
 
     /**
      * 保存json到玩家文件夹
+     * 若出现重复则覆盖，删除旧文件，放入新文件
      * @param userData
      * @return
      */
     public static boolean saveFile(JsonNode userData, String url, String name){
+        FileWriter fileWriter;
+        File file = new File(url +  name);
+        if (file.exists()){
+            log.info("del已存在的json"+file + ":" + file.delete());
+        }
+        try {
+            fileWriter = new FileWriter(url + File.separator + name);
+            fileWriter.write(userData.toString());
+            fileWriter.flush();
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    /**
+     * 保存，并读取返回
+     * @param userData
+     * @return
+     */
+    public static boolean saveAndReadFile(JsonNode userData, String url, String name){
         FileWriter fileWriter;
         try {
             fileWriter = new FileWriter(url + File.separator + name);
@@ -46,12 +69,11 @@ public class fileTool {
      * @return          有文件返回列表路径，没文件返回空或null
      */
     public static File[] readDir(String url){
-        if (new File("url").exists()){
+        if (new File(url).exists()){
             return new File(url).listFiles();
         }else {
             return null;
         }
-
     }
 
     /**
@@ -59,5 +81,21 @@ public class fileTool {
      */
     public static boolean initFile(){
         return newFile(Plugin.INSTANCE.getDataFolderPath() + "/playerData");
+    }
+
+    /**
+     * 删除指定位置的文件,非级联删除
+     * @param path
+     * @return
+     */
+    public static boolean delteFile(String path){
+        File file = new File(path);
+        if (file.exists() && file.isFile()){
+            System.out.println("delete " + file);
+            return file.delete();
+        }else {
+            System.out.println("文件不存在!");
+            return false;
+        }
     }
 }

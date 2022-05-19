@@ -71,7 +71,7 @@ public class spider {
      * @return          返回数据
      * @throws IOException
      */
-    public static playerShipStats getPlayerShipStats(Server server, Long uid) throws IOException {
+    public static playerShipStats getPlayerShipStats(Server server, String uid) throws IOException {
         playerShipStats pss = JsonTool.mapper.readValue(HttpClient.getUrlByString(String.format(GET_SHIP_INFO, server, APPID, uid)), playerShipStats.class);
         if (pss.getData().size() == 0){
             log.info("uid不存在，请检查uid:"+uid);
