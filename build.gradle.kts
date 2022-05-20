@@ -29,21 +29,13 @@ val miraiVersion = "2.11.0"
 fun mirai(module: String) = "net.mamoe:mirai-$module:$miraiVersion"
 
 dependencies {
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.3")
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-//    implementation(mirai("logging-log4j2"))
-//    runtimeOnly(log4j("core"))
-//    implementation(log4j("api"))
     runtimeOnly("com.lmax:disruptor:3.4.4")
-
 
     // https://mvnrepository.com/artifact/org.jsoup/jsoup
     implementation("org.jsoup:jsoup:1.13.1")
-    // https://mvnrepository.com/artifact/com.alibaba/fastjson
-    implementation ("com.alibaba:fastjson:1.2.79")
 
     api("net.mamoe.yamlkt:yamlkt-jvm:0.10.2")
     testImplementation("junit:junit:4.12")

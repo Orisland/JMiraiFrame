@@ -14,12 +14,8 @@ import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
 
-import net.mamoe.mirai.message.data.*;
-import net.mamoe.mirai.utils.ExternalResource;
 
 import java.io.IOException;
-
-import static Tool.blackWhite.chargePic;
 
 /**
  * @Author: zhaolong
@@ -29,13 +25,15 @@ import static Tool.blackWhite.chargePic;
 public class Handler extends SimpleListenerHost {
     @EventHandler
     public ListeningStatus friendListener(FriendMessageEvent event) throws IOException {
-        
 
         return ListeningStatus.LISTENING;
     }
 
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
+        if (event.getMessage().contentToString().contains("?")){
+            System.out.println("az");
+        }
 
         return ListeningStatus.LISTENING;
     }
