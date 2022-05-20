@@ -2,11 +2,12 @@ package Tool;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
+import net.mamoe.yamlkt.Yaml;
+import net.mamoe.yamlkt.YamlElement;
+import net.mamoe.yamlkt.YamlMap;
 import org.orisland.Plugin;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 @Slf4j
@@ -97,5 +98,44 @@ public class FileTool {
             System.out.println("文件不存在!");
             return false;
         }
+    }
+
+    /**
+     * 将指定文件读取为String
+     * @param path 文件路径
+     * @return 返回结果String
+     */
+    public static String ReadDirToString(String path) {
+        BufferedReader bufferedReader = null;
+        StringBuilder stringBuilder = null;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(path));
+            stringBuilder = new StringBuilder();
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null){
+                stringBuilder.append(line);
+                stringBuilder.append("\n");
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                bufferedReader.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 从指定路径中读取yaml并返回yaml对象
+     * @param content 待转化内容
+     * @return  转化为yamlMap
+     */
+    public static YamlMap ReadStringToYaml(String content){
+        Yaml yaml = Yaml.Default;
+        return yaml.decodeYamlMapFromString(content);
     }
 }

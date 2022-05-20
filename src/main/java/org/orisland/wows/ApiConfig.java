@@ -9,7 +9,7 @@ public class ApiConfig {
      * app id
      * url:<a href="https://developers.wargaming.net/applications/">申请AppId</a>
      */
-    public static final String APPID = "21a433ec77510c77b44a3047937b4bb1";
+    public static String APPID = "21a433ec77510c77b44a3047937b4bb1";
 
     /**
      * 用昵称查用户
@@ -39,7 +39,7 @@ public class ApiConfig {
      * 船只期望数据
      * 获取用户pr和指定船的pr的数据源
      */
-    public static final String WowsPr = "https://api.wows-numbers.com/personal/rating/expected/json/";
+    public static final String Wows_Pr = "https://api.wows-numbers.com/personal/rating/expected/json/";
 
     /**
      * 按日期查询玩家数据
@@ -59,6 +59,11 @@ public class ApiConfig {
      * 本地玩家数据地址
      */
     public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator + "playerData" + File.separator;
+
+    /**
+     * 配置文件地址
+     */
+    public static final String configDir = Plugin.INSTANCE.getConfigFolder() + File.separator;
 
     /**
      * 区服
