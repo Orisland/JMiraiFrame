@@ -19,3 +19,5 @@ bots
 /.gradle/
 /config/
 /data/
+/plugins/
+/ships/

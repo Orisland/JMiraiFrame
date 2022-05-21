@@ -1,21 +1,22 @@
 package org.orisland;
 
-import Tool.HttpClient;
-import com.fasterxml.jackson.databind.JsonNode;
-import net.mamoe.mirai.console.command.CommandManager;
-import net.mamoe.mirai.console.command.CommandSenderOnMessage;
-import net.mamoe.mirai.console.command.FriendCommandSenderOnMessage;
-
-import net.mamoe.mirai.console.command.MemberCommandSenderOnMessage;
-import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
+import org.orisland.wows.ApiConfig;
+import org.orisland.wows.DataPack.ShipData;
+import org.orisland.wows.doMain.SingleShipDataSimple;
 
 
 import java.io.IOException;
+import java.util.List;
+
+import static org.orisland.wows.DataPack.PlayerData.NickNameToAccountInfo;
+import static org.orisland.wows.DataPack.PlayerData.searchNickNameToAccountId;
+import static org.orisland.wows.DataPack.PlayerData.SearchAccountIdToAccountInfoByDate;
+import static org.orisland.wows.DataPack.ShipData.SearchAccountIdToShipInfo;
 
 /**
  * @Author: zhaolong
@@ -31,8 +32,20 @@ public class Handler extends SimpleListenerHost {
 
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
-        if (event.getMessage().contentToString().contains("?")){
-            System.out.println("az");
+        if (event.getMessage().contentToString().contains("1")){
+            NickNameToAccountInfo("Orisland_Ex", ApiConfig.Server.EU);
+        }else if (event.getMessage().contentToString().contains("2")){
+            searchNickNameToAccountId("Orisland_Ex", ApiConfig.Server.EU);
+        }else if (event.getMessage().contentToString().contains("3")){
+//            ShipData.SearchShipIdToShipInfo("4277090288");
+            SearchAccountIdToShipInfo("566316444", "4277090288");
+        }else if (event.getMessage().contentToString().contains("4")){
+            SearchAccountIdToShipInfo("566316444");
+        }else if (event.getMessage().contentToString().contains("5")){
+            List<SingleShipDataSimple> singleShipDataSimples = SearchAccountIdToAccountInfoByDate("566316444", ApiConfig.Server.EU, "20220518,20220517");
+            for (SingleShipDataSimple singleShipDataSimple : singleShipDataSimples) {
+                System.out.println(singleShipDataSimple);
+            }
         }
 
         return ListeningStatus.LISTENING;

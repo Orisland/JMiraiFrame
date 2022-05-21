@@ -40,4 +40,8 @@ dependencies {
     implementation("cn.hutool:hutool-core:5.8.1")
     implementation("org.apache.logging.log4j:log4j-core:2.17.2")
     annotationProcessor("org.projectlombok:lombok:1.18.22")
+// https://mvnrepository.com/artifact/com.google.guava/guava
+    testImplementation("com.google.cloud:google-cloud-translate:2.1.13")
+
+
 }

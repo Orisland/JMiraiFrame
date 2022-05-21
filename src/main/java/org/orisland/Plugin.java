@@ -15,8 +15,8 @@ import static org.orisland.wows.DataInit.init;
 @Slf4j
 public final class Plugin extends JavaPlugin {
     public static final Plugin INSTANCE = new Plugin();
-
     private Plugin() {
+//        引入日志插件前置
         super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "0.10")
                 .name("Wows")
                 .author("Orisland")

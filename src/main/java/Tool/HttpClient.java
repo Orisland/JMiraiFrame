@@ -8,6 +8,7 @@ import okhttp3.internal.http2.Header;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -66,6 +67,37 @@ public class HttpClient {
             request = new Request.Builder()
                     .url(url)
                     .addHeader("Connection", "keep-alive")
+                    .build();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            return mapper.readTree(client.newCall(request).execute().body().bytes());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+    /**
+     * Post方式进行json访问网页返回
+     * @param url
+     * @return
+     * @throws IOException
+     */
+    public static JsonNode PostUrlByJson(String url, RequestBody body){
+        OkHttpClient client = null;
+        Request request = null;
+        try {
+            client = new OkHttpClient.Builder()
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS)
+                    .callTimeout(10, TimeUnit.SECONDS)
+                    .build();
+
+            request = new Request.Builder()
+                    .url(url)
+                    .addHeader("Connection", "keep-alive")
+                    .post(body)
                     .build();
         }catch (Exception e){
             e.printStackTrace();
@@ -162,10 +194,5 @@ public class HttpClient {
      */
     public static String pixyProxy(String url){
         return PIXY + url.split("https://i.pximg.net/")[1];
-    }
-
-    public static void main(String[] args) throws IOException {
-        String str = pixyProxy("https://i.pximg.net/c/600x1200_90_webp/img-master/img/2019/01/11/14/16/18/72603092_p0_master1200.jpg");
-        System.out.println(str);
     }
 }
