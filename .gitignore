@@ -17,3 +17,5 @@ gen
 bots
 # Project exclude paths
 /.gradle/
+/config
+/data
