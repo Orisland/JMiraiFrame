@@ -9,7 +9,7 @@ public class ApiConfig {
      * app id
      * url:<a href="https://developers.wargaming.net/applications/">申请AppId</a>
      */
-    public static String APPID = "21a433ec77510c77b44a3047937b4bb1";
+    public static String APPID = "";
 
     /**
      * 用昵称查用户
@@ -58,7 +58,7 @@ public class ApiConfig {
     /**
      * 本地玩家数据地址
      */
-    public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator + "playerData" + File.separator;
+    public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator;
 
     /**
      * 配置文件地址

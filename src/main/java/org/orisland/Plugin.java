@@ -17,11 +17,13 @@ public final class Plugin extends JavaPlugin {
     public static final Plugin INSTANCE = new Plugin();
 
     private Plugin() {
-        super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "1.0-SNAPSHOT")
+        super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "0.10")
                 .name("Wows")
                 .author("Orisland")
+                .dependsOn("net.mamoe.mirai-slf4j-bridge", true)
                 .build());
     }
+
 
     @SneakyThrows
     @Override
@@ -30,7 +32,6 @@ public final class Plugin extends JavaPlugin {
         init();
 
         CommandManager.INSTANCE.registerCommand(Mycommand.INSTANCE, false);
-        log.info(FileTool.initFile() ? "初始化完成" : "无需初始化");
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }

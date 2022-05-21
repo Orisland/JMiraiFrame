@@ -53,19 +53,29 @@ public class HttpClient {
      * @return
      * @throws IOException
      */
-    public static JsonNode getUrlByJson(String url) throws IOException{
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(15, TimeUnit.SECONDS)
-                .readTimeout(10, TimeUnit.SECONDS)
-                .callTimeout(10, TimeUnit.SECONDS)
-                .build();
+    public static JsonNode getUrlByJson(String url){
+        OkHttpClient client = null;
+        Request request = null;
+        try {
+            client = new OkHttpClient.Builder()
+                    .connectTimeout(15, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS)
+                    .callTimeout(10, TimeUnit.SECONDS)
+                    .build();
 
-        Request request = new Request.Builder()
-                .url(url)
-                .addHeader("Connection", "keep-alive")
-                .build();
-
-        return mapper.readTree(client.newCall(request).execute().body().bytes());
+            request = new Request.Builder()
+                    .url(url)
+                    .addHeader("Connection", "keep-alive")
+                    .build();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        try {
+            return mapper.readTree(client.newCall(request).execute().body().bytes());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

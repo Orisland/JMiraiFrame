@@ -81,7 +81,16 @@ public class FileTool {
      * 初始化，一般用于第一次使用插件，创建玩家数据目录
      */
     public static boolean initFile(){
-        return newFile(Plugin.INSTANCE.getDataFolderPath() + "/playerData");
+        return newFile(Plugin.INSTANCE.getDataFolderPath() + File.separator + "playerData");
+    }
+
+    /**
+     * 指定文件是否存在
+     * @param path 文件地址
+     * @return 是否存在
+     */
+    public static boolean fileExists(String path){
+        return new File(path).exists();
     }
 
     /**

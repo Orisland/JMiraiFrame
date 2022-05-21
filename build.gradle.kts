@@ -33,6 +33,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.3")
     runtimeOnly("com.lmax:disruptor:3.4.4")
 
+
     api("net.mamoe.yamlkt:yamlkt-jvm:0.10.2")
     testImplementation("junit:junit:4.12")
     implementation("org.projectlombok:lombok:1.18.22")
