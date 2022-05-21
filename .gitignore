@@ -19,3 +19,4 @@ bots
 /.gradle/
 /config
 /data
+/plugins
