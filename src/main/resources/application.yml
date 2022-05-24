@@ -1,0 +1,8 @@
+jdbc:
+  driverClassName: com.mysql.jdbc.Driver
+  username: root
+  password: root
+package:
+  model: org.orisland.wows.db.entity
+  mapper: org.maimieng.wows.db.mapper
+  xml: mapper

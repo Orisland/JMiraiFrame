@@ -4,8 +4,11 @@ import Tool.FileTool;
 import Tool.HttpClient;
 import Tool.JsonTool;
 import Tool.YmlTool;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ResourceUtil;
+import cn.hutool.cron.CronUtil;
+import cn.hutool.cron.task.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +34,8 @@ public class DataInit {
         initShipExpectedData();
         initApiLanguage();
         initShipInfo();
+        initBind();
+        dataRefresh();
     }
 
     /**
@@ -93,8 +98,10 @@ public class DataInit {
      * 读取本地的船只期望数据
      */
     public static void initShipExpectedData(){
+
         try {
             ApiConfig.ShipExpected = JsonTool.mapper.readTree(FileUtil.readString(dataDir + File.separator + "ShipExpected.json", StandardCharsets.UTF_8));
+            log.info("船只预期数据更新时间为:{}", DateUtil.format(DateUtil.date(ApiConfig.ShipExpected.get("time").asLong() * 1000), "YYYY-MM-dd"));
         }catch (JsonProcessingException e){
             e.printStackTrace();
         }
@@ -116,17 +123,61 @@ public class DataInit {
         }
     }
 
+    /**
+     * 导入本地数据
+     */
     public static void initShipInfo(){
         boolean useLocalShipInfo = ReadYamlToBoolean(config, "useLocalShipInfo");
         if (useLocalShipInfo){
             try {
-                LOCAL_SHIP_INFO = JsonTool.mapper.readTree(FileUtil.readString(String.valueOf(ResourceUtil.getResource("ships_cnFix.json").toString()), StandardCharsets.UTF_8));
+                LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readString(String.valueOf(ResourceUtil.getResource("ships_cnFix.json").toString()), StandardCharsets.UTF_8));
             }catch (Exception e){
                 e.printStackTrace();
             }
-            log.info("本地ship_info加载完成!已导入{}条船数据！", LOCAL_SHIP_INFO.size());
+            log.info("本地ship_info加载完成!已导入{}条船数据！", LocalShipInfo.size());
         }else {
             log.info("本地ship_info加载取消!所有船只数据将从官方获取！");
         }
     }
+
+    /**
+     * 初始化qq号与accountid与区服的绑定数据
+     */
+    public static void initBind(){
+        boolean useBind = ReadYamlToBoolean(config, "useBind");
+        if (useBind){
+            try {
+                Bind = JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDir + "Bind.json"));
+                log.info("绑定数据已读入！");
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }else
+            log.info("绑定读入被禁止！");
+    }
+
+    /**
+     * 自动数据刷新
+     */
+    public static void dataRefresh(){
+        boolean refreshData = ReadYamlToBoolean(config, "refreshData");
+        if (refreshData){
+            String refreshTime = YmlTool.ReadYamlToString(config, "refreshTime");
+            int hour = Integer.parseInt(refreshTime.split(":")[0]);
+            int minute = Integer.parseInt(refreshTime.split(":")[1]);
+            String command = String.format("%s %s * * *", minute, hour);
+            CronUtil.schedule(command, new Task() {
+                @Override
+                public void execute() {
+                    System.out.println("az");
+                }
+            });
+            CronUtil.start();
+            log.info("定时任务:{}:{}已启动！", hour, minute);
+        }else {
+            log.info("自动数据刷新初始化被跳过！");
+        }
+    }
+
+
 }

@@ -12,7 +12,6 @@ import lombok.ToString;
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SinglePlayer {
-
     private long last_battle_time;
     private long account_id;
     private int leveling_tier;

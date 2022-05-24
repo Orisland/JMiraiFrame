@@ -13,6 +13,7 @@ public class DataHandler {
     public static PlayerObj searchByUserName(String nickName, ApiConfig.Server server){
         SinglePlayer singlePlayer = NickNameToAccountInfo(nickName, server);
         PlayerObj playerObj = new PlayerObj();
+
         return null;
     }
 }

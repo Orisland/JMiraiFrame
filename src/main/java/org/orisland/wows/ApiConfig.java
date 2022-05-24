@@ -13,7 +13,7 @@ public class ApiConfig {
     public static String APPID = "";
 
     //TODO: 等插件完成后再考虑是否增加正确的中文语言环境，至少不是动物园,wg的脑子一定是抽了
-//    2022年5月22日02:05:13， NH4帮我整理了一份较为粗略的船只数据.
+//    2022年5月22日02:05:13， NH4帮我整理了一份较为粗略的船只数据，其实也不粗略了，大部分常用船只已经全部都加了！
     /**
      * "cs" — Čeština
      * "de" — Deutsch
@@ -77,14 +77,17 @@ public class ApiConfig {
     public static final String ACCOUNT_SHIP = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=%s&ship_id=%s&language=%s";
 
     /**
-     * 读取本地的翻译文件
-     */
-    public static JsonNode LOCAL_SHIP_INFO = null;
-
-    /**
      * 本地玩家数据地址
      */
     public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator;
+
+    /**
+     * 区服玩家数据路径
+     */
+    public static final String dataDirEu = dataDir + "playerData" + File.separator + "eu" + File.separator;
+    public static final String dataDirAsia = dataDir + "playerData" + File.separator + "asia" + File.separator;
+    public static final String dataDirNa = dataDir + "playerData" + File.separator + "na" + File.separator;
+    public static final String dataDirRu = dataDir + "playerData" + File.separator + "ru" + File.separator;
 
     /**
      * 配置文件地址
@@ -92,17 +95,32 @@ public class ApiConfig {
     public static final String configDir = Plugin.INSTANCE.getConfigFolder() + File.separator;
 
     /**
+     * 用户初始数据
+     */
+    public static final String originData = dataDir + "playerData" + File.separator + "origin" + File.separator;
+
+    /**
      * server
      * 欧服，亚服，美服，俄服
      */
-    public static enum Server{
+    public enum Server{
         EU, ASIA, NA, RU
     }
 
     /**
+     * 读取本地的翻译文件
+     */
+    public static JsonNode LocalShipInfo = null;
+
+    /**
      * 读取本地船只预期数据
      */
-    public static JsonNode ShipExpected;
+    public static JsonNode ShipExpected = null;
+
+    /**
+     * 读取本地玩家绑定
+     */
+    public static JsonNode Bind = null;
 
     //=============================以下api暂未使用
     //窝窝屎的各种server-> server
