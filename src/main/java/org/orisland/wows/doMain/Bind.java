@@ -9,5 +9,6 @@ import org.orisland.wows.ApiConfig;
 public class Bind {
     String qq;
     String accountId;
+    String accountName;
     ApiConfig.Server Server;
 }

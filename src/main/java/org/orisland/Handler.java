@@ -1,7 +1,6 @@
 package org.orisland;
 
 import Tool.JsonTool;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
@@ -9,15 +8,16 @@ import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
 import org.orisland.wows.ApiConfig;
+import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShipDataSimple;
 
 
 import java.io.IOException;
 import java.util.List;
 
-import static org.orisland.wows.DataInit.dataRefresh;
-import static org.orisland.wows.DataPack.PlayerData.*;
-import static org.orisland.wows.DataPack.ShipData.*;
+import static org.orisland.wows.DataInit.initDataRefresh;
+import static org.orisland.wows.dataPack.PlayerData.*;
+import static org.orisland.wows.dataPack.ShipData.*;
 
 /**
  * @Author: zhaolong
@@ -56,14 +56,20 @@ public class Handler extends SimpleListenerHost {
             ship.put("shipId", "4277090288");
             ShipPr(ship);
         }else if (event.getMessage().contentToString().equals("7")){
-            JsonNode orisland_ex = NickNameToPr("Orisland_Ex", ApiConfig.Server.EU);
-            System.out.println(orisland_ex);
+//            JsonNode orisland_ex = NickNameToPr("Orisland_Ex", ApiConfig.Server.EU);
+//            System.out.println(orisland_ex);
         }else if (event.getMessage().contentToString().equals("8")){
-            readAccount("566316444", ApiConfig.Server.EU);
+            readAccountToday("566316444", ApiConfig.Server.EU);
         }else if (event.getMessage().contentToString().equals("9")){
             saveAccountShipInfo("566316445", ApiConfig.Server.EU);
         }else if (event.getMessage().contentToString().equals("10")){
-            diffShip("566316444" , ApiConfig.Server.EU);
+            List<ShipDataObj> shipDataObjs = diffShip("566316444", ApiConfig.Server.EU);
+            for (ShipDataObj shipDataObj : shipDataObjs) {
+                System.out.println(shipDataObj.getShip().getName());
+                System.out.println(shipDataObj.getBattle());
+                System.out.println(shipDataObj.getAveDmg());
+                System.out.println(shipDataObj.getPR().getPR());
+            }
         }else if (event.getMessage().contentToString().equals("11")){
             originPlayerData("566316444", ApiConfig.Server.EU);
         }else if (event.getMessage().contentToString().equals("12")){
@@ -71,11 +77,13 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("13")){
             updateAccountLocalData("566316444", ApiConfig.Server.EU);
         }else if (event.getMessage().contentToString().equals("14")){
-            dataRefresh();
+            initDataRefresh();
         }else if (event.getMessage().contentToString().equals("15")){
             updateAccountLocalDataAuto();
         }else if (event.getMessage().contentToString().equals("16")){
+            accountRecordAt("566316444", ApiConfig.Server.EU, 5);
         }else if (event.getMessage().contentToString().equals("17")){
+            System.out.println(searchAccountIdToAccountInfo("566316444", ApiConfig.Server.EU));
         }else if (event.getMessage().contentToString().equals("18")){
         }else if (event.getMessage().contentToString().equals("19")){
         }

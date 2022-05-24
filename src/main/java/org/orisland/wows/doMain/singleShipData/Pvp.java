@@ -1,7 +1,7 @@
 /**
   * Copyright 2022 json.cn 
   */
-package org.orisland.wows.doMain.SingleShipData;
+package org.orisland.wows.doMain.singleShipData;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class Pvp {
 
     private int max_xp = 0;
     private int damage_to_buildings = 0;
-    private Main_battery main_battery;
+    private Main_battery main_battery = new Main_battery();
     private int suppressions_count = 0;
     private long max_damage_scouting = 0;
     private long art_agro = 0;

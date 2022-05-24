@@ -1,7 +1,7 @@
 /**
   * Copyright 2022 json.cn 
   */
-package org.orisland.wows.doMain.SingleShipData;
+package org.orisland.wows.doMain.singleShipData;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

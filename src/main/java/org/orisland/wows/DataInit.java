@@ -17,7 +17,9 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 import static Tool.YmlTool.ReadYamlToBoolean;
+import static Tool.YmlTool.ReadYamlToString;
 import static org.orisland.wows.ApiConfig.*;
+import static org.orisland.wows.dataPack.PlayerData.updateAccountLocalDataAuto;
 
 @Slf4j
 public class DataInit {
@@ -28,6 +30,8 @@ public class DataInit {
      * 插件初始化
      */
     public static void init(){
+        if (CronUtil.getScheduler().isStarted())
+            CronUtil.stop();
         initFile();
         initAppId();
         initShipExpectedUpdate();
@@ -35,7 +39,9 @@ public class DataInit {
         initApiLanguage();
         initShipInfo();
         initBind();
-        dataRefresh();
+        initDataRefresh();
+        initMaxSaveData();
+        log.info("wows插件配置文件装载完成!");
     }
 
     /**
@@ -159,7 +165,7 @@ public class DataInit {
     /**
      * 自动数据刷新
      */
-    public static void dataRefresh(){
+    public static void initDataRefresh(){
         boolean refreshData = ReadYamlToBoolean(config, "refreshData");
         if (refreshData){
             String refreshTime = YmlTool.ReadYamlToString(config, "refreshTime");
@@ -169,15 +175,19 @@ public class DataInit {
             CronUtil.schedule(command, new Task() {
                 @Override
                 public void execute() {
-                    System.out.println("az");
+                    updateAccountLocalDataAuto();
                 }
             });
             CronUtil.start();
-            log.info("定时任务:{}:{}已启动！", hour, minute);
+            log.info("数据刷新定时任务:{}:{}已启动！", hour, minute);
         }else {
             log.info("自动数据刷新初始化被跳过！");
         }
     }
 
-
+    public static void initMaxSaveData(){
+        Long maxPlayerData = Long.valueOf(ReadYamlToString(config, "maxPlayerData"));
+        maxSavePlayerData = maxPlayerData.intValue();
+        log.info("最大玩家数据存储上限:{}",maxPlayerData);
+    }
 }

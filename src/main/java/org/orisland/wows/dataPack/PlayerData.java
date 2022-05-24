@@ -1,6 +1,5 @@
-package org.orisland.wows.DataPack;
+package org.orisland.wows.dataPack;
 
-import Tool.FileTool;
 import Tool.HttpClient;
 import Tool.JsonTool;
 import cn.hutool.core.date.DateTime;
@@ -12,11 +11,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.Bind;
-import org.orisland.wows.doMain.Pr.ShipPr;
+import org.orisland.wows.doMain.pr.ShipPr;
 import org.orisland.wows.doMain.ShipDataObj;
-import org.orisland.wows.doMain.SinglePlayer.SinglePlayer;
-import org.orisland.wows.doMain.SingleShipData.Pvp;
-import org.orisland.wows.doMain.SingleShipData.SingleShipData;
+import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
+import org.orisland.wows.doMain.singleShipData.Pvp;
+import org.orisland.wows.doMain.singleShipData.SingleShipData;
 import org.orisland.wows.doMain.SingleShipDataSimple;
 
 import java.io.File;
@@ -28,7 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.orisland.wows.ApiConfig.*;
-import static org.orisland.wows.DataPack.ShipData.*;
+import static org.orisland.wows.dataPack.ShipData.*;
 
 @Slf4j
 public class PlayerData {
@@ -45,18 +44,41 @@ public class PlayerData {
         try {
             log.info("{}调用开始！",username);
             accountId = searchNickNameToAccountId(username, server);
-            JsonNode jsonNode = searchAccountIdToAccountInfo(accountId, server);
-            if (!jsonNode.get("status").asText().equals("ok")){
-                log.info("api访问错误！");
+            JsonNode jsonNode;
+            if (accountId == null){
+                log.warn("用户未找到！");
                 return null;
+            }else {
+                jsonNode = searchAccountIdToAccountInfo(accountId, server);
             }
-            singlePlayer = JsonTool.mapper.readValue(jsonNode.get("data").get(String.valueOf(accountId)).toString(), SinglePlayer.class);
+            singlePlayer = JsonTool.mapper.readValue(jsonNode.toString(), SinglePlayer.class);
         }catch (JsonProcessingException e){
             log.info("json解析错误！");
             e.printStackTrace();
         }
         log.info("{}调用结束！",username);
         return singlePlayer;
+    }
+
+    /**
+     * 直接通过id找到精确找到用户
+     * @param accountId 用户id
+     * @param server    区服
+     * @return          数据包
+     */
+    public static SinglePlayer AccountIdToAccountInfo(String accountId, Server server){
+        JsonNode jsonNode = searchAccountIdToAccountInfo(accountId, server);
+        if (jsonNode == null){
+            log.error("{}不存在!",accountId);
+            return null;
+        }else {
+            try {
+                return JsonTool.mapper.readValue(jsonNode.toString(), SinglePlayer.class);
+            }catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }
+        }
     }
 
     /**
@@ -89,7 +111,13 @@ public class PlayerData {
      */
     public static JsonNode searchAccountIdToAccountInfo(String uid, ApiConfig.Server server){
         String format = String.format(ApiConfig.ACCOUNTID_ACCOUNTINFO, server, ApiConfig.APPID, uid);
-        return HttpClient.getUrlByJson(format);
+        JsonNode jsonNode = accountDataStandard(HttpClient.getUrlByJson(format));
+        if (jsonNode != null){
+            return jsonNode;
+        }else {
+            return null;
+        }
+
     }
 
     /**
@@ -115,12 +143,29 @@ public class PlayerData {
     }
 
     /**
-     * 通过accountid获取该用户的pr
+     * 用户数据标准化去除杂项
+     * @return              纯化数据
+     */
+    public static JsonNode accountDataStandard(JsonNode data){
+        if (data.get("status").asText().equals("ok")){
+            for (JsonNode jsonNode : data.get("data")) {
+                return jsonNode;
+            }
+            log.info("没有数据！");
+            return null;
+        }else {
+            log.error("API错误！");
+            return null;
+        }
+    }
+
+    /**
+     * 通过accountid获取该用户的单船只pr
      * @param accountId 用户id
      * @param server    用户所在服务器
      * @return          pr数据
      */
-    public static JsonNode AccountIdToPr(String accountId, Server server, String shipId){
+    public static ShipDataObj AccountIdToPr(String accountId, Server server, String shipId){
         List<SingleShipData> singleShipData = SearchAccountIdToShipInfo(accountId, shipId, server);
         double actDmg = 0.0;
         double expDmg = 0.0;
@@ -128,17 +173,30 @@ public class PlayerData {
         double expWins = 0.0;
         double actFrags = 0.0;
         double expFrags = 0.0;
+        Pvp pvp = null;
+        int battles = 0;
         for (SingleShipData singleShipDatum : singleShipData) {
-            Pvp pvp = singleShipDatum.getPvp();
+            pvp = singleShipDatum.getPvp();
             actDmg += pvp.getDamage_dealt();
             actFrags += pvp.getFrags();
             actWins += pvp.getWins();
-            int battles = pvp.getBattles();
+            battles = pvp.getBattles();
             JsonNode shipExpected = ShipToExpected(String.valueOf(singleShipDatum.getShip_id()));
             expDmg += shipExpected.get("average_damage_dealt").asDouble() * battles;
             expWins += shipExpected.get("win_rate").asDouble() / 100 * battles;
             expFrags +=  shipExpected.get("average_frags").asDouble() * battles;
         }
+
+        ShipDataObj shipDataObj = new ShipDataObj();
+        shipDataObj.setShoot(pvp.getMain_battery().getShots());
+        shipDataObj.setHit((long) (pvp.getMain_battery().getHits()));
+        shipDataObj.setWins((long) (pvp.getWins()));
+        shipDataObj.setDmg(pvp.getDamage_dealt());
+        shipDataObj.setKill((long) (pvp.getFrags()));
+        shipDataObj.setSurvive((long) (pvp.getSurvived_battles()));
+        shipDataObj.setSurviveWin((long) (pvp.getSurvived_wins()));
+        shipDataObj.setXp(pvp.getXp());
+        shipDataObj.setBattle(battles);
 
         ShipPr shipPr = new ShipPr();
         shipPr.setActualFrags(actFrags);
@@ -147,8 +205,19 @@ public class PlayerData {
         shipPr.setExpectedWins(expWins);
         shipPr.setExpectedFrags(expFrags);
         shipPr.setExpectedDmg(expDmg);
+        shipPr.setShipId(shipId);
+        shipPr.setBattle(battles);
 
-        return PrStandard(shipPr.PrCalculate());
+        shipPr.update();
+
+
+        shipDataObj.setPR(shipPr);
+        shipDataObj.setShip(SearchShipIdToShipInfo(String.valueOf(shipId)));
+
+        shipDataObj.update();
+
+
+        return shipDataObj;
     }
 
     /**
@@ -157,7 +226,7 @@ public class PlayerData {
      * @param server    区服
      * @return  pr信息
      */
-    public static JsonNode NickNameToPr(String NickName, Server server){
+    public static ShipDataObj NickNameToPr(String NickName, Server server){
         return AccountIdToPr(searchNickNameToAccountId(NickName, server), server, "");
     }
 
@@ -168,7 +237,7 @@ public class PlayerData {
      * @param shipId    船只id
      * @return          pr结果
      */
-    public static JsonNode AccountIdShipToPr(String accountId, Server server, String shipId){
+    public static ShipDataObj AccountIdShipToPr(String accountId, Server server, String shipId){
         return AccountIdToPr(accountId, server, shipId);
     }
 
@@ -179,7 +248,7 @@ public class PlayerData {
      * @param ship      船只
      * @return          数据
      */
-    public static JsonNode NickNameShipToPr(String NickName, Server server, String ship){
+    public static ShipDataObj NickNameShipToPr(String NickName, Server server, String ship){
         return AccountIdShipToPr(searchNickNameToAccountId(NickName, server), server, ship);
     }
 
@@ -189,41 +258,15 @@ public class PlayerData {
      * @param server    服务器
      * @return          读取的json数据
      */
-    public static JsonNode readAccount(String accountid, Server server){
-        File[] files = null;
-
-        switch (server){
-            case EU:
-                files = FileTool.readDir(dataDirEu);
-                return readJson(files, accountid);
-            case NA:
-                files = FileTool.readDir(dataDirNa);
-                return readJson(files, accountid);
-            case RU:
-                files = FileTool.readDir(dataDirRu);
-                return readJson(files, accountid);
-            case ASIA:
-                files = FileTool.readDir(dataDirAsia);
-                return readJson(files, accountid);
-            default:
-                log.warn("出现了意料之外的变量！");
-                return null;
+    public static JsonNode readAccountToday(String accountid, Server server){
+        String path = selectDataNewest(accountid, server);
+        System.out.println("path" + path);
+        try {
+            return JsonTool.mapper.readTree(FileUtil.readUtf8String(path));
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-    }
-
-//    私有数据处理方法
-    private static JsonNode readJson(File[] files, String accountid){
-        for (File file : files) {
-            if (file.getName().contains(accountid)){
-                try {
-                    System.out.println(file.getName());
-                    return JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDirEu + file.getName()));
-                }catch (JsonProcessingException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
     }
 
     /**
@@ -253,14 +296,13 @@ public class PlayerData {
 
     /**
      * 根据账户id将数据存入data目录
-     * 仅在每日0时数据更新时启用!
-     * 仅在每日0时数据更新时启用!
      * @param accountId 账户id
      * @param server    区服
      */
     public static void saveAccountShipInfo(String accountId, Server server){
         String date = DateUtil.format(DateUtil.date(), "YYYYMMdd");
         JsonNode data = shipDataStandard(accountId, server);
+        originPlayerData(accountId,data);
         FileUtil.writeUtf8String(data.toString(), ServerToDir(server) + accountId + "," + date + ".json");
     }
 
@@ -280,21 +322,21 @@ public class PlayerData {
                 accountDataList.add(l.getName());
             }
         }
-        if (accountDataList.size() >= 3){
-            accountDataList.sort(new Comparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    Long l1 = Long.parseLong(o1.split(",")[1].split("\\.")[0]);
-                    Long l2 = Long.parseLong(o2.split(",")[1].split("\\.")[0]);
-                    return order ? ((Long)(l1-l2)).intValue() : ((Long)(l2-l1)).intValue();
-                }
-            });
-            log.info("需要进行删除替换的文件为{}",accountDataList.get(0));
-            return ServerToDir(server) + accountDataList.get(0);
-        }else {
-            log.info("数据量不足三个无需进行删除！");
-            return null;
-        }
+        accountDataList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                Long l1 = Long.parseLong(o1.split(",")[1].split("\\.")[0]);
+                Long l2 = Long.parseLong(o2.split(",")[1].split("\\.")[0]);
+                return order ? ((Long)(l1-l2)).intValue() : ((Long)(l2-l1)).intValue();
+            }
+        });
+        return ServerToDir(server) + accountDataList.get(0);
+//        if (accountDataList.size() >= maxSavePlayerData){
+//
+//        }else {
+//            log.info("数据量不足三个无需进行删除！");
+//            return null;
+//        }
     }
 
     /**
@@ -305,12 +347,19 @@ public class PlayerData {
     public static void updateAccountLocalData(String accountId, Server server){
         String s = selectData(accountId, server, true);
         if (s == null){
-            log.info("更新被跳过！");
+            saveAccountShipInfo(accountId, server);
+            log.info("{}新增本日记录！",accountId);
         }else {
-            if (FileUtil.del(s)){
-                saveAccountShipInfo(accountId, server);
+            String s1 = selectDataNewest(accountId, server);
+            if (s1.split(",")[1].split("\\.")[0].equals(DateUtil.format(new Date(), "YYYYMMdd"))){
+                log.warn("最新数据与待更新数据重叠，跳过更新！");
             }else {
-                log.warn("旧数据删除失败，数据更新失败！");
+                if (FileUtil.del(s)){
+                    saveAccountShipInfo(accountId, server);
+                    log.info("{}更新完成!",accountId);
+                }else {
+                    log.warn("旧数据删除失败，数据更新失败！");
+                }
             }
         }
     }
@@ -321,8 +370,10 @@ public class PlayerData {
      */
     public static void updateAccountLocalDataAuto(){
         for (JsonNode jsonNode : Bind) {
-            updateAccountLocalData(jsonNode.get("accountid").asText(), StringToServer(jsonNode.get("server").asText()));
+            String accountId = jsonNode.get("accountid").asText();
+            updateAccountLocalData(accountId, StringToServer(jsonNode.get("server").asText()));
         }
+        log.info("用户数据更新完成！");
     }
 
     /**
@@ -348,17 +399,26 @@ public class PlayerData {
 
     /**
      * 选择最新的数据
-     * @param accountId
-     * @param server
-     * @return
+     * @param accountId 用户id
+     * @param server    区服
+     * @return          地址
      */
     public static String selectDataNewest(String accountId, Server server){
         return selectData(accountId, server, false);
     }
 
+    /**
+     * 选择最旧的数据
+     * @param accountId 用户id
+     * @param server    区服
+     * @return          地址
+     */
+    public static String selectDataOldest(String accountId, Server server){
+        return selectData(accountId, server, true);
+    }
 
     /**
-     * 读取指定日期的
+     * 读取指定日期的数据
      * @param accountId 账号id
      * @param server    服务器
      * @param date      日期
@@ -370,7 +430,6 @@ public class PlayerData {
             String fileName = String.format("%s,%s.json",accountId, dateString);
             String serverDir = ServerToDir(server);
             return JsonTool.mapper.readTree(FileUtil.readUtf8String(serverDir + fileName));
-
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -416,6 +475,22 @@ public class PlayerData {
     }
 
     /**
+     * 用于直接存json跳过读取阶段
+     * @param data 数据
+     */
+    public static void originPlayerData(String accountId, JsonNode data){
+        File[] ls = FileUtil.ls(originData);
+        for (File l : ls) {
+            if (l.getName().contains(accountId)){
+                log.info("{}源数据已存在!",accountId);
+                return;
+            }
+        }
+        FileUtil.writeUtf8String(data.toString(), originData + accountId + ".json");
+        log.info("{}数据已储存至源数据文件夹.", accountId);
+    }
+
+    /**
      * 将qq转为具体的账号信息
      * @param qq    qq
      * @return      具体信息
@@ -424,13 +499,50 @@ public class PlayerData {
         Bind bind = new Bind();
         JsonNode jsonNode = Bind.get(qq);
         if (jsonNode == null){
-            log.warn("改qq未绑定账号数据！");
+            log.warn("该qq未绑定账号数据！");
             return null;
         }
-        bind.setAccountId(jsonNode.get("accountid").asText());
+        bind.setAccountId(jsonNode.get("id").asText());
         bind.setQq(qq);
         bind.setServer(StringToServer(jsonNode.get("server").asText()));
+        bind.setAccountName(jsonNode.get("name").asText());
         return bind;
+    }
+
+    /**
+     * qq绑定游戏用户
+     * @param qq        qq号
+     * @param accountId 账户id
+     * @param server    区服
+     */
+    public static void bindQQAccountId(String qq, String accountId, Server server){
+        ObjectNode bind = (ObjectNode) Bind;
+        JsonNode jsonNode = searchAccountIdToAccountInfo(accountId, server);
+        ObjectNode objectNode = JsonTool.mapper.createObjectNode();
+        objectNode.put("id", accountId);
+        objectNode.put("server", server.toString());
+        objectNode.put("name", jsonNode.get("nickname").asText());
+        bind.set(qq, objectNode);
+        Bind = bind;
+        FileUtil.writeUtf8String(bind.toString(), dataDir + "Bind.json");
+        log.info("{}绑定{}{}已完成!", qq, server, accountId);
+    }
+
+    /**
+     * 更新qq绑定
+     * @param qq        qq号
+     * @param accountId 用户id
+     * @param server    区服
+     */
+    public static void updateBind(String qq, String accountId, Server server){
+        ObjectNode bind = (ObjectNode) Bind;
+        JsonNode jsonNode = bind.get(qq);
+        if (jsonNode == null){
+            log.warn("该qq并未绑定账号数据！");
+        }else {
+            bind.remove(qq);
+            bindQQAccountId(qq, accountId, server);
+        }
     }
 
     /**
@@ -464,58 +576,71 @@ public class PlayerData {
     public static List<ShipDataObj> diffShip(String accountid ,Server server) {
         log.info("开始数据对比！");
         JsonNode playerData = shipDataStandard(accountid,server);
-        JsonNode LocalData = readAccount(accountid, server);
+        JsonNode LocalData = readAccountToday(accountid, server);
+        List<ShipDataObj> shipDataObjs = diffDataPure(playerData, LocalData);
+        log.info("数据对比完成!");
+        return shipDataObjs;
+    }
 
-        JsonNode onlineDate = playerData.get("date");
-        JsonNode onlineData = playerData.get("data");
-
-        JsonNode offlineDate = LocalData.get("date");
-        JsonNode offlineData = LocalData.get("data");
+    /**
+     * 纯diff
+     * @param nowData       新数据
+     * @param originData    老数据
+     * @return              结果
+     */
+    public static List<ShipDataObj> diffDataPure(JsonNode nowData, JsonNode originData){
+        nowData = nowData.get("data");
+        originData = originData.get("data");
 
         DateTime today = DateUtil.date();
 
         List<ShipDataObj> res = new ArrayList<>();
 
-        for (JsonNode datum : onlineData) {
+        for (JsonNode datum : nowData) {
             try {
                 DateTime LastBattleTime = DateUtil.date(datum.get("last_battle_time").asLong() * 1000);
                 if (LastBattleTime.year() == today.year() && LastBattleTime.dayOfYear() == today.dayOfYear()){
-                    SingleShipData OnlineSingleShipData = JsonTool.mapper.readValue(datum.toString(), SingleShipData.class);
-                    SingleShipData OffineSingleShipData = null;
-                    if (offlineData.get(String.valueOf(OnlineSingleShipData.getShip_id())) == null){
+                    SingleShipData nowSingleShipData = JsonTool.mapper.readValue(datum.toString(), SingleShipData.class);
+                    SingleShipData originSingleShipData = null;
+                    if (originData.get(String.valueOf(nowSingleShipData.getShip_id())) == null){
                         log.info("未发现该船只，配置为出现了数据本地数据之外的新船！");
-                        OffineSingleShipData = new SingleShipData();
-                        OffineSingleShipData.setPvp(new Pvp());
+                        originSingleShipData = new SingleShipData();
+                        originSingleShipData.setPvp(new Pvp());
                     }else {
-                        OffineSingleShipData = JsonTool.mapper.readValue(offlineData.get(String.valueOf(OnlineSingleShipData.getShip_id())).toString(), SingleShipData.class);
+                        originSingleShipData = JsonTool.mapper.readValue(originData.get(String.valueOf(nowSingleShipData.getShip_id())).toString(), SingleShipData.class);
                     }
-                    Pvp OnlinePvp = OnlineSingleShipData.getPvp();
-                    Pvp OfflinePvp = OffineSingleShipData.getPvp();
-                    double Dmg = OnlinePvp.getDamage_dealt() - OfflinePvp.getDamage_dealt();
-                    int Battle = OnlinePvp.getBattles() - OfflinePvp.getBattles();
-                    double Wins = OnlinePvp.getWins() - OfflinePvp.getWins();
-                    double Frags = OnlinePvp.getFrags() - OfflinePvp.getFrags();
+                    Pvp nowPvp = nowSingleShipData.getPvp();
+                    Pvp originPvp = originSingleShipData.getPvp();
+                    double Dmg = nowPvp.getDamage_dealt() - originPvp.getDamage_dealt();
+                    int Battle = nowPvp.getBattles() - originPvp.getBattles();
+                    double Wins = nowPvp.getWins() - originPvp.getWins();
+                    double Frags = nowPvp.getFrags() - originPvp.getFrags();
 
                     ShipPr shipPr = new ShipPr();
                     shipPr.setActualWins(Wins);
                     shipPr.setActualFrags(Frags);
                     shipPr.setActualDmg(Dmg);
-                    shipPr.setShipId(String.valueOf(OnlineSingleShipData.getShip_id()));
+                    shipPr.setShipId(String.valueOf(nowSingleShipData.getShip_id()));
                     shipPr.setBattle(Battle);
-                    shipPr.update();
+                    try {
+                        shipPr.update();
+                    }catch (Exception e){
+                        log.error("错误的数据！");
+                        continue;
+                    }
 
                     ShipDataObj shipDataObj = new ShipDataObj();
-                    shipDataObj.setShoot(OnlinePvp.getMain_battery().getShots() - OfflinePvp.getMain_battery().getShots());
-                    shipDataObj.setHit((long) (OnlinePvp.getMain_battery().getHits() - OfflinePvp.getMain_battery().getHits()));
-                    shipDataObj.setWins((long) (OnlinePvp.getWins() - OfflinePvp.getWins()));
-                    shipDataObj.setDmg(OnlinePvp.getDamage_dealt() - OfflinePvp.getDamage_dealt());
-                    shipDataObj.setKill((long) (OnlinePvp.getFrags() - OfflinePvp.getFrags()));
-                    shipDataObj.setSurvive((long) (OnlinePvp.getSurvived_battles() - OfflinePvp.getSurvived_battles()));
-                    shipDataObj.setSurviveWin((long) (OnlinePvp.getSurvived_wins() - OfflinePvp.getSurvived_wins()));
-                    shipDataObj.setXp(OnlinePvp.getXp() - OfflinePvp.getXp());
+                    shipDataObj.setShoot(nowPvp.getMain_battery().getShots() - originPvp.getMain_battery().getShots());
+                    shipDataObj.setHit((long) (nowPvp.getMain_battery().getHits() - originPvp.getMain_battery().getHits()));
+                    shipDataObj.setWins((long) (nowPvp.getWins() - originPvp.getWins()));
+                    shipDataObj.setDmg(nowPvp.getDamage_dealt() - originPvp.getDamage_dealt());
+                    shipDataObj.setKill((long) (nowPvp.getFrags() - originPvp.getFrags()));
+                    shipDataObj.setSurvive((long) (nowPvp.getSurvived_battles() - originPvp.getSurvived_battles()));
+                    shipDataObj.setSurviveWin((long) (nowPvp.getSurvived_wins() - originPvp.getSurvived_wins()));
+                    shipDataObj.setXp(nowPvp.getXp() - originPvp.getXp());
                     shipDataObj.setBattle(Battle);
                     shipDataObj.setPR(shipPr);
-                    shipDataObj.setShip(SearchShipIdToShipInfo(String.valueOf(OnlineSingleShipData.getShip_id())));
+                    shipDataObj.setShip(SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id())));
 
                     shipDataObj.update();
 
@@ -527,7 +652,61 @@ public class PlayerData {
             }
 
         }
-        log.info("数据对比完成!");
         return res;
+    }
+
+    /**
+     * 查询指定时间段之间的战绩
+     * @param accountId 用户id
+     * @param server    服务器
+     * @param from      从YYYYMMdd
+     * @param to        到YYYYMMdd
+     * @return          数据包
+     */
+    public static List<ShipDataObj> diffDataBetween(String accountId, Server server, int from, int to){
+        long today = Long.parseLong(DateUtil.format(new Date(), "YYYYMMdd"));
+        JsonNode nowRecord;
+        JsonNode originRecord;
+        if (from == to){
+            log.error("查找的日期为同一天！");
+            return null;
+        }
+        if(to == today)
+            nowRecord = shipDataStandard(accountId,server);
+        else
+            nowRecord = readPlayerData(accountId, server, String.valueOf(to));
+
+        originRecord = readPlayerData(accountId, server, String.valueOf(from));
+        if (nowRecord == null || originRecord == null){
+            log.info("数据不存在！");
+            return null;
+        }
+        return diffDataPure(nowRecord, originRecord);
+    }
+
+    /**
+     * 获取指定几天前的战绩，首先库里得有
+     * @param accountId     用户id
+     * @param server        服务器
+     * @param day           几天前
+     * @return              具体数据
+     */
+    public static List<ShipDataObj> accountRecordAt(String accountId, Server server, int day){
+        log.info("开始数据获取!");
+        int date = Integer.parseInt(DateUtil.format(new Date(), "YYYYMMdd"));
+        if (day == 0){
+            return diffShip(accountId, server);
+        }
+        int nowData = date - day;
+        int originData = nowData - 1;
+        JsonNode nowRecord = readPlayerData(accountId, server, String.valueOf(nowData));
+        JsonNode originRecord = readPlayerData(accountId, server, String.valueOf(originData));
+        if (nowRecord == null || originRecord == null){
+            log.error("查找数据不存在!");
+            return null;
+        }
+        List<ShipDataObj> shipDataObjs = diffDataPure(nowRecord, originRecord);
+        log.info("{}数据获取完成!", nowData);
+        return shipDataObjs;
     }
 }

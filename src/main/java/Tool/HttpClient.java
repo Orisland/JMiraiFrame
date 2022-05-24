@@ -3,6 +3,7 @@ package Tool;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okhttp3.internal.http2.Header;
 
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
  * @Time: 17:44
  * @Date: 2021年07月11日 17:44
  **/
+
+@Slf4j
 public class HttpClient {
     private static final String GROUP = "http://gchat.qpic.cn/";
     private static final String PERSON = "http://c2cpicdw.qpic.cn/";
@@ -57,25 +60,26 @@ public class HttpClient {
     public static JsonNode getUrlByJson(String url){
         OkHttpClient client = null;
         Request request = null;
-        try {
-            client = new OkHttpClient.Builder()
-                    .connectTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(10, TimeUnit.SECONDS)
-                    .callTimeout(10, TimeUnit.SECONDS)
-                    .build();
+        int count = 0;
+        while (count <= 3){
+            try {
+                client = new OkHttpClient.Builder()
+                        .connectTimeout(15, TimeUnit.SECONDS)
+                        .readTimeout(10, TimeUnit.SECONDS)
+                        .callTimeout(10, TimeUnit.SECONDS)
+                        .build();
 
-            request = new Request.Builder()
-                    .url(url)
-                    .addHeader("Connection", "keep-alive")
-                    .build();
-        }catch (Exception e){
-            e.printStackTrace();
+                request = new Request.Builder()
+                        .url(url)
+                        .addHeader("Connection", "keep-alive")
+                        .build();
+                return mapper.readTree(client.newCall(request).execute().body().bytes());
+            }catch (Exception e){
+                log.warn("第{}次访问出现异常！",++count);
+                e.printStackTrace();
+            }
         }
-        try {
-            return mapper.readTree(client.newCall(request).execute().body().bytes());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        log.error("访问失败！");
         return null;
     }
     /**

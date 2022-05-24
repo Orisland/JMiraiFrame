@@ -1,14 +1,11 @@
 package org.orisland.wows.doMain;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.ToString;
-import org.orisland.wows.doMain.Pr.ShipPr;
+import org.orisland.wows.doMain.pr.ShipPr;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
-import static org.orisland.wows.DataPack.ShipData.SearchShipIdToShipInfo;
 
 @Data
 @ToString
@@ -66,10 +63,16 @@ public class ShipDataObj {
         BigDecimal aveXp = new BigDecimal(avexp).setScale(0, RoundingMode.UP);
         this.aveXp = String.valueOf(aveXp);
 
+        if (shoot == 0){
+            shoot = 1L;
+        }
         double hitrate = (hit * 1.0 / shoot) * 100;
         BigDecimal hitRate = new BigDecimal(hitrate).setScale(2, RoundingMode.HALF_UP);
         this.hitRate = hitRate + "%";
 
+        if (battle == 0){
+            battle = 1;
+        }
         double surviveWinrate = (surviveWin * 1.0 / battle) * 100;
         BigDecimal surviveWinRate = new BigDecimal(surviveWinrate).setScale(2, RoundingMode.HALF_UP);
         this.surviveWinRate = surviveWinRate  + "%";

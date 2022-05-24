@@ -1,11 +1,11 @@
-package org.orisland.wows.doMain.Pr;
+package org.orisland.wows.doMain.pr;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.ToString;
 
-import static org.orisland.wows.DataPack.ShipData.PrStandard;
-import static org.orisland.wows.DataPack.ShipData.ShipToExpected;
+import static org.orisland.wows.dataPack.ShipData.PrStandard;
+import static org.orisland.wows.dataPack.ShipData.ShipToExpected;
 
 @ToString
 @Data
@@ -37,7 +37,6 @@ public class ShipPr {
         double nDmg = Math.max(0, (rDmg - 0.4) / (1 - 0.4));
         double nFrags = Math.max(0, (rFrags - 0.1) / (1 - 0.1));
         double nWins = Math.max(0, (rWins - 0.7) / (1 - 0.7));
-
         return 700 * nDmg + 300 * nFrags + 150 * nWins;
     }
 

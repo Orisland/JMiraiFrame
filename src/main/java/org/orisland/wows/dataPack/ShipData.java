@@ -1,19 +1,18 @@
-package org.orisland.wows.DataPack;
+package org.orisland.wows.dataPack;
 
 import Tool.FileTool;
 import Tool.HttpClient;
 import Tool.JsonTool;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
-import org.orisland.wows.ApiConfig;
-import org.orisland.wows.doMain.Pr.ShipPr;
+import org.orisland.wows.doMain.pr.ShipPr;
+import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShip;
-import org.orisland.wows.doMain.SingleShipData.SingleShipData;
+import org.orisland.wows.doMain.singleShipData.SingleShipData;
 
 import java.io.File;
 import java.io.IOException;
@@ -74,6 +73,7 @@ public class ShipData {
      */
     public static List<SingleShipData> SearchAccountIdToShipInfo(String accountId, String shipId, Server server) {
         JsonNode urlByJson = HttpClient.getUrlByJson(String.format(ACCOUNT_SHIP, server, APPID, accountId, shipId, API_LANGUAGE));
+        System.out.println(String.format(ACCOUNT_SHIP, server, APPID, accountId, shipId, API_LANGUAGE));
         SingleShipData singleShipData = null;
         if (!urlByJson.get("status").asText().equals("ok")){
             log.error("api错误！");
@@ -140,6 +140,11 @@ public class ShipData {
         return PrStandard(shipPr.PrCalculate());
     }
 
+    public static ShipDataObj shipInfoPack(JsonNode ship){
+
+        return null;
+    }
+
     /**
      * 由pr数据得知具体级别和颜色
      * @param pr pr
@@ -153,15 +158,15 @@ public class ShipData {
         if (score < 750){
             evaluate = "还需努力";
             distance = 750 - score;
-            color = "红";
+            color = "虹";
         }else if (score < 1100){
             evaluate = "低于平均";
             distance = 1100 - score;
-            color = "暗黄";
+            color = "黯煌";
         }else if (score < 1350){
             evaluate = "平均水平";
             distance = 1350 - score;
-            color = "淡黄";
+            color = "蛋黄";
         }else if (score < 1550){
             evaluate = "好";
             distance = 1550 - score;
@@ -252,9 +257,16 @@ public class ShipData {
      * @param shipName 船只名字
      * @return          查询结果
      */
-    public static JsonNode ShipIdToShipName(String shipName){
+    public static JsonNode ShipNameToShipId(String shipName){
+//        精确匹配
         for (JsonNode jsonNode : LocalShipInfo) {
             if (jsonNode.get("name").asText().equals(shipName)){
+                return jsonNode;
+            }
+        }
+//        模糊匹配
+        for (JsonNode jsonNode : LocalShipInfo) {
+            if (jsonNode.get("name").asText().contains(shipName)){
                 return jsonNode;
             }
         }

@@ -1,7 +1,7 @@
 /**
   * Copyright 2022 json.cn 
   */
-package org.orisland.wows.doMain.SinglePlayer;
+package org.orisland.wows.doMain.singlePlayer;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
