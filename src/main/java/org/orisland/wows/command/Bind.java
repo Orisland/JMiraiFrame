@@ -127,6 +127,7 @@ public class Bind extends JCompositeCommand {
                 sender.sendMessage(chain);
                 return;
             }catch (Exception e){
+                e.printStackTrace();
                 stringBuilder.append(e.getMessage());
                 log.error("访问出错:{}", ++count);
             }

@@ -6,14 +6,17 @@ import Tool.JsonTool;
 import Tool.YmlTool;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
+import org.orisland.WowsPlugin;
 
 import java.io.File;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 import static Tool.YmlTool.ReadYamlToBoolean;
@@ -26,14 +29,16 @@ public class DataInit {
     //配置
     private static final String config = configDir + "config.yml";
 
+    DataInit dataInit = new DataInit();
+
     /**
      * 插件初始化
      */
     public static void init(){
         if (CronUtil.getScheduler().isStarted())
             CronUtil.stop();
-        initRetry();
         initFile();
+        initRetry();
         initAppId();
         initShipExpectedUpdate();
         initShipExpectedData();
@@ -53,8 +58,14 @@ public class DataInit {
         if (!FileTool.fileExists(configDir + "config.yml")){
             log.info("wows配置文件初始化!");
             log.info("请关闭bot填入appid后重启!");
-            FileUtil.copy(String.valueOf(ResourceUtil.getResource("config.yml")), configDir, true);
-            FileTool.newFile(dataDir + "playerData" + File.separator);
+            InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("config.yml");
+            FileUtil.writeFromStream(resourceAsStream, configDir + "config.yml");
+            FileTool.newFile(dataDir + "playerData" + File.separator + "asia");
+            FileTool.newFile(dataDir + "playerData" + File.separator + "eu");
+            FileTool.newFile(dataDir + "playerData" + File.separator + "na");
+            FileTool.newFile(dataDir + "playerData" + File.separator + "ru");
+            FileTool.newFile(dataDir + "playerData" + File.separator + "origin");
+            FileUtil.writeUtf8String("{}", dataDir + "Bind.json");
         }
     }
 
@@ -145,7 +156,9 @@ public class DataInit {
         boolean useLocalShipInfo = ReadYamlToBoolean(config, "useLocalShipInfo");
         if (useLocalShipInfo){
             try {
-                LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readString(dataDir + "ships_cnFix.json", StandardCharsets.UTF_8));
+                InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("ships_cnFix.json");
+                String s = IoUtil.readUtf8(resourceAsStream);
+                LocalShipInfo = JsonTool.mapper.readTree(s);
             }catch (Exception e){
                 e.printStackTrace();
             }

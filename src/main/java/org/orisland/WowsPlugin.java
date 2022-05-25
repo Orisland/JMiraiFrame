@@ -1,15 +1,20 @@
 package org.orisland;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IoUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
+import org.apache.logging.log4j.core.util.IOUtils;
 import org.orisland.wows.command.Account;
 import org.orisland.wows.command.Bind;
 import org.orisland.wows.command.Help;
 import org.orisland.wows.command.PluginController;
+
+import java.io.InputStream;
 
 import static org.orisland.wows.DataInit.init;
 

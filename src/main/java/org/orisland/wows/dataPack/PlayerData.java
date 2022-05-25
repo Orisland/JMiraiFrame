@@ -51,7 +51,6 @@ public class PlayerData {
             }else {
                 jsonNode = searchAccountIdToAccountInfo(accountId, server);
             }
-            System.out.println(jsonNode);
             singlePlayer = JsonTool.mapper.readValue(jsonNode.toString(), SinglePlayer.class);
         }catch (JsonProcessingException e){
             log.info("json解析错误！");
@@ -90,7 +89,6 @@ public class PlayerData {
      */
     public static String searchNickNameToAccountId(String username, ApiConfig.Server server){
         String format = String.format(ApiConfig.NICKNAME_ACCOUNTID, server, ApiConfig.APPID, username);
-        System.out.println(format);
         JsonNode urlByJson = HttpClient.getUrlByJson(format);
         if (!urlByJson.get("status").asText().equals("ok")){
             log.error("用户api错误！");
@@ -101,7 +99,6 @@ public class PlayerData {
             log.warn("用户复数！");
             return urlByJson.get("data").get(0).get("account_id").asText();
         }else if (urlByJson.get("meta").get("count").asLong() == 0){
-            System.out.println(urlByJson.get("meta").get("count").asLong());
             return null;
         } else {
             return urlByJson.get("data").get(0).get("account_id").asText();
@@ -383,7 +380,6 @@ public class PlayerData {
         }else {
             String s1 = selectDataNewest(accountId, server);
             if (s1.split(",")[1].split("\\.")[0].equals(DateUtil.format(new Date(), "YYYYMMdd"))){
-                System.out.println(accountId);
                 log.warn("最新数据与待更新数据重叠，跳过更新！");
             }else {
                 if (!shouldDel(accountId, server)){
@@ -423,7 +419,6 @@ public class PlayerData {
      * 该操作自动更新已绑定的所有用户数据
      */
     public static void updateAccountLocalDataAuto(){
-        System.out.println(Bind.size());
         for (JsonNode jsonNode : Bind) {
             String accountId = jsonNode.get("id").asText();
             updateAccountLocalData(accountId, StringToServer(jsonNode.get("server").asText()));
