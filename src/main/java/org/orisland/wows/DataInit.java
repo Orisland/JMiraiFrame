@@ -176,7 +176,6 @@ public class DataInit {
         if (useBind){
             try {
                 Bind = JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDir + "Bind.json"));
-                System.out.println(Bind);
                 log.info("绑定数据已读入！");
             }catch (Exception e){
                 e.printStackTrace();
@@ -203,6 +202,7 @@ public class DataInit {
                         try {
                             updateAccountLocalDataAuto();
                             initShipExpectedUpdate();
+                            break;
                         }catch (Exception e){
                             e.printStackTrace();
                             log.error("第{}次访问错误!", ++count);
