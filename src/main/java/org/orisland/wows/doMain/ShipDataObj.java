@@ -3,6 +3,9 @@ package org.orisland.wows.doMain;
 import lombok.Data;
 import lombok.ToString;
 import org.orisland.wows.doMain.pr.ShipPr;
+import org.orisland.wows.doMain.singlePlayer.Pvp;
+import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
+import org.orisland.wows.doMain.singlePlayer.Statistics;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -43,6 +46,9 @@ public class ShipDataObj {
     public void update(){
         sink = battle - survive;
 
+        if (battle == 0){
+            battle = 1;
+        }
         double winrate = (wins * 1.0 / battle * 1.0) * 100;
         BigDecimal winRate = new BigDecimal(winrate).setScale(2, RoundingMode.HALF_UP);
         this.winRate = winRate + "%";
@@ -70,11 +76,27 @@ public class ShipDataObj {
         BigDecimal hitRate = new BigDecimal(hitrate).setScale(2, RoundingMode.HALF_UP);
         this.hitRate = hitRate + "%";
 
-        if (battle == 0){
-            battle = 1;
+
+        if (survive == 0){
+            survive = 1L;
         }
-        double surviveWinrate = (surviveWin * 1.0 / battle) * 100;
+        double surviveWinrate = (surviveWin * 1.0 / survive) * 100;
         BigDecimal surviveWinRate = new BigDecimal(surviveWinrate).setScale(2, RoundingMode.HALF_UP);
         this.surviveWinRate = surviveWinRate  + "%";
+    }
+
+    public void update(SinglePlayer singlePlayer){
+        Statistics statistics = singlePlayer.getStatistics();
+        Pvp pvp = statistics.getPvp();
+        setShoot((long)pvp.getMain_battery().getShots());
+        setHit((long)pvp.getMain_battery().getHits());
+        setWins((long) pvp.getWins());
+        setDmg(pvp.getDamage_dealt());
+        setKill((long) pvp.getFrags());
+        setSurvive((long) (pvp.getSurvived_battles()));
+        setSurviveWin((long) (pvp.getSurvived_wins()));
+        setXp(pvp.getXp());
+        setBattle(pvp.getBattles());
+        update();
     }
 }

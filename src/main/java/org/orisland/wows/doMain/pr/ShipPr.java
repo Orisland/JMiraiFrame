@@ -54,7 +54,10 @@ public class ShipPr {
      * 计算pr
      */
     public JsonNode update(){
-        updateExpected();
+        if (!shipId.equals("")){
+            updateExpected();
+        }
+
         JsonNode jsonNode = PrStandard(PrCalculate());
         this.setPR(jsonNode.get("pr").asInt());
         this.setEvaluate(jsonNode.get("evaluate").asText());

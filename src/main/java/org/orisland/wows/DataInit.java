@@ -32,6 +32,7 @@ public class DataInit {
     public static void init(){
         if (CronUtil.getScheduler().isStarted())
             CronUtil.stop();
+        initRetry();
         initFile();
         initAppId();
         initShipExpectedUpdate();
@@ -73,7 +74,16 @@ public class DataInit {
     public static void initShipExpectedUpdate(){
         if (ReadYamlToBoolean(config, "updateShipExpected")){
             log.info("开始更新船只期望数据！");
-            initExpectData();
+            int count = 0;
+            while (count <= reTry){
+                try {
+                    initExpectData();
+                    return;
+                }catch (Exception e){
+                    log.info("异常计数:{}", ++count);
+                }
+            }
+
         }else {
             log.info("船只期望数据更新已跳过！");
         }
@@ -104,7 +114,6 @@ public class DataInit {
      * 读取本地的船只期望数据
      */
     public static void initShipExpectedData(){
-
         try {
             ApiConfig.ShipExpected = JsonTool.mapper.readTree(FileUtil.readString(dataDir + File.separator + "ShipExpected.json", StandardCharsets.UTF_8));
             log.info("船只预期数据更新时间为:{}", DateUtil.format(DateUtil.date(ApiConfig.ShipExpected.get("time").asLong() * 1000), "YYYY-MM-dd"));
@@ -136,7 +145,7 @@ public class DataInit {
         boolean useLocalShipInfo = ReadYamlToBoolean(config, "useLocalShipInfo");
         if (useLocalShipInfo){
             try {
-                LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readString(String.valueOf(ResourceUtil.getResource("ships_cnFix.json").toString()), StandardCharsets.UTF_8));
+                LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readString(dataDir + "ships_cnFix.json", StandardCharsets.UTF_8));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -154,6 +163,7 @@ public class DataInit {
         if (useBind){
             try {
                 Bind = JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDir + "Bind.json"));
+                System.out.println(Bind);
                 log.info("绑定数据已读入！");
             }catch (Exception e){
                 e.printStackTrace();
@@ -175,7 +185,22 @@ public class DataInit {
             CronUtil.schedule(command, new Task() {
                 @Override
                 public void execute() {
-                    updateAccountLocalDataAuto();
+                    int count = 0;
+                    while (count <= 20){
+                        try {
+                            updateAccountLocalDataAuto();
+                            initShipExpectedUpdate();
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            log.error("第{}次访问错误!", ++count);
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+                    }
+
                 }
             });
             CronUtil.start();
@@ -185,9 +210,21 @@ public class DataInit {
         }
     }
 
+    /**
+     * 初始化最大数据保存量
+     */
     public static void initMaxSaveData(){
         Long maxPlayerData = Long.valueOf(ReadYamlToString(config, "maxPlayerData"));
         maxSavePlayerData = maxPlayerData.intValue();
         log.info("最大玩家数据存储上限:{}",maxPlayerData);
+    }
+
+    /**
+     * 配置最大重试次数
+     */
+    public static void initRetry(){
+        Long retry = Long.valueOf(ReadYamlToString(config, "retry"));
+        reTry = retry;
+        log.info("最大数据读取重试次数:{}", retry);
     }
 }

@@ -105,11 +105,16 @@ public class ApiConfig {
     public static int maxSavePlayerData = 0;
 
     /**
+     * 最大重试次数
+     */
+    public static long reTry = 0;
+
+    /**
      * server
      * 欧服，亚服，美服，俄服
      */
     public enum Server{
-        EU, ASIA, NA, RU
+        EU, ASIA, NA, RU, com
     }
 
     /**

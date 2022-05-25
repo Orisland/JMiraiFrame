@@ -8,6 +8,7 @@ import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
 import org.orisland.wows.command.Account;
 import org.orisland.wows.command.Bind;
+import org.orisland.wows.command.Help;
 import org.orisland.wows.command.PluginController;
 
 import static org.orisland.wows.DataInit.init;
@@ -30,9 +31,11 @@ public final class WowsPlugin extends JavaPlugin {
         log.info("Wows Plugin Loaded!");
         init();
 
+        CommandManager.INSTANCE.registerCommand(PluginController.INSTANCE, false);
         CommandManager.INSTANCE.registerCommand(Account.INSTANCE, false);
         CommandManager.INSTANCE.registerCommand(Bind.INSTANCE, false);
-        CommandManager.INSTANCE.registerCommand(PluginController.INSTANCE, false);
+        CommandManager.INSTANCE.registerCommand(Help.INSTANCE, false);
+
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }

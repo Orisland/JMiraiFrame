@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okhttp3.internal.http2.Header;
+import org.orisland.wows.ApiConfig;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class HttpClient {
         OkHttpClient client = null;
         Request request = null;
         int count = 0;
-        while (count <= 3){
+        while (count <= ApiConfig.reTry){
             try {
                 client = new OkHttpClient.Builder()
                         .connectTimeout(15, TimeUnit.SECONDS)
@@ -77,6 +78,12 @@ public class HttpClient {
             }catch (Exception e){
                 log.warn("第{}次访问出现异常！",++count);
                 e.printStackTrace();
+                try {
+                    Thread.sleep(ApiConfig.reTry / 10 *1000);
+                }catch (Exception e1){
+                    e1.printStackTrace();
+                }
+
             }
         }
         log.error("访问失败！");

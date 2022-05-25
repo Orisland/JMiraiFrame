@@ -1,6 +1,7 @@
 package org.orisland;
 
 import Tool.JsonTool;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
@@ -56,7 +57,7 @@ public class Handler extends SimpleListenerHost {
             ship.put("shipId", "4277090288");
             ShipPr(ship);
         }else if (event.getMessage().contentToString().equals("7")){
-//            JsonNode orisland_ex = NickNameToPr("Orisland_Ex", ApiConfig.Server.EU);
+            NickNameToPr("Orisland_Ex", ApiConfig.Server.EU);
 //            System.out.println(orisland_ex);
         }else if (event.getMessage().contentToString().equals("8")){
             readAccountToday("566316444", ApiConfig.Server.EU);

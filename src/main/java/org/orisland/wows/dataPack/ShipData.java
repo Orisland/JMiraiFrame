@@ -73,14 +73,14 @@ public class ShipData {
      */
     public static List<SingleShipData> SearchAccountIdToShipInfo(String accountId, String shipId, Server server) {
         JsonNode urlByJson = HttpClient.getUrlByJson(String.format(ACCOUNT_SHIP, server, APPID, accountId, shipId, API_LANGUAGE));
-        System.out.println(String.format(ACCOUNT_SHIP, server, APPID, accountId, shipId, API_LANGUAGE));
         SingleShipData singleShipData = null;
         if (!urlByJson.get("status").asText().equals("ok")){
             log.error("api错误！");
             return null;
         }
-        //TODO: 别忘了删这个sout
-        System.out.println(urlByJson);
+        if (urlByJson.get("data").get(accountId) == null){
+            return null;
+        }
         ArrayNode data = JsonTool.mapper.valueToTree(urlByJson.get("data").get(accountId));
         List<SingleShipData> dataList = new ArrayList<>();
         try {
@@ -158,11 +158,11 @@ public class ShipData {
         if (score < 750){
             evaluate = "还需努力";
             distance = 750 - score;
-            color = "虹";
+            color = "番茄";
         }else if (score < 1100){
             evaluate = "低于平均";
             distance = 1100 - score;
-            color = "黯煌";
+            color = "玉米";
         }else if (score < 1350){
             evaluate = "平均水平";
             distance = 1350 - score;
@@ -170,23 +170,27 @@ public class ShipData {
         }else if (score < 1550){
             evaluate = "好";
             distance = 1550 - score;
-            color = "浅绿";
+            color = "小葱";
         }else if (score < 1750){
             evaluate = "很好";
             distance = 1750 - score;
-            color = "深绿";
+            color = "白菜";
         }else if (score < 2100){
             evaluate = "非常好";
             distance = 2100 - score;
-            color = "青";
+            color = "青菜";
         }else if (score < 2450){
             evaluate = "大佬平均";
             distance = 2450 - score;
-            color = "紫";
-        }else if (score < 9999){
+            color = "茄子";
+        }else if (score < 5000){
             evaluate = "神佬平均";
             distance = score - 2450;
-            color = "深紫";
+            color = "大茄子";
+        } else if (score < 9999){
+            evaluate = "……？您";
+            distance = score - 5000;
+            color = "茄子PlusMaxPro限量版";
         }else {
             log.warn("score异常！");
             evaluate = "未知";
@@ -244,12 +248,11 @@ public class ShipData {
                 singleShip.setType(datum.get("type").asText());
                 singleShip.setSpecial(datum.get("is_special").asBoolean());
                 objectNode.set(singleShip.getShipId(), JsonTool.mapper.readTree(JsonTool.mapper.writeValueAsString(singleShip)));
-                System.out.println(JsonTool.mapper.writeValueAsString(singleShip));
                 count++;
             }
         }
         FileUtil.writeUtf8String(objectNode.toString(), "D:\\IdeaLib\\JMiraiFrame\\test.json");
-        System.out.println("记录数:"+count);
+        log.info("记录数:{}", count);
     }
 
     /**
