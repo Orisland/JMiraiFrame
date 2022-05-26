@@ -188,11 +188,12 @@ public class PlayerData {
 
         for (SingleShipData singleShipDatum : singleShipData) {
             try {
+                pvp = singleShipDatum.getPvp();
                 battles = pvp.getBattles();
                 if (battles == 0){
                     battles = 1;
                 }
-                pvp = singleShipDatum.getPvp();
+
                 actDmg += pvp.getDamage_dealt();
                 actFrags += pvp.getFrags();
                 actWins += pvp.getWins();
