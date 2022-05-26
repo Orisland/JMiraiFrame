@@ -12,12 +12,12 @@ import static org.orisland.wows.dataPack.ShipData.ShipToExpected;
 public class ShipPr {
     private String shipId;
     private int battle;
-    private double actualDmg;
-    private double expectedDmg;
-    private double actualWins;
-    private double expectedWins;
-    private double actualFrags;
-    private double expectedFrags;
+    private double actualDmg =  0.0;
+    private double expectedDmg = 0.0;
+    private double actualWins = 0.0;
+    private double expectedWins = 0.0;
+    private double actualFrags = 0.0;
+    private double expectedFrags = 0.0;
 
     private int PR;
     private String evaluate;

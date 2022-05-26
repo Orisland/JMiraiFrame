@@ -13,27 +13,27 @@ import java.math.RoundingMode;
 @Data
 @ToString
 public class ShipDataObj {
-    private Integer battle;
+    private Integer battle = 0;
     private String winRate;
     private String aveDmg;
     private String aveXp;
     private String KD;
     private String hitRate;
-    private ShipPr PR;
+    private ShipPr PR = new ShipPr();
     private String surviveWinRate;
 
 
 //    =====================
 
-    private Long shoot;
-    private Long hit;
-    private Long wins;
-    private Long Dmg;
-    private Long kill;
-    private Long sink;
-    private Long Xp;
-    private Long survive;
-    private Long surviveWin;
+    private Long shoot = 0L;
+    private Long hit = 0L;
+    private Long wins = 0L;
+    private Long Dmg = 0L;
+    private Long kill = 0L;
+    private Long sink = 0L;
+    private Long Xp =0L;
+    private Long survive = 0L;
+    private Long surviveWin = 0L;
 
 //    =====================
 

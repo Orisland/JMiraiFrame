@@ -51,19 +51,37 @@ public class Account extends JCompositeCommand {
                 } else {
                     List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
 
-                    MessageChainBuilder messageChainBuilder = new MessageChainBuilder()
-                            .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
-                            .append("\r");
+                    MessageChainBuilder messageChainBuilder = new MessageChainBuilder();
+                    MessageChainBuilder builder = new MessageChainBuilder();
+
                     if (shipDataObjs.size() != 0) {
+                        ShipDataObj shipDataObj1 = new ShipDataObj();
+                        ShipPr shipPr = new ShipPr();
                         for (ShipDataObj shipDataObj : shipDataObjs) {
+                            ShipDataObjPack(shipDataObj1, shipPr, shipDataObj);
                             messagePack(messageChainBuilder, shipDataObj, shipDataObj.getPR());
                         }
+                        shipDataObj1.update();
+                        JsonNode jsonNode = PrStandard(shipPr.PrCalculate());
+                        builder.append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
+                                .append("\r")
+                                .append(String.format("今日综合评级:%s %s %s%s", jsonNode.get("color").asText(),
+                                        jsonNode.get("pr").asText(), jsonNode.get("evaluate").asText(), jsonNode.get("distance").asText()))
+                                .append("\r")
+                                .append(String.format("场数:%s", shipDataObj1.getBattle()))
+                                .append("\r")
+                                .append(String.format("胜率:%s", shipDataObj1.getWinRate()))
+                                .append("\r")
+                                .append("========")
+                                .append("\r")
+                                .append(messageChainBuilder.build());
+
                     } else {
                         messageChainBuilder
                                 .append("空")
                                 .append("\r");
                     }
-                    chain = messagePack(messageChainBuilder, quoteReply);
+                    chain = messagePack(builder, quoteReply);
                 }
                 sender.sendMessage(chain);
                 return;
@@ -79,6 +97,7 @@ public class Account extends JCompositeCommand {
         chain = errorFinally(quoteReply, exception.toString());
         sender.sendMessage(chain);
     }
+
 
     @SubCommand({"今日单船", "todayship", "ts"})
     @Description("查询自己的当日指定ship的pr")
@@ -97,22 +116,40 @@ public class Account extends JCompositeCommand {
                 } else {
                     JsonNode jsonNode = ShipNameToShipId(shipName);
                     List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
-                    MessageChainBuilder messageChainBuilder = new MessageChainBuilder()
-                            .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
-                            .append("\r");
+
+                    MessageChainBuilder messageChainBuilder = new MessageChainBuilder();
+                    MessageChainBuilder builder = new MessageChainBuilder();
+
                     if (shipDataObjs.size() != 0) {
+                        ShipDataObj shipDataObj1 = new ShipDataObj();
+                        ShipPr shipPr = new ShipPr();
                         for (ShipDataObj shipDataObj : shipDataObjs) {
+                            ShipDataObjPack(shipDataObj1, shipPr, shipDataObj);
                             if (!Objects.equals(shipDataObj.getShip().getShipId(), jsonNode.get("shipId").asText())) {
                                 continue;
                             }
                             messagePack(messageChainBuilder, shipDataObj, shipDataObj.getPR());
                         }
+                        shipDataObj1.update();
+                        JsonNode prStandard = PrStandard(shipPr.PrCalculate());
+                        builder.append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
+                                .append("\r")
+                                .append(String.format("今日综合评级:%s %s %s%s", prStandard.get("color").asText(),
+                                        prStandard.get("pr").asText(), prStandard.get("evaluate").asText(), prStandard.get("distance").asText()))
+                                .append("\r")
+                                .append(String.format("场数:%s", shipDataObj1.getBattle()))
+                                .append("\r")
+                                .append(String.format("胜率:%s", shipDataObj1.getWinRate()))
+                                .append("\r")
+                                .append("========")
+                                .append("\r")
+                                .append(messageChainBuilder.build());
                     } else {
                         messageChainBuilder
                                 .append("空")
                                 .append("\r");
                     }
-                    chain = messagePack(messageChainBuilder, quoteReply);
+                    chain = messagePack(builder, quoteReply);
                 }
                 sender.sendMessage(chain);
                 return;
@@ -241,8 +278,34 @@ public class Account extends JCompositeCommand {
                 if (bind == null) {
                     chain = bindErrorPack(quoteReply);
                 } else {
-                    String shipId = ShipNameToShipId(shipName).get("shipId").asText();
+                    String shipId;
+                    if (ShipNameToShipId(shipName) == null){
+                        chain = new MessageChainBuilder()
+                                .append("请检查船名是否正确！")
+                                .append("\r")
+                                .append("不允许使用英文，不允许存在错别字，允许部分匹配！")
+                                .append("\r")
+                                .append("请注意标点符号例如马克斯·尹麦曼中的·不可省略，否则请只输入马克斯!")
+                                .append("\r")
+                                .append("若您确定您的船名输入无误请私聊bot！")
+                                .append(quoteReply)
+                                .build();
+                        sender.sendMessage(chain);
+                        return;
+                    }else {
+                         shipId = ShipNameToShipId(shipName).get("shipId").asText();
+                    }
                     ShipDataObj shipDataObj = AccountIdToPr(bind.getAccountId(), bind.getServer(), shipId);
+                    if (shipDataObj == null){
+                        chain = new MessageChainBuilder()
+                                .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
+                                .append("\r")
+                                .append("请勿查询您还没有开过的船只！")
+                                .append(quoteReply)
+                                .build();
+                        sender.sendMessage(chain);
+                        return;
+                    }
                     ShipPr pr = shipDataObj.getPR();
                     MessageChainBuilder messageChainBuilder = new MessageChainBuilder()
                             .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
@@ -254,6 +317,7 @@ public class Account extends JCompositeCommand {
                 sender.sendMessage(chain);
                 return;
             } catch (Exception e) {
+                e.printStackTrace();
                 log.error("错误计数:{}", ++count);
                 exception.append(e.getMessage())
                         .append("\r");
@@ -421,6 +485,20 @@ public class Account extends JCompositeCommand {
         while (count <= ApiConfig.reTry){
             try {
                 JsonNode jsonNode = ShipNameToShipId(shipName);
+                if (jsonNode == null){
+                    chain = new MessageChainBuilder()
+                            .append("请检查船名是否正确！")
+                            .append("\r")
+                            .append("不允许使用英文，不允许存在错别字")
+                            .append("\r")
+                            .append("请注意标点符号例如马克斯·尹麦曼中的·不可省略，否则请只输入马克斯!")
+                            .append("\r")
+                            .append("若您确定您的船名输入无误请私聊bot！")
+                            .build();
+                    sender.sendMessage(chain);
+                    return;
+                }
+
                 String name = jsonNode.get("name").asText();
                 String shipId = jsonNode.get("shipId").asText();
                 JsonNode jsonNode1 = ShipToExpected(shipId);
@@ -458,7 +536,6 @@ public class Account extends JCompositeCommand {
         chain = errorFinally(quoteReply, exception.toString());
         sender.sendMessage(chain);
     }
-
 
     /**
      * 中间打包
@@ -522,6 +599,26 @@ public class Account extends JCompositeCommand {
                 .append(quoteReply)
                 .build();
         return  build;
+    }
+
+
+    /**
+     * 数据打包
+     * @param shipDataObj1
+     * @param shipPr
+     * @param shipDataObj
+     */
+    private void ShipDataObjPack(ShipDataObj shipDataObj1, ShipPr shipPr, ShipDataObj shipDataObj) {
+        shipDataObj1.setBattle(shipDataObj1.getBattle() + shipDataObj.getBattle());
+        shipDataObj1.setKill(shipDataObj1.getKill() + shipDataObj.getKill());
+        shipDataObj1.setWins(shipDataObj1.getWins() + shipDataObj.getWins());
+        shipDataObj1.setDmg(shipDataObj1.getDmg() + shipDataObj.getDmg());
+        shipPr.setExpectedDmg(shipPr.getExpectedDmg() + shipDataObj.getPR().getExpectedDmg());
+        shipPr.setExpectedWins(shipPr.getExpectedWins() + shipDataObj.getPR().getExpectedWins());
+        shipPr.setExpectedFrags(shipPr.getExpectedFrags() + shipDataObj.getPR().getExpectedFrags());
+        shipPr.setActualDmg(shipPr.getActualDmg() + shipDataObj.getPR().getActualDmg());
+        shipPr.setActualWins(shipPr.getActualWins() + shipDataObj.getPR().getActualWins());
+        shipPr.setActualFrags(shipPr.getActualFrags() + shipDataObj.getPR().getActualFrags());
     }
 
 }

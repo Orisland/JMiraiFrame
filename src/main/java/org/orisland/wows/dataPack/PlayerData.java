@@ -188,21 +188,28 @@ public class PlayerData {
 
         for (SingleShipData singleShipDatum : singleShipData) {
             try {
+                battles = pvp.getBattles();
+                if (battles == 0){
+                    battles = 1;
+                }
                 pvp = singleShipDatum.getPvp();
                 actDmg += pvp.getDamage_dealt();
                 actFrags += pvp.getFrags();
                 actWins += pvp.getWins();
-                battles = pvp.getBattles();
+
                 JsonNode shipExpected = ShipToExpected(String.valueOf(singleShipDatum.getShip_id()));
                 expDmg += shipExpected.get("average_damage_dealt").asDouble() * battles;
                 expWins += shipExpected.get("win_rate").asDouble() / 100 * battles;
                 expFrags +=  shipExpected.get("average_frags").asDouble() * battles;
             }catch (Exception e){
+                e.printStackTrace();
                 log.warn("跳过异常船只！");
                 continue;
             }
         }
-
+        if (pvp == null){
+            return null;
+        }
         ShipDataObj shipDataObj = new ShipDataObj();
         shipDataObj.setShoot(pvp.getMain_battery().getShots());
         shipDataObj.setHit((long) (pvp.getMain_battery().getHits()));
@@ -348,9 +355,6 @@ public class PlayerData {
     public static void saveAccountShipInfo(String accountId, Server server){
         String date = DateUtil.format(DateUtil.date(), "YYYYMMdd");
         JsonNode data = shipDataStandard(accountId, server);
-        if (accountId == "560642785"){
-            System.out.println();
-        }
         originPlayerData(accountId,data);
         FileUtil.writeUtf8String(data.toString(), ServerToDir(server) + accountId + "," + date + ".json");
     }
