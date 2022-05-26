@@ -202,7 +202,7 @@ public class DataInit {
                         try {
                             updateAccountLocalDataAuto();
                             initShipExpectedUpdate();
-                            break;
+                            return;
                         }catch (Exception e){
                             e.printStackTrace();
                             log.error("第{}次访问错误!", ++count);

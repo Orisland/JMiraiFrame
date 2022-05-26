@@ -611,6 +611,7 @@ public class PlayerData {
                 return Server.EU;
             case "ASIA":
                 return Server.ASIA;
+            case "COM":
             case "NA":
                 return Server.com;
             case "RU":
@@ -751,7 +752,7 @@ public class PlayerData {
         if (day == 0){
             return diffShip(accountId, server);
         }
-        int nowData = date - day;
+        int nowData = date;
         int originData = nowData - 1;
         JsonNode nowRecord = readPlayerData(accountId, server, String.valueOf(nowData));
         JsonNode originRecord = readPlayerData(accountId, server, String.valueOf(originData));
