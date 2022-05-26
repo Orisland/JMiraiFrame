@@ -188,6 +188,7 @@ public class PlayerData {
 
         for (SingleShipData singleShipDatum : singleShipData) {
             try {
+//                调用顺序问题
                 pvp = singleShipDatum.getPvp();
                 battles = pvp.getBattles();
                 if (battles == 0){
