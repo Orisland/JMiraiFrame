@@ -78,6 +78,7 @@ public class HttpClient {
             }catch (Exception e){
                 log.warn("第{}次访问出现异常！",++count);
                 e.printStackTrace();
+
                 try {
                     Thread.sleep(ApiConfig.reTry / 10 *1000);
                 }catch (Exception e1){
