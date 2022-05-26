@@ -332,6 +332,16 @@ public class Account extends JCompositeCommand {
                 MessageChainBuilder messageChainBuilder = new MessageChainBuilder()
                         .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
                         .append("\r");
+
+                if (shipDataObjs == null){
+                    messageChainBuilder
+                            .append("空")
+                            .append("\r");
+                    chain = messagePack(messageChainBuilder, quoteReply);
+                    sender.sendMessage(chain);
+                    return;
+                }
+
                 if (shipDataObjs.size() != 0) {
                     for (ShipDataObj shipDataObj : shipDataObjs) {
                         messagePack(messageChainBuilder, shipDataObj, shipDataObj.getPR());
@@ -346,6 +356,7 @@ public class Account extends JCompositeCommand {
             sender.sendMessage(chain);
             return;
             } catch (Exception e) {
+                e.printStackTrace();
                 log.error("错误计数:{}", ++count);
                 exception.append(e.getMessage())
                         .append("\r");
