@@ -113,7 +113,11 @@ public class ShipData {
      * @return 找到的船只数据
      */
     public static JsonNode ShipToExpected(String shipId){
-        return ShipExpected.get("data").get(shipId);
+        JsonNode data = ShipExpected.get("data").get(shipId);
+        if (data.size() == 0){
+            return null;
+        }else
+            return data;
     }
 
     /**

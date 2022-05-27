@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.pr.ShipPr;
+import org.orisland.wows.doMain.singleShipData.Main_battery;
 import org.orisland.wows.doMain.singleShipData.Pvp;
+import org.orisland.wows.doMain.singleShipData.Rank_solo;
 import org.orisland.wows.doMain.singleShipData.SingleShipData;
 
 import java.util.ArrayList;
@@ -64,45 +66,140 @@ public class DiffData {
                         log.info("未发现该船只，配置为出现了数据本地数据之外的新船！");
                         originSingleShipData = new SingleShipData();
                         originSingleShipData.setPvp(new Pvp());
+                        originSingleShipData.setRank_solo(new Rank_solo());
                     }else {
                         originSingleShipData = JsonTool.mapper.readValue(originData.get(String.valueOf(nowSingleShipData.getShip_id())).toString(), SingleShipData.class);
                     }
+
+                    Rank_solo nowRank = nowSingleShipData.getRank_solo();
+                    Rank_solo originRank = originSingleShipData.getRank_solo();
+
                     Pvp nowPvp = nowSingleShipData.getPvp();
                     Pvp originPvp = originSingleShipData.getPvp();
+
                     double Dmg = nowPvp.getDamage_dealt() - originPvp.getDamage_dealt();
                     int Battle = nowPvp.getBattles() - originPvp.getBattles();
                     double Wins = nowPvp.getWins() - originPvp.getWins();
                     double Frags = nowPvp.getFrags() - originPvp.getFrags();
 
-                    ShipPr shipPr = new ShipPr();
-                    shipPr.setActualWins(Wins);
-                    shipPr.setActualFrags(Frags);
-                    shipPr.setActualDmg(Dmg);
+                    double rankDmg = nowRank.getDamage_dealt() - originRank.getDamage_dealt();
+                    int rankBattle = nowRank.getBattles() - originRank.getBattles();
+                    double rankWins = nowRank.getWins() - originRank.getWins();
+                    double rankFrags = nowRank.getFrags() - originRank.getFrags();
+
+                    ShipPr shipPr =  new ShipPr();
+                    ShipPr shipPrRank = new ShipPr();
+
                     shipPr.setShipId(String.valueOf(nowSingleShipData.getShip_id()));
-                    shipPr.setBattle(Battle);
+                    shipPrRank.setShipId(String.valueOf(nowSingleShipData.getShip_id()));
+
+//                    随机为0
+                    if (Battle == 0){
+//                        这个船没打随机又没打排位
+//                        推测为人机或者活动
+                        if (rankBattle == 0){
+                            log.info("判定为人机或者活动，船只跳过");
+                            continue;
+//                            只打了rank
+                        }else {
+                            shipPrRank.setActualWins(rankWins);
+                            shipPrRank.setActualFrags(rankFrags);
+                            shipPrRank.setActualDmg(rankDmg);
+                            shipPrRank.setBattle(rankBattle);
+                        }
+//                        打了随机
+                    }else {
+//                        只打了随机
+                        if (rankBattle == 0){
+                            shipPr.setActualWins(Wins);
+                            shipPr.setActualFrags(Frags);
+                            shipPr.setActualDmg(Dmg);
+                            shipPr.setBattle(Battle);
+//                            这个船既打了随机又打了rank
+                        }else {
+//                            考虑两种情况
+                            shipPr.setActualWins(Wins);
+                            shipPr.setActualFrags(Frags);
+                            shipPr.setActualDmg(Dmg);
+                            shipPr.setBattle(rankBattle);
+
+                            shipPrRank.setActualWins(rankWins);
+                            shipPrRank.setActualFrags(rankFrags);
+                            shipPrRank.setActualDmg(rankDmg);
+                            shipPrRank.setBattle(rankBattle);
+                        }
+                    }
+
                     try {
-                        shipPr.update();
+                        if (shipPr.getBattle() != 0)
+                            shipPr.update();
+                        if (shipPrRank.getBattle() != 0)
+                            shipPrRank.update();
                     }catch (Exception e){
+                        e.printStackTrace();
                         log.error("错误的数据！");
                         continue;
                     }
 
                     ShipDataObj shipDataObj = new ShipDataObj();
-                    shipDataObj.setShoot(nowPvp.getMain_battery().getShots() - originPvp.getMain_battery().getShots());
-                    shipDataObj.setHit((long) (nowPvp.getMain_battery().getHits() - originPvp.getMain_battery().getHits()));
-                    shipDataObj.setWins((long) (nowPvp.getWins() - originPvp.getWins()));
-                    shipDataObj.setDmg(nowPvp.getDamage_dealt() - originPvp.getDamage_dealt());
-                    shipDataObj.setKill((long) (nowPvp.getFrags() - originPvp.getFrags()));
-                    shipDataObj.setSurvive((long) (nowPvp.getSurvived_battles() - originPvp.getSurvived_battles()));
-                    shipDataObj.setSurviveWin((long) (nowPvp.getSurvived_wins() - originPvp.getSurvived_wins()));
-                    shipDataObj.setXp(nowPvp.getXp() - originPvp.getXp());
-                    shipDataObj.setBattle(Battle);
-                    shipDataObj.setPR(shipPr);
+                    ShipDataObj shipDataObjRank = new ShipDataObj();
+
+                    if (shipPr.getBattle() != 0)
+                        shipDataPack(Battle,
+                                shipPr,
+                                shipDataObj,
+                                nowPvp.getMain_battery(),
+                                originPvp.getMain_battery(),
+                                nowPvp.getWins(),
+                                originPvp.getWins(),
+                                nowPvp.getDamage_dealt(),
+                                originPvp.getDamage_dealt(),
+                                nowPvp.getFrags(),
+                                originPvp.getFrags(),
+                                nowPvp.getSurvived_battles(),
+                                originPvp.getSurvived_battles(),
+                                nowPvp.getSurvived_wins(),
+                                originPvp.getSurvived_wins(),
+                                nowPvp.getXp(),
+                                originPvp.getXp(),
+                                nowRank,
+                                originRank);
+
+                    if (shipPrRank.getBattle() != 0)
+                        shipDataPack(rankBattle,
+                                shipPrRank,
+                                shipDataObjRank,
+                                nowRank.getMain_battery(),
+                                originRank.getMain_battery(),
+                                nowRank.getWins(),
+                                originRank.getWins(),
+                                nowRank.getDamage_dealt(),
+                                originRank.getDamage_dealt(),
+                                nowRank.getFrags(),
+                                originRank.getFrags(),
+                                nowRank.getSurvived_battles(),
+                                originRank.getSurvived_battles(),
+                                nowRank.getSurvived_wins(),
+                                originRank.getSurvived_wins(),
+                                nowRank.getXp(),
+                                nowRank.getXp(),
+                                nowRank,
+                                originRank);
+
                     shipDataObj.setShip(SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id())));
+                    shipDataObj.setRank(false);
+                    shipDataObjRank.setShip(SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id())));
+                    shipDataObjRank.setRank(true);
 
-                    shipDataObj.update();
+                    if (shipDataObj.getBattle() != 0)
+                        shipDataObj.update();
+                    if (shipDataObjRank.getBattle() != 0)
+                        shipDataObjRank.update();
 
-                    res.add(shipDataObj);
+                    if (shipDataObj.getBattle() != 0)
+                        res.add(shipDataObj);
+                    if (shipDataObjRank.getBattle() != 0)
+                        res.add(shipDataObjRank);
                 }
 
             }catch (JsonProcessingException e){
@@ -111,6 +208,22 @@ public class DiffData {
 
         }
         return res;
+    }
+
+    /**
+     * 数据打包
+     */
+    private static void shipDataPack(int battle, ShipPr shipPr, ShipDataObj shipDataObj, Main_battery main_battery, Main_battery main_battery2, int wins, int wins2, long damage_dealt, long damage_dealt2, int frags, int frags2, int survived_battles, int survived_battles2, int survived_wins, int survived_wins2, long xp, long xp2, Rank_solo nowRank, Rank_solo originRank) {
+        shipDataObj.setShoot(main_battery.getShots() - main_battery2.getShots());
+        shipDataObj.setHit((long) (main_battery.getHits() - main_battery2.getHits()));
+        shipDataObj.setWins((long) (wins - wins2));
+        shipDataObj.setDmg((long)damage_dealt - damage_dealt2);
+        shipDataObj.setKill((long) (frags - frags2));
+        shipDataObj.setSurvive((long) (survived_battles - survived_battles2));
+        shipDataObj.setSurviveWin((long) (survived_wins - survived_wins2));
+        shipDataObj.setXp((long)xp - xp2);
+        shipDataObj.setBattle(battle);
+        shipDataObj.setPR(shipPr);
     }
 
     /**
@@ -140,5 +253,13 @@ public class DiffData {
             return null;
         }
         return diffDataPure(nowRecord, originRecord, 0);
+    }
+
+    public static List<ShipDataObj> diffRank(String accountId, ApiConfig.Server server){
+        log.info("开始数据对比！");
+        JsonNode playerData = shipDataStandard(accountId,server);
+        JsonNode LocalData = readAccountToday(accountId, server);
+        log.info("数据对比结束！");
+        return null;
     }
 }

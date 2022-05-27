@@ -3,10 +3,12 @@ package org.orisland.wows.doMain.pr;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 import static org.orisland.wows.dataPack.PrData.PrStandard;
 import static org.orisland.wows.dataPack.ShipData.ShipToExpected;
 
+@Slf4j
 @ToString
 @Data
 public class ShipPr {
@@ -43,19 +45,31 @@ public class ShipPr {
     /**
      * 通过初始化shipid自动计算
      */
-    public void updateExpected(){
+    public boolean updateExpected(){
         JsonNode shipExpected = ShipToExpected(shipId);
+        if (shipExpected == null){
+            log.warn("{}暂时没有exp数据！", shipId);
+            return false;
+        }
         expectedDmg = shipExpected.get("average_damage_dealt").asDouble() * battle;
         expectedWins = shipExpected.get("win_rate").asDouble() / 100 * battle;
         expectedFrags =  shipExpected.get("average_frags").asDouble() * battle;
+        return true;
     }
 
     /**
      * 计算pr
      */
-    public JsonNode update(){
+    public boolean update(){
         if (!shipId.equals("")){
-            updateExpected();
+            if (!updateExpected()){
+                log.warn("{}暂时没有exp数据,pr置零!", shipId);
+                this.setPR(0);
+                this.setEvaluate("空");
+                this.setDistance("-35");
+                this.setColor("未知");
+                return false;
+            }
         }
 
         JsonNode jsonNode = PrStandard(PrCalculate());
@@ -63,6 +77,6 @@ public class ShipPr {
         this.setEvaluate(jsonNode.get("evaluate").asText());
         this.setDistance(jsonNode.get("distance").asText());
         this.setColor(jsonNode.get("color").asText());
-        return jsonNode;
+        return true;
     }
 }

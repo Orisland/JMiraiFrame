@@ -74,7 +74,7 @@ public class ApiConfig {
      *获取指定用户的所有船只战绩信息或指定船只信息
      * server-appid-uid-shipid-language
      */
-    public static final String ACCOUNT_SHIP = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=%s&ship_id=%s&language=%s";
+    public static final String ACCOUNT_SHIP = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=%s&ship_id=%s&language=%s&extra=rank_solo";
 
     /**
      * 本地玩家数据地址

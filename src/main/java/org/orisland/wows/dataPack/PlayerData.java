@@ -193,6 +193,7 @@ public class PlayerData {
             objectNode.put("date", DateUtil.format(DateUtil.date(), "YYYYMMdd"));
             objectNode.put("accountid", accountId);
 
+//            新增了rank数据
             ObjectNode temp = JsonTool.mapper.createObjectNode();
             for (JsonNode data : urlByJson.get("data").get(accountId)) {
                 temp.set(data.get("ship_id").asText(), data);

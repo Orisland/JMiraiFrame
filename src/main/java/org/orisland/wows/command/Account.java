@@ -19,12 +19,11 @@ import java.util.Objects;
 
 import static org.orisland.wows.ApiConfig.ShipExpected;
 import static org.orisland.wows.ApiConfig.reTry;
+import static org.orisland.wows.dataPack.DiffData.*;
 import static org.orisland.wows.dataPack.PlayerData.*;
 import static org.orisland.wows.dataPack.ServerData.StringToServer;
 import static org.orisland.wows.dataPack.ShipData.*;
 import static org.orisland.wows.dataPack.PrData.*;
-import static org.orisland.wows.dataPack.DiffData.diffDataBetween;
-import static org.orisland.wows.dataPack.DiffData.diffShip;
 
 
 @Slf4j
@@ -51,7 +50,7 @@ public class Account extends JCompositeCommand {
         int count = 0;
         StringBuilder exception = new StringBuilder();
 
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
@@ -60,7 +59,7 @@ public class Account extends JCompositeCommand {
                     return;
                 } else {
                     List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
-                    messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message);
+                    messagePackRadomPr(shipDataObjs, messageItem, messageList, sender, bind, message);
                 }
 
                 sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
@@ -93,6 +92,65 @@ public class Account extends JCompositeCommand {
         sender.sendMessage(chain);
     }
 
+    @SubCommand({"rank", "mer", "软壳", "排位"})
+    @Description("查询今日软壳战绩的pr")
+    public void rankPrToday(CommandSenderOnMessage sender) throws InterruptedException {
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
+
+        MessageChain chain = null;
+
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        ForwardMessageBuilder message = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
+
+
+        int count = 0;
+        StringBuilder exception = new StringBuilder();
+
+        while (count <= ApiConfig.reTry) {
+            try {
+                Bind bind = findAccountId(qq);
+                if (bind == null) {
+                    chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
+                } else {
+                    List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
+
+                    messagePackRankPr(shipDataObjs, messageItem, messageList, sender, bind, message);
+                }
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                ForwardMessage build = message.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        build.getPreview(),
+                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
+                                || bind.getServer() == ApiConfig.Server.com
+                                ? "NA"
+                                : bind.getServer(), bind.getAccountName()),
+                        "今日rank战绩",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(record);
+
+                return;
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("错误计数:{}", ++count);
+                exception.append(e.getMessage())
+                        .append("\r");
+                Thread.sleep(reTry / 10);
+            }
+        }
+
+        chain = errorFinally(quoteReply, exception.toString());
+        sender.sendMessage(chain);
+    }
+
     @SubCommand({"今日单船", "todayship", "ts"})
     @Description("查询自己的当日指定ship的pr")
     public void PrShipToday(CommandSenderOnMessage sender, String shipName) throws InterruptedException {
@@ -102,7 +160,7 @@ public class Account extends JCompositeCommand {
         int count = 0;
         StringBuilder exception = new StringBuilder();
 
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
@@ -170,13 +228,13 @@ public class Account extends JCompositeCommand {
 
         int count = 0;
         StringBuilder exception = new StringBuilder();
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
                     chain = bindErrorPack(quoteReply);
                 } else {
-                    if (singlePlayer == null){
+                    if (singlePlayer == null) {
                         chain = new MessageChainBuilder()
                                 .append(String.format("[%s]%s玩家不存在或账户异常!", server == ApiConfig.Server.com ? "NA" : server, accountName))
                                 .append(quoteReply)
@@ -185,7 +243,7 @@ public class Account extends JCompositeCommand {
                         return;
                     }
                     ShipDataObj shipDataObj = AccountIdShipToPr(String.valueOf(singlePlayer.getAccount_id()), server);
-                    if (shipDataObj == null){
+                    if (shipDataObj == null) {
                         chain = new MessageChainBuilder()
                                 .append(String.format("[%s]%s战绩已隐藏!", server, accountName))
                                 .append(quoteReply)
@@ -227,14 +285,14 @@ public class Account extends JCompositeCommand {
         int count = 0;
         StringBuilder exception = new StringBuilder();
 
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
                     chain = bindErrorPack(quoteReply);
                 } else {
                     String shipId;
-                    if (ShipNameToShipId(shipName) == null){
+                    if (ShipNameToShipId(shipName) == null) {
                         chain = new MessageChainBuilder()
                                 .append("请检查船名是否正确！")
                                 .append("\r")
@@ -247,11 +305,11 @@ public class Account extends JCompositeCommand {
                                 .build();
                         sender.sendMessage(chain);
                         return;
-                    }else {
-                         shipId = ShipNameToShipId(shipName).get("shipId").asText();
+                    } else {
+                        shipId = ShipNameToShipId(shipName).get("shipId").asText();
                     }
                     ShipDataObj shipDataObj = AccountIdToPr(bind.getAccountId(), bind.getServer(), shipId);
-                    if (shipDataObj == null){
+                    if (shipDataObj == null) {
                         chain = new MessageChainBuilder()
                                 .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
                                 .append("\r")
@@ -293,7 +351,7 @@ public class Account extends JCompositeCommand {
         MessageChain chain = null;
         int count = 0;
         StringBuilder exception = new StringBuilder();
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
@@ -301,7 +359,7 @@ public class Account extends JCompositeCommand {
                 } else {
                     ShipDataObj shipDataObj = AccountIdShipToPr(bind.getAccountId(), bind.getServer());
                     ShipPr pr = shipDataObj.getPR();
-                    if (shipDataObj == null){
+                    if (shipDataObj == null) {
                         chain = new MessageChainBuilder()
                                 .append(String.format("[%s]%s战绩已隐藏!", bind.getServer(), bind.getAccountName()))
                                 .append(quoteReply)
@@ -346,35 +404,35 @@ public class Account extends JCompositeCommand {
 
         int count = 0;
         StringBuilder exception = new StringBuilder();
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
-            Bind bind = findAccountId(qq);
-            if (bind == null) {
-                chain = bindErrorPack(quoteReply);
-                sender.sendMessage(chain);
+                Bind bind = findAccountId(qq);
+                if (bind == null) {
+                    chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
+                } else {
+                    List<ShipDataObj> shipDataObjs = accountRecordAt(bind.getAccountId(), bind.getServer(), 1);
+                    messagePackRadomPr(shipDataObjs, messageItem, messageList, sender, bind, message);
+                }
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                ForwardMessage build = message.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        build.getPreview(),
+                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
+                                || bind.getServer() == ApiConfig.Server.com
+                                ? "NA"
+                                : bind.getServer(), bind.getAccountName()),
+                        "昨日战绩",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(record);
+
                 return;
-            } else {
-                List<ShipDataObj> shipDataObjs = accountRecordAt(bind.getAccountId(), bind.getServer(), 1);
-                messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message);
-            }
-
-            sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
-            ForwardMessage build = message.build();
-
-            ForwardMessage record = new ForwardMessage(
-                    build.getPreview(),
-                    String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
-                            || bind.getServer() == ApiConfig.Server.com
-                            ? "NA"
-                            : bind.getServer(), bind.getAccountName()),
-                    "昨日战绩",
-                    build.getSource(),
-                    build.getSummary(),
-                    build.getNodeList());
-
-            sender.sendMessage(record);
-
-            return;
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error("错误计数:{}", ++count);
@@ -396,7 +454,7 @@ public class Account extends JCompositeCommand {
         int count = 0;
         StringBuilder exception = new StringBuilder();
 
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
@@ -430,6 +488,7 @@ public class Account extends JCompositeCommand {
         sender.sendMessage(chain);
     }
 
+
     @SubCommand({"预期", "expship", "es"})
     @Description("查询服务器船只数据")
     public void expectData(CommandSenderOnMessage sender, String shipName) throws InterruptedException {
@@ -438,10 +497,10 @@ public class Account extends JCompositeCommand {
         MessageChain chain = null;
         int count = 0;
         StringBuilder exception = new StringBuilder();
-        while (count <= ApiConfig.reTry){
+        while (count <= ApiConfig.reTry) {
             try {
                 JsonNode jsonNode = ShipNameToShipId(shipName);
-                if (jsonNode == null){
+                if (jsonNode == null) {
                     chain = new MessageChainBuilder()
                             .append("请检查船名是否正确！")
                             .append("\r")
@@ -471,11 +530,11 @@ public class Account extends JCompositeCommand {
                         .append("\r")
                         .append(name)
                         .append("\r")
-                        .append(String.format("均伤:%s.%s", average_damage_dealts[0], average_damage_dealts[1].substring(0,2)))
+                        .append(String.format("均伤:%s.%s", average_damage_dealts[0], average_damage_dealts[1].substring(0, 2)))
                         .append("\r")
                         .append(String.format("均击杀:%s.%s", average_frags[0], average_frags[1].substring(0, 2)))
                         .append("\r")
-                        .append(String.format("胜率:%s.%s%%", win_rates[0], win_rates[1].substring(0,2)))
+                        .append(String.format("胜率:%s.%s%%", win_rates[0], win_rates[1].substring(0, 2)))
                         .append("\r")
                         .append("=========")
                         .append("\r"), quoteReply);
@@ -495,13 +554,14 @@ public class Account extends JCompositeCommand {
 
     /**
      * 中间打包
+     *
      * @param messageChainBuilder
      * @param shipDataObj
      * @param pr
      * @return
      */
     public static MessageChainBuilder messagePack(MessageChainBuilder messageChainBuilder, ShipDataObj shipDataObj, ShipPr pr) {
-        if (shipDataObj.getShip() == null){
+        if (shipDataObj.getShip() == null) {
             messageChainBuilder
                     .append(String.format("综合评级:%s %s %s%s", pr.getColor(), pr.getPR(), pr.getEvaluate(), pr.getDistance()))
                     .append("\r")
@@ -519,7 +579,7 @@ public class Account extends JCompositeCommand {
                     .append("\r")
                     .append(String.format("存活胜利率:%s", shipDataObj.getSurviveWinRate()))
                     .append("\r");
-        }else {
+        } else {
             messageChainBuilder
                     .append(shipDataObj.getShip().getName())
                     .append("\r")
@@ -546,18 +606,19 @@ public class Account extends JCompositeCommand {
 
     /**
      * 结尾pack
+     *
      * @param messageChainBuilder
      * @param quoteReply
      * @return
      */
-    public static MessageChain messagePack(MessageChainBuilder messageChainBuilder, QuoteReply quoteReply){
+    public static MessageChain messagePack(MessageChainBuilder messageChainBuilder, QuoteReply quoteReply) {
         messageChainBuilder.append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")))
                 .append(quoteReply)
                 .build();
         return messageChainBuilder.build();
     }
 
-    public static MessageChain bindErrorPack(QuoteReply quoteReply){
+    public static MessageChain bindErrorPack(QuoteReply quoteReply) {
         MessageChain build = new MessageChainBuilder()
                 .append(new PlainText("未找到账户，请先绑定账号！"))
                 .append(new PlainText("输入(/)wh help查看插件帮助！"))
@@ -566,19 +627,20 @@ public class Account extends JCompositeCommand {
         return build;
     }
 
-    public static MessageChain errorFinally(QuoteReply quoteReply, String exception){
+    public static MessageChain errorFinally(QuoteReply quoteReply, String exception) {
         MessageChain build = new MessageChainBuilder()
                 .append("出错啦！请重试！")
                 .append("\r")
                 .append(exception)
                 .append(quoteReply)
                 .build();
-        return  build;
+        return build;
     }
 
 
     /**
      * 数据打包
+     *
      * @param shipDataObj1
      * @param shipPr
      * @param shipDataObj
@@ -598,6 +660,7 @@ public class Account extends JCompositeCommand {
 
     /**
      * pr主要数据打包处理
+     *
      * @param shipDataObjs
      * @param messageItem
      * @param messageList
@@ -605,20 +668,22 @@ public class Account extends JCompositeCommand {
      * @param bind
      * @param message
      */
-    public void messagePackPr(List<ShipDataObj> shipDataObjs,
-                              MessageChainBuilder messageItem,
-                              ForwardMessageBuilder messageList,
-                              CommandSenderOnMessage sender,
-                              Bind bind,
-                              ForwardMessageBuilder message){
+    public void messagePackRadomPr(List<ShipDataObj> shipDataObjs,
+                                   MessageChainBuilder messageItem,
+                                   ForwardMessageBuilder messageList,
+                                   CommandSenderOnMessage sender,
+                                   Bind bind,
+                                   ForwardMessageBuilder message) {
         if (shipDataObjs.size() != 0) {
             ShipDataObj shipDataObj1 = new ShipDataObj();
             ShipPr shipPr = new ShipPr();
             for (ShipDataObj shipDataObj : shipDataObjs) {
-                messageItem = new MessageChainBuilder();
-                ShipDataObjPack(shipDataObj1, shipPr, shipDataObj);
-                messagePack(messageItem, shipDataObj, shipDataObj.getPR());
-                messageList.add(sender.getBot(), messageItem.build());
+                if (!shipDataObj.isRank()) {
+                    messageItem = new MessageChainBuilder();
+                    ShipDataObjPack(shipDataObj1, shipPr, shipDataObj);
+                    messagePack(messageItem, shipDataObj, shipDataObj.getPR());
+                    messageList.add(sender.getBot(), messageItem.build());
+                }
             }
 
             shipDataObj1.update();
@@ -651,4 +716,61 @@ public class Account extends JCompositeCommand {
         message.add(sender.getBot(), messageItem.build());
     }
 
+    /**
+     * 打包软壳数据
+     *
+     * @param shipDataObjs
+     * @param messageItem
+     * @param messageList
+     * @param sender
+     * @param bind
+     * @param message
+     */
+    public void messagePackRankPr(List<ShipDataObj> shipDataObjs,
+                                  MessageChainBuilder messageItem,
+                                  ForwardMessageBuilder messageList,
+                                  CommandSenderOnMessage sender,
+                                  Bind bind,
+                                  ForwardMessageBuilder message) {
+        if (shipDataObjs.size() != 0) {
+            ShipDataObj shipDataObj1 = new ShipDataObj();
+            ShipPr shipPr = new ShipPr();
+            for (ShipDataObj shipDataObj : shipDataObjs) {
+                if (shipDataObj.isRank()) {
+                    messageItem = new MessageChainBuilder();
+                    ShipDataObjPack(shipDataObj1, shipPr, shipDataObj);
+                    messagePack(messageItem, shipDataObj, shipDataObj.getPR());
+                    messageList.add(sender.getBot(), messageItem.build());
+                }
+            }
+
+            shipDataObj1.update();
+
+            JsonNode jsonNode = PrStandard(shipPr.PrCalculate());
+
+            messageItem = new MessageChainBuilder();
+            messageItem.append(String.format("[%s]%s:", bind.getServer() == ApiConfig.Server.com ? "NA"
+                            : bind.getServer(), bind.getAccountName()))
+                    .append("\r")
+                    .append(String.format("rank综合评级:%s %s %s%s", jsonNode.get("color").asText(),
+                            jsonNode.get("pr").asText(), jsonNode.get("evaluate").asText(), jsonNode.get("distance").asText()))
+                    .append("\r")
+                    .append(String.format("场数:%s", shipDataObj1.getBattle()))
+                    .append("\r")
+                    .append(String.format("胜率:%s", shipDataObj1.getWinRate()))
+                    .append("\r");
+
+            message.add(sender.getBot(), messageItem.build());
+            message.add(sender.getBot(), messageList.build());
+        } else {
+            messageItem
+                    .append("空")
+                    .append("\r");
+            message.add(sender.getBot(), messageItem.build());
+        }
+
+        messageItem = new MessageChainBuilder()
+                .append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")));
+        message.add(sender.getBot(), messageItem.build());
+    }
 }

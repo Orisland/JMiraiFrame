@@ -21,6 +21,7 @@ public class ShipDataObj {
     private String hitRate;
     private ShipPr PR = new ShipPr();
     private String surviveWinRate;
+    private boolean isRank;
 
 
 //    =====================
@@ -46,9 +47,6 @@ public class ShipDataObj {
     public void update(){
         sink = battle - survive;
 
-        if (battle == 0){
-            battle = 1;
-        }
         double winrate = (wins * 1.0 / battle * 1.0) * 100;
         BigDecimal winRate = new BigDecimal(winrate).setScale(2, RoundingMode.HALF_UP);
         this.winRate = winRate + "%";
