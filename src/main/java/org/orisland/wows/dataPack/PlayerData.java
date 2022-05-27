@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.Bind;
-import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 import org.orisland.wows.doMain.SingleShipDataSimple;
 
@@ -23,10 +22,8 @@ import java.util.Date;
 import java.util.List;
 
 import static org.orisland.wows.ApiConfig.*;
-import static org.orisland.wows.dataPack.ServerData.ServerToDir;
-import static org.orisland.wows.dataPack.ServerData.StringToServer;
-import static org.orisland.wows.dataPack.DiffData.diffDataPure;
-import static org.orisland.wows.dataPack.DiffData.diffShip;
+import static org.orisland.wows.dataPack.StringToMeaningful.ServerToDir;
+import static org.orisland.wows.dataPack.StringToMeaningful.StringToServer;
 
 @Slf4j
 public class PlayerData {
@@ -281,9 +278,6 @@ public class PlayerData {
      * @param server    区服信息
      */
     public static void updateAccountLocalData(String accountId, Server server){
-        if (accountId.equals("560642785")){
-            System.out.println(1);
-        }
         String s = selectData(accountId, server, true);
         if (s == null){
             saveAccountShipInfo(accountId, server);
@@ -446,34 +440,4 @@ public class PlayerData {
     }
 
 
-
-
-
-
-
-    /**
-     * 获取指定几天前的战绩，首先库里得有
-     * @param accountId     用户id
-     * @param server        服务器
-     * @param day           几天前
-     * @return              具体数据
-     */
-    public static List<ShipDataObj> accountRecordAt(String accountId, Server server, int day){
-        log.info("开始数据获取!");
-        int date = Integer.parseInt(DateUtil.format(new Date(), "YYYYMMdd"));
-        if (day == 0){
-            return diffShip(accountId, server);
-        }
-        int nowData = date;
-        int originData = nowData - 1;
-        JsonNode nowRecord = readPlayerData(accountId, server, String.valueOf(nowData));
-        JsonNode originRecord = readPlayerData(accountId, server, String.valueOf(originData));
-        if (nowRecord == null || originRecord == null){
-            log.error("查找数据不存在!");
-            return null;
-        }
-        List<ShipDataObj> shipDataObjs = diffDataPure(nowRecord, originRecord, day);
-        log.info("{}数据获取完成!", nowData);
-        return shipDataObjs;
-    }
 }

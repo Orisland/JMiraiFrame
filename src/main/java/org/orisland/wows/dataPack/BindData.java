@@ -10,7 +10,7 @@ import org.orisland.wows.ApiConfig;
 import static org.orisland.wows.ApiConfig.Bind;
 import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.dataPack.PlayerData.*;
-import static org.orisland.wows.dataPack.ServerData.ServerToDir;
+import static org.orisland.wows.dataPack.StringToMeaningful.ServerToDir;
 
 @Slf4j
 public class BindData {

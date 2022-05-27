@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.orisland.wows.DataInit.initDataRefresh;
+import static org.orisland.wows.dataPack.DiffData.accountRecordAt;
 import static org.orisland.wows.dataPack.PlayerData.*;
 import static org.orisland.wows.dataPack.PrData.NickNameToPr;
 import static org.orisland.wows.dataPack.PrData.ShipPr;
@@ -98,25 +99,6 @@ public class Handler extends SimpleListenerHost {
             iNodes.add(bot, new PlainText("test"));
             event.getSender().getGroup().sendMessage(iNodes.build());
         }else if (event.getMessage().contentToString().equals("19")){
-            Bot bot = event.getBot();
-            ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
-            iNodes.add(bot, new PlainText("123"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            iNodes.add(bot, new PlainText("test"));
-            ForwardMessage build = iNodes.build();
-            ForwardMessage forwardMessage = new ForwardMessage(build.getPreview(), "标题", "test", "source", "总结", build.getNodeList());
-            event.getSender().getGroup().sendMessage(forwardMessage);
-
         }
 
         return ListeningStatus.LISTENING;

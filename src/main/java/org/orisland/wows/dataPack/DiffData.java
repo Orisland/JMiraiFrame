@@ -69,6 +69,9 @@ public class DiffData {
                         originSingleShipData.setRank_solo(new Rank_solo());
                     }else {
                         originSingleShipData = JsonTool.mapper.readValue(originData.get(String.valueOf(nowSingleShipData.getShip_id())).toString(), SingleShipData.class);
+                        if (originSingleShipData.getRank_solo() == null){
+                            System.out.println(1);
+                        }
                     }
 
                     Rank_solo nowRank = nowSingleShipData.getRank_solo();
@@ -255,11 +258,29 @@ public class DiffData {
         return diffDataPure(nowRecord, originRecord, 0);
     }
 
-    public static List<ShipDataObj> diffRank(String accountId, ApiConfig.Server server){
-        log.info("开始数据对比！");
-        JsonNode playerData = shipDataStandard(accountId,server);
-        JsonNode LocalData = readAccountToday(accountId, server);
-        log.info("数据对比结束！");
-        return null;
+    /**
+     * 获取指定几天前的战绩，首先库里得有
+     * @param accountId     用户id
+     * @param server        服务器
+     * @param day           几天前
+     * @return              具体数据
+     */
+    public static List<ShipDataObj> accountRecordAt(String accountId, ApiConfig.Server server, int day){
+        log.info("开始数据获取!");
+        int date = Integer.parseInt(DateUtil.format(new Date(), "YYYYMMdd"));
+        if (day == 0){
+            return diffShip(accountId, server);
+        }
+        int nowData = date;
+        int originData = nowData - 1;
+        JsonNode nowRecord = readPlayerData(accountId, server, String.valueOf(nowData));
+        JsonNode originRecord = readPlayerData(accountId, server, String.valueOf(originData));
+        if (nowRecord == null || originRecord == null){
+            log.error("查找数据不存在!");
+            return null;
+        }
+        List<ShipDataObj> shipDataObjs = diffDataPure(nowRecord, originRecord, day);
+        log.info("{}数据获取完成!", nowData);
+        return shipDataObjs;
     }
 }

@@ -164,8 +164,10 @@ public class PrData {
                 expWins += shipExpected.get("win_rate").asDouble() / 100 * battles;
                 expFrags +=  shipExpected.get("average_frags").asDouble() * battles;
             }catch (Exception e){
-                e.printStackTrace();
-                log.warn("跳过异常船只！");
+//                if (e.getMessage().equals("Cannot invoke \"com.fasterxml.jackson.databind.JsonNode.get(String)\" because \"shipExpected\" is null")){
+//                    log.info("船只期望数据为空！");
+//                }
+                log.info("跳过异常船只！");
                 continue;
             }
         }

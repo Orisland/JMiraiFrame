@@ -117,6 +117,10 @@ public class ApiConfig {
         EU, ASIA, NA, RU, com
     }
 
+    public enum Type{
+        normal, random, rank
+    }
+
     /**
      * 读取本地的翻译文件
      */

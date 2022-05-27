@@ -11,12 +11,11 @@ import net.mamoe.mirai.message.data.PlainText;
 import net.mamoe.mirai.message.data.QuoteReply;
 import org.orisland.WowsPlugin;
 import org.orisland.wows.ApiConfig;
-import org.orisland.wows.dataPack.PlayerData;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 
 import static org.orisland.wows.dataPack.BindData.bindQQAccountId;
 import static org.orisland.wows.dataPack.PlayerData.*;
-import static org.orisland.wows.dataPack.ServerData.StringToServer;
+import static org.orisland.wows.dataPack.StringToMeaningful.StringToServer;
 
 @Slf4j
 public class Bind extends JCompositeCommand {
