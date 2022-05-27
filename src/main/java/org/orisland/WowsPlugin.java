@@ -23,7 +23,7 @@ public final class WowsPlugin extends JavaPlugin {
     public static final WowsPlugin INSTANCE = new WowsPlugin();
     private WowsPlugin() {
 //        引入日志插件前置
-        super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "0.10")
+        super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "0.20")
                 .name("Wows")
                 .author("Orisland")
                 .dependsOn("net.mamoe.mirai-slf4j-bridge", true)
