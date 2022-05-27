@@ -32,8 +32,6 @@ public class Help  extends JCompositeCommand {
                 .append("\r")
                 .append("w(wws) spp [用户昵称] [区服] 查询指定用户综合pr")
                 .append("\r")
-                .append("w(wws) sp(searchplayer,找人) [用户昵称] [区服] 查询指定用户当日pr(该用户必须已经绑定)")
-                .append("\r")
                 .append("w(wws) sps(searchShipname) [船名] 查询自己指定船的pr")
                 .append("\r")
                 .append("w(wws) pr(战绩,水表) 查询自己账号的综合pr")

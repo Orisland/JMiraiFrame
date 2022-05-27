@@ -1,13 +1,16 @@
 package org.orisland;
 
 import Tool.JsonTool;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
+import net.mamoe.mirai.message.data.ForwardMessage;
+import net.mamoe.mirai.message.data.ForwardMessageBuilder;
+import net.mamoe.mirai.message.data.PlainText;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShipDataSimple;
@@ -18,7 +21,10 @@ import java.util.List;
 
 import static org.orisland.wows.DataInit.initDataRefresh;
 import static org.orisland.wows.dataPack.PlayerData.*;
+import static org.orisland.wows.dataPack.PrData.NickNameToPr;
+import static org.orisland.wows.dataPack.PrData.ShipPr;
 import static org.orisland.wows.dataPack.ShipData.*;
+import static org.orisland.wows.dataPack.DiffData.diffShip;
 
 /**
  * @Author: zhaolong
@@ -86,7 +92,31 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("17")){
             System.out.println(searchAccountIdToAccountInfo("566316444", ApiConfig.Server.EU));
         }else if (event.getMessage().contentToString().equals("18")){
+            Bot bot = event.getBot();
+            ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
+            iNodes.add(bot, new PlainText("123"));
+            iNodes.add(bot, new PlainText("test"));
+            event.getSender().getGroup().sendMessage(iNodes.build());
         }else if (event.getMessage().contentToString().equals("19")){
+            Bot bot = event.getBot();
+            ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
+            iNodes.add(bot, new PlainText("123"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            iNodes.add(bot, new PlainText("test"));
+            ForwardMessage build = iNodes.build();
+            ForwardMessage forwardMessage = new ForwardMessage(build.getPreview(), "标题", "test", "source", "总结", build.getNodeList());
+            event.getSender().getGroup().sendMessage(forwardMessage);
+
         }
 
         return ListeningStatus.LISTENING;

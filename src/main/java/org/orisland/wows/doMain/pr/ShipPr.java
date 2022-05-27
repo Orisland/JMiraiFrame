@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Data;
 import lombok.ToString;
 
-import static org.orisland.wows.dataPack.ShipData.PrStandard;
+import static org.orisland.wows.dataPack.PrData.PrStandard;
 import static org.orisland.wows.dataPack.ShipData.ShipToExpected;
 
 @ToString

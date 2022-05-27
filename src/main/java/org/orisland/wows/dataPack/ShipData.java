@@ -9,15 +9,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
-import org.orisland.wows.doMain.pr.ShipPr;
-import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShip;
 import org.orisland.wows.doMain.singleShipData.SingleShipData;
 
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,16 +49,23 @@ public class ShipData {
             JsonNode data = urlByJson.get("data").get(shipId);
             singleShip = new SingleShip();
             singleShip.setShipId(shipId);
-            singleShip.setImages(data.get("images"));
-            singleShip.setName(data.get("name").asText());
-            singleShip.setNation(data.get("nation").asText());
-            singleShip.setPremium(data.get("is_premium").asBoolean());
-            singleShip.setTier(data.get("tier").asInt());
-            singleShip.setType(data.get("type").asText());
-            singleShip.setSpecial(data.get("is_special").asBoolean());
+            singleShipPack(singleShip, data);
         }
-
         return singleShip;
+    }
+
+    /**
+     * singleShip数据打包
+     * @param singleShip
+     * @param data
+     */
+    private static void singleShipPack(SingleShip singleShip, JsonNode data) {
+        singleShip.setName(data.get("name").asText());
+        singleShip.setNation(data.get("nation").asText());
+        singleShip.setPremium(data.get("is_premium").asBoolean());
+        singleShip.setTier(data.get("tier").asInt());
+        singleShip.setType(data.get("type").asText());
+        singleShip.setSpecial(data.get("is_special").asBoolean());
     }
 
     /**
@@ -81,7 +84,8 @@ public class ShipData {
         if (urlByJson.get("data").get(accountId) == null){
             return null;
         }
-        ArrayNode data = JsonTool.mapper.valueToTree(urlByJson.get("data").get(accountId));
+
+        JsonNode data = JsonTool.mapper.valueToTree(urlByJson.get("data").get(accountId));
         List<SingleShipData> dataList = new ArrayList<>();
         try {
             for (JsonNode datum : data) {
@@ -112,114 +116,6 @@ public class ShipData {
         return ShipExpected.get("data").get(shipId);
     }
 
-
-    /**
-     * 单船的pr查询
-     * @param ship 船只战斗数据
-     * @return  处理后的pr结果
-     */
-    public static JsonNode ShipPr(JsonNode ship){
-        String shipId = ship.get("shipId").asText();
-        JsonNode shipExpected = ShipToExpected(shipId);
-        long battle = ship.get("battle").asLong();
-        double actualDmg = ship.get("Dmg").asDouble();
-        double expectedDmg = shipExpected.get("average_damage_dealt").asDouble() * battle;
-        double actualWins = ship.get("Wins").asDouble();
-        double expectedWins = shipExpected.get("win_rate").asDouble() / 100 * battle;
-        double actualFrags = ship.get("Frags").asDouble();
-        double expectedFrags =  shipExpected.get("average_frags").asDouble() * battle;
-
-        ShipPr shipPr = new ShipPr();
-        shipPr.setActualFrags(actualFrags);
-        shipPr.setExpectedFrags(expectedFrags);
-        shipPr.setActualDmg(actualDmg);
-        shipPr.setExpectedDmg(expectedDmg);
-        shipPr.setActualWins(actualWins);
-        shipPr.setExpectedWins(expectedWins);
-
-        return PrStandard(shipPr.PrCalculate());
-    }
-
-    public static ShipDataObj shipInfoPack(JsonNode ship){
-
-        return null;
-    }
-
-    /**
-     * 由pr数据得知具体级别和颜色
-     * @param pr pr
-     * @return  打包数据
-     */
-    public static JsonNode PrInfo(BigDecimal pr){
-        int score = Integer.parseInt(String.valueOf(pr));
-        String evaluate;
-        int distance;
-        String color;
-        if (score < 750){
-            evaluate = "还需努力";
-            distance = 750 - score;
-            color = "番茄";
-        }else if (score < 1100){
-            evaluate = "低于平均";
-            distance = 1100 - score;
-            color = "玉米";
-        }else if (score < 1350){
-            evaluate = "平均水平";
-            distance = 1350 - score;
-            color = "蛋黄";
-        }else if (score < 1550){
-            evaluate = "好";
-            distance = 1550 - score;
-            color = "小葱";
-        }else if (score < 1750){
-            evaluate = "很好";
-            distance = 1750 - score;
-            color = "白菜";
-        }else if (score < 2100){
-            evaluate = "非常好";
-            distance = 2100 - score;
-            color = "青菜";
-        }else if (score < 2450){
-            evaluate = "大佬平均";
-            distance = 2450 - score;
-            color = "茄子";
-        }else if (score < 5000){
-            evaluate = "神佬平均";
-            distance = score - 2450;
-            color = "大茄子";
-        } else if (score < 9999){
-            evaluate = "……？您";
-            distance = score - 5000;
-            color = "茄子PlusMaxPro限量版";
-        }else {
-            log.warn("score异常！");
-            evaluate = "未知";
-            distance = 0;
-            color = "灰";
-        }
-
-        ObjectNode objectNode = JsonTool.mapper.createObjectNode();
-        objectNode.put("evaluate", evaluate);
-        objectNode.put("distance",  "+" + String.valueOf(distance));
-        objectNode.put("color", color);
-
-        return objectNode;
-    }
-
-    /**
-     * pr标准化并添加info数据
-     * @param PR 需要标准化的pr
-     * @return 标准化pr
-     */
-    public static JsonNode PrStandard(double PR){
-        BigDecimal PrStandard = new BigDecimal(PR).setScale(0, RoundingMode.HALF_UP);
-        JsonNode jsonNode = PrInfo(PrStandard);
-        ObjectNode objectNode = JsonTool.mapper.createObjectNode();
-        objectNode.put("pr", String.valueOf(PrStandard));
-        objectNode.setAll((ObjectNode) jsonNode);
-        return objectNode;
-    }
-
     /**
      *打包全部船只信息
      * 维护信息适用，插件不涉及
@@ -240,13 +136,7 @@ public class ShipData {
             for (JsonNode datum : data) {
                 SingleShip singleShip = new SingleShip();
                 singleShip.setShipId(datum.get("ship_id").asText());
-//                singleShip.setImages(datum.get("images"));
-                singleShip.setName(datum.get("name").asText());
-                singleShip.setNation(datum.get("nation").asText());
-                singleShip.setPremium(datum.get("is_premium").asBoolean());
-                singleShip.setTier(datum.get("tier").asInt());
-                singleShip.setType(datum.get("type").asText());
-                singleShip.setSpecial(datum.get("is_special").asBoolean());
+                singleShipPack(singleShip, datum);
                 objectNode.set(singleShip.getShipId(), JsonTool.mapper.readTree(JsonTool.mapper.writeValueAsString(singleShip)));
                 count++;
             }
