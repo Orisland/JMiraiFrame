@@ -69,10 +69,11 @@ public class StringToMeaningful {
     public static Type StringToType(String str){
         str = str.toUpperCase();
         switch (str){
-            case "RAN":
+            case "SJ":
             case "随机":
             case "RANDOM":
                 return Type.random;
+            case "PW":
             case "排位":
             case "RANK":
                 return Type.rank;

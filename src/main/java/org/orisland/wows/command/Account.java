@@ -37,71 +37,9 @@ public class Account extends JCompositeCommand {
         super(WowsPlugin.INSTANCE, "wws", new String[]{"w"}, WowsPlugin.INSTANCE.getParentPermission());
     }
 
-    @SubCommand({"今日", "me", "today"})
+    @SubCommand({"今日", "me", "today", "recnet"})
     @Description("查询自己的当日pr")
     public void PrToday(CommandSenderOnMessage sender) throws InterruptedException {
-        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
-        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
-
-        MessageChain chain = null;
-
-        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
-        ForwardMessageBuilder message = new ForwardMessageBuilder(sender.getFromEvent().getSender());
-        MessageChainBuilder messageItem = new MessageChainBuilder();
-
-        int count = 0;
-        StringBuilder exception = new StringBuilder();
-
-        while (count <= ApiConfig.reTry) {
-            try {
-                Bind bind = findAccountId(qq);
-                if (bind == null) {
-                    chain = bindErrorPack(quoteReply);
-                    sender.sendMessage(chain);
-                    return;
-                } else {
-                    List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
-                    boolean b = messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message, Type.normal);
-                    if (!b){
-                        chain = errorFinally(quoteReply, "访问的战绩可能不存在！");
-                        sender.sendMessage(chain);
-                        return;
-                    }
-                }
-
-                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
-                ForwardMessage build = message.build();
-
-                ForwardMessage record = new ForwardMessage(
-                        build.getPreview(),
-                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
-                                || bind.getServer() == ApiConfig.Server.com
-                                ? "NA"
-                                : bind.getServer(), bind.getAccountName()),
-                        "今日战绩",
-                        build.getSource(),
-                        build.getSummary(),
-                        build.getNodeList());
-
-                sender.sendMessage(record);
-
-                return;
-            } catch (Exception e) {
-                e.printStackTrace();
-                log.error("错误计数:{}", ++count);
-                exception.append(e.getMessage())
-                        .append("\r");
-                Thread.sleep(reTry / 10);
-            }
-        }
-
-        chain = errorFinally(quoteReply, exception.toString());
-        sender.sendMessage(chain);
-    }
-
-    @SubCommand({"随机", "sj", "random"})
-    @Description("查询自己的当日pr")
-    public void PrRandomToday(CommandSenderOnMessage sender) throws InterruptedException {
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
         String qq = String.valueOf(sender.getFromEvent().getSender().getId());
 
@@ -161,7 +99,69 @@ public class Account extends JCompositeCommand {
         sender.sendMessage(chain);
     }
 
-    @SubCommand({"rank", "软壳", "排位", "ran"})
+    @SubCommand({"全部", "all", "al"})
+    @Description("查询自己的当日pr")
+    public void PrRandomToday(CommandSenderOnMessage sender) throws InterruptedException {
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
+
+        MessageChain chain = null;
+
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        ForwardMessageBuilder message = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
+
+        int count = 0;
+        StringBuilder exception = new StringBuilder();
+
+        while (count <= ApiConfig.reTry) {
+            try {
+                Bind bind = findAccountId(qq);
+                if (bind == null) {
+                    chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
+                } else {
+                    List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
+                    boolean b = messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message, Type.normal);
+                    if (!b){
+                        chain = errorFinally(quoteReply, "访问的战绩可能不存在！");
+                        sender.sendMessage(chain);
+                        return;
+                    }
+                }
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                ForwardMessage build = message.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        build.getPreview(),
+                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
+                                || bind.getServer() == ApiConfig.Server.com
+                                ? "NA"
+                                : bind.getServer(), bind.getAccountName()),
+                        "今日战绩",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(record);
+
+                return;
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("错误计数:{}", ++count);
+                exception.append(e.getMessage())
+                        .append("\r");
+                Thread.sleep(reTry / 10);
+            }
+        }
+
+        chain = errorFinally(quoteReply, exception.toString());
+        sender.sendMessage(chain);
+    }
+
+    @SubCommand({"rank", "软壳", "排位", "pw"})
     @Description("查询今日软壳战绩的pr")
     public void rankPrToday(CommandSenderOnMessage sender) throws InterruptedException {
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
@@ -205,70 +205,6 @@ public class Account extends JCompositeCommand {
                                 ? "NA"
                                 : bind.getServer(), bind.getAccountName()),
                         "今日rank战绩",
-                        build.getSource(),
-                        build.getSummary(),
-                        build.getNodeList());
-
-                sender.sendMessage(record);
-
-                return;
-            } catch (Exception e) {
-                e.printStackTrace();
-                log.error("错误计数:{}", ++count);
-                exception.append(e.getMessage())
-                        .append("\r");
-                Thread.sleep(reTry / 10);
-            }
-        }
-
-        chain = errorFinally(quoteReply, exception.toString());
-        sender.sendMessage(chain);
-    }
-
-    @SubCommand({"yrank", "昨日rank"})
-    @Description("查询今日软壳战绩的pr")
-    public void rankPrYesterday(CommandSenderOnMessage sender) throws InterruptedException {
-        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
-        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
-
-        MessageChain chain = null;
-
-        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
-        ForwardMessageBuilder message = new ForwardMessageBuilder(sender.getFromEvent().getSender());
-        MessageChainBuilder messageItem = new MessageChainBuilder();
-
-
-        int count = 0;
-        StringBuilder exception = new StringBuilder();
-
-        while (count <= ApiConfig.reTry) {
-            try {
-                Bind bind = findAccountId(qq);
-                if (bind == null) {
-                    chain = bindErrorPack(quoteReply);
-                    sender.sendMessage(chain);
-                    return;
-                } else {
-                    List<ShipDataObj> shipDataObjs = accountRecordAt(bind.getAccountId(), bind.getServer(), 1);
-
-                    boolean b = messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message, Type.rank);
-                    if (!b){
-                        chain = errorFinally(quoteReply, "访问的战绩可能不存在！");
-                        sender.sendMessage(chain);
-                        return;
-                    }
-                }
-
-                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
-                ForwardMessage build = message.build();
-
-                ForwardMessage record = new ForwardMessage(
-                        build.getPreview(),
-                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
-                                || bind.getServer() == ApiConfig.Server.com
-                                ? "NA"
-                                : bind.getServer(), bind.getAccountName()),
-                        "昨日rank战绩",
                         build.getSource(),
                         build.getSummary(),
                         build.getNodeList());
@@ -599,6 +535,12 @@ public class Account extends JCompositeCommand {
         }
         chain = errorFinally(quoteReply, exception.toString());
         sender.sendMessage(chain);
+    }
+
+    @SubCommand({"昨日战绩", "ypr"})
+    @Description("查询自己昨天pr")
+    public void yesterdayPr(CommandSenderOnMessage sender) throws InterruptedException {
+        yesterdayPr(sender, "random");
     }
 
     @SubCommand({"时间段", "dpr"})

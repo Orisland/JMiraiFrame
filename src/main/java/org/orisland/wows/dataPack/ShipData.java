@@ -161,12 +161,31 @@ public class ShipData {
                 return jsonNode;
             }
         }
+        log.info("汉语精确匹配失败!");
+
 //        模糊匹配
         for (JsonNode jsonNode : LocalShipInfo) {
             if (jsonNode.get("name").asText().contains(shipName)){
                 return jsonNode;
             }
         }
+        log.info("汉语模糊匹配失败!");
+
+//        英语精确匹配
+        for (JsonNode jsonNode : LocalShipInfo) {
+            if (jsonNode.get("enname").asText().equalsIgnoreCase(shipName)){
+                return jsonNode;
+            }
+        }
+        log.info("英语精确匹配失败!");
+
+//        英语模糊匹配
+        for (JsonNode jsonNode : LocalShipInfo) {
+            if (jsonNode.get("enname").asText().toUpperCase().contains(shipName.toUpperCase())){
+                return jsonNode;
+            }
+        }
+        log.info("英语模糊匹配失败!");
         log.warn("{}不存在！",shipName);
         return null;
     }
