@@ -70,7 +70,7 @@ public class DiffData {
                     }else {
                         originSingleShipData = JsonTool.mapper.readValue(originData.get(String.valueOf(nowSingleShipData.getShip_id())).toString(), SingleShipData.class);
                         if (originSingleShipData.getRank_solo() == null){
-                            System.out.println(1);
+                            originSingleShipData.setRank_solo(new Rank_solo());
                         }
                     }
 
