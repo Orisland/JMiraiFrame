@@ -124,7 +124,7 @@ public class DiffData {
                             shipPr.setActualWins(Wins);
                             shipPr.setActualFrags(Frags);
                             shipPr.setActualDmg(Dmg);
-                            shipPr.setBattle(rankBattle);
+                            shipPr.setBattle(Battle);
 
                             shipPrRank.setActualWins(rankWins);
                             shipPrRank.setActualFrags(rankFrags);
