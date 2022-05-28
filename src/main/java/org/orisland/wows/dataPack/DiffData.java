@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.ShipDataObj;
+import org.orisland.wows.doMain.SingleShip;
 import org.orisland.wows.doMain.pr.ShipPr;
 import org.orisland.wows.doMain.singleShipData.Main_battery;
 import org.orisland.wows.doMain.singleShipData.Pvp;
@@ -189,9 +190,11 @@ public class DiffData {
                                 nowRank,
                                 originRank);
 
-                    shipDataObj.setShip(SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id())));
+                    SingleShip singleShip = SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id()));
+
+                    shipDataObj.setShip(singleShip);
                     shipDataObj.setRank(false);
-                    shipDataObjRank.setShip(SearchShipIdToShipInfo(String.valueOf(nowSingleShipData.getShip_id())));
+                    shipDataObjRank.setShip(singleShip);
                     shipDataObjRank.setRank(true);
 
                     if (shipDataObj.getBattle() != 0)

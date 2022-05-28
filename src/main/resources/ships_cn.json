@@ -1,0 +1,5905 @@
+{
+  "date": "20220528",
+  "data": {
+    "3542005744": {
+      "shipId": "3542005744",
+      "shipIdStr": "PASC718",
+      "zh": "AL蒙彼利埃",
+      "en": "AL Montpelier",
+      "py": "ALmbla",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3553572848": {
+      "shipId": "3553572848",
+      "shipIdStr": "PASB707",
+      "zh": "加利福尼亚",
+      "en": "California",
+      "py": "jlfny",
+      "type": "战列",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3541972176": {
+      "shipId": "3541972176",
+      "shipIdStr": "PZSD718",
+      "zh": "ShipSmasha",
+      "en": "Ship Smasha",
+      "py": "ShipSmasha",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3741234640": {
+      "shipId": "3741234640",
+      "shipIdStr": "PRSC528",
+      "zh": "奥恰科夫",
+      "en": "Ochakov",
+      "py": "aqkf",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3340678608": {
+      "shipId": "3340678608",
+      "shipIdStr": "PRSC910",
+      "zh": "[莫斯科]",
+      "en": "[Moskva]",
+      "py": "msk",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3655251408": {
+      "shipId": "3655251408",
+      "shipIdStr": "PRSC610",
+      "zh": "斯摩棱斯克",
+      "en": "Smolensk",
+      "py": "smlsk",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3550360880": {
+      "shipId": "3550360880",
+      "shipIdStr": "PWSD710",
+      "zh": "朗纳尔",
+      "en": "Ragnar",
+      "py": "lne",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "欧洲"
+    },
+    "3338548944": {
+      "shipId": "3338548944",
+      "shipIdStr": "PJSD912",
+      "zh": "[岛风]",
+      "en": "[Shimakaze]",
+      "py": "df",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3667801808": {
+      "shipId": "3667801808",
+      "shipIdStr": "PJSD598",
+      "zh": "朝潮B",
+      "en": "Asashio B",
+      "py": "ccB",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3720263664": {
+      "shipId": "3720263664",
+      "shipIdStr": "PASC548",
+      "zh": "圣地亚哥",
+      "en": "San Diego",
+      "py": "sdyg",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3553572560": {
+      "shipId": "3553572560",
+      "shipIdStr": "PJSB707",
+      "zh": "ARPHaruna",
+      "en": "ARP Haruna",
+      "py": "ARPHaruna",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3340744656": {
+      "shipId": "3340744656",
+      "shipIdStr": "PBSA910",
+      "zh": "[大胆]",
+      "en": "[Audacious]",
+      "py": "dd",
+      "type": "航母",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3551475152": {
+      "shipId": "3551475152",
+      "shipIdStr": "PRSB709",
+      "zh": "AL苏维埃罗西亚",
+      "en": "AL Sov. Rossiya",
+      "py": "ALswalxy",
+      "type": "战列",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "3522082512": {
+      "shipId": "3522082512",
+      "shipIdStr": "PJSC737",
+      "zh": "ARPNachi",
+      "en": "ARP Nachi",
+      "py": "ARPNachi",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3554555600": {
+      "shipId": "3554555600",
+      "shipIdStr": "PJSD706",
+      "zh": "东云",
+      "en": "Shinonome",
+      "py": "dy",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "3532568272": {
+      "shipId": "3532568272",
+      "shipIdStr": "PJSC727",
+      "zh": "东方神龙",
+      "en": "E. Dragon",
+      "py": "dfsl",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3560912592": {
+      "shipId": "3560912592",
+      "shipIdStr": "PJSB700",
+      "zh": "ARPYamato",
+      "en": "ARP Yamato",
+      "py": "ARPYamato",
+      "type": "战列",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3667802064": {
+      "shipId": "3667802064",
+      "shipIdStr": "PBSD598",
+      "zh": "哥萨克人B",
+      "en": "Cossack B",
+      "py": "gskrB",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3667900400": {
+      "shipId": "3667900400",
+      "shipIdStr": "PASA598",
+      "zh": "塞班B",
+      "en": "Saipan B",
+      "py": "sbB",
+      "type": "航母",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3374266064": {
+      "shipId": "3374266064",
+      "shipIdStr": "PJSB878",
+      "zh": "IgnisPurgatio",
+      "en": "Ignis Purgatio",
+      "py": "IgnisPurgatio",
+      "type": "战列",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3667834576": {
+      "shipId": "3667834576",
+      "shipIdStr": "PJSC598",
+      "zh": "爱宕B",
+      "en": "Atago B",
+      "py": "adB",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3545183952": {
+      "shipId": "3545183952",
+      "shipIdStr": "PJSB715",
+      "zh": "HSF比叡",
+      "en": "HSF Hiei",
+      "py": "HSFbr",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3340679120": {
+      "shipId": "3340679120",
+      "shipIdStr": "PBSC910",
+      "zh": "独眼巨人",
+      "en": "Cyclops",
+      "py": "dyjr",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3740153648": {
+      "shipId": "3740153648",
+      "shipIdStr": "PGSD529",
+      "zh": "ZF-6",
+      "en": "ZF-6",
+      "py": "ZF6",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3554588464": {
+      "shipId": "3554588464",
+      "shipIdStr": "PGSC706",
+      "zh": "HSF海军上将施佩伯爵",
+      "en": "HSF Graf Spee",
+      "py": "HSFhjsjspbj",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "3445503440": {
+      "shipId": "3445503440",
+      "shipIdStr": "PRSD810",
+      "zh": "DDR-10",
+      "en": "DD R-10",
+      "py": "DDR10",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3333404368": {
+      "shipId": "3333404368",
+      "shipIdStr": "PJSA917",
+      "zh": "[白龙]",
+      "en": "[Hakuryū]",
+      "py": "bl",
+      "type": "航母",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3741202128": {
+      "shipId": "3741202128",
+      "shipIdStr": "PJSD528",
+      "zh": "HSF晴风II",
+      "en": "HSF Harekaze II",
+      "py": "HSFqfII",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3551442640": {
+      "shipId": "3551442640",
+      "shipIdStr": "PJSC709",
+      "zh": "ARPHaguro",
+      "en": "ARP Haguro",
+      "py": "ARPHaguro",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3730749424": {
+      "shipId": "3730749424",
+      "shipIdStr": "PASC538",
+      "zh": "罗彻斯特",
+      "en": "Rochester",
+      "py": "lcst",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3340711888": {
+      "shipId": "3340711888",
+      "shipIdStr": "PBSB910",
+      "zh": "[征服者]",
+      "en": "[Conqueror]",
+      "py": "zfz",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3542005552": {
+      "shipId": "3542005552",
+      "shipIdStr": "PGSC718",
+      "zh": "CrossofDorn",
+      "en": "Cross of Dorn",
+      "py": "CrossofDorn",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3667867440": {
+      "shipId": "3667867440",
+      "shipIdStr": "PGSB598",
+      "zh": "提尔皮茨B",
+      "en": "Tirpitz B",
+      "py": "tepcB",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3676223184": {
+      "shipId": "3676223184",
+      "shipIdStr": "PJSC590",
+      "zh": "吉野B",
+      "en": "Yoshino B",
+      "py": "jyB",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3659445712": {
+      "shipId": "3659445712",
+      "shipIdStr": "PRSC606",
+      "zh": "马卡罗夫海军上将",
+      "en": "Makarov",
+      "py": "mklfhjsj",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "3552491216": {
+      "shipId": "3552491216",
+      "shipIdStr": "PJSC708",
+      "zh": "ARPTakao",
+      "en": "ARP Takao",
+      "py": "ARPTakao",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3340711920": {
+      "shipId": "3340711920",
+      "shipIdStr": "PASB910",
+      "zh": "康涅狄格",
+      "en": "Connecticut",
+      "py": "kndg",
+      "type": "战列",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3335501808": {
+      "shipId": "3335501808",
+      "shipIdStr": "PASA915",
+      "zh": "[中途岛]",
+      "en": "[Midway]",
+      "py": "ztd",
+      "type": "航母",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3668916016": {
+      "shipId": "3668916016",
+      "shipIdStr": "PGSB597",
+      "zh": "沙恩霍斯特B",
+      "en": "Scharnhorst B",
+      "py": "sehstB",
+      "type": "战列",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3541972688": {
+      "shipId": "3541972688",
+      "shipIdStr": "PJSD718",
+      "zh": "AL雪风",
+      "en": "AL Yukikaze",
+      "py": "ALxf",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3553539792": {
+      "shipId": "3553539792",
+      "shipIdStr": "PJSC707",
+      "zh": "ARPAshigara",
+      "en": "ARP Ashigara",
+      "py": "ARPAshigara",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3363780304": {
+      "shipId": "3363780304",
+      "shipIdStr": "PJSB888",
+      "zh": "Ragnarok",
+      "en": "Ragnarok",
+      "py": "Ragnarok",
+      "type": "战列",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3554621136": {
+      "shipId": "3554621136",
+      "shipIdStr": "PJSB706",
+      "zh": "ARPKirishima",
+      "en": "ARP Kirishima",
+      "py": "ARPKirishima",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3667900208": {
+      "shipId": "3667900208",
+      "shipIdStr": "PGSA598",
+      "zh": "齐柏林伯爵B",
+      "en": "Graf Zeppelin B",
+      "py": "qblbjB",
+      "type": "航母",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3555636944": {
+      "shipId": "3555636944",
+      "shipIdStr": "PJSC705",
+      "zh": "ARPMyōkō",
+      "en": "ARP Myōkō",
+      "py": "ARPMyk",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3740219088": {
+      "shipId": "3740219088",
+      "shipIdStr": "PJSB529",
+      "zh": "石见",
+      "en": "Iwami",
+      "py": "sj",
+      "type": "战列",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "3655251664": {
+      "shipId": "3655251664",
+      "shipIdStr": "PJSC610",
+      "zh": "北上",
+      "en": "Kitakami",
+      "py": "bs",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3315513040": {
+      "shipId": "3315513040",
+      "shipIdStr": "PJSC934",
+      "zh": "[藏王]",
+      "en": "[Zaō]",
+      "py": "cw",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3658397424": {
+      "shipId": "3658397424",
+      "shipIdStr": "PISC607",
+      "zh": "戈里齐亚",
+      "en": "Gorizia",
+      "py": "glqy",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "3741267408": {
+      "shipId": "3741267408",
+      "shipIdStr": "PRSB528",
+      "zh": "博罗季诺",
+      "en": "Borodino",
+      "py": "bljn",
+      "type": "战列",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3668883440": {
+      "shipId": "3668883440",
+      "shipIdStr": "PASC597",
+      "zh": "博伊西",
+      "en": "Boise",
+      "py": "byx",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3550394352": {
+      "shipId": "3550394352",
+      "shipIdStr": "PASC710",
+      "zh": "塞勒姆",
+      "en": "Salem",
+      "py": "slm",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3337500656": {
+      "shipId": "3337500656",
+      "shipIdStr": "PASD913",
+      "zh": "[基林]",
+      "en": "[Gearing]",
+      "py": "jl",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3655284528": {
+      "shipId": "3655284528",
+      "shipIdStr": "PGSB610",
+      "zh": "梅克伦堡",
+      "en": "Mecklenburg",
+      "py": "mklb",
+      "type": "战列",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3555670000": {
+      "shipId": "3555670000",
+      "shipIdStr": "PASB705",
+      "zh": "德克萨斯",
+      "en": "Texas",
+      "py": "dkss",
+      "type": "战列",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "3730748880": {
+      "shipId": "3730748880",
+      "shipIdStr": "PRSC538",
+      "zh": "彼得罗·巴格拉季昂",
+      "en": "P. Bagration",
+      "py": "bdlbglja",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3730782032": {
+      "shipId": "3730782032",
+      "shipIdStr": "PFSB538",
+      "zh": "弗兰德尔",
+      "en": "Flandre",
+      "py": "flde",
+      "type": "战列",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3340645680": {
+      "shipId": "3340645680",
+      "shipIdStr": "PWSD910",
+      "zh": "拉普兰",
+      "en": "Lappland",
+      "py": "lpl",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "欧洲"
+    },
+    "3730782192": {
+      "shipId": "3730782192",
+      "shipIdStr": "PASB538",
+      "zh": "星座",
+      "en": "Constellation",
+      "py": "xz",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3666786288": {
+      "shipId": "3666786288",
+      "shipIdStr": "PASC599",
+      "zh": "阿拉斯加B",
+      "en": "Alaska B",
+      "py": "alsjB",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3340678960": {
+      "shipId": "3340678960",
+      "shipIdStr": "PGSC910",
+      "zh": "[兴登堡]",
+      "en": "[Hindenburg]",
+      "py": "xdb",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3552523984": {
+      "shipId": "3552523984",
+      "shipIdStr": "PJSB708",
+      "zh": "ARPHiei",
+      "en": "ARP Hiei",
+      "py": "ARPHiei",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3530504176": {
+      "shipId": "3530504176",
+      "shipIdStr": "PASB729",
+      "zh": "佐治亚",
+      "en": "Georgia",
+      "py": "zzy",
+      "type": "战列",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3667867632": {
+      "shipId": "3667867632",
+      "shipIdStr": "PASB598",
+      "zh": "马萨诸塞B",
+      "en": "Massachusetts B",
+      "py": "mszsB",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3655218480": {
+      "shipId": "3655218480",
+      "shipIdStr": "PWSD610",
+      "zh": "斯莫兰",
+      "en": "Småland",
+      "py": "sml",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "欧洲"
+    },
+    "3666818896": {
+      "shipId": "3666818896",
+      "shipIdStr": "PFSB599",
+      "zh": "让·巴尔B",
+      "en": "Jean Bart B",
+      "py": "rbeB",
+      "type": "战列",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "3666818864": {
+      "shipId": "3666818864",
+      "shipIdStr": "PGSB599",
+      "zh": "波美拉尼亚B",
+      "en": "Pommern B",
+      "py": "bmlnyB",
+      "type": "战列",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3542005456": {
+      "shipId": "3542005456",
+      "shipIdStr": "PJSC718",
+      "zh": "ARPMaya",
+      "en": "ARP Maya",
+      "py": "ARPMaya",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3553540080": {
+      "shipId": "3553540080",
+      "shipIdStr": "PASC707",
+      "zh": "弗林特",
+      "en": "Flint",
+      "py": "flt",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3555669712": {
+      "shipId": "3555669712",
+      "shipIdStr": "PJSB705",
+      "zh": "ARPKongō",
+      "en": "ARP Kongō",
+      "py": "ARPKong",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3730814960": {
+      "shipId": "3730814960",
+      "shipIdStr": "PASA538",
+      "zh": "大黄蜂",
+      "en": "Hornet",
+      "py": "dhf",
+      "type": "航母",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3731830736": {
+      "shipId": "3731830736",
+      "shipIdStr": "PBSB537",
+      "zh": "科林伍德",
+      "en": "Collingwood",
+      "py": "klwd",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3669964624": {
+      "shipId": "3669964624",
+      "shipIdStr": "PFSB596",
+      "zh": "敦刻尔克B",
+      "en": "Dunkerque B",
+      "py": "dkekB",
+      "type": "战列",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "3332323024": {
+      "shipId": "3332323024",
+      "shipIdStr": "PJSB918",
+      "zh": "[大和]",
+      "en": "[Yamato]",
+      "py": "dh",
+      "type": "战列",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3543054032": {
+      "shipId": "3543054032",
+      "shipIdStr": "PJSC717",
+      "zh": "南方神龙",
+      "en": "S. Dragon",
+      "py": "nfsl",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3655251952": {
+      "shipId": "3655251952",
+      "shipIdStr": "PASC610",
+      "zh": "波多黎各",
+      "en": "Puerto Rico",
+      "py": "bdlg",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3340711728": {
+      "shipId": "3340711728",
+      "shipIdStr": "PGSB910",
+      "zh": "[大选帝侯]",
+      "en": "[G. Kurfürst]",
+      "py": "dxdh",
+      "type": "战列",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3550393808": {
+      "shipId": "3550393808",
+      "shipIdStr": "PRSC710",
+      "zh": "塞瓦斯托波尔",
+      "en": "Sevastopol",
+      "py": "swstbe",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3679369200": {
+      "shipId": "3679369200",
+      "shipIdStr": "PASC587",
+      "zh": "亚特兰大B",
+      "en": "Atlanta B",
+      "py": "ytldB",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3667900112": {
+      "shipId": "3667900112",
+      "shipIdStr": "PJSA598",
+      "zh": "加贺B",
+      "en": "Kaga B",
+      "py": "jhB",
+      "type": "航母",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3655251920": {
+      "shipId": "3655251920",
+      "shipIdStr": "PBSC610",
+      "zh": "直布罗陀",
+      "en": "Gibraltar",
+      "py": "zblt",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3655317296": {
+      "shipId": "3655317296",
+      "shipIdStr": "PGSA610",
+      "zh": "马克斯·殷麦曼",
+      "en": "M. Immelmann",
+      "py": "mksymm",
+      "type": "航母",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3551410160": {
+      "shipId": "3551410160",
+      "shipIdStr": "PASD709",
+      "zh": "布莱克",
+      "en": "Black",
+      "py": "blk",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3741235184": {
+      "shipId": "3741235184",
+      "shipIdStr": "PASC528",
+      "zh": "国会",
+      "en": "Congress",
+      "py": "gh",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3333371888": {
+      "shipId": "3333371888",
+      "shipIdStr": "PASB917",
+      "zh": "[蒙大拿]",
+      "en": "[Montana]",
+      "py": "mdn",
+      "type": "战列",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3248437200": {
+      "shipId": "3248437200",
+      "shipIdStr": "PBSB998",
+      "zh": "圣劳伦斯",
+      "en": "St. Lawrence",
+      "py": "slls",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3667801296": {
+      "shipId": "3667801296",
+      "shipIdStr": "PZSD598",
+      "zh": "洛阳B",
+      "en": "Loyang B",
+      "py": "lyB",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3655284688": {
+      "shipId": "3655284688",
+      "shipIdStr": "PBSB610",
+      "zh": "无比",
+      "en": "Incomparable",
+      "py": "wb",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3720263120": {
+      "shipId": "3720263120",
+      "shipIdStr": "PRSC548",
+      "zh": "巴格拉季昂",
+      "en": "Bagration",
+      "py": "bglja",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3741267952": {
+      "shipId": "3741267952",
+      "shipIdStr": "PASB528",
+      "zh": "阿拉巴马VL",
+      "en": "Alabama VL",
+      "py": "albmVL",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3552524016": {
+      "shipId": "3552524016",
+      "shipIdStr": "PISB708",
+      "zh": "AL利托里奥",
+      "en": "AL Littorio",
+      "py": "ALltla",
+      "type": "战列",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "3741267792": {
+      "shipId": "3741267792",
+      "shipIdStr": "PFSB528",
+      "zh": "香槟",
+      "en": "Champagne",
+      "py": "xb",
+      "type": "战列",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3552524272": {
+      "shipId": "3552524272",
+      "shipIdStr": "PASB708",
+      "zh": "阿拉巴马ST",
+      "en": "Alabama ST",
+      "py": "albmST",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3668850672": {
+      "shipId": "3668850672",
+      "shipIdStr": "PASD597",
+      "zh": "西姆斯B",
+      "en": "Sims B",
+      "py": "xmsB",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3741235152": {
+      "shipId": "3741235152",
+      "shipIdStr": "PBSC528",
+      "zh": "贝尔法斯特43",
+      "en": "Belfast '43",
+      "py": "befst43",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3445536752": {
+      "shipId": "3445536752",
+      "shipIdStr": "PASC810",
+      "zh": "奥斯汀",
+      "en": "Austin",
+      "py": "ast",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3551409616": {
+      "shipId": "3551409616",
+      "shipIdStr": "PRSD709",
+      "zh": "不惧",
+      "en": "Neustrashimy",
+      "py": "bj",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "3340645840": {
+      "shipId": "3340645840",
+      "shipIdStr": "PRSD910",
+      "zh": "[雷暴]",
+      "en": "[Grozovoi]",
+      "py": "lb",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3655219184": {
+      "shipId": "3655219184",
+      "shipIdStr": "PASD610",
+      "zh": "福雷斯特·谢尔曼",
+      "en": "F. Sherman",
+      "py": "flstxem",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3552458448": {
+      "shipId": "3552458448",
+      "shipIdStr": "PJSD708",
+      "zh": "HSF晴风",
+      "en": "HSF Harekaze",
+      "py": "HSFqf",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3743364816": {
+      "shipId": "3743364816",
+      "shipIdStr": "PJSB526",
+      "zh": "伊势",
+      "en": "Ise",
+      "py": "ys",
+      "type": "战列",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "3760109552": {
+      "shipId": "3760109552",
+      "shipIdStr": "PASC510",
+      "zh": "阿拉斯加",
+      "en": "Alaska",
+      "py": "alsj",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3761190096": {
+      "shipId": "3761190096",
+      "shipIdStr": "PZSB509",
+      "zh": "八戒",
+      "en": "Bajie",
+      "py": "bj",
+      "type": "战列",
+      "tier": "9",
+      "nation": "泛亚"
+    },
+    "3750704336": {
+      "shipId": "3750704336",
+      "shipIdStr": "PZSB519",
+      "zh": "悟净",
+      "en": "Wujing",
+      "py": "wj",
+      "type": "战列",
+      "tier": "9",
+      "nation": "泛亚"
+    },
+    "3746477520": {
+      "shipId": "3746477520",
+      "shipIdStr": "PRSC523",
+      "zh": "AL阿芙乐尔",
+      "en": "AL Avrora",
+      "py": "ALafle",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "3744380368": {
+      "shipId": "3744380368",
+      "shipIdStr": "PRSC525",
+      "zh": "基洛夫",
+      "en": "Kirov",
+      "py": "jlf",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "3762173232": {
+      "shipId": "3762173232",
+      "shipIdStr": "PWSD508",
+      "zh": "奥坎",
+      "en": "Orkan",
+      "py": "ak",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "欧洲"
+    },
+    "3751687888": {
+      "shipId": "3751687888",
+      "shipIdStr": "PJSD518",
+      "zh": "朝潮",
+      "en": "Asashio",
+      "py": "cc",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3760076496": {
+      "shipId": "3760076496",
+      "shipIdStr": "PJSD510",
+      "zh": "疾风",
+      "en": "Hayate",
+      "py": "jf",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3749623504": {
+      "shipId": "3749623504",
+      "shipIdStr": "PJSC520",
+      "zh": "吉野",
+      "en": "Yoshino",
+      "py": "jy",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3753818064": {
+      "shipId": "3753818064",
+      "shipIdStr": "PBSC516",
+      "zh": "伦敦",
+      "en": "London",
+      "py": "ld",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "3743332304": {
+      "shipId": "3743332304",
+      "shipIdStr": "PBSC526",
+      "zh": "黛朵",
+      "en": "Dido",
+      "py": "dd",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "3762271440": {
+      "shipId": "3762271440",
+      "shipIdStr": "PZSA508",
+      "zh": "三藏",
+      "en": "Sanzang",
+      "py": "sc",
+      "type": "航母",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3760174896": {
+      "shipId": "3760174896",
+      "shipIdStr": "PGSA510",
+      "zh": "沃纳·沃斯",
+      "en": "W. Voss",
+      "py": "wnws",
+      "type": "航母",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3751687376": {
+      "shipId": "3751687376",
+      "shipIdStr": "PZSD518",
+      "zh": "汾阳",
+      "en": "Fenyang",
+      "py": "fy",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3751753168": {
+      "shipId": "3751753168",
+      "shipIdStr": "PRSB518",
+      "zh": "列宁",
+      "en": "Lenin",
+      "py": "ln",
+      "type": "战列",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3756963280": {
+      "shipId": "3756963280",
+      "shipIdStr": "PRSC513",
+      "zh": "瓦良格",
+      "en": "Varyag",
+      "py": "wlg",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "3750672080": {
+      "shipId": "3750672080",
+      "shipIdStr": "PJSC519",
+      "zh": "AL吾妻",
+      "en": "AL Azuma",
+      "py": "ALwq",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "3762239184": {
+      "shipId": "3762239184",
+      "shipIdStr": "PJSB508",
+      "zh": "纪伊",
+      "en": "Kii",
+      "py": "jy",
+      "type": "战列",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3752736720": {
+      "shipId": "3752736720",
+      "shipIdStr": "PBSD517",
+      "zh": "哥萨克人",
+      "en": "Cossack",
+      "py": "gskr",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3751786480": {
+      "shipId": "3751786480",
+      "shipIdStr": "PASA518",
+      "zh": "企业",
+      "en": "Enterprise",
+      "py": "qy",
+      "type": "航母",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3750672368": {
+      "shipId": "3750672368",
+      "shipIdStr": "PASC519",
+      "zh": "塔尔萨",
+      "en": "Tulsa",
+      "py": "tes",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3762271696": {
+      "shipId": "3762271696",
+      "shipIdStr": "PRSA508",
+      "zh": "契卡洛夫",
+      "en": "Chkalov",
+      "py": "qklf",
+      "type": "航母",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3761190608": {
+      "shipId": "3761190608",
+      "shipIdStr": "PJSB509",
+      "zh": "武藏",
+      "en": "Musashi",
+      "py": "wc",
+      "type": "战列",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "3750704848": {
+      "shipId": "3750704848",
+      "shipIdStr": "PJSB519",
+      "zh": "肥前",
+      "en": "Hizen",
+      "py": "fq",
+      "type": "战列",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "3761125136": {
+      "shipId": "3761125136",
+      "shipIdStr": "PHSD509",
+      "zh": "格罗宁根",
+      "en": "Groningen",
+      "py": "glng",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "荷兰"
+    },
+    "3760109520": {
+      "shipId": "3760109520",
+      "shipIdStr": "PBSC510",
+      "zh": "普利茅斯",
+      "en": "Plymouth",
+      "py": "plms",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3762206672": {
+      "shipId": "3762206672",
+      "shipIdStr": "PBSC508",
+      "zh": "柴郡",
+      "en": "Cheshire",
+      "py": "cj",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3751687984": {
+      "shipId": "3751687984",
+      "shipIdStr": "PGSD518",
+      "zh": "Z-35",
+      "en": "Z-35",
+      "py": "Z35",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3751786448": {
+      "shipId": "3751786448",
+      "shipIdStr": "PBSA518",
+      "zh": "皇家方舟",
+      "en": "Ark Royal",
+      "py": "hjfz",
+      "type": "航母",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "3753850320": {
+      "shipId": "3753850320",
+      "shipIdStr": "PRSB516",
+      "zh": "新罗西斯克",
+      "en": "Novorossiysk",
+      "py": "xlxsk",
+      "type": "战列",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "3751786192": {
+      "shipId": "3751786192",
+      "shipIdStr": "PJSA518",
+      "zh": "加贺",
+      "en": "Kaga",
+      "py": "jh",
+      "type": "航母",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "3762239440": {
+      "shipId": "3762239440",
+      "shipIdStr": "PBSB508",
+      "zh": "前卫",
+      "en": "Vanguard",
+      "py": "qw",
+      "type": "战列",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3761157936": {
+      "shipId": "3761157936",
+      "shipIdStr": "PGSC509",
+      "zh": "齐格菲",
+      "en": "Siegfried",
+      "py": "qgf",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3762173744": {
+      "shipId": "3762173744",
+      "shipIdStr": "PGSD508",
+      "zh": "Z-39",
+      "en": "Z-39",
+      "py": "Z39",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3760109008": {
+      "shipId": "3760109008",
+      "shipIdStr": "PRSC510",
+      "zh": "斯大林格勒",
+      "en": "Stalingrad",
+      "py": "sdlgl",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3753817456": {
+      "shipId": "3753817456",
+      "shipIdStr": "PUSC516",
+      "zh": "迈索尔",
+      "en": "Mysore",
+      "py": "mse",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英联邦"
+    },
+    "3762272208": {
+      "shipId": "3762272208",
+      "shipIdStr": "PBSA508",
+      "zh": "不挠",
+      "en": "Indomitable",
+      "py": "bn",
+      "type": "航母",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3751753520": {
+      "shipId": "3751753520",
+      "shipIdStr": "PGSB518",
+      "zh": "勃兰登堡",
+      "en": "Brandenburg",
+      "py": "bldb",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3761157584": {
+      "shipId": "3761157584",
+      "shipIdStr": "PRSC509",
+      "zh": "喀琅施塔得",
+      "en": "Kronshtadt",
+      "py": "klstd",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "3761190896": {
+      "shipId": "3761190896",
+      "shipIdStr": "PASB509",
+      "zh": "密苏里",
+      "en": "Missouri",
+      "py": "msl",
+      "type": "战列",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3760109392": {
+      "shipId": "3760109392",
+      "shipIdStr": "PFSC510",
+      "zh": "科尔伯特",
+      "en": "Colbert",
+      "py": "kebt",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "3751786288": {
+      "shipId": "3751786288",
+      "shipIdStr": "PGSA518",
+      "zh": "齐柏林伯爵",
+      "en": "Graf Zeppelin",
+      "py": "qblbj",
+      "type": "航母",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3752769232": {
+      "shipId": "3752769232",
+      "shipIdStr": "PJSC517",
+      "zh": "摩耶",
+      "en": "Maya",
+      "py": "my",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3762206160": {
+      "shipId": "3762206160",
+      "shipIdStr": "PRSC508",
+      "zh": "米哈伊尔·库图佐夫",
+      "en": "Kutuzov",
+      "py": "mhyektzf",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3761125104": {
+      "shipId": "3761125104",
+      "shipIdStr": "PISD509",
+      "zh": "保罗·埃米利奥",
+      "en": "Paolo Emilio",
+      "py": "blamla",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "3760142032": {
+      "shipId": "3760142032",
+      "shipIdStr": "PJSB510",
+      "zh": "敷岛",
+      "en": "Shikishima",
+      "py": "fd",
+      "type": "战列",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3762239472": {
+      "shipId": "3762239472",
+      "shipIdStr": "PASB508",
+      "zh": "阿拉巴马",
+      "en": "Alabama",
+      "py": "albm",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3761157968": {
+      "shipId": "3761157968",
+      "shipIdStr": "PFSC509",
+      "zh": "卡诺",
+      "en": "Carnot",
+      "py": "kn",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "3761190864": {
+      "shipId": "3761190864",
+      "shipIdStr": "PBSB509",
+      "zh": "马尔博罗",
+      "en": "Marlborough",
+      "py": "mebl",
+      "type": "战列",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "3750704880": {
+      "shipId": "3750704880",
+      "shipIdStr": "PISB519",
+      "zh": "朱塞佩·威尔第",
+      "en": "Giuseppe Verdi",
+      "py": "zspwed",
+      "type": "战列",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "3760109296": {
+      "shipId": "3760109296",
+      "shipIdStr": "PISC510",
+      "zh": "那不勒斯",
+      "en": "Napoli",
+      "py": "nbls",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "意大利"
+    },
+    "3751720944": {
+      "shipId": "3751720944",
+      "shipIdStr": "PASC518",
+      "zh": "安克雷奇",
+      "en": "Anchorage",
+      "py": "aklq",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3762173936": {
+      "shipId": "3762173936",
+      "shipIdStr": "PASD508",
+      "zh": "基德",
+      "en": "Kidd",
+      "py": "jd",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3762206480": {
+      "shipId": "3762206480",
+      "shipIdStr": "PHSC508",
+      "zh": "七省",
+      "en": "De 7 Provinciën",
+      "py": "qs",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "荷兰"
+    },
+    "3762239216": {
+      "shipId": "3762239216",
+      "shipIdStr": "PISB508",
+      "zh": "罗马",
+      "en": "Roma",
+      "py": "lm",
+      "type": "战列",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "3762239312": {
+      "shipId": "3762239312",
+      "shipIdStr": "PFSB508",
+      "zh": "加斯科涅",
+      "en": "Gascogne",
+      "py": "jskn",
+      "type": "战列",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3752769328": {
+      "shipId": "3752769328",
+      "shipIdStr": "PGSC517",
+      "zh": "魏玛",
+      "en": "Weimar",
+      "py": "wm",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3762206704": {
+      "shipId": "3762206704",
+      "shipIdStr": "PASC508",
+      "zh": "威奇塔",
+      "en": "Wichita",
+      "py": "wqt",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3751720912": {
+      "shipId": "3751720912",
+      "shipIdStr": "PBSC518",
+      "zh": "虎59",
+      "en": "Tiger '59",
+      "py": "h59",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "3750639408": {
+      "shipId": "3750639408",
+      "shipIdStr": "PGSD519",
+      "zh": "Z-44",
+      "en": "Z-44",
+      "py": "Z44",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3760142320": {
+      "shipId": "3760142320",
+      "shipIdStr": "PASB510",
+      "zh": "俄亥俄",
+      "en": "Ohio",
+      "py": "ehe",
+      "type": "战列",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3751720144": {
+      "shipId": "3751720144",
+      "shipIdStr": "PZSC518",
+      "zh": "悟空",
+      "en": "Wukong",
+      "py": "wk",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3762206512": {
+      "shipId": "3762206512",
+      "shipIdStr": "PGSC508",
+      "zh": "欧根亲王",
+      "en": "Prinz Eugen",
+      "py": "ogqw",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3760141776": {
+      "shipId": "3760141776",
+      "shipIdStr": "PRSB510",
+      "zh": "光荣",
+      "en": "Slava",
+      "py": "gr",
+      "type": "战列",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3742316496": {
+      "shipId": "3742316496",
+      "shipIdStr": "PBSB527",
+      "zh": "约克公爵",
+      "en": "Duke of York",
+      "py": "ykgj",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3751753712": {
+      "shipId": "3751753712",
+      "shipIdStr": "PASB518",
+      "zh": "马萨诸塞",
+      "en": "Massachusetts",
+      "py": "mszs",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3762206544": {
+      "shipId": "3762206544",
+      "shipIdStr": "PFSC508",
+      "zh": "贝亚德",
+      "en": "Bayard",
+      "py": "byd",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3760076080": {
+      "shipId": "3760076080",
+      "shipIdStr": "PWSD510",
+      "zh": "弗里斯兰",
+      "en": "Friesland",
+      "py": "flsl",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "欧洲"
+    },
+    "3762238800": {
+      "shipId": "3762238800",
+      "shipIdStr": "PVSB508",
+      "zh": "大西洋",
+      "en": "Atlântico",
+      "py": "dxy",
+      "type": "战列",
+      "tier": "8",
+      "nation": "泛美"
+    },
+    "3749623248": {
+      "shipId": "3749623248",
+      "shipIdStr": "PRSC520",
+      "zh": "斯大林格勒#2",
+      "en": "STALINGRAD #2",
+      "py": "sdlgl2",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3751720752": {
+      "shipId": "3751720752",
+      "shipIdStr": "PGSC518",
+      "zh": "美因茨",
+      "en": "Mainz",
+      "py": "myc",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3760109264": {
+      "shipId": "3760109264",
+      "shipIdStr": "PJSC510",
+      "zh": "吾妻",
+      "en": "Azuma",
+      "py": "wq",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "3760142160": {
+      "shipId": "3760142160",
+      "shipIdStr": "PFSB510",
+      "zh": "勃艮第",
+      "en": "Bourgogne",
+      "py": "bgd",
+      "type": "战列",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "3741300720": {
+      "shipId": "3741300720",
+      "shipIdStr": "PASA528",
+      "zh": "塞班",
+      "en": "Saipan",
+      "py": "sb",
+      "type": "航母",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "3751753552": {
+      "shipId": "3751753552",
+      "shipIdStr": "PFSB518",
+      "zh": "让·巴尔",
+      "en": "Jean Bart",
+      "py": "rbe",
+      "type": "战列",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "3760076144": {
+      "shipId": "3760076144",
+      "shipIdStr": "PUSD510",
+      "zh": "吸血鬼II",
+      "en": "Vampire II",
+      "py": "xxgII",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "英联邦"
+    },
+    "3762238928": {
+      "shipId": "3762238928",
+      "shipIdStr": "PRSB508",
+      "zh": "波尔塔瓦",
+      "en": "Poltava",
+      "py": "betw",
+      "type": "战列",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "3750705136": {
+      "shipId": "3750705136",
+      "shipIdStr": "PASB519",
+      "zh": "奇尔沙治",
+      "en": "Kearsarge",
+      "py": "qesz",
+      "type": "战列",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3760076752": {
+      "shipId": "3760076752",
+      "shipIdStr": "PBSD510",
+      "zh": "德鲁伊",
+      "en": "Druid",
+      "py": "dly",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3753785136": {
+      "shipId": "3753785136",
+      "shipIdStr": "PGSD516",
+      "zh": "卡尔·冯·勋伯格",
+      "en": "K. Schönberg",
+      "py": "kefxbg",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "3751720400": {
+      "shipId": "3751720400",
+      "shipIdStr": "PRSC518",
+      "zh": "拉佐",
+      "en": "Lazo",
+      "py": "lz",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "3752802000": {
+      "shipId": "3752802000",
+      "shipIdStr": "PJSB517",
+      "zh": "日向",
+      "en": "Hyūga",
+      "py": "rx",
+      "type": "战列",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3760175088": {
+      "shipId": "3760175088",
+      "shipIdStr": "PASA510",
+      "zh": "富兰克林·罗斯福",
+      "en": "F. D. Roosevelt",
+      "py": "flkllsf",
+      "type": "航母",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3761190704": {
+      "shipId": "3761190704",
+      "shipIdStr": "PGSB509",
+      "zh": "波美拉尼亚",
+      "en": "Pommern",
+      "py": "bmlny",
+      "type": "战列",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3761157328": {
+      "shipId": "3761157328",
+      "shipIdStr": "PZSC509",
+      "zh": "大连",
+      "en": "Dalian",
+      "py": "dl",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "泛亚"
+    },
+    "3752802288": {
+      "shipId": "3752802288",
+      "shipIdStr": "PASB517",
+      "zh": "佛罗里达",
+      "en": "Florida",
+      "py": "flld",
+      "type": "战列",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3762173136": {
+      "shipId": "3762173136",
+      "shipIdStr": "PZSD508",
+      "zh": "洛阳",
+      "en": "Loyang",
+      "py": "ly",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3750672176": {
+      "shipId": "3750672176",
+      "shipIdStr": "PGSC519",
+      "zh": "埃吉尔",
+      "en": "Ägir",
+      "py": "aje",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3762239280": {
+      "shipId": "3762239280",
+      "shipIdStr": "PGSB508",
+      "zh": "奥丁",
+      "en": "Odin",
+      "py": "ad",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3743365072": {
+      "shipId": "3743365072",
+      "shipIdStr": "PBSB526",
+      "zh": "反击",
+      "en": "Repulse",
+      "py": "fj",
+      "type": "战列",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "3762271984": {
+      "shipId": "3762271984",
+      "shipIdStr": "PISA508",
+      "zh": "天鹰",
+      "en": "Aquila",
+      "py": "ty",
+      "type": "航母",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "3762173776": {
+      "shipId": "3762173776",
+      "shipIdStr": "PFSD508",
+      "zh": "可怖",
+      "en": "Le Terrible",
+      "py": "kb",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3760076784": {
+      "shipId": "3760076784",
+      "shipIdStr": "PASD510",
+      "zh": "萨默斯",
+      "en": "Somers",
+      "py": "sms",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3752802256": {
+      "shipId": "3752802256",
+      "shipIdStr": "PBSB517",
+      "zh": "纳尔逊",
+      "en": "Nelson",
+      "py": "nex",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3762205904": {
+      "shipId": "3762205904",
+      "shipIdStr": "PZSC508",
+      "zh": "伊里安",
+      "en": "Irian",
+      "py": "yla",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "3760142288": {
+      "shipId": "3760142288",
+      "shipIdStr": "PBSB510",
+      "zh": "雷神",
+      "en": "Thunderer",
+      "py": "ls",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "3761125360": {
+      "shipId": "3761125360",
+      "shipIdStr": "PASD509",
+      "zh": "贝纳姆",
+      "en": "Benham",
+      "py": "bnm",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3754866128": {
+      "shipId": "3754866128",
+      "shipIdStr": "PRSC515",
+      "zh": "米高扬",
+      "en": "Mikoyan",
+      "py": "mgy",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "3761190640": {
+      "shipId": "3761190640",
+      "shipIdStr": "PISB509",
+      "zh": "马可波罗",
+      "en": "Marco Polo",
+      "py": "mkbl",
+      "type": "战列",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "3765352144": {
+      "shipId": "3765352144",
+      "shipIdStr": "PJSC505",
+      "zh": "矢矧",
+      "en": "Yahagi",
+      "py": "ss",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "3764271056": {
+      "shipId": "3764271056",
+      "shipIdStr": "PBSD506",
+      "zh": "勇敢",
+      "en": "Gallant",
+      "py": "yg",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4077828048": {
+      "shipId": "4077828048",
+      "shipIdStr": "PBSC207",
+      "zh": "萨里",
+      "en": "Surrey",
+      "py": "sl",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3764270288": {
+      "shipId": "3764270288",
+      "shipIdStr": "PZSD506",
+      "zh": "鞍山",
+      "en": "Anshan",
+      "py": "as",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "泛亚"
+    },
+    "4075730384": {
+      "shipId": "4075730384",
+      "shipIdStr": "PRSC209",
+      "zh": "里加",
+      "en": "Riga",
+      "py": "lj",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "4076778960": {
+      "shipId": "4076778960",
+      "shipIdStr": "PRSC208",
+      "zh": "塔林",
+      "en": "Tallinn",
+      "py": "tl",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "4074681808": {
+      "shipId": "4074681808",
+      "shipIdStr": "PRSC210",
+      "zh": "亚历山大·涅夫斯基",
+      "en": "A. Nevsky",
+      "py": "ylsdnfsj",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3769513264": {
+      "shipId": "3769513264",
+      "shipIdStr": "PWSD501",
+      "zh": "闪电",
+      "en": "Błyskawica",
+      "py": "sd",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "欧洲"
+    },
+    "3763222224": {
+      "shipId": "3763222224",
+      "shipIdStr": "PJSD507",
+      "zh": "夕立",
+      "en": "Yūdachi",
+      "py": "xl",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "4075697872": {
+      "shipId": "4075697872",
+      "shipIdStr": "PJSD209",
+      "zh": "夕云",
+      "en": "Yūgumo",
+      "py": "xy",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "4074649392": {
+      "shipId": "4074649392",
+      "shipIdStr": "PGSD210",
+      "zh": "埃尔宾",
+      "en": "Elbing",
+      "py": "aeb",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "4074747856": {
+      "shipId": "4074747856",
+      "shipIdStr": "PBSA210",
+      "zh": "大胆",
+      "en": "Audacious",
+      "py": "dd",
+      "type": "航母",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4077795120": {
+      "shipId": "4077795120",
+      "shipIdStr": "PGSD207",
+      "zh": "Z-31",
+      "en": "Z-31",
+      "py": "Z31",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3765384656": {
+      "shipId": "3765384656",
+      "shipIdStr": "PRSB505",
+      "zh": "十月革命",
+      "en": "Okt. Revolutsiya",
+      "py": "sygm",
+      "type": "战列",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "3767449296": {
+      "shipId": "3767449296",
+      "shipIdStr": "PJSC503",
+      "zh": "香取",
+      "en": "Katori",
+      "py": "xq",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "日本"
+    },
+    "4074649296": {
+      "shipId": "4074649296",
+      "shipIdStr": "PJSD210",
+      "zh": "春云",
+      "en": "Harugumo",
+      "py": "cy",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "3767416784": {
+      "shipId": "3767416784",
+      "shipIdStr": "PBSD503",
+      "zh": "坎贝尔敦",
+      "en": "Campbeltown",
+      "py": "kbed",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "英国"
+    },
+    "3764303056": {
+      "shipId": "3764303056",
+      "shipIdStr": "PZSC506",
+      "zh": "黄河",
+      "en": "Huanghe",
+      "py": "hh",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "泛亚"
+    },
+    "3763221968": {
+      "shipId": "3763221968",
+      "shipIdStr": "PRSD507",
+      "zh": "列宁格勒",
+      "en": "Leningrad",
+      "py": "lngl",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "3763287760": {
+      "shipId": "3763287760",
+      "shipIdStr": "PJSB507",
+      "zh": "爱鹰",
+      "en": "Ashitaka",
+      "py": "ay",
+      "type": "战列",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3763255280": {
+      "shipId": "3763255280",
+      "shipIdStr": "PASC507",
+      "zh": "印第安纳波利斯",
+      "en": "Indianapolis",
+      "py": "ydanbls",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4074682320": {
+      "shipId": "4074682320",
+      "shipIdStr": "PBSC210",
+      "zh": "哥利亚",
+      "en": "Goliath",
+      "py": "gly",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4076746544": {
+      "shipId": "4076746544",
+      "shipIdStr": "PGSD208",
+      "zh": "G.J.梅克尔",
+      "en": "G. J. Maerker",
+      "py": "GJmke",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3767482160": {
+      "shipId": "3767482160",
+      "shipIdStr": "PGSB503",
+      "zh": "阿尔伯特国王",
+      "en": "K. Albert",
+      "py": "aebtgw",
+      "type": "战列",
+      "tier": "3",
+      "nation": "德国"
+    },
+    "3864933840": {
+      "shipId": "3864933840",
+      "shipIdStr": "PRSD410",
+      "zh": "德尔尼",
+      "en": "Delny",
+      "py": "den",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3765384944": {
+      "shipId": "3765384944",
+      "shipIdStr": "PISB505",
+      "zh": "尤里乌斯-恺撒",
+      "en": "Giulio Cesare",
+      "py": "ylwsks",
+      "type": "战列",
+      "tier": "5",
+      "nation": "意大利"
+    },
+    "4076746448": {
+      "shipId": "4076746448",
+      "shipIdStr": "PJSD208",
+      "zh": "阳炎",
+      "en": "Kagerō",
+      "py": "yy",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4069438928": {
+      "shipId": "4069438928",
+      "shipIdStr": "PRSC215",
+      "zh": "科托夫斯基",
+      "en": "Kotovsky",
+      "py": "ktfsj",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "3767482320": {
+      "shipId": "3767482320",
+      "shipIdStr": "PBSB503",
+      "zh": "无畏",
+      "en": "Dreadnought",
+      "py": "ww",
+      "type": "战列",
+      "tier": "3",
+      "nation": "英国"
+    },
+    "4076779344": {
+      "shipId": "4076779344",
+      "shipIdStr": "PFSC208",
+      "zh": "瑟堡",
+      "en": "Cherbourg",
+      "py": "sb",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "3764303664": {
+      "shipId": "3764303664",
+      "shipIdStr": "PGSC506",
+      "zh": "海军上将施佩伯爵",
+      "en": "Graf Spee",
+      "py": "hjsjspbj",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4077828080": {
+      "shipId": "4077828080",
+      "shipIdStr": "PASC207",
+      "zh": "海伦娜",
+      "en": "Helena",
+      "py": "hln",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "3865982416": {
+      "shipId": "3865982416",
+      "shipIdStr": "PRSD409",
+      "zh": "塔什干",
+      "en": "Tashkent",
+      "py": "tsg",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "4077795024": {
+      "shipId": "4077795024",
+      "shipIdStr": "PJSD207",
+      "zh": "白露",
+      "en": "Shiratsuyu",
+      "py": "bl",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "3763221872": {
+      "shipId": "3763221872",
+      "shipIdStr": "PUSD507",
+      "zh": "海达人",
+      "en": "Haida",
+      "py": "hdr",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "英联邦"
+    },
+    "4075763504": {
+      "shipId": "4075763504",
+      "shipIdStr": "PGSB209",
+      "zh": "鲁普雷希特亲王",
+      "en": "P. Rupprecht",
+      "py": "lplxtqw",
+      "type": "战列",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3765352400": {
+      "shipId": "3765352400",
+      "shipIdStr": "PBSC505",
+      "zh": "埃克塞特",
+      "en": "Exeter",
+      "py": "akst",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "3764369200": {
+      "shipId": "3764369200",
+      "shipIdStr": "PGSA506",
+      "zh": "埃里希·勒文哈尔特",
+      "en": "E. Loewenhardt",
+      "py": "alxlwhet",
+      "type": "航母",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "3764270896": {
+      "shipId": "3764270896",
+      "shipIdStr": "PGSD506",
+      "zh": "T-61",
+      "en": "T-61",
+      "py": "T61",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "3764336336": {
+      "shipId": "3764336336",
+      "shipIdStr": "PJSB506",
+      "zh": "陆奥",
+      "en": "Mutsu",
+      "py": "la",
+      "type": "战列",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "3764303216": {
+      "shipId": "3764303216",
+      "shipIdStr": "PUSC506",
+      "zh": "珀斯",
+      "en": "Perth",
+      "py": "ps",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英联邦"
+    },
+    "3764270416": {
+      "shipId": "3764270416",
+      "shipIdStr": "PVSD506",
+      "zh": "茹鲁阿",
+      "en": "Juruá",
+      "py": "rla",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "泛美"
+    },
+    "3764270832": {
+      "shipId": "3764270832",
+      "shipIdStr": "PISD506",
+      "zh": "狮子",
+      "en": "Leone",
+      "py": "sz",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "意大利"
+    },
+    "3763255248": {
+      "shipId": "3763255248",
+      "shipIdStr": "PBSC507",
+      "zh": "贝尔法斯特",
+      "en": "Belfast",
+      "py": "befst",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3766368080": {
+      "shipId": "3766368080",
+      "shipIdStr": "PFSD504",
+      "zh": "热风",
+      "en": "Siroco",
+      "py": "rf",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "法国"
+    },
+    "3763255024": {
+      "shipId": "3763255024",
+      "shipIdStr": "PISC507",
+      "zh": "阿布鲁齐公爵",
+      "en": "Abruzzi",
+      "py": "ablqgj",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "3763222256": {
+      "shipId": "3763222256",
+      "shipIdStr": "PISD507",
+      "zh": "FR25",
+      "en": "FR25",
+      "py": "FR25",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "3768497488": {
+      "shipId": "3768497488",
+      "shipIdStr": "PVSC502",
+      "zh": "阿布瑞尤海军上将",
+      "en": "Alte Abreu",
+      "py": "abryhjsj",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "泛美"
+    },
+    "3764303600": {
+      "shipId": "3764303600",
+      "shipIdStr": "PISC506",
+      "zh": "奥斯塔公爵",
+      "en": "Duca d'Aosta",
+      "py": "astgj",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "意大利"
+    },
+    "3763288048": {
+      "shipId": "3763288048",
+      "shipIdStr": "PASB507",
+      "zh": "西弗吉尼亚1941",
+      "en": "W. Virginia 1941",
+      "py": "xfjny1941",
+      "type": "战列",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "3764271088": {
+      "shipId": "3764271088",
+      "shipIdStr": "PASD506",
+      "zh": "莫纳汉",
+      "en": "Monaghan",
+      "py": "mnh",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4074714928": {
+      "shipId": "4074714928",
+      "shipIdStr": "PGSB210",
+      "zh": "施里芬",
+      "en": "Schlieffen",
+      "py": "slf",
+      "type": "战列",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3763254608": {
+      "shipId": "3763254608",
+      "shipIdStr": "PVSC507",
+      "zh": "七月九日",
+      "en": "Nueve de Julio",
+      "py": "qyjr",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "泛美"
+    },
+    "3764303312": {
+      "shipId": "3764303312",
+      "shipIdStr": "PRSC506",
+      "zh": "莫洛托夫",
+      "en": "Molotov",
+      "py": "mltf",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4065212112": {
+      "shipId": "4065212112",
+      "shipIdStr": "PJSD219",
+      "zh": "北风",
+      "en": "Kitakaze",
+      "py": "bf",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "4075730768": {
+      "shipId": "4075730768",
+      "shipIdStr": "PFSC209",
+      "zh": "布雷斯特",
+      "en": "Brest",
+      "py": "blst",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "3763255088": {
+      "shipId": "3763255088",
+      "shipIdStr": "PGSC507",
+      "zh": "慕尼黑",
+      "en": "München",
+      "py": "mnh",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "4074682352": {
+      "shipId": "4074682352",
+      "shipIdStr": "PASC210",
+      "zh": "伍斯特",
+      "en": "Worcester",
+      "py": "wst",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "3763288016": {
+      "shipId": "3763288016",
+      "shipIdStr": "PBSB507",
+      "zh": "胡德",
+      "en": "Hood",
+      "py": "hd",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "3764270928": {
+      "shipId": "3764270928",
+      "shipIdStr": "PFSD506",
+      "zh": "鹰",
+      "en": "Aigle",
+      "py": "y",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "3969857328": {
+      "shipId": "3969857328",
+      "shipIdStr": "PGSB310",
+      "zh": "普鲁士",
+      "en": "Preussen",
+      "py": "pls",
+      "type": "战列",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "3971888592": {
+      "shipId": "3971888592",
+      "shipIdStr": "PRSD308",
+      "zh": "基辅",
+      "en": "Kiev",
+      "py": "jf",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "3765351888": {
+      "shipId": "3765351888",
+      "shipIdStr": "PRSC505",
+      "zh": "红色克里米亚",
+      "en": "Krasny Krym",
+      "py": "hsklmy",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4075763664": {
+      "shipId": "4075763664",
+      "shipIdStr": "PBSB209",
+      "zh": "邓肯",
+      "en": "Duncan",
+      "py": "dk",
+      "type": "战列",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "3765385200": {
+      "shipId": "3765385200",
+      "shipIdStr": "PASB505",
+      "zh": "俄克拉荷马",
+      "en": "Oklahoma",
+      "py": "eklhm",
+      "type": "战列",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "3764303696": {
+      "shipId": "3764303696",
+      "shipIdStr": "PFSC506",
+      "zh": "格拉斯",
+      "en": "De Grasse",
+      "py": "gls",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "3764336624": {
+      "shipId": "3764336624",
+      "shipIdStr": "PASB506",
+      "zh": "亚利桑那",
+      "en": "Arizona",
+      "py": "ylsn",
+      "type": "战列",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4076812080": {
+      "shipId": "4076812080",
+      "shipIdStr": "PGSB208",
+      "zh": "齐滕",
+      "en": "Zieten",
+      "py": "qt",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "3763255120": {
+      "shipId": "3763255120",
+      "shipIdStr": "PFSC507",
+      "zh": "土伦",
+      "en": "Toulon",
+      "py": "tl",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "法国"
+    },
+    "3766433072": {
+      "shipId": "3766433072",
+      "shipIdStr": "PWSB504",
+      "zh": "联合力量",
+      "en": "Viribus Unitis",
+      "py": "lhll",
+      "type": "战列",
+      "tier": "5",
+      "nation": "欧洲"
+    },
+    "4074682192": {
+      "shipId": "4074682192",
+      "shipIdStr": "PFSC210",
+      "zh": "马赛",
+      "en": "Marseille",
+      "py": "ms",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "4075730928": {
+      "shipId": "4075730928",
+      "shipIdStr": "PASC209",
+      "zh": "西雅图",
+      "en": "Seattle",
+      "py": "xyt",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "3764336432": {
+      "shipId": "3764336432",
+      "shipIdStr": "PGSB506",
+      "zh": "艾特尔·弗里德里希亲王",
+      "en": "P. E. Friedrich",
+      "py": "atefldlxqw",
+      "type": "战列",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "3765385168": {
+      "shipId": "3765385168",
+      "shipIdStr": "PBSB505",
+      "zh": "阿金库尔",
+      "en": "Agincourt",
+      "py": "ajke",
+      "type": "战列",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4077860656": {
+      "shipId": "4077860656",
+      "shipIdStr": "PGSB207",
+      "zh": "海因里希亲王",
+      "en": "P. Heinrich",
+      "py": "hylxqw",
+      "type": "战列",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3763287888": {
+      "shipId": "3763287888",
+      "shipIdStr": "PFSB507",
+      "zh": "斯特拉斯堡",
+      "en": "Strasbourg",
+      "py": "stlsb",
+      "type": "战列",
+      "tier": "7",
+      "nation": "法国"
+    },
+    "3767416176": {
+      "shipId": "3767416176",
+      "shipIdStr": "PUSD503",
+      "zh": "吸血鬼",
+      "en": "Vampire",
+      "py": "xxg",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "英联邦"
+    },
+    "4074649040": {
+      "shipId": "4074649040",
+      "shipIdStr": "PRSD210",
+      "zh": "雷暴",
+      "en": "Grozovoi",
+      "py": "lb",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3767449040": {
+      "shipId": "3767449040",
+      "shipIdStr": "PRSC503",
+      "zh": "奥列格",
+      "en": "Oleg",
+      "py": "alg",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "3764336464": {
+      "shipId": "3764336464",
+      "shipIdStr": "PFSB506",
+      "zh": "敦刻尔克",
+      "en": "Dunkerque",
+      "py": "dkek",
+      "type": "战列",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "3969824208": {
+      "shipId": "3969824208",
+      "shipIdStr": "PRSC310",
+      "zh": "彼得罗巴甫洛夫斯克",
+      "en": "Petropavlovsk",
+      "py": "bdlbflfsk",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "3768465392": {
+      "shipId": "3768465392",
+      "shipIdStr": "PASD502",
+      "zh": "史密斯",
+      "en": "Smith",
+      "py": "sms",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "美国"
+    },
+    "4074649424": {
+      "shipId": "4074649424",
+      "shipIdStr": "PFSD210",
+      "zh": "玛索",
+      "en": "Marceau",
+      "py": "ms",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "3764303280": {
+      "shipId": "3764303280",
+      "shipIdStr": "PSSC506",
+      "zh": "加那利",
+      "en": "Canarias",
+      "py": "jnl",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4076746192": {
+      "shipId": "4076746192",
+      "shipIdStr": "PRSD208",
+      "zh": "火力",
+      "en": "Ognevoi",
+      "py": "hl",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "4076779504": {
+      "shipId": "4076779504",
+      "shipIdStr": "PASC208",
+      "zh": "克利夫兰",
+      "en": "Cleveland",
+      "py": "klfl",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4075730896": {
+      "shipId": "4075730896",
+      "shipIdStr": "PBSC209",
+      "zh": "德雷克",
+      "en": "Drake",
+      "py": "dlk",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "4076745936": {
+      "shipId": "4076745936",
+      "shipIdStr": "PZSD208",
+      "zh": "西利旺义",
+      "en": "Siliwangi",
+      "py": "xlwy",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "4074715088": {
+      "shipId": "4074715088",
+      "shipIdStr": "PBSB210",
+      "zh": "St.Vincent",
+      "en": "St. Vincent",
+      "py": "StVincent",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4077794768": {
+      "shipId": "4077794768",
+      "shipIdStr": "PRSD207",
+      "zh": "明斯克",
+      "en": "Minsk",
+      "py": "msk",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "3765352176": {
+      "shipId": "3765352176",
+      "shipIdStr": "PISC505",
+      "zh": "热那亚",
+      "en": "Genova",
+      "py": "rny",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "意大利"
+    },
+    "3764369232": {
+      "shipId": "3764369232",
+      "shipIdStr": "PFSA506",
+      "zh": "贝阿恩",
+      "en": "Béarn",
+      "py": "bae",
+      "type": "航母",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "3763287408": {
+      "shipId": "3763287408",
+      "shipIdStr": "PUSB507",
+      "zh": "育空",
+      "en": "Yukon",
+      "py": "yk",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英联邦"
+    },
+    "3767449584": {
+      "shipId": "3767449584",
+      "shipIdStr": "PASC503",
+      "zh": "查尔斯顿",
+      "en": "Charleston",
+      "py": "cesd",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "美国"
+    },
+    "4076779472": {
+      "shipId": "4076779472",
+      "shipIdStr": "PBSC208",
+      "zh": "阿尔伯马尔",
+      "en": "Albemarle",
+      "py": "aebme",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "4075697968": {
+      "shipId": "4075697968",
+      "shipIdStr": "PGSD209",
+      "zh": "菲利克斯·舒尔茨",
+      "en": "F. Schultz",
+      "py": "flkssec",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "3768497968": {
+      "shipId": "3768497968",
+      "shipIdStr": "PGSC502",
+      "zh": "埃姆登",
+      "en": "Emden",
+      "py": "amd",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "德国"
+    },
+    "3763287856": {
+      "shipId": "3763287856",
+      "shipIdStr": "PGSB507",
+      "zh": "沙恩霍斯特",
+      "en": "Scharnhorst",
+      "py": "sehst",
+      "type": "战列",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "3765319664": {
+      "shipId": "3765319664",
+      "shipIdStr": "PASD505",
+      "zh": "希尔",
+      "en": "Hill",
+      "py": "xe",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "3765319120": {
+      "shipId": "3765319120",
+      "shipIdStr": "PRSD505",
+      "zh": "猎人",
+      "en": "Okhotnik",
+      "py": "lr",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4182652112": {
+      "shipId": "4182652112",
+      "shipIdStr": "PZSD107",
+      "zh": "加札马达",
+      "en": "Gadjah Mada",
+      "py": "jzmd",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "泛亚"
+    },
+    "4180587984": {
+      "shipId": "4180587984",
+      "shipIdStr": "PRSC109",
+      "zh": "迪米特里-顿斯科伊",
+      "en": "Dm. Donskoi",
+      "py": "dmtldsky",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "4179539408": {
+      "shipId": "4179539408",
+      "shipIdStr": "PRSC110",
+      "zh": "莫斯科",
+      "en": "Moskva",
+      "py": "msk",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "4079891920": {
+      "shipId": "4079891920",
+      "shipIdStr": "PRSD205",
+      "zh": "巴铎夫斯基",
+      "en": "Podvoisky",
+      "py": "bdfsj",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4179506480": {
+      "shipId": "4179506480",
+      "shipIdStr": "PWSD110",
+      "zh": "哈兰",
+      "en": "Halland",
+      "py": "hl",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "欧洲"
+    },
+    "4182652624": {
+      "shipId": "4182652624",
+      "shipIdStr": "PJSD107",
+      "zh": "晓",
+      "en": "Akatsuki",
+      "py": "x",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "4181604048": {
+      "shipId": "4181604048",
+      "shipIdStr": "PJSD108",
+      "zh": "秋月",
+      "en": "Akizuki",
+      "py": "qy",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4178491344": {
+      "shipId": "4178491344",
+      "shipIdStr": "PBSC111",
+      "zh": "埃德加",
+      "en": "Edgar",
+      "py": "adj",
+      "type": "巡洋",
+      "tier": "11",
+      "nation": "英国"
+    },
+    "4078876624": {
+      "shipId": "4078876624",
+      "shipIdStr": "PBSC206",
+      "zh": "德文郡",
+      "en": "Devonshire",
+      "py": "dwj",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4081006384": {
+      "shipId": "4081006384",
+      "shipIdStr": "PGSB204",
+      "zh": "毛奇",
+      "en": "Moltke",
+      "py": "mq",
+      "type": "战列",
+      "tier": "4",
+      "nation": "德国"
+    },
+    "4180620752": {
+      "shipId": "4180620752",
+      "shipIdStr": "PRSB109",
+      "zh": "苏联",
+      "en": "Sov. Soyuz",
+      "py": "sl",
+      "type": "战列",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "4180555728": {
+      "shipId": "4180555728",
+      "shipIdStr": "PBSD109",
+      "zh": "日德兰",
+      "en": "Jutland",
+      "py": "rdl",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "4079925200": {
+      "shipId": "4079925200",
+      "shipIdStr": "PBSC205",
+      "zh": "霍金斯",
+      "en": "Hawkins",
+      "py": "hjs",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4181702096": {
+      "shipId": "4181702096",
+      "shipIdStr": "PRSA108",
+      "zh": "胜利",
+      "en": "Pobeda",
+      "py": "sl",
+      "type": "航母",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "4178523856": {
+      "shipId": "4178523856",
+      "shipIdStr": "PJSB111",
+      "zh": "萨摩",
+      "en": "Satsuma",
+      "py": "sm",
+      "type": "战列",
+      "tier": "11",
+      "nation": "日本"
+    },
+    "4081006544": {
+      "shipId": "4081006544",
+      "shipIdStr": "PBSB204",
+      "zh": "玛丽女王",
+      "en": "Queen Mary",
+      "py": "mlnw",
+      "type": "战列",
+      "tier": "4",
+      "nation": "英国"
+    },
+    "4179539728": {
+      "shipId": "4179539728",
+      "shipIdStr": "PHSC110",
+      "zh": "金狮",
+      "en": "Gouden Leeuw",
+      "py": "js",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "荷兰"
+    },
+    "4179539920": {
+      "shipId": "4179539920",
+      "shipIdStr": "PBSC110",
+      "zh": "米诺陶",
+      "en": "Minotaur",
+      "py": "mnt",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4181637072": {
+      "shipId": "4181637072",
+      "shipIdStr": "PBSC108",
+      "zh": "爱丁堡",
+      "en": "Edinburgh",
+      "py": "adb",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "4179506992": {
+      "shipId": "4179506992",
+      "shipIdStr": "PGSD110",
+      "zh": "Z-52",
+      "en": "Z-52",
+      "py": "Z52",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "4180555568": {
+      "shipId": "4180555568",
+      "shipIdStr": "PGSD109",
+      "zh": "Z-46",
+      "en": "Z-46",
+      "py": "Z46",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "4181702448": {
+      "shipId": "4181702448",
+      "shipIdStr": "PGSA108",
+      "zh": "奥古斯特·冯·帕塞瓦尔",
+      "en": "A. Parseval",
+      "py": "agstfpswe",
+      "type": "航母",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "4179605200": {
+      "shipId": "4179605200",
+      "shipIdStr": "PJSA110",
+      "zh": "白龙",
+      "en": "Hakuryū",
+      "py": "bl",
+      "type": "航母",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "4077860816": {
+      "shipId": "4077860816",
+      "shipIdStr": "PBSB207",
+      "zh": "鲁克",
+      "en": "Rooke",
+      "py": "lk",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "4181636912": {
+      "shipId": "4181636912",
+      "shipIdStr": "PGSC108",
+      "zh": "希佩尔上将",
+      "en": "Hipper",
+      "py": "xpesj",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "4181604144": {
+      "shipId": "4181604144",
+      "shipIdStr": "PGSD108",
+      "zh": "Z-23",
+      "en": "Z-23",
+      "py": "Z23",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "4179506928": {
+      "shipId": "4179506928",
+      "shipIdStr": "PISD110",
+      "zh": "阿蒂略·莱戈洛",
+      "en": "A. Regolo",
+      "py": "adllgl",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "意大利"
+    },
+    "4178458320": {
+      "shipId": "4178458320",
+      "shipIdStr": "PJSD111",
+      "zh": "山雾",
+      "en": "Yamagiri",
+      "py": "sw",
+      "type": "驱逐",
+      "tier": "11",
+      "nation": "日本"
+    },
+    "4081039312": {
+      "shipId": "4081039312",
+      "shipIdStr": "PBSA204",
+      "zh": "竞技神",
+      "en": "Hermes",
+      "py": "jjs",
+      "type": "航母",
+      "tier": "4",
+      "nation": "英国"
+    },
+    "4079957808": {
+      "shipId": "4079957808",
+      "shipIdStr": "PGSB205",
+      "zh": "德弗林格尔",
+      "en": "Derfflinger",
+      "py": "dflge",
+      "type": "战列",
+      "tier": "5",
+      "nation": "德国"
+    },
+    "4078843600": {
+      "shipId": "4078843600",
+      "shipIdStr": "PJSD206",
+      "zh": "初春",
+      "en": "Hatsuharu",
+      "py": "cc",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "4180621296": {
+      "shipId": "4180621296",
+      "shipIdStr": "PASB109",
+      "zh": "明尼苏达",
+      "en": "Minnesota",
+      "py": "mnsd",
+      "type": "战列",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "4179539792": {
+      "shipId": "4179539792",
+      "shipIdStr": "PFSC110",
+      "zh": "亨利四世",
+      "en": "Henri IV",
+      "py": "hlss",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "4179605296": {
+      "shipId": "4179605296",
+      "shipIdStr": "PGSA110",
+      "zh": "M.里希特霍芬",
+      "en": "M. Richthofen",
+      "py": "Mlxthf",
+      "type": "航母",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "4180587728": {
+      "shipId": "4180587728",
+      "shipIdStr": "PZSC109",
+      "zh": "世宗",
+      "en": "Sejong",
+      "py": "sz",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "泛亚"
+    },
+    "4181636304": {
+      "shipId": "4181636304",
+      "shipIdStr": "PZSC108",
+      "zh": "哈尔滨",
+      "en": "Harbin",
+      "py": "heb",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "4179572464": {
+      "shipId": "4179572464",
+      "shipIdStr": "PISB110",
+      "zh": "克里斯托弗·哥伦布",
+      "en": "C. Colombo",
+      "py": "klstfglb",
+      "type": "战列",
+      "tier": "10",
+      "nation": "意大利"
+    },
+    "4181636560": {
+      "shipId": "4181636560",
+      "shipIdStr": "PRSC108",
+      "zh": "恰巴耶夫",
+      "en": "Chapayev",
+      "py": "qbyf",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "4180555056": {
+      "shipId": "4180555056",
+      "shipIdStr": "PWSD109",
+      "zh": "东约特兰",
+      "en": "Östergötland",
+      "py": "dytl",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "欧洲"
+    },
+    "4181604080": {
+      "shipId": "4181604080",
+      "shipIdStr": "PISD108",
+      "zh": "维托里奥·库尼贝尔蒂",
+      "en": "V. Cuniberti",
+      "py": "wtlaknbed",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "4179507152": {
+      "shipId": "4179507152",
+      "shipIdStr": "PBSD110",
+      "zh": "果敢",
+      "en": "Daring",
+      "py": "gg",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4181669872": {
+      "shipId": "4181669872",
+      "shipIdStr": "PASB108",
+      "zh": "堪萨斯",
+      "en": "Kansas",
+      "py": "kss",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4180588368": {
+      "shipId": "4180588368",
+      "shipIdStr": "PFSC109",
+      "zh": "路易九世",
+      "en": "Saint-Louis",
+      "py": "lyjs",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "4079957968": {
+      "shipId": "4079957968",
+      "shipIdStr": "PBSB205",
+      "zh": "虎",
+      "en": "Tiger",
+      "py": "h",
+      "type": "战列",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4179539760": {
+      "shipId": "4179539760",
+      "shipIdStr": "PGSC110",
+      "zh": "兴登堡",
+      "en": "Hindenburg",
+      "py": "xdb",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "4181669616": {
+      "shipId": "4181669616",
+      "shipIdStr": "PISB108",
+      "zh": "维托里奥·维内托",
+      "en": "V. Veneto",
+      "py": "wtlawnt",
+      "type": "战列",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "4181636848": {
+      "shipId": "4181636848",
+      "shipIdStr": "PISC108",
+      "zh": "阿马尔菲",
+      "en": "Amalfi",
+      "py": "amef",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "意大利"
+    },
+    "4178491376": {
+      "shipId": "4178491376",
+      "shipIdStr": "PASC111",
+      "zh": "安纳波利斯",
+      "en": "Annapolis",
+      "py": "anbls",
+      "type": "巡洋",
+      "tier": "11",
+      "nation": "美国"
+    },
+    "4182652656": {
+      "shipId": "4182652656",
+      "shipIdStr": "PISD107",
+      "zh": "卢卡·塔里戈",
+      "en": "L. Tarigo",
+      "py": "lktlg",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "4181603632": {
+      "shipId": "4181603632",
+      "shipIdStr": "PWSD108",
+      "zh": "厄兰",
+      "en": "Öland",
+      "py": "el",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "欧洲"
+    },
+    "4180588496": {
+      "shipId": "4180588496",
+      "shipIdStr": "PBSC109",
+      "zh": "海王星",
+      "en": "Neptune",
+      "py": "hwx",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "4179539696": {
+      "shipId": "4179539696",
+      "shipIdStr": "PISC110",
+      "zh": "威尼斯",
+      "en": "Venezia",
+      "py": "wns",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "意大利"
+    },
+    "4078843344": {
+      "shipId": "4078843344",
+      "shipIdStr": "PRSD206",
+      "zh": "愤怒",
+      "en": "Gnevny",
+      "py": "fn",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4181669840": {
+      "shipId": "4181669840",
+      "shipIdStr": "PBSB108",
+      "zh": "君主",
+      "en": "Monarch",
+      "py": "jz",
+      "type": "战列",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "4181636880": {
+      "shipId": "4181636880",
+      "shipIdStr": "PHSC108",
+      "zh": "哈勒姆",
+      "en": "Haarlem",
+      "py": "hlm",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "荷兰"
+    },
+    "4180621040": {
+      "shipId": "4180621040",
+      "shipIdStr": "PISB109",
+      "zh": "勒班陀",
+      "en": "Lepanto",
+      "py": "lbt",
+      "type": "战列",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "4179507024": {
+      "shipId": "4179507024",
+      "shipIdStr": "PFSD110",
+      "zh": "克莱贝尔",
+      "en": "Kléber",
+      "py": "klbe",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "4178491184": {
+      "shipId": "4178491184",
+      "shipIdStr": "PGSC111",
+      "zh": "克劳塞维茨",
+      "en": "Clausewitz",
+      "py": "klswc",
+      "type": "巡洋",
+      "tier": "11",
+      "nation": "德国"
+    },
+    "4078876656": {
+      "shipId": "4078876656",
+      "shipIdStr": "PASC206",
+      "zh": "达拉斯",
+      "en": "Dallas",
+      "py": "dls",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4180555600": {
+      "shipId": "4180555600",
+      "shipIdStr": "PFSD109",
+      "zh": "莫加多尔",
+      "en": "Mogador",
+      "py": "mjde",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "4179506384": {
+      "shipId": "4179506384",
+      "shipIdStr": "PZSD110",
+      "zh": "岳阳",
+      "en": "Yueyang",
+      "py": "yy",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "泛亚"
+    },
+    "4179572528": {
+      "shipId": "4179572528",
+      "shipIdStr": "PGSB110",
+      "zh": "大选帝侯",
+      "en": "G. Kurfürst",
+      "py": "dxdh",
+      "type": "战列",
+      "tier": "10",
+      "nation": "德国"
+    },
+    "4179572176": {
+      "shipId": "4179572176",
+      "shipIdStr": "PRSB110",
+      "zh": "克里姆林",
+      "en": "Kremlin",
+      "py": "klml",
+      "type": "战列",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "4179605488": {
+      "shipId": "4179605488",
+      "shipIdStr": "PASA110",
+      "zh": "中途岛",
+      "en": "Midway",
+      "py": "ztd",
+      "type": "航母",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "4178523984": {
+      "shipId": "4178523984",
+      "shipIdStr": "PFSB111",
+      "zh": "祖国",
+      "en": "Patrie",
+      "py": "zg",
+      "type": "战列",
+      "tier": "11",
+      "nation": "法国"
+    },
+    "4179572720": {
+      "shipId": "4179572720",
+      "shipIdStr": "PASB110",
+      "zh": "佛蒙特",
+      "en": "Vermont",
+      "py": "fmt",
+      "type": "战列",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "4178556880": {
+      "shipId": "4178556880",
+      "shipIdStr": "PBSA111",
+      "zh": "老鹰",
+      "en": "Eagle",
+      "py": "ly",
+      "type": "航母",
+      "tier": "11",
+      "nation": "英国"
+    },
+    "4178491216": {
+      "shipId": "4178491216",
+      "shipIdStr": "PFSC111",
+      "zh": "孔代",
+      "en": "Condé",
+      "py": "kd",
+      "type": "巡洋",
+      "tier": "11",
+      "nation": "法国"
+    },
+    "4182652208": {
+      "shipId": "4182652208",
+      "shipIdStr": "PWSD107",
+      "zh": "斯科讷",
+      "en": "Skåne",
+      "py": "skn",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "欧洲"
+    },
+    "4181636944": {
+      "shipId": "4181636944",
+      "shipIdStr": "PFSC108",
+      "zh": "查理-马特",
+      "en": "Charles Martel",
+      "py": "clmt",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "4180588272": {
+      "shipId": "4180588272",
+      "shipIdStr": "PISC109",
+      "zh": "布林迪西",
+      "en": "Brindisi",
+      "py": "bldx",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "4180588336": {
+      "shipId": "4180588336",
+      "shipIdStr": "PGSC109",
+      "zh": "罗恩",
+      "en": "Roon",
+      "py": "le",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "4179572560": {
+      "shipId": "4179572560",
+      "shipIdStr": "PFSB110",
+      "zh": "共和国",
+      "en": "République",
+      "py": "ghg",
+      "type": "战列",
+      "tier": "10",
+      "nation": "法国"
+    },
+    "4178556912": {
+      "shipId": "4178556912",
+      "shipIdStr": "PASA111",
+      "zh": "合众国",
+      "en": "United States",
+      "py": "hzg",
+      "type": "航母",
+      "tier": "11",
+      "nation": "美国"
+    },
+    "4178523952": {
+      "shipId": "4178523952",
+      "shipIdStr": "PGSB111",
+      "zh": "汉诺威",
+      "en": "Hannover",
+      "py": "hnw",
+      "type": "战列",
+      "tier": "11",
+      "nation": "德国"
+    },
+    "4181669712": {
+      "shipId": "4181669712",
+      "shipIdStr": "PFSB108",
+      "zh": "黎塞留",
+      "en": "Richelieu",
+      "py": "lsl",
+      "type": "战列",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "4181603536": {
+      "shipId": "4181603536",
+      "shipIdStr": "PZSD108",
+      "zh": "咸阳",
+      "en": "Hsienyang",
+      "py": "xy",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "泛亚"
+    },
+    "4181669328": {
+      "shipId": "4181669328",
+      "shipIdStr": "PRSB108",
+      "zh": "符拉迪沃斯托克",
+      "en": "Vladivostok",
+      "py": "fldwstk",
+      "type": "战列",
+      "tier": "8",
+      "nation": "苏联"
+    },
+    "4179572688": {
+      "shipId": "4179572688",
+      "shipIdStr": "PBSB110",
+      "zh": "征服者",
+      "en": "Conqueror",
+      "py": "zfz",
+      "type": "战列",
+      "tier": "10",
+      "nation": "英国"
+    },
+    "4180621136": {
+      "shipId": "4180621136",
+      "shipIdStr": "PFSB109",
+      "zh": "阿尔萨斯",
+      "en": "Alsace",
+      "py": "aess",
+      "type": "战列",
+      "tier": "9",
+      "nation": "法国"
+    },
+    "4078909232": {
+      "shipId": "4078909232",
+      "shipIdStr": "PGSB206",
+      "zh": "马肯森",
+      "en": "Mackensen",
+      "py": "mks",
+      "type": "战列",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4180588304": {
+      "shipId": "4180588304",
+      "shipIdStr": "PHSC109",
+      "zh": "约翰·德·维特",
+      "en": "Johan de Witt",
+      "py": "yhdwt",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "荷兰"
+    },
+    "4181637104": {
+      "shipId": "4181637104",
+      "shipIdStr": "PASC108",
+      "zh": "巴尔的摩",
+      "en": "Baltimore",
+      "py": "bedm",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4181702608": {
+      "shipId": "4181702608",
+      "shipIdStr": "PBSA108",
+      "zh": "怨仇",
+      "en": "Implacable",
+      "py": "yc",
+      "type": "航母",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "4180621104": {
+      "shipId": "4180621104",
+      "shipIdStr": "PGSB109",
+      "zh": "腓特烈大帝",
+      "en": "F. der Grosse",
+      "py": "ftldd",
+      "type": "战列",
+      "tier": "9",
+      "nation": "德国"
+    },
+    "4181604304": {
+      "shipId": "4181604304",
+      "shipIdStr": "PBSD108",
+      "zh": "雷电",
+      "en": "Lightning",
+      "py": "ld",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "英国"
+    },
+    "4180554960": {
+      "shipId": "4180554960",
+      "shipIdStr": "PZSD109",
+      "zh": "忠武",
+      "en": "Chung Mu",
+      "py": "zw",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "泛亚"
+    },
+    "4181669680": {
+      "shipId": "4181669680",
+      "shipIdStr": "PGSB108",
+      "zh": "俾斯麦",
+      "en": "Bismarck",
+      "py": "bsm",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "4180621264": {
+      "shipId": "4180621264",
+      "shipIdStr": "PBSB109",
+      "zh": "狮",
+      "en": "Lion",
+      "py": "s",
+      "type": "战列",
+      "tier": "9",
+      "nation": "英国"
+    },
+    "4178458064": {
+      "shipId": "4178458064",
+      "shipIdStr": "PRSD111",
+      "zh": "佐尔基",
+      "en": "Zorkiy",
+      "py": "zej",
+      "type": "驱逐",
+      "tier": "11",
+      "nation": "苏联"
+    },
+    "4179604944": {
+      "shipId": "4179604944",
+      "shipIdStr": "PRSA110",
+      "zh": "纳希莫夫",
+      "en": "Nakhimov",
+      "py": "nxmf",
+      "type": "航母",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "4180555504": {
+      "shipId": "4180555504",
+      "shipIdStr": "PISD109",
+      "zh": "亚得里亚",
+      "en": "Adriatico",
+      "py": "ydly",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "意大利"
+    },
+    "4181604176": {
+      "shipId": "4181604176",
+      "shipIdStr": "PFSD108",
+      "zh": "空想",
+      "en": "Le Fantasque",
+      "py": "kx",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "法国"
+    },
+    "4181702640": {
+      "shipId": "4181702640",
+      "shipIdStr": "PASA108",
+      "zh": "列克星敦",
+      "en": "Lexington",
+      "py": "lkxd",
+      "type": "航母",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4179539152": {
+      "shipId": "4179539152",
+      "shipIdStr": "PZSC110",
+      "zh": "济南",
+      "en": "Jinan",
+      "py": "jn",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "泛亚"
+    },
+    "4082054960": {
+      "shipId": "4082054960",
+      "shipIdStr": "PGSB203",
+      "zh": "冯·德·坦恩",
+      "en": "Von der Tann",
+      "py": "fdte",
+      "type": "战列",
+      "tier": "3",
+      "nation": "德国"
+    },
+    "4180588528": {
+      "shipId": "4180588528",
+      "shipIdStr": "PASC109",
+      "zh": "水牛城",
+      "en": "Buffalo",
+      "py": "snc",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "4182652368": {
+      "shipId": "4182652368",
+      "shipIdStr": "PRSD107",
+      "zh": "无畏",
+      "en": "Udaloi",
+      "py": "ww",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "苏联"
+    },
+    "4179506640": {
+      "shipId": "4179506640",
+      "shipIdStr": "PRSD110",
+      "zh": "哈巴罗夫斯克",
+      "en": "Khabarovsk",
+      "py": "hblfsk",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "苏联"
+    },
+    "4181702352": {
+      "shipId": "4181702352",
+      "shipIdStr": "PJSA108",
+      "zh": "翔鹤",
+      "en": "Shōkaku",
+      "py": "xh",
+      "type": "航母",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4184815440": {
+      "shipId": "4184815440",
+      "shipIdStr": "PFSB105",
+      "zh": "布列塔尼",
+      "en": "Bretagne",
+      "py": "bltn",
+      "type": "战列",
+      "tier": "5",
+      "nation": "法国"
+    },
+    "4183700688": {
+      "shipId": "4183700688",
+      "shipIdStr": "PZSD106",
+      "zh": "抚顺",
+      "en": "Fushun",
+      "py": "fs",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "泛亚"
+    },
+    "4186846416": {
+      "shipId": "4186846416",
+      "shipIdStr": "PZSD103",
+      "zh": "帕禳",
+      "en": "Phra Ruang",
+      "py": "pr",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "泛亚"
+    },
+    "4185830864": {
+      "shipId": "4185830864",
+      "shipIdStr": "PRSC104",
+      "zh": "斯维特拉那",
+      "en": "Svietlana",
+      "py": "swtln",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "苏联"
+    },
+    "4183733712": {
+      "shipId": "4183733712",
+      "shipIdStr": "PRSC106",
+      "zh": "布琼尼",
+      "en": "Budyonny",
+      "py": "bqn",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4186879728": {
+      "shipId": "4186879728",
+      "shipIdStr": "PISC103",
+      "zh": "塔兰托",
+      "en": "Taranto",
+      "py": "tlt",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "意大利"
+    },
+    "4184749360": {
+      "shipId": "4184749360",
+      "shipIdStr": "PWSD105",
+      "zh": "维斯比",
+      "en": "Visby",
+      "py": "wsb",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "欧洲"
+    },
+    "4184749776": {
+      "shipId": "4184749776",
+      "shipIdStr": "PJSD105",
+      "zh": "睦月",
+      "en": "Mutsuki",
+      "py": "my",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4183701200": {
+      "shipId": "4183701200",
+      "shipIdStr": "PJSD106",
+      "zh": "吹雪",
+      "en": "Fubuki",
+      "py": "cx",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "4183799760": {
+      "shipId": "4183799760",
+      "shipIdStr": "PBSA106",
+      "zh": "暴怒",
+      "en": "Furious",
+      "py": "bn",
+      "type": "航母",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4184815408": {
+      "shipId": "4184815408",
+      "shipIdStr": "PGSB105",
+      "zh": "国王",
+      "en": "König",
+      "py": "gw",
+      "type": "战列",
+      "tier": "5",
+      "nation": "德国"
+    },
+    "4186912208": {
+      "shipId": "4186912208",
+      "shipIdStr": "PRSB103",
+      "zh": "苏沃洛夫公爵",
+      "en": "Knyaz Suvorov",
+      "py": "swlfgj",
+      "type": "战列",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "4183734000": {
+      "shipId": "4183734000",
+      "shipIdStr": "PISC106",
+      "zh": "特伦托",
+      "en": "Trento",
+      "py": "tlt",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "意大利"
+    },
+    "4184750032": {
+      "shipId": "4184750032",
+      "shipIdStr": "PBSD105",
+      "zh": "阿卡斯塔",
+      "en": "Acasta",
+      "py": "akst",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4186912592": {
+      "shipId": "4186912592",
+      "shipIdStr": "PFSB103",
+      "zh": "杜伦尼",
+      "en": "Turenne",
+      "py": "dln",
+      "type": "战列",
+      "tier": "3",
+      "nation": "法国"
+    },
+    "4185798608": {
+      "shipId": "4185798608",
+      "shipIdStr": "PBSD104",
+      "zh": "清醒",
+      "en": "Wakeful",
+      "py": "qx",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "英国"
+    },
+    "4185863984": {
+      "shipId": "4185863984",
+      "shipIdStr": "PGSB104",
+      "zh": "凯撒",
+      "en": "Kaiser",
+      "py": "ks",
+      "type": "战列",
+      "tier": "4",
+      "nation": "德国"
+    },
+    "4183799248": {
+      "shipId": "4183799248",
+      "shipIdStr": "PRSA106",
+      "zh": "谢罗夫",
+      "en": "Serov",
+      "py": "xlf",
+      "type": "航母",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4184782608": {
+      "shipId": "4184782608",
+      "shipIdStr": "PHSC105",
+      "zh": "西里伯斯",
+      "en": "Celebes",
+      "py": "xlbs",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "荷兰"
+    },
+    "4183734224": {
+      "shipId": "4183734224",
+      "shipIdStr": "PBSC106",
+      "zh": "利安得",
+      "en": "Leander",
+      "py": "lad",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4186847184": {
+      "shipId": "4186847184",
+      "shipIdStr": "PBSD103",
+      "zh": "女武神",
+      "en": "Valkyrie",
+      "py": "nws",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "英国"
+    },
+    "4182652720": {
+      "shipId": "4182652720",
+      "shipIdStr": "PGSD107",
+      "zh": "莱伯勒希特-马斯",
+      "en": "Maass",
+      "py": "lblxtms",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "4184782032": {
+      "shipId": "4184782032",
+      "shipIdStr": "PZSC105",
+      "zh": "重庆",
+      "en": "Chungking",
+      "py": "zq",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "泛亚"
+    },
+    "4183799504": {
+      "shipId": "4183799504",
+      "shipIdStr": "PJSA106",
+      "zh": "龙骧",
+      "en": "Ryūjō",
+      "py": "lx",
+      "type": "航母",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "4185864144": {
+      "shipId": "4185864144",
+      "shipIdStr": "PBSB104",
+      "zh": "猎户座",
+      "en": "Orion",
+      "py": "lhz",
+      "type": "战列",
+      "tier": "4",
+      "nation": "英国"
+    },
+    "4182685648": {
+      "shipId": "4182685648",
+      "shipIdStr": "PBSC107",
+      "zh": "斐济",
+      "en": "Fiji",
+      "py": "fj",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "4185831216": {
+      "shipId": "4185831216",
+      "shipIdStr": "PGSC104",
+      "zh": "卡尔斯鲁厄",
+      "en": "Karlsruhe",
+      "py": "kesle",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "德国"
+    },
+    "4185863920": {
+      "shipId": "4185863920",
+      "shipIdStr": "PISB104",
+      "zh": "但丁·阿利格伊切里",
+      "en": "D. Alighieri",
+      "py": "ddalgyql",
+      "type": "战列",
+      "tier": "4",
+      "nation": "意大利"
+    },
+    "4186912560": {
+      "shipId": "4186912560",
+      "shipIdStr": "PGSB103",
+      "zh": "拿骚",
+      "en": "Nassau",
+      "py": "ns",
+      "type": "战列",
+      "tier": "3",
+      "nation": "德国"
+    },
+    "4184749904": {
+      "shipId": "4184749904",
+      "shipIdStr": "PFSD105",
+      "zh": "美洲豹",
+      "en": "Jaguar",
+      "py": "mzb",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "法国"
+    },
+    "4184782800": {
+      "shipId": "4184782800",
+      "shipIdStr": "PBSC105",
+      "zh": "翡翠",
+      "en": "Emerald",
+      "py": "fc",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4183799600": {
+      "shipId": "4183799600",
+      "shipIdStr": "PGSA106",
+      "zh": "威悉河",
+      "en": "Weser",
+      "py": "wxh",
+      "type": "航母",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4182684880": {
+      "shipId": "4182684880",
+      "shipIdStr": "PZSC107",
+      "zh": "春蓬",
+      "en": "Chumphon",
+      "py": "cp",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "泛亚"
+    },
+    "4184815056": {
+      "shipId": "4184815056",
+      "shipIdStr": "PRSB105",
+      "zh": "彼得大帝",
+      "en": "Pyotr Velikiy",
+      "py": "bddd",
+      "type": "战列",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4186846672": {
+      "shipId": "4186846672",
+      "shipIdStr": "PRSD103",
+      "zh": "无理",
+      "en": "Derzki",
+      "py": "wl",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "4185798384": {
+      "shipId": "4185798384",
+      "shipIdStr": "PISD104",
+      "zh": "图尔比内",
+      "en": "Turbine",
+      "py": "tebn",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "意大利"
+    },
+    "4183701456": {
+      "shipId": "4183701456",
+      "shipIdStr": "PBSD106",
+      "zh": "伊卡洛斯",
+      "en": "Icarus",
+      "py": "ykls",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4185798480": {
+      "shipId": "4185798480",
+      "shipIdStr": "PFSD104",
+      "zh": "狂风",
+      "en": "Bourrasque",
+      "py": "kf",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "法国"
+    },
+    "4185831376": {
+      "shipId": "4185831376",
+      "shipIdStr": "PBSC104",
+      "zh": "达娜厄",
+      "en": "Danae",
+      "py": "dne",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "英国"
+    },
+    "4184749872": {
+      "shipId": "4184749872",
+      "shipIdStr": "PGSD105",
+      "zh": "T-22",
+      "en": "T-22",
+      "py": "T22",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "德国"
+    },
+    "4185896752": {
+      "shipId": "4185896752",
+      "shipIdStr": "PGSA104",
+      "zh": "莱茵河",
+      "en": "Rhein",
+      "py": "lyh",
+      "type": "航母",
+      "tier": "4",
+      "nation": "德国"
+    },
+    "4183701232": {
+      "shipId": "4183701232",
+      "shipIdStr": "PISD106",
+      "zh": "阿维埃尔",
+      "en": "Aviere",
+      "py": "awae",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "意大利"
+    },
+    "4186879440": {
+      "shipId": "4186879440",
+      "shipIdStr": "PRSC103",
+      "zh": "博加特里",
+      "en": "Bogatyr",
+      "py": "bjtl",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "4182685136": {
+      "shipId": "4182685136",
+      "shipIdStr": "PRSC107",
+      "zh": "肖尔斯",
+      "en": "Shchors",
+      "py": "xes",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "4182685424": {
+      "shipId": "4182685424",
+      "shipIdStr": "PISC107",
+      "zh": "扎拉",
+      "en": "Zara",
+      "py": "zl",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "4186879952": {
+      "shipId": "4186879952",
+      "shipIdStr": "PBSC103",
+      "zh": "卡利登",
+      "en": "Caledon",
+      "py": "kld",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "英国"
+    },
+    "4183766864": {
+      "shipId": "4183766864",
+      "shipIdStr": "PFSB106",
+      "zh": "诺曼底",
+      "en": "Normandie",
+      "py": "nmd",
+      "type": "战列",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "4183734032": {
+      "shipId": "4183734032",
+      "shipIdStr": "PHSC106",
+      "zh": "凯敦",
+      "en": "Kijkduin",
+      "py": "kd",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "荷兰"
+    },
+    "4183766768": {
+      "shipId": "4183766768",
+      "shipIdStr": "PISB106",
+      "zh": "安德烈亚·多里亚",
+      "en": "Andrea Doria",
+      "py": "adlydly",
+      "type": "战列",
+      "tier": "6",
+      "nation": "意大利"
+    },
+    "4182652752": {
+      "shipId": "4182652752",
+      "shipIdStr": "PFSD107",
+      "zh": "沃克兰",
+      "en": "Vauquelin",
+      "py": "wkl",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "法国"
+    },
+    "4184782640": {
+      "shipId": "4184782640",
+      "shipIdStr": "PGSC105",
+      "zh": "柯尼斯堡",
+      "en": "Königsberg",
+      "py": "knsb",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "德国"
+    },
+    "4182685520": {
+      "shipId": "4182685520",
+      "shipIdStr": "PFSC107",
+      "zh": "阿尔及利亚",
+      "en": "Algérie",
+      "py": "aejly",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "法国"
+    },
+    "4183734256": {
+      "shipId": "4183734256",
+      "shipIdStr": "PASC106",
+      "zh": "彭萨科拉",
+      "en": "Pensacola",
+      "py": "pskl",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4182718416": {
+      "shipId": "4182718416",
+      "shipIdStr": "PBSB107",
+      "zh": "英王乔治五世",
+      "en": "King George V",
+      "py": "ywqzws",
+      "type": "战列",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "4186847024": {
+      "shipId": "4186847024",
+      "shipIdStr": "PGSD103",
+      "zh": "G-101",
+      "en": "G-101",
+      "py": "G101",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "德国"
+    },
+    "4183701328": {
+      "shipId": "4183701328",
+      "shipIdStr": "PFSD106",
+      "zh": "猎豹",
+      "en": "Guépard",
+      "py": "lb",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "4183701296": {
+      "shipId": "4183701296",
+      "shipIdStr": "PGSD106",
+      "zh": "恩斯特-盖德",
+      "en": "Gaede",
+      "py": "estgd",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4183700784": {
+      "shipId": "4183700784",
+      "shipIdStr": "PWSD106",
+      "zh": "韦斯特罗斯",
+      "en": "Västerås",
+      "py": "wstls",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "欧洲"
+    },
+    "4183766992": {
+      "shipId": "4183766992",
+      "shipIdStr": "PBSB106",
+      "zh": "伊丽莎白女王",
+      "en": "Queen Elizabeth",
+      "py": "ylsbnw",
+      "type": "战列",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4182685488": {
+      "shipId": "4182685488",
+      "shipIdStr": "PGSC107",
+      "zh": "约克",
+      "en": "Yorck",
+      "py": "yk",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "4183734096": {
+      "shipId": "4183734096",
+      "shipIdStr": "PFSC106",
+      "zh": "拉加利索尼埃",
+      "en": "La Galissonnière",
+      "py": "ljlsna",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "法国"
+    },
+    "4186846512": {
+      "shipId": "4186846512",
+      "shipIdStr": "PWSD103",
+      "zh": "罗慕路斯",
+      "en": "Romulus",
+      "py": "lmls",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "欧洲"
+    },
+    "4186847056": {
+      "shipId": "4186847056",
+      "shipIdStr": "PFSD103",
+      "zh": "燧发枪兵",
+      "en": "Fusilier",
+      "py": "sfqb",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "法国"
+    },
+    "4185798448": {
+      "shipId": "4185798448",
+      "shipIdStr": "PGSD104",
+      "zh": "V-170",
+      "en": "V-170",
+      "py": "V170",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "德国"
+    },
+    "4185896656": {
+      "shipId": "4185896656",
+      "shipIdStr": "PJSA104",
+      "zh": "凤翔",
+      "en": "Hōshō",
+      "py": "fx",
+      "type": "航母",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4184782672": {
+      "shipId": "4184782672",
+      "shipIdStr": "PFSC105",
+      "zh": "白劳易",
+      "en": "Émile Bertin",
+      "py": "bly",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "法国"
+    },
+    "4185896944": {
+      "shipId": "4185896944",
+      "shipIdStr": "PASA104",
+      "zh": "兰利",
+      "en": "Langley",
+      "py": "ll",
+      "type": "航母",
+      "tier": "4",
+      "nation": "美国"
+    },
+    "4183734064": {
+      "shipId": "4183734064",
+      "shipIdStr": "PGSC106",
+      "zh": "纽伦堡",
+      "en": "Nürnberg",
+      "py": "nlb",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4185864016": {
+      "shipId": "4185864016",
+      "shipIdStr": "PFSB104",
+      "zh": "孤拔",
+      "en": "Courbet",
+      "py": "gb",
+      "type": "战列",
+      "tier": "4",
+      "nation": "法国"
+    },
+    "4185831152": {
+      "shipId": "4185831152",
+      "shipIdStr": "PISC104",
+      "zh": "阿尔贝托·迪·朱桑诺",
+      "en": "Giussano",
+      "py": "aebtdzsn",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "意大利"
+    },
+    "4186846960": {
+      "shipId": "4186846960",
+      "shipIdStr": "PISD103",
+      "zh": "纳扎里奥·萨乌罗",
+      "en": "N. Sauro",
+      "py": "nzlaswl",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "意大利"
+    },
+    "4185797936": {
+      "shipId": "4185797936",
+      "shipIdStr": "PWSD104",
+      "zh": "克拉斯·霍恩",
+      "en": "Klas Horn",
+      "py": "klshe",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "欧洲"
+    },
+    "4185896400": {
+      "shipId": "4185896400",
+      "shipIdStr": "PRSA104",
+      "zh": "共青团员",
+      "en": "Komsomolets",
+      "py": "gqty",
+      "type": "航母",
+      "tier": "4",
+      "nation": "苏联"
+    },
+    "4183766832": {
+      "shipId": "4183766832",
+      "shipIdStr": "PGSB106",
+      "zh": "巴伐利亚",
+      "en": "Bayern",
+      "py": "bfly",
+      "type": "战列",
+      "tier": "6",
+      "nation": "德国"
+    },
+    "4182717904": {
+      "shipId": "4182717904",
+      "shipIdStr": "PRSB107",
+      "zh": "锡诺普",
+      "en": "Sinop",
+      "py": "xnp",
+      "type": "战列",
+      "tier": "7",
+      "nation": "苏联"
+    },
+    "4182685456": {
+      "shipId": "4182685456",
+      "shipIdStr": "PHSC107",
+      "zh": "团结",
+      "en": "Eendracht",
+      "py": "tj",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "荷兰"
+    },
+    "4182718192": {
+      "shipId": "4182718192",
+      "shipIdStr": "PISB107",
+      "zh": "弗朗切斯科·卡拉乔洛",
+      "en": "F. Caracciolo",
+      "py": "flqskklql",
+      "type": "战列",
+      "tier": "7",
+      "nation": "意大利"
+    },
+    "4186879824": {
+      "shipId": "4186879824",
+      "shipIdStr": "PFSC103",
+      "zh": "弗利昂",
+      "en": "Friant",
+      "py": "fla",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "法国"
+    },
+    "4186912720": {
+      "shipId": "4186912720",
+      "shipIdStr": "PBSB103",
+      "zh": "柏勒罗丰",
+      "en": "Bellerophon",
+      "py": "bllf",
+      "type": "战列",
+      "tier": "3",
+      "nation": "英国"
+    },
+    "4183766480": {
+      "shipId": "4183766480",
+      "shipIdStr": "PRSB106",
+      "zh": "伊兹梅尔",
+      "en": "Izmail",
+      "py": "yzme",
+      "type": "战列",
+      "tier": "6",
+      "nation": "苏联"
+    },
+    "4187895088": {
+      "shipId": "4187895088",
+      "shipIdStr": "PWSD102",
+      "zh": "塔特拉",
+      "en": "Tátra",
+      "py": "ttl",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "欧洲"
+    },
+    "4186879760": {
+      "shipId": "4186879760",
+      "shipIdStr": "PHSC103",
+      "zh": "爪哇",
+      "en": "Java",
+      "py": "zw",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "荷兰"
+    },
+    "4182718288": {
+      "shipId": "4182718288",
+      "shipIdStr": "PFSB107",
+      "zh": "里昂",
+      "en": "Lyon",
+      "py": "la",
+      "type": "战列",
+      "tier": "7",
+      "nation": "法国"
+    },
+    "4185863632": {
+      "shipId": "4185863632",
+      "shipIdStr": "PRSB104",
+      "zh": "甘古特",
+      "en": "Gangut",
+      "py": "ggt",
+      "type": "战列",
+      "tier": "4",
+      "nation": "苏联"
+    },
+    "4187894992": {
+      "shipId": "4187894992",
+      "shipIdStr": "PZSD102",
+      "zh": "龙江",
+      "en": "Longjiang",
+      "py": "lj",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "泛亚"
+    },
+    "4186879792": {
+      "shipId": "4186879792",
+      "shipIdStr": "PGSC103",
+      "zh": "科尔贝格",
+      "en": "Kolberg",
+      "py": "kebg",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "德国"
+    },
+    "4184749264": {
+      "shipId": "4184749264",
+      "shipIdStr": "PZSD105",
+      "zh": "建威",
+      "en": "Jianwei",
+      "py": "jw",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "泛亚"
+    },
+    "4184815568": {
+      "shipId": "4184815568",
+      "shipIdStr": "PBSB105",
+      "zh": "铁公爵",
+      "en": "Iron Duke",
+      "py": "tgj",
+      "type": "战列",
+      "tier": "5",
+      "nation": "英国"
+    },
+    "4185831184": {
+      "shipId": "4185831184",
+      "shipIdStr": "PHSC104",
+      "zh": "德·鲁伊特",
+      "en": "De Ruyter",
+      "py": "dlyt",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "荷兰"
+    },
+    "4184782576": {
+      "shipId": "4184782576",
+      "shipIdStr": "PISC105",
+      "zh": "莱蒙多•蒙德库克利",
+      "en": "Montecuccoli",
+      "py": "lmdmdkkl",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "意大利"
+    },
+    "4184749808": {
+      "shipId": "4184749808",
+      "shipIdStr": "PISD105",
+      "zh": "西北风",
+      "en": "Maestrale",
+      "py": "xbf",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "意大利"
+    },
+    "4185831248": {
+      "shipId": "4185831248",
+      "shipIdStr": "PFSC104",
+      "zh": "迪盖-特鲁安",
+      "en": "Duguay-Trouin",
+      "py": "dgtla",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "法国"
+    },
+    "4182685680": {
+      "shipId": "4182685680",
+      "shipIdStr": "PASC107",
+      "zh": "新奥尔良",
+      "en": "New Orleans",
+      "py": "xael",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4182652880": {
+      "shipId": "4182652880",
+      "shipIdStr": "PBSD107",
+      "zh": "杰维斯",
+      "en": "Jervis",
+      "py": "jws",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "英国"
+    },
+    "4183733456": {
+      "shipId": "4183733456",
+      "shipIdStr": "PZSC106",
+      "zh": "拉赫马特",
+      "en": "Rahmat",
+      "py": "lhmt",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "泛亚"
+    },
+    "4182718256": {
+      "shipId": "4182718256",
+      "shipIdStr": "PGSB107",
+      "zh": "格奈森瑙",
+      "en": "Gneisenau",
+      "py": "gnsn",
+      "type": "战列",
+      "tier": "7",
+      "nation": "德国"
+    },
+    "4185797840": {
+      "shipId": "4185797840",
+      "shipIdStr": "PZSD104",
+      "zh": "沈阳",
+      "en": "Shenyang",
+      "py": "sy",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "泛亚"
+    },
+    "4183799792": {
+      "shipId": "4183799792",
+      "shipIdStr": "PASA106",
+      "zh": "突击者",
+      "en": "Ranger",
+      "py": "tjz",
+      "type": "航母",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4185798096": {
+      "shipId": "4185798096",
+      "shipIdStr": "PRSD104",
+      "zh": "伊贾斯拉夫",
+      "en": "Izyaslav",
+      "py": "yjslf",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "苏联"
+    },
+    "4184815344": {
+      "shipId": "4184815344",
+      "shipIdStr": "PISB105",
+      "zh": "加富尔伯爵",
+      "en": "Cavour",
+      "py": "jfebj",
+      "type": "战列",
+      "tier": "5",
+      "nation": "意大利"
+    },
+    "4285445840": {
+      "shipId": "4285445840",
+      "shipIdStr": "PJSC009",
+      "zh": "最上",
+      "en": "Mogami",
+      "py": "zs",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4293867216": {
+      "shipId": "4293867216",
+      "shipIdStr": "PJSB001",
+      "zh": "河内",
+      "en": "Kawachi",
+      "py": "hn",
+      "type": "战列",
+      "tier": "3",
+      "nation": "日本"
+    },
+    "4188976336": {
+      "shipId": "4188976336",
+      "shipIdStr": "PZSC101",
+      "zh": "成安",
+      "en": "Chengan",
+      "py": "ca",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "泛亚"
+    },
+    "4292785616": {
+      "shipId": "4292785616",
+      "shipIdStr": "PRSC002",
+      "zh": "狄安娜",
+      "en": "Diana",
+      "py": "dan",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "苏联"
+    },
+    "4187928016": {
+      "shipId": "4187928016",
+      "shipIdStr": "PRSC102",
+      "zh": "诺维克",
+      "en": "Novik",
+      "py": "nwk",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "苏联"
+    },
+    "4268635856": {
+      "shipId": "4268635856",
+      "shipIdStr": "PJSD025",
+      "zh": "神风",
+      "en": "Kamikaze",
+      "py": "sf",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4283381456": {
+      "shipId": "4283381456",
+      "shipIdStr": "PJSB011",
+      "zh": "三笠",
+      "en": "Mikasa",
+      "py": "sl",
+      "type": "战列",
+      "tier": "2",
+      "nation": "日本"
+    },
+    "4291704528": {
+      "shipId": "4291704528",
+      "shipIdStr": "PJSD003",
+      "zh": "矶风",
+      "en": "Isokaze",
+      "py": "jf",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4286494416": {
+      "shipId": "4286494416",
+      "shipIdStr": "PJSC008",
+      "zh": "妙高",
+      "en": "Myōkō",
+      "py": "mg",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "4247697392": {
+      "shipId": "4247697392",
+      "shipIdStr": "PASC045",
+      "zh": "马布尔黑德L",
+      "en": "Marblehead L",
+      "py": "mbehdL",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "4276041712": {
+      "shipId": "4276041712",
+      "shipIdStr": "PASB018",
+      "zh": "依阿华",
+      "en": "Iowa",
+      "py": "yah",
+      "type": "战列",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "4188977104": {
+      "shipId": "4188977104",
+      "shipIdStr": "PBSC101",
+      "zh": "黑天鹅",
+      "en": "Black Swan",
+      "py": "hte",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "英国"
+    },
+    "4273911792": {
+      "shipId": "4273911792",
+      "shipIdStr": "PASC020",
+      "zh": "得梅因",
+      "en": "Des Moines",
+      "py": "dmy",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "4293866960": {
+      "shipId": "4293866960",
+      "shipIdStr": "PRSB001",
+      "zh": "沙皇尼古拉一世",
+      "en": "Nikolai I",
+      "py": "shnglys",
+      "type": "战列",
+      "tier": "4",
+      "nation": "苏联"
+    },
+    "4293834192": {
+      "shipId": "4293834192",
+      "shipIdStr": "PRSC001",
+      "zh": "阿芙乐尔",
+      "en": "Aurora",
+      "py": "afle",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "苏联"
+    },
+    "4258182864": {
+      "shipId": "4258182864",
+      "shipIdStr": "PJSC035",
+      "zh": "筑摩",
+      "en": "Chikuma",
+      "py": "zm",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "日本"
+    },
+    "4292753104": {
+      "shipId": "4292753104",
+      "shipIdStr": "PJSD002",
+      "zh": "海风",
+      "en": "Umikaze",
+      "py": "hf",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "日本"
+    },
+    "4287542992": {
+      "shipId": "4287542992",
+      "shipIdStr": "PJSC007",
+      "zh": "青叶",
+      "en": "Aoba",
+      "py": "qy",
+      "type": "巡洋",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "4187895760": {
+      "shipId": "4187895760",
+      "shipIdStr": "PBSD102",
+      "zh": "美狄亚",
+      "en": "Medea",
+      "py": "mdy",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "英国"
+    },
+    "4276008656": {
+      "shipId": "4276008656",
+      "shipIdStr": "PJSC018",
+      "zh": "利根",
+      "en": "Tone",
+      "py": "lg",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4288624336": {
+      "shipId": "4288624336",
+      "shipIdStr": "PJSB006",
+      "zh": "扶桑",
+      "en": "Fusō",
+      "py": "fs",
+      "type": "战列",
+      "tier": "6",
+      "nation": "日本"
+    },
+    "4287575760": {
+      "shipId": "4287575760",
+      "shipIdStr": "PJSB007",
+      "zh": "金刚",
+      "en": "Kongō",
+      "py": "jg",
+      "type": "战列",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4277024464": {
+      "shipId": "4277024464",
+      "shipIdStr": "PJSD017",
+      "zh": "风神",
+      "en": "Fūjin",
+      "py": "fs",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4255037136": {
+      "shipId": "4255037136",
+      "shipIdStr": "PJSC038",
+      "zh": "爱宕",
+      "en": "Atago",
+      "py": "ad",
+      "type": "巡洋",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4188976912": {
+      "shipId": "4188976912",
+      "shipIdStr": "PHSC101",
+      "zh": "范·金斯伯根",
+      "en": "Van Kinsbergen",
+      "py": "fjsbg",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "荷兰"
+    },
+    "4187928528": {
+      "shipId": "4187928528",
+      "shipIdStr": "PBSC102",
+      "zh": "韦茅斯",
+      "en": "Weymouth",
+      "py": "wms",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "英国"
+    },
+    "4187895600": {
+      "shipId": "4187895600",
+      "shipIdStr": "PGSD102",
+      "zh": "V-25",
+      "en": "V-25",
+      "py": "V25",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "德国"
+    },
+    "4272830448": {
+      "shipId": "4272830448",
+      "shipIdStr": "PASD021",
+      "zh": "弗莱彻",
+      "en": "Fletcher",
+      "py": "flc",
+      "type": "驱逐",
+      "tier": "9",
+      "nation": "美国"
+    },
+    "4289607664": {
+      "shipId": "4289607664",
+      "shipIdStr": "PASD005",
+      "zh": "法拉格特",
+      "en": "Farragut",
+      "py": "flgt",
+      "type": "驱逐",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4289640144": {
+      "shipId": "4289640144",
+      "shipIdStr": "PJSC005",
+      "zh": "古鹰",
+      "en": "Furutaka",
+      "py": "gy",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4259264496": {
+      "shipId": "4259264496",
+      "shipIdStr": "PASB034",
+      "zh": "新墨西哥",
+      "en": "New Mexico",
+      "py": "xmxg",
+      "type": "战列",
+      "tier": "6",
+      "nation": "美国"
+    },
+    "4281284304": {
+      "shipId": "4281284304",
+      "shipIdStr": "PJSB013",
+      "zh": "天城",
+      "en": "Amagi",
+      "py": "tc",
+      "type": "战列",
+      "tier": "8",
+      "nation": "日本"
+    },
+    "4290688720": {
+      "shipId": "4290688720",
+      "shipIdStr": "PJSC004",
+      "zh": "夕张",
+      "en": "Yūbari",
+      "py": "xz",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4280170192": {
+      "shipId": "4280170192",
+      "shipIdStr": "PJSD014",
+      "zh": "橘Lima",
+      "en": "Tachibana L",
+      "py": "jLima",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "日本"
+    },
+    "4274927600": {
+      "shipId": "4274927600",
+      "shipIdStr": "PASD019",
+      "zh": "克莱姆森",
+      "en": "Clemson",
+      "py": "klms",
+      "type": "驱逐",
+      "tier": "4",
+      "nation": "美国"
+    },
+    "4286527184": {
+      "shipId": "4286527184",
+      "shipIdStr": "PJSB008",
+      "zh": "石锤",
+      "en": "Ishizuchi",
+      "py": "sc",
+      "type": "战列",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4281284592": {
+      "shipId": "4281284592",
+      "shipIdStr": "PASB013",
+      "zh": "阿肯色B",
+      "en": "Arkansas B",
+      "py": "aksB",
+      "type": "战列",
+      "tier": "4",
+      "nation": "美国"
+    },
+    "4256085712": {
+      "shipId": "4256085712",
+      "shipIdStr": "PJSC037",
+      "zh": "桥立",
+      "en": "Hashidate",
+      "py": "ql",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "日本"
+    },
+    "4259231440": {
+      "shipId": "4259231440",
+      "shipIdStr": "PJSC034",
+      "zh": "藏王",
+      "en": "Zaō",
+      "py": "cw",
+      "type": "巡洋",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "4284430032": {
+      "shipId": "4284430032",
+      "shipIdStr": "PJSB010",
+      "zh": "长门",
+      "en": "Nagato",
+      "py": "cm",
+      "type": "战列",
+      "tier": "7",
+      "nation": "日本"
+    },
+    "4282333168": {
+      "shipId": "4282333168",
+      "shipIdStr": "PASB012",
+      "zh": "北卡罗来纳",
+      "en": "N. Carolina",
+      "py": "bklln",
+      "type": "战列",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4282300112": {
+      "shipId": "4282300112",
+      "shipIdStr": "PJSC012",
+      "zh": "伊吹",
+      "en": "Ibuki",
+      "py": "yc",
+      "type": "巡洋",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "4291737584": {
+      "shipId": "4291737584",
+      "shipIdStr": "PASC003",
+      "zh": "奥尔巴尼",
+      "en": "Albany",
+      "py": "aebn",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "美国"
+    },
+    "4282267344": {
+      "shipId": "4282267344",
+      "shipIdStr": "PJSD012",
+      "zh": "岛风",
+      "en": "Shimakaze",
+      "py": "df",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "4187895536": {
+      "shipId": "4187895536",
+      "shipIdStr": "PISD102",
+      "zh": "库尔塔托内",
+      "en": "Curtatone",
+      "py": "kettn",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "意大利"
+    },
+    "4187928304": {
+      "shipId": "4187928304",
+      "shipIdStr": "PISC102",
+      "zh": "尼诺·比西奥",
+      "en": "Nino Bixio",
+      "py": "nnbxa",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "意大利"
+    },
+    "4288591856": {
+      "shipId": "4288591856",
+      "shipIdStr": "PASC006",
+      "zh": "亚特兰大",
+      "en": "Atlanta",
+      "py": "ytld",
+      "type": "巡洋",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4286461936": {
+      "shipId": "4286461936",
+      "shipIdStr": "PASD008",
+      "zh": "本森",
+      "en": "Benson",
+      "py": "bs",
+      "type": "驱逐",
+      "tier": "8",
+      "nation": "美国"
+    },
+    "4187928336": {
+      "shipId": "4187928336",
+      "shipIdStr": "PHSC102",
+      "zh": "海尔德兰",
+      "en": "Gelderland",
+      "py": "hedl",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "荷兰"
+    },
+    "4284397008": {
+      "shipId": "4284397008",
+      "shipIdStr": "PRSC010",
+      "zh": "狄安娜L",
+      "en": "Diana L",
+      "py": "danL",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "苏联"
+    },
+    "4188976976": {
+      "shipId": "4188976976",
+      "shipIdStr": "PFSC101",
+      "zh": "布甘维尔",
+      "en": "Bougainville",
+      "py": "bgwe",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "法国"
+    },
+    "4293834544": {
+      "shipId": "4293834544",
+      "shipIdStr": "PGSC001",
+      "zh": "鼬",
+      "en": "Hermelin",
+      "py": "y",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "德国"
+    },
+    "4248745968": {
+      "shipId": "4248745968",
+      "shipIdStr": "PASC044",
+      "zh": "马布尔黑德",
+      "en": "Marblehead",
+      "py": "mbehd",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "4292818736": {
+      "shipId": "4292818736",
+      "shipIdStr": "PGSB002",
+      "zh": "提尔皮茨",
+      "en": "Tirpitz",
+      "py": "tepc",
+      "type": "战列",
+      "tier": "8",
+      "nation": "德国"
+    },
+    "4293834736": {
+      "shipId": "4293834736",
+      "shipIdStr": "PASC001",
+      "zh": "伊利",
+      "en": "Erie",
+      "py": "yl",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "美国"
+    },
+    "4277090288": {
+      "shipId": "4277090288",
+      "shipIdStr": "PASB017",
+      "zh": "蒙大拿",
+      "en": "Montana",
+      "py": "mdn",
+      "type": "战列",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "4267587280": {
+      "shipId": "4267587280",
+      "shipIdStr": "PJSD026",
+      "zh": "神风R",
+      "en": "Kamikaze R",
+      "py": "sfR",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "日本"
+    },
+    "4279154384": {
+      "shipId": "4279154384",
+      "shipIdStr": "PJSC015",
+      "zh": "天龙",
+      "en": "Tenryū",
+      "py": "tl",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "日本"
+    },
+    "4290689008": {
+      "shipId": "4290689008",
+      "shipIdStr": "PASC004",
+      "zh": "圣路易斯",
+      "en": "St. Louis",
+      "py": "slys",
+      "type": "巡洋",
+      "tier": "3",
+      "nation": "美国"
+    },
+    "4286527472": {
+      "shipId": "4286527472",
+      "shipIdStr": "PASB008",
+      "zh": "科罗拉多",
+      "en": "Colorado",
+      "py": "klld",
+      "type": "战列",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4293867504": {
+      "shipId": "4293867504",
+      "shipIdStr": "PASB001",
+      "zh": "南卡罗来纳",
+      "en": "S. Carolina",
+      "py": "nklln",
+      "type": "战列",
+      "tier": "3",
+      "nation": "美国"
+    },
+    "4188976432": {
+      "shipId": "4188976432",
+      "shipIdStr": "PWSC101",
+      "zh": "狮鹫",
+      "en": "Gryf",
+      "py": "sj",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "欧洲"
+    },
+    "4187895632": {
+      "shipId": "4187895632",
+      "shipIdStr": "PFSD102",
+      "zh": "加博尔德海军少尉",
+      "en": "En. Gabolde",
+      "py": "jbedhjsw",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "法国"
+    },
+    "4292785968": {
+      "shipId": "4292785968",
+      "shipIdStr": "PGSC002",
+      "zh": "德累斯顿",
+      "en": "Dresden",
+      "py": "dlsd",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "德国"
+    },
+    "4280170480": {
+      "shipId": "4280170480",
+      "shipIdStr": "PASD014",
+      "zh": "尼古拉斯",
+      "en": "Nicholas",
+      "py": "ngls",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "4291770064": {
+      "shipId": "4291770064",
+      "shipIdStr": "PJSB003",
+      "zh": "妙义",
+      "en": "Myōgi",
+      "py": "my",
+      "type": "战列",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4264441840": {
+      "shipId": "4264441840",
+      "shipIdStr": "PASD029",
+      "zh": "西姆斯",
+      "en": "Sims",
+      "py": "xms",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4281251536": {
+      "shipId": "4281251536",
+      "shipIdStr": "PJSC013",
+      "zh": "球磨",
+      "en": "Kuma",
+      "py": "qm",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4269684432": {
+      "shipId": "4269684432",
+      "shipIdStr": "PJSD024",
+      "zh": "若竹",
+      "en": "Wakatake",
+      "py": "rz",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "日本"
+    },
+    "4281219056": {
+      "shipId": "4281219056",
+      "shipIdStr": "PASD013",
+      "zh": "基林",
+      "en": "Gearing",
+      "py": "jl",
+      "type": "驱逐",
+      "tier": "10",
+      "nation": "美国"
+    },
+    "4276041424": {
+      "shipId": "4276041424",
+      "shipIdStr": "PJSB018",
+      "zh": "大和",
+      "en": "Yamato",
+      "py": "dh",
+      "type": "战列",
+      "tier": "10",
+      "nation": "日本"
+    },
+    "4272895696": {
+      "shipId": "4272895696",
+      "shipIdStr": "PJSB021",
+      "zh": "出云",
+      "en": "Izumo",
+      "py": "cy",
+      "type": "战列",
+      "tier": "9",
+      "nation": "日本"
+    },
+    "4293801424": {
+      "shipId": "4293801424",
+      "shipIdStr": "PRSD001",
+      "zh": "轰鸣",
+      "en": "Gremyashchy",
+      "py": "hm",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4289640432": {
+      "shipId": "4289640432",
+      "shipIdStr": "PASC005",
+      "zh": "奥马哈",
+      "en": "Omaha",
+      "py": "amh",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "4292753392": {
+      "shipId": "4292753392",
+      "shipIdStr": "PASD002",
+      "zh": "桑普森",
+      "en": "Sampson",
+      "py": "sps",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "美国"
+    },
+    "4269717488": {
+      "shipId": "4269717488",
+      "shipIdStr": "PASC024",
+      "zh": "凤凰城",
+      "en": "Phoenix",
+      "py": "fhc",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "美国"
+    },
+    "4188976592": {
+      "shipId": "4188976592",
+      "shipIdStr": "PRSC101",
+      "zh": "海雕",
+      "en": "Orlan",
+      "py": "hd",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "苏联"
+    },
+    "4266538992": {
+      "shipId": "4266538992",
+      "shipIdStr": "PASD027",
+      "zh": "维克斯",
+      "en": "Wickes",
+      "py": "wks",
+      "type": "驱逐",
+      "tier": "3",
+      "nation": "美国"
+    },
+    "4293801680": {
+      "shipId": "4293801680",
+      "shipIdStr": "PJSD001",
+      "zh": "橘",
+      "en": "Tachibana",
+      "py": "j",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "日本"
+    },
+    "4292818896": {
+      "shipId": "4292818896",
+      "shipIdStr": "PBSB002",
+      "zh": "厌战",
+      "en": "Warspite",
+      "py": "yz",
+      "type": "战列",
+      "tier": "6",
+      "nation": "英国"
+    },
+    "4288559088": {
+      "shipId": "4288559088",
+      "shipIdStr": "PASD006",
+      "zh": "马汉",
+      "en": "Mahan",
+      "py": "mh",
+      "type": "驱逐",
+      "tier": "7",
+      "nation": "美国"
+    },
+    "4188976880": {
+      "shipId": "4188976880",
+      "shipIdStr": "PISC101",
+      "zh": "厄立特里亚",
+      "en": "Eritrea",
+      "py": "eltly",
+      "type": "巡洋",
+      "tier": "1",
+      "nation": "意大利"
+    },
+    "4267620048": {
+      "shipId": "4267620048",
+      "shipIdStr": "PJSC026",
+      "zh": "岩城Alpha",
+      "en": "Iwaki A",
+      "py": "ycAlpha",
+      "type": "巡洋",
+      "tier": "4",
+      "nation": "日本"
+    },
+    "4187928400": {
+      "shipId": "4187928400",
+      "shipIdStr": "PFSC102",
+      "zh": "尤里安-格拉维",
+      "en": "Jurien",
+      "py": "ylaglw",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "法国"
+    },
+    "4290721776": {
+      "shipId": "4290721776",
+      "shipIdStr": "PASB004",
+      "zh": "怀俄明",
+      "en": "Wyoming",
+      "py": "hem",
+      "type": "战列",
+      "tier": "4",
+      "nation": "美国"
+    },
+    "4288624624": {
+      "shipId": "4288624624",
+      "shipIdStr": "PASB006",
+      "zh": "纽约",
+      "en": "New York",
+      "py": "ny",
+      "type": "战列",
+      "tier": "5",
+      "nation": "美国"
+    },
+    "4292786160": {
+      "shipId": "4292786160",
+      "shipIdStr": "PASC002",
+      "zh": "切斯特",
+      "en": "Chester",
+      "py": "qst",
+      "type": "巡洋",
+      "tier": "2",
+      "nation": "美国"
+    },
+    "4187895248": {
+      "shipId": "4187895248",
+      "shipIdStr": "PRSD102",
+      "zh": "守卫",
+      "en": "Storozhevoi",
+      "py": "sw",
+      "type": "驱逐",
+      "tier": "2",
+      "nation": "苏联"
+    },
+    "4291737040": {
+      "shipId": "4291737040",
+      "shipIdStr": "PRSC003",
+      "zh": "摩尔曼斯克",
+      "en": "Murmansk",
+      "py": "memsk",
+      "type": "巡洋",
+      "tier": "5",
+      "nation": "苏联"
+    },
+    "4290655952": {
+      "shipId": "4290655952",
+      "shipIdStr": "PJSD004",
+      "zh": "峰风",
+      "en": "Minekaze",
+      "py": "ff",
+      "type": "驱逐",
+      "tier": "5",
+      "nation": "日本"
+    }
+  }
+}

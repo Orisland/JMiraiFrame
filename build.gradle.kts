@@ -43,4 +43,8 @@ dependencies {
     implementation("mysql:mysql-connector-java:5.1.49")
     implementation("org.mybatis.generator:mybatis-generator-core:1.4.1")
     implementation("cn.hutool:hutool-cron:5.8.1")
+
+    // https://mvnrepository.com/artifact/org.jsoup/jsoup
+    implementation("org.jsoup:jsoup:1.15.1")
+
 }

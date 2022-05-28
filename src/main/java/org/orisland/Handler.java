@@ -1,6 +1,7 @@
 package org.orisland;
 
 import Tool.JsonTool;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.event.*;
@@ -100,6 +101,17 @@ public class Handler extends SimpleListenerHost {
             iNodes.add(bot, new PlainText("test"));
             event.getSender().getGroup().sendMessage(iNodes.build());
         }else if (event.getMessage().contentToString().equals("19")){
+            JsonNode jsonNode = AllShipInfo();
+            System.out.println(jsonNode.size());
+            System.out.println(jsonNode);
+        }else if (event.getMessage().contentToString().equals("20")){
+            saveShipInfo();
+        }else if (event.getMessage().contentToString().equals("21")){
+        }else if (event.getMessage().contentToString().equals("22")){
+        }else if (event.getMessage().contentToString().equals("23")){
+        }else if (event.getMessage().contentToString().equals("24")){
+        }else if (event.getMessage().contentToString().equals("25")){
+        }else if (event.getMessage().contentToString().equals("26")){
         }
 
         return ListeningStatus.LISTENING;

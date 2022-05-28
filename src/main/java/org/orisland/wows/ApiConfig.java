@@ -48,7 +48,7 @@ public class ApiConfig {
      * 查询单个指定船的信息(唯一)
      * server-appid-shipid-language
      */
-    public static final String SHIPID_SHIPIINFO = "https://api.worldofwarships.%s/wows/encyclopedia/ships/?application_id=%s&ship_id=%s&language=%s";
+    public static final String SHIPID_SHIPIINFO = "https://api.worldofwarships.%s/wows/encyclopedia/ships/?application_id=%s&ship_id=%s&language=%s&page_no=%s";
 
     /**
      * wowsnumber的名片
@@ -75,6 +75,11 @@ public class ApiConfig {
      * server-appid-uid-shipid-language
      */
     public static final String ACCOUNT_SHIP = "https://api.worldofwarships.%s/wows/ships/stats/?application_id=%s&account_id=%s&ship_id=%s&language=%s&extra=rank_solo";
+
+    /**
+     * 从浩舰直接爬到汉语船名
+     */
+    public static final String SHIP_NAME_AUTO = "https://iwarship.net/wowsdb/index";
 
     /**
      * 本地玩家数据地址
@@ -117,6 +122,9 @@ public class ApiConfig {
         EU, ASIA, NA, RU, com
     }
 
+    /**
+     * 战绩类型
+     */
     public enum Type{
         normal, random, rank
     }
@@ -135,6 +143,11 @@ public class ApiConfig {
      * 读取本地玩家绑定
      */
     public static JsonNode Bind = null;
+
+    /**
+     * admin用户，允许绑定其他人的账号
+     */
+    public static String Admin;
 
     //=============================以下api暂未使用
     //窝窝屎的各种server-> server

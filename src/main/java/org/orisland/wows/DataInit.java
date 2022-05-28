@@ -7,7 +7,6 @@ import Tool.YmlTool;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,6 +22,7 @@ import static Tool.YmlTool.ReadYamlToBoolean;
 import static Tool.YmlTool.ReadYamlToString;
 import static org.orisland.wows.ApiConfig.*;
 import static org.orisland.wows.dataPack.PlayerData.updateAccountLocalDataAuto;
+import static org.orisland.wows.dataPack.ShipData.saveShipInfo;
 
 @Slf4j
 public class DataInit {
@@ -156,9 +156,13 @@ public class DataInit {
         boolean useLocalShipInfo = ReadYamlToBoolean(config, "useLocalShipInfo");
         if (useLocalShipInfo){
             try {
-                InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("ships_cnFix.json");
-                String s = IoUtil.readUtf8(resourceAsStream);
-                LocalShipInfo = JsonTool.mapper.readTree(s);
+                if (FileUtil.exist(dataDir + "ships_cn.json")){
+                    LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDir + "ships_cn.json")).get("data");
+                }else {
+                    InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("ships_cn.json");
+                    String s = IoUtil.readUtf8(resourceAsStream);
+                    LocalShipInfo = JsonTool.mapper.readTree(s).get("data");
+                }
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -200,6 +204,8 @@ public class DataInit {
                     int count = 0;
                     while (count <= 20){
                         try {
+                            if (ReadYamlToBoolean(config, "updateShipInfoAuto"))
+                                saveShipInfo();
                             updateAccountLocalDataAuto();
                             initShipExpectedUpdate();
                             return;
