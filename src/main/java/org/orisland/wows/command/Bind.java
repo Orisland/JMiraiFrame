@@ -117,11 +117,18 @@ public class Bind extends JCompositeCommand {
                                 .append(quoteReply)
                                 .build();
                     }else {
-                        bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
-                        chain = new MessageChainBuilder()
-                                .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
-                                .append(quoteReply)
-                                .build();
+                        if (findBindAccountId(String.valueOf(singlePlayer.getAccount_id()), qq)){
+                            bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
+                            chain = new MessageChainBuilder()
+                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
+                                    .append(quoteReply)
+                                    .build();
+                        }else {
+                            chain = new MessageChainBuilder()
+                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
+                                    .append(quoteReply)
+                                    .build();
+                        }
                     }
                 }
                 sender.sendMessage(chain);
@@ -177,11 +184,18 @@ public class Bind extends JCompositeCommand {
                                 .append(quoteReply)
                                 .build();
                     }else {
-                        bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
-                        chain = new MessageChainBuilder()
-                                .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
-                                .append(quoteReply)
-                                .build();
+                        if (findBindAccountId(String.valueOf(singlePlayer.getAccount_id()), qq)){
+                            bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
+                            chain = new MessageChainBuilder()
+                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
+                                    .append(quoteReply)
+                                    .build();
+                        }else {
+                            chain = new MessageChainBuilder()
+                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
+                                    .append(quoteReply)
+                                    .build();
+                        }
                     }
                 }
                 sender.sendMessage(chain);

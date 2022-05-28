@@ -29,8 +29,6 @@ public class DataInit {
     //配置
     private static final String config = configDir + "config.yml";
 
-    DataInit dataInit = new DataInit();
-
     /**
      * 插件初始化
      */
@@ -47,6 +45,7 @@ public class DataInit {
         initBind();
         initDataRefresh();
         initMaxSaveData();
+        initAdmin();
         log.info("wows插件配置文件装载完成!");
     }
 
@@ -245,5 +244,19 @@ public class DataInit {
         Long retry = Long.valueOf(ReadYamlToString(config, "retry"));
         reTry = retry;
         log.info("最大数据读取重试次数:{}", retry);
+    }
+
+    /**
+     * 配置管理员
+     */
+    public static void initAdmin(){
+        String admin = ReadYamlToString(config, "admin");
+        if (admin.equals("")){
+            log.info("管理员为空！");
+        }else {
+            Admin = admin.split(",");
+            log.info("管理员已配置{}", admin);
+        }
+
     }
 }

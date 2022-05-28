@@ -147,7 +147,7 @@ public class ApiConfig {
     /**
      * admin用户，允许绑定其他人的账号
      */
-    public static String Admin;
+    public static String[] Admin = new String[2];
 
     //=============================以下api暂未使用
     //窝窝屎的各种server-> server

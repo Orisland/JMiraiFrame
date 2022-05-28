@@ -611,7 +611,7 @@ public class Account extends JCompositeCommand {
                     return;
                 }
 
-                String name = jsonNode.get("name").asText();
+                String name = jsonNode.get("zh").asText();
                 String shipId = jsonNode.get("shipId").asText();
                 JsonNode jsonNode1 = ShipToExpected(shipId);
                 String date = DateUtil.format(DateUtil.date(ShipExpected.get("time").asLong() * 1000), "YYYYMMdd");

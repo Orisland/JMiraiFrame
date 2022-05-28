@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.orisland.wows.ApiConfig.*;
+import static org.orisland.wows.dataPack.StringToMeaningful.*;
 
 @Slf4j
 public class ShipData {
@@ -41,8 +42,7 @@ public class ShipData {
             JsonNode jsonNode = LocalShipInfo.get(shipId);
             singleShip = new SingleShip();
             singleShip.setType(jsonNode.get("type").asText());
-            singleShip.setPremium(jsonNode.get("premium").asBoolean());
-            singleShip.setName(jsonNode.get("name").asText());
+            singleShip.setName(jsonNode.get("zh").asText());
             singleShip.setShipId(shipId);
             singleShip.setNation(jsonNode.get("nation").asText());
             singleShip.setTier(jsonNode.get("tier").asInt());
@@ -251,105 +251,7 @@ public class ShipData {
         return tag;
     }
 
-    /**
-     * 将char转化为国家，若不匹配则返回unknown
-     * @param charStr   字符串
-     * @return          国家
-     */
-    public static String iWarShipToNation(char charStr){
-        switch (charStr){
-            case 'E':
-                return "英联邦";
-            case 'W':
-                return "欧洲";
-            case 'F':
-                return "法国";
-            case 'D':
-                return "德国";
-            case 'I':
-                return "意大利";
-            case 'R':
-                return "日本";
-            case 'H':
-                return "荷兰";
-            case 'V':
-                return "泛美";
-            case 'C':
-                return "泛亚";
-            case 'S':
-//                    这里西班牙也是S，需要在后续的处理单独区分
-                return "苏联";
-            case 'M':
-                return "美国";
-            case 'Y':
-                return "英国";
-            default:
-                log.warn("{}出现了未知char!", charStr);
-                return "Unknown";
-        }
-    }
 
-    /**
-     * 将wg的国籍数据转化为
-     * @return
-     */
-    public static String WgToNation(String string){
-        switch (string){
-            case "commonwealth":
-                return "英联邦";
-            case "europe":
-                return "欧洲";
-            case "pan_america":
-                return "泛美";
-            case "france":
-                return "法国";
-            case "usa":
-                return "美国";
-            case "germany":
-                return "德国";
-            case "italy":
-                return "意大利";
-            case "uk":
-                return "应该";
-            case "japan":
-                return "日本";
-            case "netherlands":
-                return "荷兰";
-            case "pan_asia":
-                return "泛亚";
-            case "ussr":
-                return "苏联";
-            case "spain":
-                return "西班牙";
-            default:
-                log.warn("出现了意料之外的国籍");
-                return "unknown";
-
-        }
-    }
-
-    /**
-     * 将char转化为不同的舰种
-     * @param charStr   字符
-     * @return
-     */
-    public static String charToType(char charStr){
-        switch (charStr){
-            case 'A':
-                return "航母";
-            case 'B':
-                return "战列";
-            case 'D':
-                return "驱逐";
-            case 'C':
-                return "巡洋";
-            case 'S':
-                return "潜艇";
-            default:
-                log.warn("{}出现了未知的char!", charStr);
-                return "Unknown";
-        }
-    }
 
     /**
      * singleShip数据打包
@@ -446,44 +348,5 @@ public class ShipData {
         log.info("记录数:{}", count);
     }
 
-    /**
-     * 通过船只名称查找船只
-     * @param shipName 船只名字
-     * @return          查询结果
-     */
-    public static JsonNode ShipNameToShipId(String shipName){
-//        精确匹配
-        for (JsonNode jsonNode : LocalShipInfo) {
-            if (jsonNode.get("name").asText().equals(shipName)){
-                return jsonNode;
-            }
-        }
-        log.info("汉语精确匹配失败!");
 
-//        模糊匹配
-        for (JsonNode jsonNode : LocalShipInfo) {
-            if (jsonNode.get("name").asText().contains(shipName)){
-                return jsonNode;
-            }
-        }
-        log.info("汉语模糊匹配失败!");
-
-//        英语精确匹配
-        for (JsonNode jsonNode : LocalShipInfo) {
-            if (jsonNode.get("enname").asText().equalsIgnoreCase(shipName)){
-                return jsonNode;
-            }
-        }
-        log.info("英语精确匹配失败!");
-
-//        英语模糊匹配
-        for (JsonNode jsonNode : LocalShipInfo) {
-            if (jsonNode.get("enname").asText().toUpperCase().contains(shipName.toUpperCase())){
-                return jsonNode;
-            }
-        }
-        log.info("英语模糊匹配失败!");
-        log.warn("{}不存在！",shipName);
-        return null;
-    }
 }

@@ -20,7 +20,7 @@ public class BindData {
      * @param accountId 账户id
      * @param server    区服
      */
-    public static void bindQQAccountId(String qq, String accountId, ApiConfig.Server server){
+    public static boolean bindQQAccountId(String qq, String accountId, ApiConfig.Server server){
         ObjectNode bind = (ObjectNode) Bind;
         JsonNode jsonNode = searchAccountIdToAccountInfo(accountId, server);
         String s = ServerToDir(server);
@@ -34,6 +34,7 @@ public class BindData {
         Bind = bind;
         FileUtil.writeUtf8String(bind.toString(), dataDir + "Bind.json");
         log.info("{}绑定{}{}已完成!", qq, server, accountId);
+        return true;
     }
 
     /**

@@ -11,7 +11,7 @@ version = "0.20"
 repositories {
 //    removeIf { it is MavenArtifactRepository && it.url.host == "dl.bintray.com" }
     mavenLocal()
-//    maven(url = "https://maven.aliyun.com/repository/public")
+    maven(url = "https://maven.aliyun.com/repository/public")
 //    maven(url = "https://maven.aliyun.com/repository/gradle-plugin")
 //    maven(url = "https://repository.apache.org/content/groups/snapshots/")
     mavenCentral()
@@ -43,8 +43,8 @@ dependencies {
     implementation("mysql:mysql-connector-java:5.1.49")
     implementation("org.mybatis.generator:mybatis-generator-core:1.4.1")
     implementation("cn.hutool:hutool-cron:5.8.1")
-
-    // https://mvnrepository.com/artifact/org.jsoup/jsoup
     implementation("org.jsoup:jsoup:1.15.1")
+    implementation("com.github.promeg:tinypinyin:2.0.3")
+    implementation("cn.hutool:hutool-extra:5.8.2")
 
 }

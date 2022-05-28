@@ -16,10 +16,7 @@ import org.orisland.wows.doMain.SingleShipDataSimple;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.orisland.wows.ApiConfig.*;
 import static org.orisland.wows.dataPack.StringToMeaningful.ServerToDir;
@@ -440,4 +437,19 @@ public class PlayerData {
     }
 
 
+    /**
+     * 鉴权是否允许绑定和修改
+     * 非管理员禁止重复绑定
+     * @param accountId
+     * @param qq
+     * @return
+     */
+    public static boolean findBindAccountId(String accountId, String qq){
+        for (JsonNode jsonNode : Bind) {
+            if (jsonNode.get("id").asText().equals(accountId) && !Arrays.asList(Admin).contains(qq)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
