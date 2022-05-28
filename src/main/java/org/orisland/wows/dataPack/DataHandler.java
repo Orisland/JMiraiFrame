@@ -38,23 +38,23 @@ public class DataHandler {
                     .append("\r");
         }
         messageChainBuilder
-                .append(String.format("综合评级:%s %s %s%s", pr.getColor(), pr.getPR(), pr.getEvaluate(), pr.getDistance()))
+                .append(String.format("综合评级：%s %s %s%s", pr.getColor(), pr.getPR(), pr.getEvaluate(), pr.getDistance()))
                 .append("\r")
-                .append(String.format("场数:%s", shipDataObj.getBattle()))
+                .append(String.format("场数：%s", shipDataObj.getBattle()))
                 .append("\r")
-                .append(String.format("胜率:%s", shipDataObj.getWinRate()))
+                .append(String.format("胜率：%s", shipDataObj.getWinRate()))
                 .append("\r")
-                .append(String.format("均伤:%s", shipDataObj.getAveDmg()))
+                .append(String.format("均伤：%s", shipDataObj.getAveDmg()))
                 .append("\r")
-                .append(String.format("经验:%s", shipDataObj.getAveXp()))
+                .append(String.format("经验：%s", shipDataObj.getAveXp()))
                 .append("\r")
                 .append(String.format("KD：%s", shipDataObj.getKD()))
                 .append("\r")
-                .append(String.format("命中率:%s", shipDataObj.getHitRate()))
+                .append(String.format("命中率：%s", shipDataObj.getHitRate()))
                 .append("\r")
-                .append(String.format("存活胜利率:%s", shipDataObj.getSurviveWinRate()))
+                .append(String.format("存活胜利率：%s", shipDataObj.getSurviveWinRate()))
                 .append("\r")
-                .append(String.format("战斗类型:%s", shipDataObj.isRank() ? "排位" : "随机"))
+                .append(String.format("战斗类型：%s", shipDataObj.isRank() ? "排位" : "随机"))
                 .append("\r")
                 .append("========")
                 .append("\r");
@@ -145,7 +145,25 @@ public class DataHandler {
     ) {
         if (shipDataObjs == null)
             return false;
-        if (shipDataObjs.size() != 0) {
+
+//防止出现没打xx但是查询的问题
+        int rank = 0;
+        int random = 0;
+        boolean flag = true;
+        for (ShipDataObj shipDataObj : shipDataObjs) {
+            if (shipDataObj.isRank())
+                rank ++;
+            else
+                random ++;
+        }
+        if (rank == 0 && type == ApiConfig.Type.rank){
+            flag = false;
+        }
+        if (random == 0 && type == ApiConfig.Type.random){
+            flag = false;
+        }
+
+        if (shipDataObjs.size() != 0 && flag) {
             ShipDataObj shipDataObj = new ShipDataObj();
             ShipPr shipPr = new ShipPr();
             for (ShipDataObj shipDataObjItem : shipDataObjs) {
@@ -169,7 +187,6 @@ public class DataHandler {
                         messageList.add(sender.getBot(), messageItem.build());
                     }
                 }
-
             }
 
             shipDataObj.update();
@@ -177,10 +194,10 @@ public class DataHandler {
             JsonNode jsonNode = PrStandard(shipPr.PrCalculate());
 
             messageItem = new MessageChainBuilder();
-            messageItem.append(String.format("[%s]%s:", bind.getServer() == ApiConfig.Server.com ? "NA"
+            messageItem.append(String.format("[%s]%s：", bind.getServer() == ApiConfig.Server.com ? "NA"
                             : bind.getServer(), bind.getAccountName()))
                     .append("\r")
-                    .append(String.format("%s综合评级:%s %s %s%s",
+                    .append(String.format("%s综合评级：%s %s %s%s",
                             type == ApiConfig.Type.rank
                                     ? "排位"
                                     : type == ApiConfig.Type.random
@@ -190,9 +207,9 @@ public class DataHandler {
                             jsonNode.get("evaluate").asText(),
                             jsonNode.get("distance").asText()))
                     .append("\r")
-                    .append(String.format("场数:%s", shipDataObj.getBattle()))
+                    .append(String.format("场数：%s", shipDataObj.getBattle()))
                     .append("\r")
-                    .append(String.format("胜率:%s", shipDataObj.getWinRate()))
+                    .append(String.format("胜率：%s", shipDataObj.getWinRate()))
                     .append("\r");
 
             message.add(sender.getBot(), messageItem.build());
