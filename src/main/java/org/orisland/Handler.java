@@ -39,6 +39,7 @@ public class Handler extends SimpleListenerHost {
         return ListeningStatus.LISTENING;
     }
 
+
     @EventHandler
     public ListeningStatus groupListener(GroupMessageEvent event) throws IOException {
         if (event.getMessage().contentToString().equals("1")){
