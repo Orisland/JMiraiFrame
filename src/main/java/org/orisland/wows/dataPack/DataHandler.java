@@ -115,7 +115,7 @@ public class DataHandler {
      */
     public static MessageChain messageLinePackEnd(MessageChainBuilder messageChainBuilder, QuoteReply quoteReply) {
         messageChainBuilder.append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")))
-                .append(quoteReply)
+                .append(quoteReply == null ? new PlainText("") : quoteReply)
                 .build();
         return messageChainBuilder.build();
     }
@@ -190,7 +190,22 @@ public class DataHandler {
                                  ForwardMessageBuilder message,
                                  ApiConfig.Type type
     ) {
-        if (shipDataObjs == null || shipDataObjs.get(0) == null){
+        try {
+            if (shipDataObjs.get(0) == null){
+                messageItem
+                        .append("空")
+                        .append("\r");
+                message.add(sender.getBot(), messageItem.build());
+                messageItem = new MessageChainBuilder()
+                        .append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")));
+                message.add(sender.getBot(), messageItem.build());
+                return false;
+            }
+        }catch (Exception e){
+//            ignore
+        }
+
+        if (shipDataObjs == null || shipDataObjs.size() == 0){
             messageItem
                     .append("空")
                     .append("\r");

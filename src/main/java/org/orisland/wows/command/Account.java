@@ -37,9 +37,71 @@ public class Account extends JCompositeCommand {
         super(WowsPlugin.INSTANCE, "wws", new String[]{"w"}, WowsPlugin.INSTANCE.getParentPermission());
     }
 
-    @SubCommand({"今日", "me", "today", "recnet"})
+    @SubCommand({"今日", "me", "today", "recent"})
     @Description("查询自己的当日pr")
     public void PrToday(CommandSenderOnMessage sender) throws InterruptedException {
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
+
+        MessageChain chain = null;
+
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        ForwardMessageBuilder message = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
+
+        int count = 0;
+        StringBuilder exception = new StringBuilder();
+
+        while (count <= ApiConfig.reTry) {
+            try {
+                Bind bind = findAccountId(qq);
+                if (bind == null) {
+                    chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
+                } else {
+                    List<ShipDataObj> shipDataObjs = diffShip(bind.getAccountId(), bind.getServer());
+                    boolean b = messagePackPr(shipDataObjs, messageItem, messageList, sender, bind, message, Type.random);
+                    if (!b){
+                        chain = errorFinally(quoteReply, "访问的战绩可能不存在！");
+                        sender.sendMessage(chain);
+                        return;
+                    }
+                }
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                ForwardMessage build = message.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        build.getPreview(),
+                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
+                                || bind.getServer() == ApiConfig.Server.com
+                                ? "NA"
+                                : bind.getServer(), bind.getAccountName()),
+                        "今日战绩",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(record);
+
+                return;
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("错误计数:{}", ++count);
+                exception.append(e.getMessage())
+                        .append("\r");
+                Thread.sleep(reTry / 10);
+            }
+        }
+
+        chain = errorFinally(quoteReply, exception.toString());
+        sender.sendMessage(chain);
+    }
+
+    @SubCommand({"recent", "最近", "me"})
+    @Description("查询自己的当日pr")
+    public void PrToday(CommandSenderOnMessage sender, int day) throws InterruptedException {
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
         String qq = String.valueOf(sender.getFromEvent().getSender().getId());
 
@@ -306,6 +368,11 @@ public class Account extends JCompositeCommand {
         MessageChain chain = null;
         ApiConfig.Server server = StringToServer(StringServer);
         SinglePlayer singlePlayer = AccountIdToAccountInfo(searchNickNameToAccountId(accountName, server), server);
+        ForwardMessageBuilder messList = null;
+
+        ForwardMessageBuilder preInfo = new ForwardMessageBuilder(sender.getFromEvent().getSender())
+                .add(sender.getBot(), new MessageChainBuilder().append("单机查看pr信息！").build());
+
 
         int count = 0;
         StringBuilder exception = new StringBuilder();
@@ -314,6 +381,8 @@ public class Account extends JCompositeCommand {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
                     chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
                 } else {
                     if (singlePlayer == null) {
                         chain = new MessageChainBuilder()
@@ -341,9 +410,27 @@ public class Account extends JCompositeCommand {
                             .append("\r");
 
                     singleShipInfoPack(messageChainBuilder, shipDataObj, pr, Type.normal);
-                    chain = messageLinePackEnd(messageChainBuilder, quoteReply);
+
+                    messList = new ForwardMessageBuilder(sender.getFromEvent().getSender())
+                            .add(sender.getBot(), messageChainBuilder.build())
+                            .add(sender.getBot(), messageLinePackEnd(new MessageChainBuilder(), null));
                 }
-                sender.sendMessage(chain);
+
+                ForwardMessage build = messList.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        preInfo.build().getPreview(),
+                        String.format("[%s]%s", server == ApiConfig.Server.NA
+                                || server == ApiConfig.Server.com
+                                ? "NA"
+                                : server, accountName),
+                        "个人pr",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                sender.sendMessage(record);
                 return;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -429,7 +516,6 @@ public class Account extends JCompositeCommand {
             }
         }
 
-
         chain = errorFinally(quoteReply, exception.toString());
         sender.sendMessage(chain);
     }
@@ -440,13 +526,21 @@ public class Account extends JCompositeCommand {
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
         String qq = String.valueOf(sender.getFromEvent().getSender().getId());
         MessageChain chain = null;
+        ForwardMessageBuilder messList = null;
+
+        ForwardMessageBuilder preInfo = new ForwardMessageBuilder(sender.getFromEvent().getSender())
+                .add(sender.getBot(), new MessageChainBuilder().append("单机查看pr信息！").build());
+
         int count = 0;
         StringBuilder exception = new StringBuilder();
+
         while (count <= ApiConfig.reTry) {
             try {
                 Bind bind = findAccountId(qq);
                 if (bind == null) {
                     chain = bindErrorPack(quoteReply);
+                    sender.sendMessage(chain);
+                    return;
                 } else {
                     ShipDataObj shipDataObj = AccountIdShipToPr(bind.getAccountId(), bind.getServer());
                     ShipPr pr = shipDataObj.getPR();
@@ -462,13 +556,33 @@ public class Account extends JCompositeCommand {
                     shipDataObj.update(AccountIdToAccountInfo(bind.getAccountId(), bind.getServer()));
 
                     MessageChainBuilder messageChainBuilder = new MessageChainBuilder()
-                            .append(new PlainText(String.format("[%s]%s:", bind.getServer(), bind.getAccountName())))
+                            .append(String.format("[%s]%s:", bind.getServer(), bind.getAccountName()))
                             .append("\r");
 
                     singleShipInfoPack(messageChainBuilder, shipDataObj, pr, Type.normal);
-                    chain = messageLinePackEnd(messageChainBuilder, quoteReply);
+
+                    messList = new ForwardMessageBuilder(sender.getFromEvent().getSender())
+                            .add(sender.getBot(), messageChainBuilder.build())
+                            .add(sender.getBot(), messageLinePackEnd(new MessageChainBuilder(), null));
+
+//                    chain = messageLinePackEnd(messageChainBuilder, quoteReply);
                 }
-                sender.sendMessage(chain);
+
+                ForwardMessage build = messList.build();
+
+                ForwardMessage record = new ForwardMessage(
+                        preInfo.build().getPreview(),
+                        String.format("[%s]%s", bind.getServer() == ApiConfig.Server.NA
+                                || bind.getServer() == ApiConfig.Server.com
+                                ? "NA"
+                                : bind.getServer(), bind.getAccountName()),
+                        "个人pr",
+                        build.getSource(),
+                        build.getSummary(),
+                        build.getNodeList());
+
+                sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+                sender.sendMessage(record);
                 return;
             } catch (Exception e) {
                 log.error("错误计数:{}", ++count);

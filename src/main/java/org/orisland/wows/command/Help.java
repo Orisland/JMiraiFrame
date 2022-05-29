@@ -112,9 +112,6 @@ public class Help  extends JCompositeCommand {
         messageList.add(bot, helpFunction, ++UnixTime);
         messageList.add(bot, expFunction, ++UnixTime);
 
-        if (isAdmin(sender))
-            messageList.add(bot, AdminHelp(sender), ++UnixTime);
-
         ForwardMessage build = messageList.build();
 
         ForwardMessage record = new ForwardMessage(

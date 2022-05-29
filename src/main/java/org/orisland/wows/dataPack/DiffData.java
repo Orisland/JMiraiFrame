@@ -244,6 +244,16 @@ public class DiffData {
         long today = Long.parseLong(DateUtil.format(new Date(), "YYYYMMdd"));
         JsonNode nowRecord;
         JsonNode originRecord;
+
+        Integer fromI = (Integer) from;
+        Integer toI  = (Integer) to;
+
+        if (fromI > toI){
+            int t = to;
+            to = to;
+
+        }
+
         if (from == to){
             log.error("查找的日期为同一天！");
             return null;
