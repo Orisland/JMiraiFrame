@@ -648,4 +648,10 @@ public class Account extends JCompositeCommand {
         chain = errorFinally(quoteReply, exception.toString());
         sender.sendMessage(chain);
     }
+
+    @SubCommand({"help", "h"})
+    @Description("防止某些憨憨非要在w里输入help")
+    public void help(CommandSenderOnMessage sender){
+        Help.INSTANCE.help(sender);
+    };
 }

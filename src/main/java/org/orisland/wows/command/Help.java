@@ -100,11 +100,11 @@ public class Help  extends JCompositeCommand {
 
         int UnixTime = ((Long)DateUtil.currentSeconds()).intValue();
 
-        messageList.add(bot, preInfo.build(), UnixTime);
-        messageList.add(bot, bindFunction, UnixTime++);
-        messageList.add(bot, accountFunction, UnixTime++);
-        messageList.add(bot, helpFunction, UnixTime++);
-        messageList.add(bot, expFunction, UnixTime);
+        messageList.add(bot, preInfo.build(), ++UnixTime);
+        messageList.add(bot, bindFunction, ++UnixTime);
+        messageList.add(bot, accountFunction, ++UnixTime);
+        messageList.add(bot, helpFunction, ++UnixTime);
+        messageList.add(bot, expFunction, ++UnixTime);
 
         ForwardMessage build = messageList.build();
 
