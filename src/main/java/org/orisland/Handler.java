@@ -17,6 +17,7 @@ import org.orisland.wows.doMain.SingleShipDataSimple;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.orisland.wows.DataInit.initDataRefresh;
 import static org.orisland.wows.dataPack.DiffData.accountRecordAt;
@@ -69,7 +70,7 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("8")){
             readAccountToday("566316444", ApiConfig.Server.EU);
         }else if (event.getMessage().contentToString().equals("9")){
-            saveAccountShipInfo("566316445", ApiConfig.Server.EU);
+            saveAccountShipInfo("566316445", ApiConfig.Server.EU, false);
         }else if (event.getMessage().contentToString().equals("10")){
             List<ShipDataObj> shipDataObjs = diffShip("566316444", ApiConfig.Server.EU);
             for (ShipDataObj shipDataObj : shipDataObjs) {
@@ -87,7 +88,7 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("14")){
             initDataRefresh();
         }else if (event.getMessage().contentToString().equals("15")){
-            updateAccountLocalDataAuto();
+            updateAccountLocalDataAuto(false);
         }else if (event.getMessage().contentToString().equals("16")){
             accountRecordAt("566316444", ApiConfig.Server.EU, 5);
         }else if (event.getMessage().contentToString().equals("17")){
@@ -119,7 +120,6 @@ public class Handler extends SimpleListenerHost {
             ForwardMessage.Node node2 = new ForwardMessage.Node(event.getBot().getId(), 1653807530, "bot", new MessageChainBuilder().append("test2").build());
             ForwardMessage.Node node3 = new ForwardMessage.Node(event.getBot().getId(), 1653807531, "bot", new MessageChainBuilder().append("test3").build());
 
-
             Bot bot = event.getBot();
             ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
 
@@ -127,6 +127,7 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("24")){
         }else if (event.getMessage().contentToString().equals("25")){
         }else if (event.getMessage().contentToString().equals("26")){
+        }else {
         }
 
         return ListeningStatus.LISTENING;

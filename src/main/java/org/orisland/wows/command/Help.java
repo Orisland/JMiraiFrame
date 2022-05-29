@@ -12,6 +12,7 @@ import org.orisland.wows.DataInit;
 
 import static org.orisland.wows.dataPack.DataHandler.addForwardLine;
 import static org.orisland.wows.dataPack.DataHandler.addForwardPack;
+import static org.orisland.wows.dataPack.StringToMeaningful.isAdmin;
 
 public class Help  extends JCompositeCommand {
 
@@ -22,7 +23,7 @@ public class Help  extends JCompositeCommand {
     }
 
     @SubCommand({"帮助", "help", "h"})
-    @Description("查询自己综合pr")
+    @Description("用户版插件帮助")
     public void help(CommandSenderOnMessage sender){
         ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
         ForwardMessageBuilder preMessage = new ForwardMessageBuilder(sender.getFromEvent().getSender());
@@ -38,16 +39,21 @@ public class Help  extends JCompositeCommand {
                 "[ ]内容为用户自行填入，( )为[ ]的待选项\n" +
                 "[ ]后为空则由用户输入！");
 
-
 //        绑定功能
-        String[] binds = new String[2];
+        String[] binds = new String[4];
         String[] bindPre = {"绑定说明书", "在任何情况下都应该先绑定"};
         binds[0] = "wb bn(bindname) [用户昵称] [区服](eu/asia/na/ru)\n" +
                 "绑定用户 \n" +
                 "例如： wb bn orisland_ex eu";
         binds[1] = "wb ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru)\n" +
-                " 更新绑定 \n" +
-                " 例如： wb bn orisland_ex eu";
+                "更新绑定 \n" +
+                "例如： wb bn orisland_ex eu";
+        binds[2] = "wb db(jb,解绑)\n" +
+                "解除自己的账号绑定，注意该操作会导致数据更新停止！\n" +
+                "例如在已绑定的情况下：wb db";
+        binds[3] = "wb me\n" +
+                "查看自己绑定的账号！\n" +
+                "例如在已绑定的情况下：wb me";
         ForwardMessage bindFunction = addForwardPack(binds, "绑定", "绑定说明书", bindPre, sender, bot);
 
 //        查询功能
@@ -106,6 +112,9 @@ public class Help  extends JCompositeCommand {
         messageList.add(bot, helpFunction, ++UnixTime);
         messageList.add(bot, expFunction, ++UnixTime);
 
+        if (isAdmin(sender))
+            messageList.add(bot, AdminHelp(sender), ++UnixTime);
+
         ForwardMessage build = messageList.build();
 
         ForwardMessage record = new ForwardMessage(
@@ -151,5 +160,54 @@ public class Help  extends JCompositeCommand {
                 .append(quoteReply)
                 .build();
         sender.sendMessage(chain);
+    }
+
+    @SubCommand({"chelp", "ah", "adminhelp", "admin"})
+    public ForwardMessage AdminHelp(CommandSenderOnMessage sender){
+        if (!isAdmin(sender))
+            return null;
+
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        ForwardMessageBuilder preMessage = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
+
+        Bot bot = sender.getBot();
+
+        addForwardLine(preMessage, messageItem, bot, "WowsHelper管理员说明书");
+        addForwardLine(preMessage, messageItem, bot, "作者:Orisland");
+        addForwardLine(preMessage, messageItem, bot, "[EU]2434");
+
+        String[] admins = new String[4];
+        String[] adminPre = {"管理员说明书", "包含数据相关高危指令，请谨慎使用！"};
+        admins[0] = "wc(wws-controller) re(reload)\n" +
+                "重载本地配置\n" +
+                "在管理员账户下：wc re";
+        admins[1] = "wc(wws-controller) redata(refresh)\n" +
+                "安全的刷新玩家数据 -> 等同于每日玩家数据的刷新\n" +
+                "在管理员账户下：wc redata";
+        admins[2] = "wc(wws-controller) redataF(refreshForce)\n" +
+                "强制（危险的）刷新玩家数据，该操作会导致所有玩家丢失刷新前的今日数据，请谨慎使用\n" +
+                "在管理员账户下：wc redataF";
+        admins[3] = "wc(wws-controller) reDFP(refreshForceP)\n" +
+                "强制（危险的）刷新指定玩家数据，该操作会导致指定玩家丢失刷新前的今日数据，请谨慎使用\n" +
+                "在管理员账户下：wc reDFP";
+        ForwardMessage adminFunction = addForwardPack(admins, "管理员", "管理员说明书", adminPre, sender, bot);
+
+        int UnixTime = ((Long)DateUtil.currentSeconds()).intValue();
+        messageList.add(bot, adminFunction, ++UnixTime);
+        ForwardMessage build = messageList.build();
+
+        ForwardMessage record = new ForwardMessage(
+                preMessage.build().getPreview(),
+                "WowsHelper管理员使用说明",
+                "WowsHelper管理员使用说明",
+                build.getSource(),
+                build.getSummary(),
+                build.getNodeList());
+
+        sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+        sender.sendMessage(record);
+
+        return adminFunction;
     }
 }

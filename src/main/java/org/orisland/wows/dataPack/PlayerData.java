@@ -223,17 +223,23 @@ public class PlayerData {
      * @param accountId 账户id
      * @param server    区服
      */
-    public static void saveAccountShipInfo(String accountId, Server server){
+    public static void saveAccountShipInfo(String accountId, Server server, boolean force){
         String s = ServerToDir(server);
         String date = DateUtil.format(DateUtil.date(), "YYYYMMdd");
         JsonNode data = shipDataStandard(accountId, server);
         originPlayerData(accountId,data);
-        if (!FileUtil.exist(s + accountId + "," + date + ".json")){
+        if (force){
             FileUtil.writeUtf8String(data.toString(), ServerToDir(server) + accountId + "," + date + ".json");
             log.info("{}新增{}记录！", accountId, date);
         }else {
-            log.info("{},{}记录已存在.", accountId, date);
+            if (!FileUtil.exist(s + accountId + "," + date + ".json")){
+                FileUtil.writeUtf8String(data.toString(), ServerToDir(server) + accountId + "," + date + ".json");
+                log.info("{}新增{}记录！", accountId, date);
+            }else {
+                log.info("{},{}记录已存在.", accountId, date);
+            }
         }
+
 
     }
 
@@ -277,20 +283,20 @@ public class PlayerData {
     public static void updateAccountLocalData(String accountId, Server server){
         String s = selectData(accountId, server, true);
         if (s == null){
-            saveAccountShipInfo(accountId, server);
+            saveAccountShipInfo(accountId, server, false);
         }else {
             String s1 = selectDataNewest(accountId, server);
             if (s1.split(",")[1].split("\\.")[0].equals(DateUtil.format(new Date(), "YYYYMMdd"))){
                 log.warn("最新数据与待更新数据重叠，跳过更新！");
             }else {
                 if (!shouldDel(accountId, server)){
-                    saveAccountShipInfo(accountId, server);
+                    saveAccountShipInfo(accountId, server, false);
                 }else {
                     boolean del = FileUtil.del(s);
                     if (!del){
                         log.warn("旧数据删除失败，数据更新失败！");
                     }
-                    saveAccountShipInfo(accountId, server);
+                    saveAccountShipInfo(accountId, server, false);
                 }
             }
         }
@@ -317,12 +323,20 @@ public class PlayerData {
      * 初始化时执行的执行操作
      * 该操作自动更新已绑定的所有用户数据
      */
-    public static void updateAccountLocalDataAuto(){
-        for (JsonNode jsonNode : Bind) {
-            String accountId = jsonNode.get("id").asText();
-            updateAccountLocalData(accountId, StringToServer(jsonNode.get("server").asText()));
+    public static void updateAccountLocalDataAuto(boolean force){
+        if (force){
+            for (JsonNode jsonNode : Bind) {
+                String accountId = jsonNode.get("id").asText();
+                saveAccountShipInfo(accountId, StringToServer(jsonNode.get("server").asText()), true);
+            }
+        }else {
+            for (JsonNode jsonNode : Bind) {
+                String accountId = jsonNode.get("id").asText();
+                updateAccountLocalData(accountId, StringToServer(jsonNode.get("server").asText()));
+            }
         }
         log.info("用户数据更新完成！");
+
     }
 
     /**

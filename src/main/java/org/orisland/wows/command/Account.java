@@ -654,4 +654,10 @@ public class Account extends JCompositeCommand {
     public void help(CommandSenderOnMessage sender){
         Help.INSTANCE.help(sender);
     };
+
+    @SubCommand({"ah", "admin"})
+    @Description("防止某些憨憨非要在w里输入help")
+    public void helpAdmin(CommandSenderOnMessage sender){
+        Help.INSTANCE.AdminHelp(sender);
+    };
 }

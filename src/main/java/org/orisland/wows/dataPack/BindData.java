@@ -24,7 +24,7 @@ public class BindData {
         ObjectNode bind = (ObjectNode) Bind;
         JsonNode jsonNode = searchAccountIdToAccountInfo(accountId, server);
         String s = ServerToDir(server);
-        saveAccountShipInfo(accountId, server);
+        saveAccountShipInfo(accountId, server, false);
         originPlayerData(accountId, server);
         ObjectNode objectNode = JsonTool.mapper.createObjectNode();
         objectNode.put("id", accountId);

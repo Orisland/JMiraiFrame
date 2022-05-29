@@ -3,8 +3,10 @@ package org.orisland.wows.dataPack;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.promeg.pinyinhelper.Pinyin;
 import lombok.extern.slf4j.Slf4j;
+import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import org.orisland.wows.ApiConfig;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +15,18 @@ import static org.orisland.wows.ApiConfig.dataDirNa;
 
 @Slf4j
 public class StringToMeaningful {
+
+    /**
+     * 鉴权
+     */
+    public static boolean isAdmin(CommandSenderOnMessage sender){
+        String adminQQ = String.valueOf(sender.getFromEvent().getSender().getId());
+        if (!Arrays.asList(Admin).contains(adminQQ)){
+            log.info("鉴权不通过！");
+            return false;
+        }else
+            return true;
+    }
 
     /**
      * 通过船只名称查找船只

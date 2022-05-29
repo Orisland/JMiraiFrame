@@ -1,7 +1,9 @@
 package org.orisland.wows.command;
 
+import cn.hutool.core.io.FileUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
@@ -13,9 +15,15 @@ import org.orisland.WowsPlugin;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 
+import java.io.File;
+import java.util.Arrays;
+
+import static org.orisland.wows.ApiConfig.Admin;
+import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.dataPack.BindData.bindQQAccountId;
 import static org.orisland.wows.dataPack.PlayerData.*;
 import static org.orisland.wows.dataPack.StringToMeaningful.StringToServer;
+import static org.orisland.wows.dataPack.StringToMeaningful.isAdmin;
 
 @Slf4j
 public class Bind extends JCompositeCommand {
@@ -213,6 +221,92 @@ public class Bind extends JCompositeCommand {
                 .append(stringBuilder)
                 .append(quoteReply)
                 .build();
+        sender.sendMessage(chain);
+    }
+
+    @SubCommand({"db", "解绑", "jb"})
+    @Description("移除自己的绑定")
+    public void delBind(CommandSenderOnMessage sender){
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
+        MessageChain chain = null;
+
+        org.orisland.wows.doMain.Bind bind = findAccountId(qq);
+        if (bind == null){
+            chain = new MessageChainBuilder()
+                    .append("该用户未绑定任何账号！")
+                    .append(quoteReply)
+                    .build();
+        }else {
+            ObjectNode controllerBind = (ObjectNode) ApiConfig.Bind;
+            controllerBind.remove(qq);
+            ApiConfig.Bind = controllerBind;
+            FileUtil.writeUtf8String(controllerBind.toString(), dataDir + "Bind.json");
+            chain = new MessageChainBuilder()
+                    .append(String.format("[%s]%s-%s绑定已解除！",
+                            bind.getServer() == ApiConfig.Server.com ? "NA" : bind.getServer(),
+                            bind.getAccountName(),
+                            bind.getAccountId()))
+                    .append(quoteReply)
+                    .build();
+        }
+        sender.sendMessage(chain);
+    }
+
+    @SubCommand({"me", "自己"})
+    @Description("查看自己的绑定")
+    public void meBind(CommandSenderOnMessage sender){
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        String qq = String.valueOf(sender.getFromEvent().getSender().getId());
+        MessageChain chain = null;
+
+        org.orisland.wows.doMain.Bind bind = findAccountId(qq);
+        if (bind == null){
+            chain = new MessageChainBuilder()
+                    .append("该用户未绑定任何账号！")
+                    .append(quoteReply)
+                    .build();
+        }else {
+            chain = new MessageChainBuilder()
+                    .append(String.format("该账号绑定的账号为：[%s]%s-%s",
+                            bind.getServer() == ApiConfig.Server.com ? "NA" : bind.getServer(),
+                            bind.getAccountName(),
+                            bind.getAccountId()))
+                    .append(quoteReply)
+                    .build();
+        }
+        sender.sendMessage(chain);
+    }
+
+    @SubCommand({"ajb", "adb"})
+    @Description("移除任何人的绑定")
+    public void unBindUser(CommandSenderOnMessage sender, String qq){
+        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        MessageChain chain = null;
+
+        if (!isAdmin(sender))
+            return;
+
+        org.orisland.wows.doMain.Bind bind = findAccountId(qq);
+        if (bind == null){
+            chain = new MessageChainBuilder()
+                    .append("该用户未绑定任何账号！")
+                    .append(quoteReply)
+                    .build();
+        }else {
+            ObjectNode controllerBind = (ObjectNode) ApiConfig.Bind;
+            controllerBind.remove(qq);
+            ApiConfig.Bind = controllerBind;
+            FileUtil.writeUtf8String(controllerBind.toString(), dataDir + "Bind.json");
+            chain = new MessageChainBuilder()
+                    .append(String.format("[%s]%s-%s绑定已解除！",
+                            bind.getServer() == ApiConfig.Server.com ? "NA" : bind.getServer(),
+                            bind.getAccountName(),
+                            bind.getAccountId()))
+                    .append(quoteReply)
+                    .build();
+        }
+
         sender.sendMessage(chain);
     }
 }

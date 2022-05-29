@@ -206,7 +206,7 @@ public class DataInit {
                         try {
                             if (ReadYamlToBoolean(config, "updateShipInfoAuto"))
                                 saveShipInfo();
-                            updateAccountLocalDataAuto();
+                            updateAccountLocalDataAuto(false);
                             initShipExpectedUpdate();
                             return;
                         }catch (Exception e){
