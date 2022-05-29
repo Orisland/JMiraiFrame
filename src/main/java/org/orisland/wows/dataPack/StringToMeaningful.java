@@ -1,7 +1,7 @@
 package org.orisland.wows.dataPack;
 
-import cn.hutool.extra.pinyin.PinyinUtil;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.promeg.pinyinhelper.Pinyin;
 import lombok.extern.slf4j.Slf4j;
 import org.orisland.wows.ApiConfig;
 
@@ -24,7 +24,22 @@ public class StringToMeaningful {
         Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
         Matcher m = p.matcher(shipName);
 
-        String ship = PinyinUtil.getPinyin(shipName, "");
+        String s = shipName.trim().replaceAll("\\s", "").toUpperCase();
+        char[] chars = s.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        int count = 0;
+        for (char aChar : chars) {
+            if (Pinyin.isChinese(aChar)){
+                char c = Pinyin.toPinyin(aChar).toCharArray()[0];
+                stringBuilder.append(String.valueOf(c).toLowerCase());
+                continue;
+            }
+            stringBuilder.append(aChar);
+            count++;
+        }
+
+        String ship = count == chars.length ? shipName : stringBuilder.toString();
 
 //        包含汉语
         if (m.find()){
@@ -35,7 +50,7 @@ public class StringToMeaningful {
                 }
             }
             log.info("汉语精确匹配失败!");
-            //        精确匹配
+            //        模糊匹配
 
             for (JsonNode jsonNode : LocalShipInfo) {
                 if (jsonNode.get("zh").asText().contains(shipName)){

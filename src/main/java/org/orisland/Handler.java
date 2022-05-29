@@ -115,6 +115,14 @@ public class Handler extends SimpleListenerHost {
             builder2.append("信息\t信息");
             event.getSender().getGroup().sendMessage(builder2.build());
         }else if (event.getMessage().contentToString().equals("22")){
+            ForwardMessage.Node node1 = new ForwardMessage.Node(event.getBot().getId(), 1653807529, "bot", new MessageChainBuilder().append("test1").build());
+            ForwardMessage.Node node2 = new ForwardMessage.Node(event.getBot().getId(), 1653807530, "bot", new MessageChainBuilder().append("test2").build());
+            ForwardMessage.Node node3 = new ForwardMessage.Node(event.getBot().getId(), 1653807531, "bot", new MessageChainBuilder().append("test3").build());
+
+
+            Bot bot = event.getBot();
+            ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
+
         }else if (event.getMessage().contentToString().equals("23")){
         }else if (event.getMessage().contentToString().equals("24")){
         }else if (event.getMessage().contentToString().equals("25")){

@@ -44,7 +44,6 @@ dependencies {
     implementation("org.mybatis.generator:mybatis-generator-core:1.4.1")
     implementation("cn.hutool:hutool-cron:5.8.1")
     implementation("org.jsoup:jsoup:1.15.1")
-    implementation("com.github.promeg:tinypinyin:2.0.3")
-    implementation("cn.hutool:hutool-extra:5.8.2")
+    implementation("io.github.biezhi:TinyPinyin:2.0.3.RELEASE")
 
 }

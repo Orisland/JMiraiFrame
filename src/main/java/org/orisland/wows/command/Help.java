@@ -1,11 +1,14 @@
 package org.orisland.wows.command;
 
+import cn.hutool.core.date.DateUtil;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import net.mamoe.mirai.message.data.*;
+import org.jsoup.helper.DataUtil;
 import org.orisland.WowsPlugin;
 import org.orisland.wows.ApiConfig;
+import org.orisland.wows.DataInit;
 
 import static org.orisland.wows.dataPack.DataHandler.addForwardLine;
 import static org.orisland.wows.dataPack.DataHandler.addForwardPack;
@@ -35,12 +38,15 @@ public class Help  extends JCompositeCommand {
                 "[ ]内容为用户自行填入，( )为[ ]的待选项\n" +
                 "[ ]后为空则由用户输入！");
 
+
 //        绑定功能
         String[] binds = new String[2];
         String[] bindPre = {"绑定说明书", "在任何情况下都应该先绑定"};
-        binds[0] = "wb bn(bindname) [用户昵称] [区服](eu/asia/na/ru) 绑定用户 \n" +
+        binds[0] = "wb bn(bindname) [用户昵称] [区服](eu/asia/na/ru)\n" +
+                "绑定用户 \n" +
                 "例如： wb bn orisland_ex eu";
-        binds[1] = "wb ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru) 更新绑定 \n" +
+        binds[1] = "wb ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru)\n" +
+                " 更新绑定 \n" +
                 " 例如： wb bn orisland_ex eu";
         ForwardMessage bindFunction = addForwardPack(binds, "绑定", "绑定说明书", bindPre, sender, bot);
 
@@ -92,11 +98,13 @@ public class Help  extends JCompositeCommand {
                 "例如：w dpr 20220525 20220531";
         ForwardMessage expFunction = addForwardPack(exps, "实验", "实验说明书", expsPre, sender, bot);
 
-        messageList.add(bot, preInfo.build());
-        messageList.add(bot, bindFunction);
-        messageList.add(bot, accountFunction);
-        messageList.add(bot, helpFunction);
-        messageList.add(bot, expFunction);
+        int UnixTime = ((Long)DateUtil.currentSeconds()).intValue();
+
+        messageList.add(bot, preInfo.build(), UnixTime);
+        messageList.add(bot, bindFunction, UnixTime++);
+        messageList.add(bot, accountFunction, UnixTime++);
+        messageList.add(bot, helpFunction, UnixTime++);
+        messageList.add(bot, expFunction, UnixTime);
 
         ForwardMessage build = messageList.build();
 
