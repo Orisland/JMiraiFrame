@@ -190,8 +190,17 @@ public class DataHandler {
                                  ForwardMessageBuilder message,
                                  ApiConfig.Type type
     ) {
-        if (shipDataObjs == null)
+        if (shipDataObjs == null || shipDataObjs.get(0) == null){
+            messageItem
+                    .append("空")
+                    .append("\r");
+            message.add(sender.getBot(), messageItem.build());
+            messageItem = new MessageChainBuilder()
+                    .append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")));
+            message.add(sender.getBot(), messageItem.build());
             return false;
+        }
+
 
 //防止出现没打xx但是查询的问题
         int rank = 0;
