@@ -160,6 +160,7 @@ public class DataInit {
                 }else {
                     InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("ships_cn.json");
                     String s = IoUtil.readUtf8(resourceAsStream);
+                    FileUtil.writeUtf8String(s, dataDir + "ships_cn.json");
                     LocalShipInfo = JsonTool.mapper.readTree(s).get("data");
                 }
             }catch (Exception e){
