@@ -1,12 +1,14 @@
 package org.orisland.wows.command;
 
+import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
-import net.mamoe.mirai.message.data.MessageChain;
-import net.mamoe.mirai.message.data.MessageChainBuilder;
-import net.mamoe.mirai.message.data.PlainText;
-import net.mamoe.mirai.message.data.QuoteReply;
+import net.mamoe.mirai.message.data.*;
 import org.orisland.WowsPlugin;
+import org.orisland.wows.ApiConfig;
+
+import static org.orisland.wows.dataPack.DataHandler.addForwardLine;
+import static org.orisland.wows.dataPack.DataHandler.addForwardPack;
 
 public class Help  extends JCompositeCommand {
 
@@ -19,39 +21,95 @@ public class Help  extends JCompositeCommand {
     @SubCommand({"帮助", "help", "h"})
     @Description("查询自己综合pr")
     public void help(CommandSenderOnMessage sender){
-        QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        ForwardMessageBuilder preMessage = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
 
-        MessageChain chain = new MessageChainBuilder()
-                .append("wb(wws-bind) bn(bindname) [用户昵称] [区服](eu/asia/na/ru) 绑定用户")
-                .append("\r")
-                .append("wb(wws-bind) ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru) 更新绑定")
-                .append("\r")
-                .append("w(wws) me(today/今日/recent) 查询自己的当日随机战绩")
-                .append("\r")
-                .append("w(wws) all(al/全部) 查询自己当日的随机，排位综合战绩")
-                .append("\r")
-                .append("w(wws) rank(软壳/排位/pw) 查询自己当日战绩")
-                .append("\r")
-                .append("w(wws) ypr [类型](rank(排位)/all(全部)/random(随机)) 查询自己的昨天战绩，不输入默认随机")
-                .append("\r")
-                .append("w(wws) ts(todayship,今日单船) [船名] 显示今天打的指定船水表")
-                .append("\r")
-                .append("w(wws) spp [用户昵称] [区服] 查询指定用户综合pr")
-                .append("\r")
-                .append("w(wws) sps(searchShipname) [船名] 查询自己指定船的pr")
-                .append("\r")
-                .append("w(wws) pr(战绩,水表) 查询自己账号的综合pr")
-                .append("\r")
-                .append("w(wws) es(预期,expship) [船名] 查询服务器指定船只数据")
-                .append("\r")
-                .append("wh(wws-help) pr 等级划分")
-                .append("不稳定的命令（可能会出现意想不到的问题）：")
-                .append("w(wws) dpr(时间段) [from](YYYYMMdd) [to](YYYYMMdd) 查询时间段内自己的pr,第一次绑定无效")
-                .append("\r")
-                .append(quoteReply)
-                .build();
+        Bot bot = sender.getBot();
 
-        sender.sendMessage(chain);
+        addForwardLine(preMessage, messageItem, bot, "WowsHelper使用帮助");
+        addForwardLine(preMessage, messageItem, bot, "作者:Orisland");
+        addForwardLine(preMessage, messageItem, bot, "[EU]2434");
+
+        MessageChainBuilder preInfo = new MessageChainBuilder().append("正确的插件使用顺序：绑定->查询！\n" +
+                "[ ]内容为用户自行填入，( )为[ ]的待选项\n" +
+                "[ ]后为空则由用户输入！");
+
+//        绑定功能
+        String[] binds = new String[2];
+        String[] bindPre = {"绑定说明书", "在任何情况下都应该先绑定"};
+        binds[0] = "wb bn(bindname) [用户昵称] [区服](eu/asia/na/ru) 绑定用户 \n" +
+                "例如： wb bn orisland_ex eu";
+        binds[1] = "wb ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru) 更新绑定 \n" +
+                " 例如： wb bn orisland_ex eu";
+        ForwardMessage bindFunction = addForwardPack(binds, "绑定", "绑定说明书", bindPre, sender, bot);
+
+//        查询功能
+        String[] accountPre = {"查询说明书", "在任何情况下都应该绑定后使用!"};
+        String[] accounts = new String[10];
+        accounts[0] = "请注意：今日战绩，昨日战绩，这些功能仅在绑定的那一刻开始计算！\n" +
+                "您不能在刚绑定的时候立即查询您的今日战绩和昨日战绩！";
+        accounts[1] = "w(wws) me(today/今日/recent)\n" +
+                "查询自己的当日随机战绩\n" +
+                "例如：w me";
+        accounts[2] = "w(wws) all(al/全部)\n" +
+                "查询自己当日的随机，排位综合战绩\n" +
+                "例如：w all";
+        accounts[3] = "w(wws) rank(软壳/排位/pw)\n" +
+                "查询自己当日战绩 \n" +
+                "例如：w rank";
+        accounts[4] = "w(wws) ypr [类型](rank(排位)/all(全部)/random(随机))\n" +
+                "查询自己的昨天战绩，类型为空默认随机\n" +
+                "例如：w ypr rank";
+        accounts[5] = "w(wws) ts(todayship,今日单船) [船名(汉语，英语，同音字，不允许出现错别字和空格)]\n" +
+                "显示今天打的指定船水表\n" +
+                "例如：w ts 蒙大拿";
+        accounts[6] = "w(wws) spp [用户昵称] [区服]\n" +
+                "查询指定用户综合pr\n" +
+                "例如：w spp orisland_ex eu";
+        accounts[7] = "w(wws) sps(searchShipname) [船名]\n" +
+                "查询自己指定船的pr\n" +
+                "例如：w sps 蒙大拿";
+        accounts[8] = "w(wws) pr(战绩,水表)\n" +
+                "查询自己账号的综合pr\n" +
+                "例如：w pr";
+        accounts[9] = "w(wws) es(预期,expship) [船名]\n" +
+                "查询服务器指定船只数据\n" +
+                "例如：w es 蒙大拿";
+        ForwardMessage accountFunction = addForwardPack(accounts, "查询", "查询说明书", accountPre, sender, bot);
+
+        String[] exPre = {"额外查询", "查询一些额外的数据。"};
+        String[] exs = new String[1];
+        exs[0] = "wh(wws-help) pr\n" +
+                "等级划分\n" +
+                "例如：wh pr";
+        ForwardMessage helpFunction = addForwardPack(exs, "额外", "额外查询说明书", exPre, sender, bot);
+
+        String[] expsPre = {"实验说明书", "这些命令不稳定，不应该过多使用！"};
+        String [] exps = new String[1];
+        exps[0] = "w(wws) dpr(时间段) [from](YYYYMMdd) [to](YYYYMMdd)\n" +
+                "查询时间段内自己的pr\n" +
+                "例如：w dpr 20220525 20220531";
+        ForwardMessage expFunction = addForwardPack(exps, "实验", "实验说明书", expsPre, sender, bot);
+
+        messageList.add(bot, preInfo.build());
+        messageList.add(bot, bindFunction);
+        messageList.add(bot, accountFunction);
+        messageList.add(bot, helpFunction);
+        messageList.add(bot, expFunction);
+
+        ForwardMessage build = messageList.build();
+
+        ForwardMessage record = new ForwardMessage(
+                preMessage.build().getPreview(),
+                "WowsHelper使用说明",
+                "WowsHelper使用说明",
+                build.getSource(),
+                build.getSummary(),
+                build.getNodeList());
+
+        sender.sendMessage(new At(sender.getFromEvent().getSender().getId()));
+        sender.sendMessage(record);
     }
 
     @SubCommand({"pr"})

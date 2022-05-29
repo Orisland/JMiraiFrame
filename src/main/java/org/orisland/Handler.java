@@ -9,9 +9,7 @@ import net.mamoe.mirai.event.events.FriendMessageEvent;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
-import net.mamoe.mirai.message.data.ForwardMessage;
-import net.mamoe.mirai.message.data.ForwardMessageBuilder;
-import net.mamoe.mirai.message.data.PlainText;
+import net.mamoe.mirai.message.data.*;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShipDataSimple;
@@ -107,6 +105,15 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("20")){
             saveShipInfo();
         }else if (event.getMessage().contentToString().equals("21")){
+            MessageChainBuilder builder = new MessageChainBuilder();
+            builder.append("信息\r信息");
+            event.getSender().getGroup().sendMessage(builder.build());
+            MessageChainBuilder builder1 = new MessageChainBuilder();
+            builder1.append("信息\n信息");
+            event.getSender().getGroup().sendMessage(builder1.build());
+            MessageChainBuilder builder2 = new MessageChainBuilder();
+            builder2.append("信息\t信息");
+            event.getSender().getGroup().sendMessage(builder2.build());
         }else if (event.getMessage().contentToString().equals("22")){
         }else if (event.getMessage().contentToString().equals("23")){
         }else if (event.getMessage().contentToString().equals("24")){

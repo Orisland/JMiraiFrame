@@ -3,6 +3,7 @@ package org.orisland.wows.dataPack;
 import cn.hutool.core.date.DateUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
+import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.message.data.*;
 import org.orisland.wows.ApiConfig;
@@ -23,6 +24,52 @@ import static org.orisland.wows.dataPack.PrData.PrStandard;
  */
 @Slf4j
 public class DataHandler {
+
+    /**
+     * 为信息链增加长度
+     * @param messageList
+     * @param messageItem
+     * @param bot
+     * @param msg
+     */
+    public static void addForwardLine (ForwardMessageBuilder messageList, MessageChainBuilder messageItem, Bot bot, String msg){
+        messageItem.clear();
+        messageItem.append(msg);
+        messageList.add(bot, messageItem.build());
+    }
+
+    /**
+     *
+     * @param msg       信息打包
+     * @param title     标题
+     * @param sender    发送者
+     * @param brief     简讯
+     * @param preview   预览3条
+     * @param bot       机器人
+     * @return          信息块
+     */
+    public static ForwardMessage addForwardPack(String[] msg, String title, String brief, String[] preview, CommandSenderOnMessage sender, Bot bot){
+        ForwardMessageBuilder messageList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+        MessageChainBuilder messageItem = new MessageChainBuilder();
+        ForwardMessageBuilder previewList = new ForwardMessageBuilder(sender.getFromEvent().getSender());
+
+        for (String s : preview) {
+            messageItem.clear();
+            previewList.add(bot, messageItem.append(s).build());
+        }
+
+        ForwardMessage previews = previewList.build();
+
+        for (String s : msg) {
+            messageItem.clear();
+            messageList.add(bot, messageItem.append(s).build());
+        }
+
+        ForwardMessage build = messageList.build();
+
+        return new ForwardMessage(previews.getPreview(), title, brief, build.getSource(), build.getSummary(), build.getNodeList());
+
+    }
 
     /**
      * 中间打包
