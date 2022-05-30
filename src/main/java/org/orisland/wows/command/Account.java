@@ -544,7 +544,7 @@ public class Account extends JCompositeCommand {
                             .append(String.format("[%s]%s:", server, singlePlayer.getNickname()))
                             .append("\r");
 
-                    singleShipInfoPack(messageChainBuilder, shipDataObj, pr, Type.normal);
+                    singleShipInfoPack(sender, messageChainBuilder, shipDataObj, pr, Type.normal);
 
                     messList = new ForwardMessageBuilder(sender.getFromEvent().getSender())
                             .add(sender.getBot(), messageChainBuilder.build())
@@ -694,7 +694,7 @@ public class Account extends JCompositeCommand {
                             .append(String.format("[%s]%s:", bind.getServer(), bind.getAccountName()))
                             .append("\r");
 
-                    singleShipInfoPack(messageChainBuilder, shipDataObj, pr, Type.normal);
+                    singleShipInfoPack(sender, messageChainBuilder, shipDataObj, pr, Type.normal);
 
                     messList = new ForwardMessageBuilder(sender.getFromEvent().getSender())
                             .add(sender.getBot(), messageChainBuilder.build())
@@ -813,7 +813,7 @@ public class Account extends JCompositeCommand {
                             .append("\r");
                     if (shipDataObjs.size() != 0) {
                         for (ShipDataObj shipDataObj : shipDataObjs) {
-                            singleShipInfoPack(messageChainBuilder, shipDataObj, shipDataObj.getPR(), Type.normal);
+                            singleShipInfoPack(sender, messageChainBuilder, shipDataObj, shipDataObj.getPR(), Type.normal);
                         }
                     } else {
                         messageChainBuilder

@@ -4,8 +4,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.promeg.pinyinhelper.Pinyin;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
+import net.mamoe.mirai.contact.Contact;
+import net.mamoe.mirai.message.data.Image;
+import net.mamoe.mirai.utils.ExternalResource;
+import org.orisland.WowsPlugin;
 import org.orisland.wows.ApiConfig;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +33,19 @@ public class StringToMeaningful {
             return false;
         }else
             return true;
+    }
+
+    /**
+     * 构建图片
+     * @param sender
+     * @param pic
+     * @return
+     * @throws IOException
+     */
+    public static Image getImage(CommandSenderOnMessage sender, String pic) throws IOException {
+        InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("prImg" + File.separator + pic);
+        Image image = Contact.uploadImage(sender.getSubject(), resourceAsStream);
+        return image;
     }
 
     /**

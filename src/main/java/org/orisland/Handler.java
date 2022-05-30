@@ -1,21 +1,33 @@
 package org.orisland;
 
 import Tool.JsonTool;
+import Tool.MiraiTool;
+import cn.hutool.core.io.FastByteArrayOutputStream;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.io.file.FileReader;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.mamoe.mirai.Bot;
+import net.mamoe.mirai.Mirai;
+import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
 import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.message.data.*;
+import net.mamoe.mirai.utils.ExternalResource;
 import org.orisland.wows.ApiConfig;
+import org.orisland.wows.dataPack.StringToMeaningful;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShipDataSimple;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -124,6 +136,23 @@ public class Handler extends SimpleListenerHost {
             ForwardMessageBuilder iNodes = new ForwardMessageBuilder(event.getSender());
 
         }else if (event.getMessage().contentToString().equals("23")){
+//            InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("图片1.png");
+//            Image image1 = net.mamoe.mirai.contact.Contact.uploadImage(event.getSender(), resourceAsStream);
+//            InputStream resourceAsStream1 = WowsPlugin.class.getClassLoader().getResourceAsStream("图片2.png");
+//            Image image2 = net.mamoe.mirai.contact.Contact.uploadImage(event.getSender(), resourceAsStream1);
+//            InputStream resourceAsStream2 = WowsPlugin.class.getClassLoader().getResourceAsStream("图片3.png");
+//            Image image3 = net.mamoe.mirai.contact.Contact.uploadImage(event.getSender(), resourceAsStream2);
+//            InputStream resourceAsStream3 = WowsPlugin.class.getClassLoader().getResourceAsStream("1.png");
+//            Image image4 = net.mamoe.mirai.contact.Contact.uploadImage(event.getSender(), resourceAsStream3);
+
+            Image image = StringToMeaningful.getImage((CommandSenderOnMessage) event.getSender().getGroup(), "1.png");
+
+            MessageChainBuilder append = new MessageChainBuilder()
+                    .append("这是一条测试")
+                    .append("\n")
+                            .append(image);
+
+            event.getGroup().sendMessage(append.build());
         }else if (event.getMessage().contentToString().equals("24")){
         }else if (event.getMessage().contentToString().equals("25")){
         }else if (event.getMessage().contentToString().equals("26")){

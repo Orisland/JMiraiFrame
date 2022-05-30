@@ -58,53 +58,65 @@ public class PrData {
         String evaluate;
         int distance;
         String color;
+        String pic;
         if (score < 750){
             evaluate = "还需努力";
             distance = 750 - score;
             color = "番茄";
+            pic = "1.png";
         }else if (score < 1100){
             evaluate = "低于平均";
             distance = 1100 - score;
             color = "玉米";
+            pic = "2.png";
         }else if (score < 1350){
             evaluate = "平均水平";
             distance = 1350 - score;
             color = "蛋黄";
+            pic = "3.png";
         }else if (score < 1550){
             evaluate = "好";
             distance = 1550 - score;
             color = "小葱";
+            pic = "4.png";
         }else if (score < 1750){
             evaluate = "很好";
             distance = 1750 - score;
             color = "白菜";
+            pic = "5.png";
         }else if (score < 2100){
             evaluate = "非常好";
             distance = 2100 - score;
             color = "青菜";
+            pic = "6.png";
         }else if (score < 2450){
             evaluate = "大佬平均";
             distance = 2450 - score;
             color = "茄子";
+            pic = "7.png";
         }else if (score < 5000){
             evaluate = "神佬平均";
             distance = score - 2450;
             color = "大茄子";
+            pic = "8.png";
         } else if (score < 9999){
             evaluate = "您";
             distance = score - 5000;
             color = "钛合金茄子";
+            pic = "9.png";
         }else {
             log.warn("score异常！");
             evaluate = "未知";
             distance = 0;
             color = "灰";
+            pic = "1.png";
         }
 
         ObjectNode objectNode = JsonTool.mapper.createObjectNode();
         objectNode.put("evaluate", evaluate);
         objectNode.put("distance",  "+" + String.valueOf(distance));
         objectNode.put("color", color);
+        objectNode.put("pic", pic);
 
         return objectNode;
     }

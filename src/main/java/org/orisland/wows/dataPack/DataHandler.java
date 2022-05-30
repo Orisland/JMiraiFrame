@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.message.data.*;
+import net.mamoe.mirai.utils.ExternalResource;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.Bind;
 import org.orisland.wows.doMain.PlayerObj;
@@ -13,11 +14,13 @@ import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.pr.ShipPr;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import static org.orisland.wows.dataPack.PlayerData.NickNameToAccountInfo;
 import static org.orisland.wows.dataPack.PrData.PrStandard;
+import static org.orisland.wows.dataPack.StringToMeaningful.getImage;
 
 /**
  * 数据集中处理打包
@@ -78,13 +81,15 @@ public class DataHandler {
      * @param pr
      * @return
      */
-    public static void singleShipInfoPack(MessageChainBuilder messageChainBuilder, ShipDataObj shipDataObj, ShipPr pr, ApiConfig.Type type) {
+    public static void singleShipInfoPack(CommandSenderOnMessage sender, MessageChainBuilder messageChainBuilder, ShipDataObj shipDataObj, ShipPr pr, ApiConfig.Type type) throws IOException {
         if (shipDataObj.getShip() != null) {
             messageChainBuilder
                     .append(shipDataObj.getShip().getName())
                     .append("\r");
         }
         messageChainBuilder
+                .append(getImage(sender, pr.getPic()))
+                .append("\n")
                 .append(String.format("综合评级：%s %s %s%s", pr.getColor(), pr.getPR(), pr.getEvaluate(), pr.getDistance()))
                 .append("\r")
                 .append(String.format("场数：%s", shipDataObj.getBattle()))
@@ -189,7 +194,7 @@ public class DataHandler {
                                  Bind bind,
                                  ForwardMessageBuilder message,
                                  ApiConfig.Type type
-    ) {
+    ) throws IOException {
         try {
             if (shipDataObjs.get(0) == null){
                 messageItem
@@ -241,20 +246,20 @@ public class DataHandler {
                 if (type == ApiConfig.Type.normal){
                     messageItem = new MessageChainBuilder();
                     ShipDataObjPack(shipDataObj, shipPr, shipDataObjItem);
-                    singleShipInfoPack(messageItem, shipDataObjItem, shipDataObjItem.getPR(), shipDataObjItem.isRank() ? ApiConfig.Type.rank : ApiConfig.Type.random);
+                    singleShipInfoPack(sender, messageItem, shipDataObjItem, shipDataObjItem.getPR(), shipDataObjItem.isRank() ? ApiConfig.Type.rank : ApiConfig.Type.random);
                     messageList.add(sender.getBot(), messageItem.build());
                 }else if (type == ApiConfig.Type.random){
                     if (!shipDataObjItem.isRank()) {
                         messageItem = new MessageChainBuilder();
                         ShipDataObjPack(shipDataObj, shipPr, shipDataObjItem);
-                        singleShipInfoPack(messageItem, shipDataObjItem, shipDataObjItem.getPR(), ApiConfig.Type.random);
+                        singleShipInfoPack(sender, messageItem, shipDataObjItem, shipDataObjItem.getPR(), ApiConfig.Type.random);
                         messageList.add(sender.getBot(), messageItem.build());
                     }
                 }else if (type == ApiConfig.Type.rank){
                     if (shipDataObjItem.isRank()) {
                         messageItem = new MessageChainBuilder();
                         ShipDataObjPack(shipDataObj, shipPr, shipDataObjItem);
-                        singleShipInfoPack(messageItem, shipDataObjItem, shipDataObjItem.getPR(), ApiConfig.Type.rank);
+                        singleShipInfoPack(sender, messageItem, shipDataObjItem, shipDataObjItem.getPR(), ApiConfig.Type.rank);
                         messageList.add(sender.getBot(), messageItem.build());
                     }
                 }
@@ -268,6 +273,8 @@ public class DataHandler {
             messageItem.append(String.format("[%s]%s：", bind.getServer() == ApiConfig.Server.com ? "NA"
                             : bind.getServer(), bind.getAccountName()))
                     .append("\r")
+                    .append(getImage(sender, jsonNode.get("pic").asText()))
+                    .append("\n")
                     .append(String.format("%s综合评级：%s %s %s%s",
                             type == ApiConfig.Type.rank
                                     ? "排位"

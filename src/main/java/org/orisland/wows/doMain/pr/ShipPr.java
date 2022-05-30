@@ -25,6 +25,7 @@ public class ShipPr {
     private String evaluate;
     private String distance;
     private String color;
+    private String pic;
 
     /**
      * pr计算
@@ -77,6 +78,7 @@ public class ShipPr {
         this.setEvaluate(jsonNode.get("evaluate").asText());
         this.setDistance(jsonNode.get("distance").asText());
         this.setColor(jsonNode.get("color").asText());
+        this.setPic(jsonNode.get("pic").asText());
         return true;
     }
 }
