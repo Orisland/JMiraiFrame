@@ -8,6 +8,7 @@ import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.pr.ShipPr;
 import org.orisland.wows.doMain.singleShipData.Pvp;
+import org.orisland.wows.doMain.singleShipData.Rank_solo;
 import org.orisland.wows.doMain.singleShipData.SingleShipData;
 
 import java.math.BigDecimal;
@@ -137,7 +138,9 @@ public class PrData {
         double actFrags = 0.0;
         double expFrags = 0.0;
         Pvp pvp = null;
+        Rank_solo  rank_solo  = null;
         int battles = 0;
+        int rankBattle = 0;
 
         try {
             if (singleShipData.size() == 0)
@@ -151,6 +154,10 @@ public class PrData {
 //                调用顺序问题
                 pvp = singleShipDatum.getPvp();
                 battles = pvp.getBattles();
+//                rank_solo = singleShipDatum.getRank_solo();
+
+//                battles = singleShipDatum.getBattles() - rank_solo.getBattles();
+
                 if (battles == 0){
                     battles = 1;
                 }
@@ -174,6 +181,7 @@ public class PrData {
         if (pvp == null){
             return null;
         }
+
         ShipDataObj shipDataObj = new ShipDataObj();
         shipDataObj.setShoot(pvp.getMain_battery().getShots());
         shipDataObj.setHit((long) (pvp.getMain_battery().getHits()));

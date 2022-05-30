@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static org.orisland.wows.ApiConfig.*;
+import static org.orisland.wows.dataPack.BindData.bindQQAccountId;
 import static org.orisland.wows.dataPack.StringToMeaningful.ServerToDir;
 import static org.orisland.wows.dataPack.StringToMeaningful.StringToServer;
 
@@ -239,8 +240,6 @@ public class PlayerData {
                 log.info("{},{}记录已存在.", accountId, date);
             }
         }
-
-
     }
 
     /**
@@ -443,6 +442,12 @@ public class PlayerData {
             log.warn("该qq未绑定账号数据！");
             return null;
         }
+
+        if (jsonNode.get("regTime") == null){
+            log.info("发现了没有绑定时间的账号，重新进行绑定！");
+            bindQQAccountId(qq, jsonNode.get("id").asText(), StringToServer(jsonNode.get("server").asText()));
+        }
+
         bind.setAccountId(jsonNode.get("id").asText());
         bind.setQq(qq);
         bind.setServer(StringToServer(jsonNode.get("server").asText()));

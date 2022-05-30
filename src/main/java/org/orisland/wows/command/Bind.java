@@ -121,19 +121,19 @@ public class Bind extends JCompositeCommand {
                 }else {
                     if (bind != null){
                         chain = new MessageChainBuilder()
-                                .append(new PlainText(String.format("该用户已经绑定账号[%s]%s-%s！", bind.getServer(), bind.getAccountName(), bind.getAccountId())))
+                                .append(new PlainText(String.format("该用户已经绑定账号[%s]%s-%s！", bind.getServer() == ApiConfig.Server.com ? "NA" : bind.getServer(), bind.getAccountName(), bind.getAccountId())))
                                 .append(quoteReply)
                                 .build();
                     }else {
                         if (findBindAccountId(String.valueOf(singlePlayer.getAccount_id()), qq)){
                             bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
                             chain = new MessageChainBuilder()
-                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
+                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server== ApiConfig.Server.com ? "NA" : server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
                                     .append(quoteReply)
                                     .build();
                         }else {
                             chain = new MessageChainBuilder()
-                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
+                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server== ApiConfig.Server.com ? "NA" : server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
                                     .append(quoteReply)
                                     .build();
                         }
@@ -195,12 +195,12 @@ public class Bind extends JCompositeCommand {
                         if (findBindAccountId(String.valueOf(singlePlayer.getAccount_id()), qq)){
                             bindQQAccountId(qq, String.valueOf(singlePlayer.getAccount_id()), server);
                             chain = new MessageChainBuilder()
-                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
+                                    .append(new PlainText(String.format("绑定账号[%s]%s-%s完成！", server== ApiConfig.Server.com ? "NA" : server, singlePlayer.getNickname(), singlePlayer.getAccount_id())))
                                     .append(quoteReply)
                                     .build();
                         }else {
                             chain = new MessageChainBuilder()
-                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
+                                    .append(String.format("[%s]%s-%s已被绑定，请核实账号信息！", server== ApiConfig.Server.com ? "NA" : server, singlePlayer.getNickname(), singlePlayer.getAccount_id()))
                                     .append(quoteReply)
                                     .build();
                         }

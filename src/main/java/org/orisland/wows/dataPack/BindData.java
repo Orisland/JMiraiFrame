@@ -1,6 +1,7 @@
 package org.orisland.wows.dataPack;
 
 import Tool.JsonTool;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.io.FileUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -30,6 +31,7 @@ public class BindData {
         objectNode.put("id", accountId);
         objectNode.put("server", server.toString());
         objectNode.put("name", jsonNode.get("nickname").asText());
+        objectNode.put("regTime", DateUtil.currentSeconds());
         bind.set(qq, objectNode);
         Bind = bind;
         FileUtil.writeUtf8String(bind.toString(), dataDir + "Bind.json");

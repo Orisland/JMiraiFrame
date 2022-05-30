@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static cn.hutool.core.date.DateUtil.beginOfDay;
+import static cn.hutool.core.date.DateUtil.endOfDay;
 import static org.orisland.wows.dataPack.PlayerData.*;
 import static org.orisland.wows.dataPack.ShipData.SearchShipIdToShipInfo;
 
@@ -49,9 +51,7 @@ public class DiffData {
     public static List<ShipDataObj> diffDataPure(JsonNode nowData, JsonNode originData, int dayLeft){
         nowData = nowData.get("data");
         originData = originData.get("data");
-        if (originData == null){
 
-        }
         DateTime today = DateUtil.date();
 
         List<ShipDataObj> res = new ArrayList<>();
@@ -59,8 +59,7 @@ public class DiffData {
         for (JsonNode datum : nowData) {
             try {
                 DateTime LastBattleTime = DateUtil.date(datum.get("last_battle_time").asLong() * 1000);
-
-                if (LastBattleTime.year() == today.year() && LastBattleTime.dayOfYear() == today.dayOfYear()-dayLeft){
+                if (LastBattleTime.isIn(DateUtil.offsetDay(beginOfDay(today), (-dayLeft)), endOfDay(today))){
                     SingleShipData nowSingleShipData = JsonTool.mapper.readValue(datum.toString(), SingleShipData.class);
                     SingleShipData originSingleShipData = null;
                     if (originData.get(String.valueOf(nowSingleShipData.getShip_id())) == null){
@@ -70,12 +69,17 @@ public class DiffData {
                         originSingleShipData.setRank_solo(new Rank_solo());
                     }else {
                         originSingleShipData = JsonTool.mapper.readValue(originData.get(String.valueOf(nowSingleShipData.getShip_id())).toString(), SingleShipData.class);
-                        if (originSingleShipData.getRank_solo() == null){
+                        if (originSingleShipData.getRank_solo() == null || originSingleShipData.getRank_solo().getBattles() == 0){
                             originSingleShipData.setRank_solo(new Rank_solo());
                         }
                     }
 
                     Rank_solo nowRank = nowSingleShipData.getRank_solo();
+
+                    if (nowRank == null){
+                        nowRank = new Rank_solo();
+                    }
+
                     Rank_solo originRank = originSingleShipData.getRank_solo();
 
                     Pvp nowPvp = nowSingleShipData.getPvp();
@@ -245,19 +249,17 @@ public class DiffData {
         JsonNode nowRecord;
         JsonNode originRecord;
 
-        Integer fromI = (Integer) from;
-        Integer toI  = (Integer) to;
-
-        if (fromI > toI){
+        if (from > to){
             int t = to;
-            to = to;
-
+            to = from;
+            from = t;
         }
 
         if (from == to){
             log.error("查找的日期为同一天！");
             return null;
         }
+
         if(to == today)
             nowRecord = shipDataStandard(accountId,server);
         else
@@ -265,10 +267,11 @@ public class DiffData {
 
         originRecord = readPlayerData(accountId, server, String.valueOf(from));
         if (nowRecord == null || originRecord == null){
-            log.info("数据不存在！");
-            return null;
+            log.info("数据不存在！选择最老的一天！");
+            String s = selectDataOldest(accountId, server);
+            originRecord = readPlayerData(accountId, server, String.valueOf(s.split(",")[1].split("\\.")[0]));
         }
-        return diffDataPure(nowRecord, originRecord, 0);
+        return diffDataPure(nowRecord, originRecord, to - from);
     }
 
     /**

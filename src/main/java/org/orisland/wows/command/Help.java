@@ -61,14 +61,14 @@ public class Help  extends JCompositeCommand {
         String[] accounts = new String[10];
         accounts[0] = "请注意：今日战绩，昨日战绩，这些功能仅在绑定的那一刻开始计算！\n" +
                 "您不能在刚绑定的时候立即查询您的今日战绩和昨日战绩！";
-        accounts[1] = "w(wws) me(today/今日/recent)\n" +
-                "查询自己的当日随机战绩\n" +
+        accounts[1] = "w(wws) me(today/今日/recent) [数字](留空默认今日)\n" +
+                "查询自己的当日(前几日)随机战绩\n" +
                 "例如：w me";
-        accounts[2] = "w(wws) all(al/全部)\n" +
-                "查询自己当日的随机，排位综合战绩\n" +
+        accounts[2] = "w(wws) all(al/全部) [数字](留空默认今日)\n" +
+                "查询自己当日(前几日)的随机，排位综合战绩\n" +
                 "例如：w all";
-        accounts[3] = "w(wws) rank(软壳/排位/pw)\n" +
-                "查询自己当日战绩 \n" +
+        accounts[3] = "w(wws) rank(软壳/排位/pw) [数字](留空默认今日)\n" +
+                "查询自己当日(前几日)战绩\n" +
                 "例如：w rank";
         accounts[4] = "w(wws) ypr [类型](rank(排位)/all(全部)/random(随机))\n" +
                 "查询自己的昨天战绩，类型为空默认随机\n" +

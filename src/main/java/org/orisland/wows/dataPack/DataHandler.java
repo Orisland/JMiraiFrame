@@ -213,7 +213,7 @@ public class DataHandler {
             messageItem = new MessageChainBuilder()
                     .append(String.format("查询时间：%s", DateUtil.format(new Date(), "YYYY-MM-dd HH:mm")));
             message.add(sender.getBot(), messageItem.build());
-            return false;
+            return true;
         }
 
 

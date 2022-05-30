@@ -42,7 +42,7 @@ public class ApiConfig {
      * 用id查用户(唯一)
      * server-appid-uid
      */
-    public static final String ACCOUNTID_ACCOUNTINFO = "https://api.worldofwarships.%s/wows/account/info/?application_id=%s&account_id=%s";
+    public static final String ACCOUNTID_ACCOUNTINFO = "https://api.worldofwarships.%s/wows/account/info/?application_id=%s&account_id=%s&extra=statistics.pve,statistics.rank_solo";
 
     /**
      * 查询单个指定船的信息(唯一)
