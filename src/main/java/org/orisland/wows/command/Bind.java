@@ -88,7 +88,7 @@ public class Bind extends JCompositeCommand {
 
     }
 
-    @SubCommand({"bindname", "bn", "绑定"})
+    @SubCommand({"bindname", "bn", "绑定", "bind", "set", "bd"})
     @Description("绑定用户通过name")
     public void bindName(CommandSenderOnMessage sender, String accountName, String StringServer){
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());
@@ -157,7 +157,7 @@ public class Bind extends JCompositeCommand {
         sender.sendMessage(chain);
     }
 
-    @SubCommand({"updatebind", "ub", "更新绑定"})
+    @SubCommand({"updatebind", "ub", "更新绑定", "gx"})
     @Description("更新绑定")
     public void updateBind(CommandSenderOnMessage sender, String accountName, String StringServer){
         QuoteReply quoteReply = new QuoteReply(sender.getFromEvent().getSource());

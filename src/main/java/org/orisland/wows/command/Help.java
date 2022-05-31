@@ -42,12 +42,12 @@ public class Help  extends JCompositeCommand {
 //        绑定功能
         String[] binds = new String[4];
         String[] bindPre = {"绑定说明书", "在任何情况下都应该先绑定"};
-        binds[0] = "wb bn(bindname) [用户昵称] [区服](eu/asia/na/ru)\n" +
+        binds[0] = "wb set(bn/bd/绑定/bind) [用户昵称] [区服](eu/asia/na/ru)\n" +
                 "绑定用户 \n" +
-                "例如： wb bn orisland_ex eu";
-        binds[1] = "wb ub(updatebind/更新绑定) [用户昵称] [区服](eu/asia/na/ru)\n" +
+                "例如： wb set orisland_ex eu";
+        binds[1] = "wb ub(updatebind/更新绑定/gx) [用户昵称] [区服](eu/asia/na/ru)\n" +
                 "更新绑定 \n" +
-                "例如： wb bn orisland_ex eu";
+                "例如： wb ub orisland_ex eu";
         binds[2] = "wb db(jb,解绑)\n" +
                 "解除自己的账号绑定，注意该操作会导致数据更新停止！\n" +
                 "例如在已绑定的情况下：wb db";
