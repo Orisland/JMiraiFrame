@@ -69,6 +69,15 @@ public class DataInit {
     }
 
     /**
+     * 将resource的pic文件复制到data
+     */
+    public static void initPicDir(){
+        if (!FileUtil.exist(dataDir + "prImg")){
+//            FileUtil.copy()
+        }
+    }
+
+    /**
      * 获取配置文件中的appid
      */
     public static void initAppId(){

@@ -28,14 +28,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.DataInit.initDataRefresh;
 import static org.orisland.wows.dataPack.DiffData.accountRecordAt;
 import static org.orisland.wows.dataPack.PlayerData.*;
-import static org.orisland.wows.dataPack.PrData.NickNameToPr;
-import static org.orisland.wows.dataPack.PrData.ShipPr;
+import static org.orisland.wows.dataPack.PrData.*;
 import static org.orisland.wows.dataPack.ShipData.*;
 import static org.orisland.wows.dataPack.DiffData.diffShip;
 
@@ -154,7 +158,9 @@ public class Handler extends SimpleListenerHost {
 
             event.getGroup().sendMessage(append.build());
         }else if (event.getMessage().contentToString().equals("24")){
+            System.out.println("org.orisland.plugin\\\\prImg\\\\");
         }else if (event.getMessage().contentToString().equals("25")){
+
         }else if (event.getMessage().contentToString().equals("26")){
         }else {
         }

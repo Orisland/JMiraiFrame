@@ -1,6 +1,9 @@
 package org.orisland.wows.dataPack;
 
+import Tool.FileTool;
 import Tool.JsonTool;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.util.NumberUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.extern.slf4j.Slf4j;
@@ -11,10 +14,12 @@ import org.orisland.wows.doMain.singleShipData.Pvp;
 import org.orisland.wows.doMain.singleShipData.Rank_solo;
 import org.orisland.wows.doMain.singleShipData.SingleShipData;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.dataPack.PlayerData.searchNickNameToAccountId;
 import static org.orisland.wows.dataPack.ShipData.*;
 import static org.orisland.wows.dataPack.ShipData.SearchShipIdToShipInfo;
@@ -63,53 +68,53 @@ public class PrData {
             evaluate = "还需努力";
             distance = 750 - score;
             color = "番茄";
-            pic = "1.png";
+            pic = getPrPicPath(0);
         }else if (score < 1100){
             evaluate = "低于平均";
             distance = 1100 - score;
             color = "玉米";
-            pic = "2.png";
+            pic = getPrPicPath(1);
         }else if (score < 1350){
             evaluate = "平均水平";
             distance = 1350 - score;
             color = "蛋黄";
-            pic = "3.png";
+            pic = getPrPicPath(2);
         }else if (score < 1550){
             evaluate = "好";
             distance = 1550 - score;
             color = "小葱";
-            pic = "4.png";
+            pic = getPrPicPath(3);
         }else if (score < 1750){
             evaluate = "很好";
             distance = 1750 - score;
             color = "白菜";
-            pic = "5.png";
+            pic = getPrPicPath(4);
         }else if (score < 2100){
             evaluate = "非常好";
             distance = 2100 - score;
             color = "青菜";
-            pic = "6.png";
+            pic = getPrPicPath(5);
         }else if (score < 2450){
             evaluate = "大佬平均";
             distance = 2450 - score;
             color = "茄子";
-            pic = "7.png";
+            pic = getPrPicPath(6);
         }else if (score < 5000){
             evaluate = "神佬平均";
             distance = score - 2450;
             color = "大茄子";
-            pic = "8.png";
+            pic = getPrPicPath(7);
         } else if (score < 9999){
             evaluate = "您";
             distance = score - 5000;
             color = "钛合金茄子";
-            pic = "9.png";
+            pic = getPrPicPath(8);
         }else {
-            log.warn("score异常！");
-            evaluate = "未知";
-            distance = 0;
-            color = "灰";
-            pic = "1.png";
+            log.info("？？？？为什么会超过10000？");
+            evaluate = "ᐕ)⁾⁾";
+            distance = score - 9999;
+            color = "炫彩";
+            pic = getPrPicPath(9);
         }
 
         ObjectNode objectNode = JsonTool.mapper.createObjectNode();
@@ -267,6 +272,18 @@ public class PrData {
      */
     public static ShipDataObj NickNameShipToPr(String NickName, ApiConfig.Server server, String ship){
         return AccountIdShipToPr(searchNickNameToAccountId(NickName, server), server, ship);
+    }
+
+    /**
+     * 随机找图
+     * @param num   级别
+     * @return      图片名字
+     */
+    public static String getPrPicPath(int num){
+        String rootPath = dataDir + "prImg" + File.separator;
+        File[] ls = FileUtil.ls(rootPath + num);;
+        int select = NumberUtil.generateRandomNumber(0, ls.length, 1)[0];
+        return rootPath  + num + File.separator + ls[select].getName();
     }
 
 }

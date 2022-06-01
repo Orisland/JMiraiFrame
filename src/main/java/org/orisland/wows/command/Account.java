@@ -720,6 +720,7 @@ public class Account extends JCompositeCommand {
                 sender.sendMessage(record);
                 return;
             } catch (Exception e) {
+                e.printStackTrace();
                 log.error("错误计数:{}", ++count);
                 exception.append(e.getMessage())
                         .append("\r");

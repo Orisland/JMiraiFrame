@@ -43,9 +43,8 @@ public class StringToMeaningful {
      * @throws IOException
      */
     public static Image getImage(CommandSenderOnMessage sender, String pic) throws IOException {
-        InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("prImg" + File.separator + pic);
-        Image image = Contact.uploadImage(sender.getSubject(), resourceAsStream);
-        return image;
+//        InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("prImg" + File.separator + pic);
+        return Contact.uploadImage(sender.getSubject(), new File(pic));
     }
 
     /**
@@ -61,6 +60,10 @@ public class StringToMeaningful {
         String s = shipName.trim().replaceAll("\\s", "").toUpperCase();
         char[] chars = s.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
+
+        if(shipName.contains("-")){
+            shipName = shipName.split("-")[0] + shipName.split("-")[1];
+        }
 
         int count = 0;
         for (char aChar : chars) {
@@ -97,7 +100,15 @@ public class StringToMeaningful {
         }else {
 //        英语精确匹配
             for (JsonNode jsonNode : LocalShipInfo) {
-                if (jsonNode.get("en").asText().equalsIgnoreCase(shipName)){
+                String en = jsonNode.get("en").asText();
+                String text = "";
+
+                if (en.contains("-"))
+                    text = en.split("-")[0] + en.split("-")[1];
+                else
+                    text = en;
+
+                if (text.equalsIgnoreCase(shipName)){
                     return jsonNode;
                 }
             }
@@ -105,7 +116,15 @@ public class StringToMeaningful {
 
 //        英语模糊匹配
             for (JsonNode jsonNode : LocalShipInfo) {
-                if (jsonNode.get("en").asText().toUpperCase().contains(shipName.toUpperCase())){
+                String en = jsonNode.get("en").asText();
+                String text = "";
+
+                if (en.contains("-"))
+                    text = en.split("-")[0] + en.split("-")[1];
+                else
+                    text = en;
+
+                if (text.toUpperCase().contains(shipName.toUpperCase())){
                     return jsonNode;
                 }
             }

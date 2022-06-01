@@ -14,9 +14,13 @@ import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.pr.ShipPr;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.orisland.wows.dataPack.PlayerData.NickNameToAccountInfo;
 import static org.orisland.wows.dataPack.PrData.PrStandard;
@@ -82,15 +86,19 @@ public class DataHandler {
      * @return
      */
     public static void singleShipInfoPack(CommandSenderOnMessage sender, MessageChainBuilder messageChainBuilder, ShipDataObj shipDataObj, ShipPr pr, ApiConfig.Type type) throws IOException {
+        Image image = getImage(sender, pr.getPic());
+        String[] split = pr.getPic().split("[\\\\/]");
+        String eat = split[split.length - 1].split("\\.")[0];
+
         if (shipDataObj.getShip() != null) {
             messageChainBuilder
                     .append(shipDataObj.getShip().getName())
                     .append("\r");
         }
         messageChainBuilder
-                .append(getImage(sender, pr.getPic()))
+                .append(image)
                 .append("\n")
-                .append(String.format("综合评级：%s %s %s%s", pr.getColor(), pr.getPR(), pr.getEvaluate(), pr.getDistance()))
+                .append(String.format("综合评级：%s %s %s%s", eat, pr.getPR(), pr.getEvaluate(), pr.getDistance()))
                 .append("\r")
                 .append(String.format("场数：%s", shipDataObj.getBattle()))
                 .append("\r")
@@ -269,18 +277,23 @@ public class DataHandler {
 
             JsonNode jsonNode = PrStandard(shipPr.PrCalculate());
 
+
+            Image image = getImage(sender, jsonNode.get("pic").asText());
+            String[] split = jsonNode.get("pic").asText().split("[\\\\/]");
+            String eat = split[split.length - 1].split("\\.")[0];
+
             messageItem = new MessageChainBuilder();
             messageItem.append(String.format("[%s]%s：", bind.getServer() == ApiConfig.Server.com ? "NA"
                             : bind.getServer(), bind.getAccountName()))
                     .append("\r")
-                    .append(getImage(sender, jsonNode.get("pic").asText()))
+                    .append(image)
                     .append("\n")
                     .append(String.format("%s综合评级：%s %s %s%s",
                             type == ApiConfig.Type.rank
                                     ? "排位"
                                     : type == ApiConfig.Type.random
                                     ? "随机" : "",
-                            jsonNode.get("color").asText(),
+                            eat,
                             jsonNode.get("pr").asText(),
                             jsonNode.get("evaluate").asText(),
                             jsonNode.get("distance").asText()))
