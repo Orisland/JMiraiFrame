@@ -1,14 +1,12 @@
 package Tool;
 
-import cn.hutool.core.io.FileUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.yamlkt.Yaml;
 import net.mamoe.yamlkt.YamlMap;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 
 import java.io.*;
-import java.nio.file.Path;
 
 @Slf4j
 public class FileTool {
@@ -81,7 +79,7 @@ public class FileTool {
      * 初始化，一般用于第一次使用插件，创建玩家数据目录
      */
     public static boolean initFile(){
-        return newFile(WowsPlugin.INSTANCE.getDataFolderPath() + File.separator + "playerData");
+        return newFile(Plugin.INSTANCE.getDataFolderPath() + File.separator + "playerData");
     }
 
     /**

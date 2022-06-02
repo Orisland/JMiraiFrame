@@ -1,7 +1,7 @@
 package org.orisland.wows;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 
 import java.io.File;
 
@@ -84,7 +84,7 @@ public class ApiConfig {
     /**
      * 本地玩家数据地址
      */
-    public static final String dataDir = WowsPlugin.INSTANCE.getDataFolder() + File.separator;
+    public static final String dataDir = Plugin.INSTANCE.getDataFolder() + File.separator;
 
     /**
      * 区服玩家数据路径
@@ -97,7 +97,7 @@ public class ApiConfig {
     /**
      * 配置文件地址
      */
-    public static final String configDir = WowsPlugin.INSTANCE.getConfigFolder() + File.separator;
+    public static final String configDir = Plugin.INSTANCE.getConfigFolder() + File.separator;
 
     /**
      * 用户初始数据

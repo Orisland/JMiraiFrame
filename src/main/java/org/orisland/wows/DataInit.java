@@ -5,7 +5,6 @@ import Tool.HttpClient;
 import Tool.JsonTool;
 import Tool.YmlTool;
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.io.FastByteArrayOutputStream;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.ZipUtil;
@@ -14,7 +13,7 @@ import cn.hutool.cron.task.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 
 import java.io.File;
 import java.io.InputStream;
@@ -61,7 +60,7 @@ public class DataInit {
         if (!FileTool.fileExists(configDir + "config.yml")){
             log.info("wows配置文件初始化!");
             log.info("请关闭bot填入appid后重启!");
-            InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("config.yml");
+            InputStream resourceAsStream = Plugin.class.getClassLoader().getResourceAsStream("config.yml");
             FileUtil.writeFromStream(resourceAsStream, configDir + "config.yml");
             FileTool.newFile(dataDir + "playerData" + File.separator + "asia");
             FileTool.newFile(dataDir + "playerData" + File.separator + "eu");
@@ -74,7 +73,7 @@ public class DataInit {
 
     public static void initPrImg(){
         if (!FileUtil.exist(dataDir + "prImg")){
-            byte[] bytes = IoUtil.readBytes(WowsPlugin.class.getClassLoader().getResourceAsStream("prImg.zip"));
+            byte[] bytes = IoUtil.readBytes(Plugin.class.getClassLoader().getResourceAsStream("prImg.zip"));
             FileUtil.writeBytes(bytes, dataDir + "temp.zip");
             ZipUtil.unzip(dataDir + "temp.zip", dataDir, Charset.forName("GBK"));
             boolean del = FileUtil.del(dataDir + "temp.zip");
@@ -185,7 +184,7 @@ public class DataInit {
                 if (FileUtil.exist(dataDir + "ships_cn.json")){
                     LocalShipInfo = JsonTool.mapper.readTree(FileUtil.readUtf8String(dataDir + "ships_cn.json")).get("data");
                 }else {
-                    InputStream resourceAsStream = WowsPlugin.class.getClassLoader().getResourceAsStream("ships_cn.json");
+                    InputStream resourceAsStream = Plugin.class.getClassLoader().getResourceAsStream("ships_cn.json");
                     String s = IoUtil.readUtf8(resourceAsStream);
                     FileUtil.writeUtf8String(s, dataDir + "ships_cn.json");
                     LocalShipInfo = JsonTool.mapper.readTree(s).get("data");

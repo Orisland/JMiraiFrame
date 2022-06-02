@@ -1,7 +1,6 @@
 package org.orisland.wows.command;
 
 import cn.hutool.core.date.DateUtil;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
@@ -9,7 +8,7 @@ import net.mamoe.mirai.message.data.MessageChain;
 import net.mamoe.mirai.message.data.MessageChainBuilder;
 import net.mamoe.mirai.message.data.PlainText;
 import net.mamoe.mirai.message.data.QuoteReply;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 import org.orisland.wows.ApiConfig;
 
 import java.util.Date;
@@ -24,7 +23,7 @@ public class PluginController extends JCompositeCommand {
     public static final PluginController INSTANCE = new PluginController();
 
     public PluginController() {
-        super(WowsPlugin.INSTANCE, "wws-controller", new String[]{"wc"}, WowsPlugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "wws-controller", new String[]{"wc"}, Plugin.INSTANCE.getParentPermission());
     }
 
     @SubCommand({"reload", "re"})

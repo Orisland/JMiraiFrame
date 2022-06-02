@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import net.mamoe.mirai.message.data.*;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.Bind;
 import org.orisland.wows.doMain.pr.ShipPr;
@@ -34,7 +34,7 @@ public class Account extends JCompositeCommand {
     public static final Account INSTANCE = new Account();
 
     private Account() {
-        super(WowsPlugin.INSTANCE, "wws", new String[]{"w"}, WowsPlugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "wws", new String[]{"w"}, Plugin.INSTANCE.getParentPermission());
     }
 
     @SubCommand({"今日", "me", "today", "recent"})

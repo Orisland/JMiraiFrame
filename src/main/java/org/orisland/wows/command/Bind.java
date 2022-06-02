@@ -11,14 +11,10 @@ import net.mamoe.mirai.message.data.MessageChain;
 import net.mamoe.mirai.message.data.MessageChainBuilder;
 import net.mamoe.mirai.message.data.PlainText;
 import net.mamoe.mirai.message.data.QuoteReply;
-import org.orisland.WowsPlugin;
+import org.orisland.Plugin;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.doMain.singlePlayer.SinglePlayer;
 
-import java.io.File;
-import java.util.Arrays;
-
-import static org.orisland.wows.ApiConfig.Admin;
 import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.dataPack.BindData.bindQQAccountId;
 import static org.orisland.wows.dataPack.PlayerData.*;
@@ -32,7 +28,7 @@ public class Bind extends JCompositeCommand {
     public static final ObjectMapper mapper =  new ObjectMapper();
 
     private Bind(){
-        super(WowsPlugin.INSTANCE, "wws-bind", new String[]{"wb"}, WowsPlugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "wws-bind", new String[]{"wb"}, Plugin.INSTANCE.getParentPermission());
     }
 
     @SubCommand({"bindid", "bi"})

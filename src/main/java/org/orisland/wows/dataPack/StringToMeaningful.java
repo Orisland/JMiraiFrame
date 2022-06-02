@@ -6,13 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.message.data.Image;
-import net.mamoe.mirai.utils.ExternalResource;
-import org.orisland.WowsPlugin;
 import org.orisland.wows.ApiConfig;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

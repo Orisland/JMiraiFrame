@@ -1,27 +1,22 @@
 package org.orisland;
 
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.IoUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
-import org.apache.logging.log4j.core.util.IOUtils;
 import org.orisland.wows.command.Account;
 import org.orisland.wows.command.Bind;
 import org.orisland.wows.command.Help;
 import org.orisland.wows.command.PluginController;
 
-import java.io.InputStream;
-
 import static org.orisland.wows.DataInit.init;
 
 @Slf4j
-public final class WowsPlugin extends JavaPlugin {
-    public static final WowsPlugin INSTANCE = new WowsPlugin();
-    private WowsPlugin() {
+public final class Plugin extends JavaPlugin {
+    public static final Plugin INSTANCE = new Plugin();
+    private Plugin() {
 //        引入日志插件前置
         super(new JvmPluginDescriptionBuilder("org.orisland.plugin", "0.20")
                 .name("Wows")

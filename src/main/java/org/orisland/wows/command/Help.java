@@ -5,10 +5,7 @@ import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import net.mamoe.mirai.message.data.*;
-import org.jsoup.helper.DataUtil;
-import org.orisland.WowsPlugin;
-import org.orisland.wows.ApiConfig;
-import org.orisland.wows.DataInit;
+import org.orisland.Plugin;
 
 import static org.orisland.wows.dataPack.DataHandler.addForwardLine;
 import static org.orisland.wows.dataPack.DataHandler.addForwardPack;
@@ -19,7 +16,7 @@ public class Help  extends JCompositeCommand {
     public static final Help INSTANCE = new Help();
 
     public Help() {
-        super(WowsPlugin.INSTANCE, "wws-help", new String[]{"wh"}, WowsPlugin.INSTANCE.getParentPermission());
+        super(Plugin.INSTANCE, "wws-help", new String[]{"wh"}, Plugin.INSTANCE.getParentPermission());
     }
 
     @SubCommand({"帮助", "help", "h"})
