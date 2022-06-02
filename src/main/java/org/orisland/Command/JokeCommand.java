@@ -27,7 +27,7 @@ public class JokeCommand extends JCompositeCommand {
         super(Plugin.INSTANCE, "JeffJoke", new String[]{"j", "j"}, Plugin.INSTANCE.getParentPermission());
     }
 
-    @SubCommand({"joke", "myjoke", "mj"})
+    @SubCommand({"joke", "myjoke", "mj", "me"})
     @Description("获取一条以自己名字填充的jeff joke")
     public void function(CommandSenderOnMessage sender){
         getJoke(sender, 1);

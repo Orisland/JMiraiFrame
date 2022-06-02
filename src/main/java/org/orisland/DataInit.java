@@ -11,7 +11,6 @@ public class DataInit {
     public static void init(){
         initJeffJokeContent();
         initJeffSplitChar();
-        initBlackList();
     }
 
     public static void initJeffJokeContent(){
@@ -35,10 +34,5 @@ public class DataInit {
             log.info("初始化JeffJoke配置文件！");
             initJeffSplitChar();
         }
-    }
-
-    public static void initBlackList(){
-        BlackList = YmlTool.ReadYamlToString(JeffConfig, "blackList");
-        log.info("黑名单初始化完成！");
     }
 }

@@ -1,10 +1,12 @@
 package org.orisland.Command;
 
+import cn.hutool.core.io.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.console.command.java.JCompositeCommand;
 import org.orisland.Plugin;
 
+import static org.orisland.Config.SplitChar;
 import static org.orisland.DataInit.initJeffJokeContent;
 
 /**
@@ -25,5 +27,11 @@ public class AdminCommand extends JCompositeCommand {
     @Description("重载本地joke")
     public void function(CommandSenderOnMessage sender){
         initJeffJokeContent();
+    }
+
+    @SubCommand({"reSplit", "rs"})
+    @Description("指定分隔符，临时修改")
+    public void updateSplit(CommandSenderOnMessage sender, String split){
+        SplitChar = split;
     }
 }
