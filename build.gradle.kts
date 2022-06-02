@@ -1,23 +1,14 @@
 plugins {
-    val kotlinVersion = "1.4.30"
+    val kotlinVersion = "1.5.30"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
-
-    id("net.mamoe.mirai-console") version "2.8.0-M1"
+    id("net.mamoe.mirai-console") version "2.11.0"
 }
 
 group = "org.orisland"
-version = "1.0-SNAPSHOT"
-
-//repositories {
-//    mavenLocal()
-//    maven("https://maven.aliyun.com/repository/public")
-//    mavenCentral()
-////    jcenter()
-//}
+version = "1.0"
 
 repositories {
-    removeIf { it is MavenArtifactRepository && it.url.host == "dl.bintray.com" }
     mavenLocal()
     maven(url = "https://maven.aliyun.com/repository/public")
     maven(url = "https://maven.aliyun.com/repository/gradle-plugin")
@@ -31,24 +22,15 @@ ext {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.3")
-// https://mvnrepository.com/artifact/com.github.luues.tool/tool-setting
-    implementation("com.github.luues.tool:tool-setting:1.0.0.0.RELEASE")
-    // https://mvnrepository.com/artifact/org.yaml/snakeyaml
-    implementation("org.yaml:snakeyaml:1.29")
-    // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
-    implementation("com.squareup.okhttp3:okhttp:4.9.1")
-    // https://mvnrepository.com/artifact/com.baidu.aip/java-sdk
-    implementation("com.baidu.aip:java-sdk:4.16.2")
+    runtimeOnly("com.lmax:disruptor:3.4.4")
 
-    implementation("com.aliyun.oss:aliyun-sdk-oss:3.10.2")
-    implementation("javax.xml.bind:jaxb-api:2.3.1")
-    implementation("javax.activation:activation:1.1.1")
-    implementation("org.glassfish.jaxb:jaxb-runtime:2.3.3")
-    // https://mvnrepository.com/artifact/org.jsoup/jsoup
-    implementation("org.jsoup:jsoup:1.13.1")
+    api("net.mamoe.yamlkt:yamlkt-jvm:0.10.2")
+    testImplementation("junit:junit:4.12")
+    implementation("org.projectlombok:lombok:1.18.22")
+    implementation("cn.hutool:hutool-core:5.8.1")
+    annotationProcessor("org.projectlombok:lombok:1.18.22")
 
 }
