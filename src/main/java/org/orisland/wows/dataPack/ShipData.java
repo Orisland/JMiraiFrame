@@ -201,7 +201,7 @@ public class ShipData {
      * 将船只数据保存到本地
      * @return          flag
      */
-    public static boolean saveShipInfo(){
+    public static boolean saveShipLanguageInfo(){
         log.info("获取船只语言数据开始!");
         JsonNode shipDataMix = ShipDataMix();
         FileUtil.writeUtf8String(shipDataMix.toString(), dataDir + "ships_cn.json");

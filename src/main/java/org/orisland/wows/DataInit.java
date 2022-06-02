@@ -5,8 +5,10 @@ import Tool.HttpClient;
 import Tool.JsonTool;
 import Tool.YmlTool;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.FastByteArrayOutputStream;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
+import cn.hutool.core.util.ZipUtil;
 import cn.hutool.cron.CronUtil;
 import cn.hutool.cron.task.Task;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,13 +18,14 @@ import org.orisland.WowsPlugin;
 
 import java.io.File;
 import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import static Tool.YmlTool.ReadYamlToBoolean;
 import static Tool.YmlTool.ReadYamlToString;
 import static org.orisland.wows.ApiConfig.*;
 import static org.orisland.wows.dataPack.PlayerData.updateAccountLocalDataAuto;
-import static org.orisland.wows.dataPack.ShipData.saveShipInfo;
+import static org.orisland.wows.dataPack.ShipData.saveShipLanguageInfo;
 
 @Slf4j
 public class DataInit {
@@ -36,6 +39,7 @@ public class DataInit {
         if (CronUtil.getScheduler().isStarted())
             CronUtil.stop();
         initFile();
+        initPrImg();
         initRetry();
         initAppId();
         initShipExpectedUpdate();
@@ -65,6 +69,20 @@ public class DataInit {
             FileTool.newFile(dataDir + "playerData" + File.separator + "ru");
             FileTool.newFile(dataDir + "playerData" + File.separator + "origin");
             FileUtil.writeUtf8String("{}", dataDir + "Bind.json");
+        }
+    }
+
+    public static void initPrImg(){
+        if (!FileUtil.exist(dataDir + "prImg")){
+            byte[] bytes = IoUtil.readBytes(WowsPlugin.class.getClassLoader().getResourceAsStream("prImg.zip"));
+            FileUtil.writeBytes(bytes, dataDir + "temp.zip");
+            ZipUtil.unzip(dataDir + "temp.zip", dataDir, Charset.forName("GBK"));
+            boolean del = FileUtil.del(dataDir + "temp.zip");
+            if (del){
+                log.info("菜谱放置完成！");
+            }
+        }else {
+            log.info("菜谱已存在！");
         }
     }
 
@@ -214,7 +232,7 @@ public class DataInit {
                     while (count <= 20){
                         try {
                             if (ReadYamlToBoolean(config, "updateShipInfoAuto"))
-                                saveShipInfo();
+                                saveShipLanguageInfo();
                             updateAccountLocalDataAuto(false);
                             initShipExpectedUpdate();
                             return;

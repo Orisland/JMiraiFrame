@@ -16,6 +16,7 @@ import java.util.Date;
 
 import static org.orisland.wows.DataInit.init;
 import static org.orisland.wows.dataPack.PlayerData.*;
+import static org.orisland.wows.dataPack.ShipData.saveShipLanguageInfo;
 import static org.orisland.wows.dataPack.StringToMeaningful.isAdmin;
 
 @Slf4j
@@ -120,5 +121,11 @@ public class PluginController extends JCompositeCommand {
         }
 
         sender.sendMessage(chain);
+    }
+
+    @SubCommand({"reLang", "rl", "getLanguage"})
+    @Description("更新船只的语言文件")
+    public void reLanguage(){
+        saveShipLanguageInfo();
     }
 }

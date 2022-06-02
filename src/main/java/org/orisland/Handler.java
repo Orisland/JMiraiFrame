@@ -1,15 +1,9 @@
 package org.orisland;
 
 import Tool.JsonTool;
-import Tool.MiraiTool;
-import cn.hutool.core.io.FastByteArrayOutputStream;
-import cn.hutool.core.io.FileUtil;
-import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.io.file.FileReader;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.mamoe.mirai.Bot;
-import net.mamoe.mirai.Mirai;
 import net.mamoe.mirai.console.command.CommandSenderOnMessage;
 import net.mamoe.mirai.event.*;
 import net.mamoe.mirai.event.events.FriendMessageEvent;
@@ -17,26 +11,17 @@ import net.mamoe.mirai.event.events.GroupMessageEvent;
 
 import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.message.data.*;
-import net.mamoe.mirai.utils.ExternalResource;
 import org.orisland.wows.ApiConfig;
 import org.orisland.wows.dataPack.StringToMeaningful;
 import org.orisland.wows.doMain.ShipDataObj;
 import org.orisland.wows.doMain.SingleShipDataSimple;
 
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static org.orisland.wows.ApiConfig.dataDir;
 import static org.orisland.wows.DataInit.initDataRefresh;
+import static org.orisland.wows.DataInit.initPrImg;
 import static org.orisland.wows.dataPack.DiffData.accountRecordAt;
 import static org.orisland.wows.dataPack.PlayerData.*;
 import static org.orisland.wows.dataPack.PrData.*;
@@ -120,7 +105,7 @@ public class Handler extends SimpleListenerHost {
             System.out.println(jsonNode.size());
             System.out.println(jsonNode);
         }else if (event.getMessage().contentToString().equals("20")){
-            saveShipInfo();
+            saveShipLanguageInfo();
         }else if (event.getMessage().contentToString().equals("21")){
             MessageChainBuilder builder = new MessageChainBuilder();
             builder.append("信息\r信息");
@@ -160,7 +145,7 @@ public class Handler extends SimpleListenerHost {
         }else if (event.getMessage().contentToString().equals("24")){
             System.out.println("org.orisland.plugin\\\\prImg\\\\");
         }else if (event.getMessage().contentToString().equals("25")){
-
+            initPrImg();
         }else if (event.getMessage().contentToString().equals("26")){
         }else {
         }
