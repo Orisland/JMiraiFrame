@@ -1,10 +1,12 @@
 package org.orisland;
 
 import net.mamoe.mirai.console.command.CommandManager;
-import net.mamoe.mirai.console.command.CommandSender;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
+import org.orisland.Command.JokeCommand;
+
+import static org.orisland.DataInit.init;
 
 public final class Plugin extends JavaPlugin {
     public static final Plugin INSTANCE = new Plugin();
@@ -18,9 +20,11 @@ public final class Plugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Plugin loaded!");
+        getLogger().info("Jeff loaded!");
 
-        CommandManager.INSTANCE.registerCommand(Mycommand.INSTANCE, false);
+        init();
+
+        CommandManager.INSTANCE.registerCommand(JokeCommand.INSTANCE, false);
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }

@@ -1,5 +1,6 @@
 grantedPermissionMap: 
   '*:*': 
     - console
+    - u756176532
   'org.orisland.plugin:*': 
     - u756176532
