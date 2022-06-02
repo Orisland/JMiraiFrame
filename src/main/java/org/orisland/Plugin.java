@@ -4,6 +4,7 @@ import net.mamoe.mirai.console.command.CommandManager;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescriptionBuilder;
 import net.mamoe.mirai.event.GlobalEventChannel;
+import org.orisland.Command.AdminCommand;
 import org.orisland.Command.JokeCommand;
 
 import static org.orisland.DataInit.init;
@@ -25,6 +26,7 @@ public final class Plugin extends JavaPlugin {
         init();
 
         CommandManager.INSTANCE.registerCommand(JokeCommand.INSTANCE, false);
+        CommandManager.INSTANCE.registerCommand(AdminCommand.INSTANCE, false);
 
         GlobalEventChannel.INSTANCE.registerListenerHost(new Handler());
     }

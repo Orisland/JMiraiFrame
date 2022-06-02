@@ -26,6 +26,7 @@ public class JokeUtil {
         String[] split = joke.split(SplitChar);
         StringBuilder stringBuilder = new StringBuilder();
 
+        //TODO: 那么问题来了，为什么我不用replace呢？………………因为我忘了。
         for (String s1 : split) {
             stringBuilder.append(s1);
             stringBuilder.append(name);
