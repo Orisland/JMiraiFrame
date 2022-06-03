@@ -506,7 +506,7 @@ public class Account extends JCompositeCommand {
         ForwardMessageBuilder messList = null;
 
         ForwardMessageBuilder preInfo = new ForwardMessageBuilder(sender.getFromEvent().getSender())
-                .add(sender.getBot(), new MessageChainBuilder().append("单机查看pr信息！").build());
+                .add(sender.getBot(), new MessageChainBuilder().append("单击查看pr信息！").build());
 
 
         int count = 0;
@@ -664,7 +664,7 @@ public class Account extends JCompositeCommand {
         ForwardMessageBuilder messList = null;
 
         ForwardMessageBuilder preInfo = new ForwardMessageBuilder(sender.getFromEvent().getSender())
-                .add(sender.getBot(), new MessageChainBuilder().append("单机查看pr信息！").build());
+                .add(sender.getBot(), new MessageChainBuilder().append("单击查看pr信息！").build());
 
         int count = 0;
         StringBuilder exception = new StringBuilder();
