@@ -58,6 +58,8 @@ public class ShipDataObj {
         if (sink == 0){
             sink = 1L;
         }
+
+//        TODO:是否要除以battle数呢？
         double KD = kill * 1.0 / sink;
 
         BigDecimal kd = new BigDecimal(KD).setScale(2, RoundingMode.UP);
