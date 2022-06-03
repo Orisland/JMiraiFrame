@@ -61,6 +61,7 @@ public class PluginController extends JCompositeCommand {
                 sender.sendMessage(chain);
                 return;
             }catch (Exception e){
+                e.printStackTrace();
                 log.warn("访问第{}次出错！",++count);
             }
         }

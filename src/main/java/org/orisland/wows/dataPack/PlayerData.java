@@ -190,6 +190,10 @@ public class PlayerData {
 
 //            新增了rank数据
             ObjectNode temp = JsonTool.mapper.createObjectNode();
+            if (temp.size() == 0){
+                log.info("玩家{}发现了奇怪的战绩，跳过获取！", accountId);
+                return null;
+            }
             for (JsonNode data : urlByJson.get("data").get(accountId)) {
                 temp.set(data.get("ship_id").asText(), data);
             }
@@ -208,6 +212,12 @@ public class PlayerData {
             objectNode.put("accountid", urlByJson.get("account_id").asText());
 
             ObjectNode temp = JsonTool.mapper.createObjectNode();
+
+            if (temp.size() == 0){
+                log.info("发现了奇怪的战绩，跳过获取！");
+                return null;
+            }
+
             for (JsonNode data : urlByJson.get("data").get(urlByJson.get("account_id").asText())) {
                 temp.set(data.get("ship_id").asText(), data);
             }
@@ -228,6 +238,8 @@ public class PlayerData {
         String s = ServerToDir(server);
         String date = DateUtil.format(DateUtil.date(), "YYYYMMdd");
         JsonNode data = shipDataStandard(accountId, server);
+        if (data == null)
+            return;
         originPlayerData(accountId,data);
         if (force){
             FileUtil.writeUtf8String(data.toString(), ServerToDir(server) + accountId + "," + date + ".json");
