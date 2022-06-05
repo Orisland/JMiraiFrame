@@ -190,11 +190,12 @@ public class PlayerData {
 
 //            新增了rank数据
             ObjectNode temp = JsonTool.mapper.createObjectNode();
-            if (temp.size() == 0){
-                log.info("玩家{}发现了奇怪的战绩，跳过获取！", accountId);
+            JsonNode total = urlByJson.get("data").get(accountId);
+            if (total == null || total.size() == 0){
+                log.info("玩家{}-{}发现了可能隐藏的战绩，跳过获取！", server, accountId);
                 return null;
             }
-            for (JsonNode data : urlByJson.get("data").get(accountId)) {
+            for (JsonNode data : total) {
                 temp.set(data.get("ship_id").asText(), data);
             }
             objectNode.set("data", temp);
