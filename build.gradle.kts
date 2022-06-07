@@ -2,7 +2,7 @@ plugins {
     val kotlinVersion = "1.5.30"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
-    id("net.mamoe.mirai-console") version "2.11.0"
+    id("net.mamoe.mirai-console") version "2.11.0-M1"
 }
 
 group = "org.orisland"
@@ -11,7 +11,7 @@ version = "0.20"
 repositories {
 //    removeIf { it is MavenArtifactRepository && it.url.host == "dl.bintray.com" }
     mavenLocal()
-    maven(url = "https://maven.aliyun.com/repository/public")
+//    maven(url = "https://maven.aliyun.com/repository/public")
 //    maven(url = "https://maven.aliyun.com/repository/gradle-plugin")
 //    maven(url = "https://repository.apache.org/content/groups/snapshots/")
     mavenCentral()

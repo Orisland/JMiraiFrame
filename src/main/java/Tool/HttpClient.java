@@ -65,9 +65,9 @@ public class HttpClient {
         while (count <= ApiConfig.reTry){
             try {
                 client = new OkHttpClient.Builder()
-                        .connectTimeout(15, TimeUnit.SECONDS)
-                        .readTimeout(10, TimeUnit.SECONDS)
-                        .callTimeout(10, TimeUnit.SECONDS)
+                        .connectTimeout(30, TimeUnit.SECONDS)
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .callTimeout(30, TimeUnit.SECONDS)
                         .build();
 
                 request = new Request.Builder()
